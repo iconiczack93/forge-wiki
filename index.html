@@ -2064,31 +2064,16 @@ document.addEventListener('DOMContentLoaded',function(){
   margin: 0;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  animation: titleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
+  opacity: 1;
+  animation: titlePulse 3s ease-in-out infinite;
 }
 
-@keyframes titleReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    letter-spacing: 0.4em;
+@keyframes titlePulse {
+  0%, 100% {
     text-shadow: 0 0 0px transparent;
   }
-  60% {
-    opacity: 1;
-    transform: translateY(0) scale(1.02);
-    letter-spacing: 0.15em;
-  }
-  80% {
-    transform: translateY(0) scale(1);
-    text-shadow: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(220, 38, 38, 0.2);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    letter-spacing: 0.15em;
-    text-shadow: 0 0 0px transparent;
+  50% {
+    text-shadow: 0 0 30px rgba(220, 38, 38, 0.5), 0 0 60px rgba(220, 38, 38, 0.2);
   }
 }
 
