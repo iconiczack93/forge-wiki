@@ -1,0 +1,1935 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-02-20-20260220/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — February 20, 2026 at 09:42 AM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-february-20-2026-at-0942-am" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — February 20, 2026 at 09:42 AM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-february-20-2026-at-0942-am">Meeting — February 20, 2026 at 09:42 AM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>February 20, 2026 at 09:42 AM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~31 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Arda</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-hockeystack-team-sync-w-arda-hank">Meeting Analysis: HockeyStack Team Sync w/ Arda &amp; Hank</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>The team is refining their sourcing strategy for a ClickHouse database engineer role by widening the search net to include anyone with ClickHouse keywords (removing strict title filters), excluding only managers and site reliability engineers, while avoiding Altinity but including ClickHouse company candidates.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Remove strict job title filters and search primarily by ClickHouse keyword on LinkedIn Recruiter
+- Add software engineer to title searches when using title filters
+- Exclude manager and site reliability engineer titles from searches
+- Remove Altinity candidates from sourcing list
+- Include ClickHouse company employees in candidate pool
+- Source candidates from Netherlands/Amsterdam area from GitHub scrape
+- Provide list of Altinity-like companies to Arda and Hank
+- Re-run searches on Series A-C companies using broader ClickHouse keyword approach
+- Implement the LinkedIn scraping API that Arda provided
+- Ask questions in the DM group if stuck on API implementation</p>
+<p><strong>Arda</strong>
+- Provide feedback on the job description (expected next week)</p>
+<p><strong>Hank</strong>
+- Review and finalize job description for release next week</p>
+<p><strong>Unassigned</strong>
+- None</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Widen the sourcing net by removing strict title constraints and focusing on ClickHouse as a keyword</li>
+<li>Exclude managers and site reliability engineers from searches</li>
+<li>Accept candidates with 1+ years of ClickHouse experience if they worked at scale</li>
+<li>Accept candidates who use multiple databases alongside ClickHouse (e.g., Kubernetes + MySQL/Postgres)</li>
+<li>Do not source from Altinity, but DO source from ClickHouse company itself</li>
+<li>Include candidates from Netherlands/Amsterdam in sourcing efforts</li>
+<li>Use exclusion-based filtering (removing unwanted titles) rather than inclusion-based filtering</li>
+<li>Rely on job description and self-selection to help filter candidates once outreach begins</li>
+<li>Leverage automation (LinkedIn API) rather than manual work where possible</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>Zack has sourced 35-40 candidates so far, finding it challenging due to the rarity of 5+ years ClickHouse experience and unclear job titles</li>
+<li>Most GitHub repository contributors are Russia-based, limiting the viable candidate pool from that source</li>
+<li>LinkedIn Recruiter profiles show more detail than standard profiles, making it difficult for Arda/Hank to see what Zack sees during calibration</li>
+<li>The team discussed whether candidates need ClickHouse exclusively vs. experience with adjacent technologies (Kafka, Postgres, MySQL, OLAP/OLTP databases)</li>
+<li>Max (team member) was used as an example of someone who has ClickHouse skills but doesn't elaborate on it in their LinkedIn profile, highlighting the need for broader keyword searches</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Modify LinkedIn Recruiter search strategy to use ClickHouse keyword without title constraints (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add exclusion filters for managers and site reliability engineers (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Remove Altinity candidates from current sourcing list (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Re-run searches on Series A-C companies with new broader approach (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Source Netherlands/Amsterdam candidates from GitHub scrape (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Implement LinkedIn scraping API for automation (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Compile and share list of Altinity-like companies (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Finalize and release job description (Owner: Hank/Arda, Priority: High)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>Next week</strong> — Job description expected to be finalized and released (Owner: Arda/Hank)</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>Exact percentage of Russia-based candidates from GitHub scrape (rough estimate given, but not precise)</li>
+<li>Whether to implement pre-screen emails before scheduling calls (discussed but not decided)</li>
+<li>Full list of companies similar to Altinity that should be avoided (Zack to compile and share)</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Zack provided an update on sourcing efforts for a ClickHouse database engineer role, having sourced 35-40 candidates primarily from GitHub scrapes and companies listed on ClickHouse's website. The team decided to significantly broaden the search strategy by removing strict job title filters and focusing on ClickHouse as a keyword, while excluding only managers and site reliability engineers. They clarified that candidates with 1+ years of ClickHouse experience at scale are acceptable, as are those with adjacent database technologies, and that sourcing from ClickHouse company itself is encouraged while Altinity should be avoided.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:00] Arda: Yip! Now I'm also hoping for like any recruiter that you get on my team, they would primarily be able to just tap into a network or a certain database that we don't have access to,</p>
+<p>[02:22] Arda: but they have only the folks that they placed.</p>
+<p>[02:27] Arda: Yeah, right.</p>
+<p>[02:27] Arda: So anyway, uh, hey Zach, what's going on, man?</p>
+<p>[02:30] Arda: Hey, good morning guys, how are you guys doing?</p>
+<p>[02:32] Arda: It's been good, doing good. All right, we got you set up here. Uh, let's get right into event.</p>
+<p>[02:37] Arda: Perfect. Okay, so this week has been very eventful. I was able to scrape the GitHub repository. I posted that in the chat. I've been going, um, through that, um, that list. Um, as you guys know, a lot of folks from that list are located in Russia. Um, it's prime— prime more, uh primarily Russian candidates, um, and I assume we're not going to be sourcing from there, so I've avoided them. Um, and so throughout the week I took like Arda's ideas in regards to the companies that are used on, um, that's on their ClickHouse website. You know how it has like the companies that use ClickHouse? Um, I went ahead and let me share. I scraped that too. So what I've been doing is going through that list Um, right here, one sec. There's a list right there. Um, but I, I made something on Claude code to scrape the list of the companies, um, that, uh, they had listed on their website. I also looked into the Slack angle. I, I couldn't find anything or see anything that could scrape the Slack channel for the community for ClickHouse. So if you guys have ideas on that, I would love, um, to hear it because like I didn't find anything that would allow me to do that. Um, and overall, I believe throughout like my sourcing for this week, like, or since we've started this for the database engineer, I'm not sure what we're calling it right now. I think I've sourced about like 35 to 40 candidates, which, you know, I think is kind of like, I, I wish I could say more. But like, it's pretty, it's pretty hard, right? I mean, like what we're looking for in terms of like the attributes. And then, like I said, like the job title, I'm having a little bit of a difficult time really nailing down. So I'm sourcing people that are, you know, showing the right signs that, you know, they've used ClickHouse, you know, for at least like, I, I, I truly have found like maybe 5 candidates that have had like the 5 years. Um, it's very rare that I've seen. Throughout my sourcing, but I've been adding folks that have about like 3 or, 3 or more. The one question I did have is we mentioned that some people won't have it listed. So the adjacent, um, like databases, um, like Kafka— I think there's like an acronym for like the 3-in-1— like all those, like Are we, are we okay with looking at people that use multiple databases and ClickHouse?</p>
+<p>[05:29] Arda: Yeah, I think before, before I continue, uh, let's do it one at a time.</p>
+<p>[05:34] Arda: Yep.</p>
+<p>[05:35] Arda: Uh, let's break down one at a time. First, administrative. You are currently using LinkedIn Recruiter, right, to do your searches?</p>
+<p>[05:44] Arda: Yeah, LinkedIn Recruiter, um, and then, uh, Juicebox as well.</p>
+<p>[05:49] Arda: Got it.</p>
+<p>[05:49] Arda: And then obviously, uh, Bookface, um, as the, the third. Yes.</p>
+<p>[05:53] Arda: Got it. Okay, understood, understood. Um, and when you are a LinkedIn Recruiter, uh, you obviously are going to see a much, much deeper profile than me who do not have LinkedIn Recruiter.</p>
+<p>[06:06] Arda: Yes, yeah, you do see different things on LinkedIn Recruiter versus non-LinkedIn Recruiter. Yes.</p>
+<p>[06:12] Arda: Yep.</p>
+<p>[06:12] Arda: Okay, and then when you do your searches your searches on the computer will be able to key off of those content, uh, because I obviously can't see it.</p>
+<p>[06:22] Arda: Yeah, yeah.</p>
+<p>[06:23] Arda: Okay, got it.</p>
+<p>[06:24] Arda: Yeah, so— okay, so I think, um, for the— to, to make it, you know, easier for when you do calibrate or when we're looking at profiles, like maybe during like interviews, um, for the— it's actually quite fairly often that the non-LinkedIn recruiter profile looks way different than the LinkedIn recruiter profile. So I could take the bullet points where they list, like, you know, why I pretty much would source them in a way. So that way, when you look at it, you'll see something blank or whatever. It'd be like, why is this, you know, candidate here? So I could take the bullet points that it lists because I want to say it parses off of a resume. I think that's what we see on LinkedIn Recruiter. Um, I could actually look real quick. So Like, for example, this is like a— I've been running like a lot of different, um, let me see if it saves them.</p>
+<p>[07:20] Arda: [FOREIGN LANGUAGE]</p>
+<p>[07:23] Arda: What was that?</p>
+<p>[07:25] Arda: [FOREIGN LANGUAGE]</p>
+<p>[07:31] Arda: Okay, that was my question because I spoke to Hank about them on Tuesday, and I was going to bring it up to you today because I, My next thing was there are like, you know, the companies that do have the ClickHouse, like, you know, specialists and experts. And I found a couple of those. So you want me to stay away from Altinity or, or Altinity?</p>
+<p>[07:50] Arda: Just Altinity. I don't, I don't think we talk with any of the others, so it</p>
+<p>[07:55] Arda: will just be Altinity.</p>
+<p>[07:56] Arda: Okay, I'll go ahead and after this I'll get you the list of the companies that I found that are, um, operating in that. So This is actually just with like a very simple boolean, um, just for like the DBA background with infrastructure, like even like an OLAP architect. That's with Altinity. So if I removed it, um, this is what we'll see. Um, but actually I don't know why I just did that. So then if you did that and then you said like, and ClickHouse, for example, should be around like, yeah, 92 or so in US and Canada. Um, but when you go into these profiles, like this is actually somebody I believe I did source. So you'll get like people that will list ClickHouse here and then they'll go into like they worked on, you know, all these different, you know, like the Terraform. Like OLAP and OLTP. So would this be like somebody that we would want to speak to? Because like I said, I, I know that, uh, the way that the ClickHouse looks through the database is through the OLAP and OLTP search, right? So would somebody like that shows that experience, is that somebody that we would want to talk to? Or we're like looking strictly, hey, ClickHouse, like he has up here, but only for 5 months at this job. You know what I mean? Because I'm running into things like this often where they have it listed as a skill, but they're not showing like, hey, we're using it like this,</p>
+<p>[09:31] Arda: right?</p>
+<p>[09:31] Arda: So this person here, as an example, uh, you're saying that it seems based on reading the LinkedIn profile, he only has 5 months of hands-on experience with ClickHouse.</p>
+<p>[09:45] Arda: Yeah, like, that's how this would appear. Yeah. Yeah, yes, because I feel like maybe if he had more, he probably would list it in his previous roles. Um, so that's kind of the thing I'm running into because people seem to have it listed with other databases, not just, hey, only ClickHouse, only ClickHouse.</p>
+<p>[10:04] Arda: Yeah, I don't think there's a reason why we would want only ClickHouse. Okay, so different technologies all the time, that's totally fine.</p>
+<p>[10:11] Arda: Okay. Because I was saying that because I didn't know if somebody, like I said, had the expertise in a different kind of like database that, you know, a large-scale database, if that would still be, you know, somebody that we would want to, you know, speak to.</p>
+<p>[10:28] Arda: Yeah, I think there's two main things, like either we know they use ClickHouse where like there is that channel or there the GitHub scrape. Yeah. Or they're also in like this, uh, adopters page in ClickHouse's own website. Or we don't know if the company is ClickHouse, but the person has like related technologies in their profile, like you mentioned Kubernetes. If I had to like guess, I would say Kubernetes plus MySQL, Kubernetes plus Postgres, something like that, right? They had to deal with some like database that was also like some infrastructure, whatever.</p>
+<p>[11:07] Arda: Okay.</p>
+<p>[11:08] Arda: Most people are like, probably won't have the experience, but they might. And like, there will be a good amount of people I feel like that use ClickHouse, but that doesn't necessarily have ClickHouse separately.</p>
+<p>[11:21] Arda: Okay.</p>
+<p>[11:23] Arda: Yeah.</p>
+<p>[11:24] Arda: Okay. Yeah, because I, as I said, I want to be totally cognizant of everyone's time here. Um, with like when we do kick it off and we're getting calls, you know, like I don't want Hank to get on the phone with the candidate and like, oh, how many, you know, years of ClickHouse do you have? And they just say, oh, I have a year, but you know, and then all of a sudden it's like, you know, everyone's time is, you know, gone.</p>
+<p>[11:46] Arda: No, a year might be fine depending on how much of a scale they work that with ClickHouse.</p>
+<p>[11:51] Arda: Okay.</p>
+<p>[11:53] Arda: Because like let's say they work with did it for a year, but they worked in one of the biggest ClickHouse clusters out there in the world. Hmm. Are you gonna like disregard that person?</p>
+<p>[12:04] Arda: Like, I would— okay, uh, let me pull up a profile that I thought was actually spot on real quick. Let me go ahead and pull it up. So there's a couple— oh, see, that, that Altinity was one of the people I sourced, so I have to go through that. Um, and actually, what— and then I also sourced some people from ClickHouse. Um, yeah, a lot of people from Altinity.</p>
+<p>[12:48] Arda: What do you think? You okay with Clickhouse resourceful?</p>
+<p>[12:53] Arda: Maybe.</p>
+<p>[12:57] Arda: So this is actually something you won't— I mean, see, this is an example of a profile that doesn't have too much. So this is like a— I thought was pretty solid, but he's like an engineer and like he was like a manager in a way, but he did work, you know, with Clickhouse.</p>
+<p>[13:13] Arda: So</p>
+<p>[13:23] Arda: Sorry, what?</p>
+<p>[13:25] Arda: It says engine managers at 2021.</p>
+<p>[13:29] Arda: Yeah, it was— we're back to Jerry,</p>
+<p>[13:31] Arda: but no, people say engine, but there are also managers.</p>
+<p>[13:38] Arda: That's true. Where does it say ClickHouse work? That he— oh, that's it right here.</p>
+<p>[13:44] Arda: Kafka, ClickHouse.</p>
+<p>[13:45] Arda: Yeah, I see. Got it.</p>
+<p>[14:01] Arda: Uh, and then there was like, like 2 more that I wanted to show you guys just to make sure, like, you know Yeah, because like I said, it's more of the job title that I'm unsure about. You know, I'm reading through, I'm looking for when they're talking about— like I said, you know, they'll use like the Kafka background and stuff like that.</p>
+<p>[14:17] Arda: So</p>
+<p>[14:21] Arda: yeah,</p>
+<p>[14:28] Arda: shit, this sucks.</p>
+<p>[14:28] Arda: Yeah, um, his current job is engineering, which is weird because it's not engineer, it's just engineering. So I do agree with you that might indicate that he's still doing some management. So he usually would just put it into his management.</p>
+<p>[14:39] Arda: I've seen a lot of like newer startups.</p>
+<p>[14:43] Arda: Yeah, but Meshnode is not new, it's pretty old. Um, and in Meshnode he's not doing ClickHouse.</p>
+<p>[14:52] Arda: Yeah, he doesn't have a mention there.</p>
+<p>[14:53] Arda: Yeah, yeah, he's mostly doing Postgres.</p>
+<p>[14:55] Arda: Yeah, Postgres.</p>
+<p>[14:56] Arda: Yeah, yeah. And then Lakehouse, he's the daily. Um, okay, got it, got it. Um, show me the next one.</p>
+<p>[15:09] Arda: Yeah, yeah, sure, of course.</p>
+<p>[15:10] Arda: This one's a 50/50. That was a 50.</p>
+<p>[15:12] Arda: Oh, this is actually El Tendidi. Let me skip him. Okay, so this guy's actually located in, in the Bay Area, um, but he works at Upstart and he— oh my, I could just— hold on one second. I think— see, I think he might have it listed in his, like, skills, so maybe not this one. Yeah, give me one second, let me— one second. So right here he has it listed at Fastly, and Fastly is off of the ClickHouse, um, they say that they use them, like the people that use it, right, right? So it's kind of like a little more blanker. Yeah, that's like— so it's like this</p>
+<p>[16:09] Arda: is a possibility even though, uh, it has a little hesitation here. He's just a reliability engineer,</p>
+<p>[16:18] Arda: um which</p>
+<p>[16:18] Arda: could actually work, though he may not be the best at querying or tuning. But who knows, maybe it's the title that they have fascinated— he still could do it. I think what's going to happen here is that— Zach, I think what's going to happen here is that if we continue to pursue, uh, the ClickHouse engineer with you, I think we're going to have to just Eat it and try to just talk to a lot of people. And if it just happens to be a 5, 10-minute, 15-minute conversation, then that's fine. We'll just basically, you know, blast it out. Um, as we make the job description much more granular, and we're about to release it next week, I think, uh, once, uh, art gets back to us, uh, that could actually help filter faster once, once we reach out to these people, right? So what I'm trying to say to you, Zach, is keep the net open and wide for now, right? Keep the net open and wide. Uh, don't, don't, uh, constrain it too much. And then we're gonna have to see if the job description will help us, uh, attract a few folks, uh, or not.</p>
+<p>[17:27] Arda: Yeah, yeah, absolutely. You know, I'm, I'm, I'm, I'm out here. I'm, I'm, I'm trying to, you know, find the right, you know, folks and whatnot. It's, uh, it's, it's difficult. Um, but like I said, I feel like, you know, with iteration being able to show you profiles, you know, because it's like, it's very, you know, it's kind of few, far, and between, um, in regards to like people really listing a lot of ClickHouse on their actual LinkedIn. Um, so I do think in— when we do get to that part where we're sending out messages, we probably could do like a pre-screen type of email., where I, you know, I could even send an email to them, uh, to candidates if they're interested in, you know, ask them like, or, you know, do you— or make it very apparent that ClickHouse is important. And so that way maybe they could even, you know, self-withdraw before, so that way, you know, if need be or something like that.</p>
+<p>[18:19] Arda: Maybe. I think, I think I, I definitely don't want to put more work on your plate, Zach. Yeah. So if the regular campaign pipelines with a, you know, good email that points to the job description. I'm hoping that would help self-select people who are into it. Um, I have one last other thing before we move on. Could you actually bring up Max's profile in Recruiter?</p>
+<p>[18:48] Arda: Yeah, hold on one sec. You said</p>
+<p>[18:54] Arda: Max?</p>
+<p>[18:54] Arda: He does Under skills?</p>
+<p>[18:54] Arda: No, Max space Spransky, our, uh, team member. Oh yeah, just go, just go to regular LinkedIn and just go to Max Spransky. There it is, Max Spransky. Oh, not that. Yeah, so this is LinkedIn Recruiter and this is all we see, right?</p>
+<p>[19:18] Arda: Yep. Yeah, this is through LinkedIn Recruiter. This is all he has listed.</p>
+<p>[19:22] Arda: Yeah, I was trying to tell that guy, uh, the specialist, like, not everyone's gonna list, right?</p>
+<p>[19:29] Arda: Yeah, he has it in his</p>
+<p>[19:32] Arda: skills,</p>
+<p>[19:32] Arda: but he doesn't have any— like, he doesn't, uh, doesn't look like Max, like, writes anything.</p>
+<p>[19:38] Arda: Doesn't elucidate. Yeah, yeah, that's right. Yes, just make sure. Yeah, just make sure.</p>
+<p>[19:42] Arda: Yeah, yeah. So that's certainly, like, something— like I said, to me, throughout my experience, like, we could put anything we want in skills, you know? And so that's why it's kind of hard for me to— because I could source a lot more people if they just put ClickHouse in their skills. But you know what I mean? Like, I look for it in what they write, or you really have to infer that, you know, it's that they use it.</p>
+<p>[20:07] Arda: Can you search for what they put in skills too?</p>
+<p>[20:11] Arda: Can I search for what?</p>
+<p>[20:12] Arda: Sorry.</p>
+<p>[20:12] Arda: Can you search for what they put in skills too?</p>
+<p>[20:15] Arda: Yep. Yeah, so on here— one sec. So on here, yeah, you're gonna go right here and you could put where they would like— they even have like a skill assessment on LinkedIn, so you could go that way. But I think it's still— I think it just looks for the words on the page at all. Keywords will look everywhere, and I believe obviously the skills will just go to that. So if I removed it out of</p>
+<p>[20:39] Arda: the Boolean M— can you say ClickHouse? Okay, yeah, keep ClickHouse, search for Max. Does Max show up in your list?</p>
+<p>[20:49] Arda: Um, if I brought it down like this, cuz he— Max is in US, he's in US.</p>
+<p>[20:55] Arda: Well, let's</p>
+<p>[21:02] Arda: see.</p>
+<p>[21:02] Arda: Yeah, so it'll be 99. He would probably show up. Let me see, companies. Well, I don't know if I have his job title would show up. Let me see. Let me go to— is it possible</p>
+<p>[21:14] Arda: to search by a person's name or not possible?</p>
+<p>[21:16] Arda: Not this way. No, no, you would have to like get the, the wording right. So I would clear that. So anybody?</p>
+<p>[21:25] Arda: Yeah.</p>
+<p>[21:25] Arda: I mean, of course not. He will show up. I'm saying if you are doing your filter as it was.</p>
+<p>[21:31] Arda: Yeah. Do I see him?</p>
+<p>[21:33] Arda: How we were sourcing yesterday, if you did that, yes, will Max show up or not?</p>
+<p>[21:39] Arda: No, because I don't think I have— I don't have software engineer in the title at all. So the titles that I were using didn't</p>
+<p>[21:47] Arda: have something in that project like that. Like, if Max isn't showing up, then probably there's other people that are not showing up either.</p>
+<p>[21:52] Arda: Yeah, yeah. So I'm gonna add, like, like I said, like a software engineer, um, inside, inside of the actual title. Um, because I was using like infrastructure engineer.</p>
+<p>[22:02] Arda: I will just say click as the keyword. I feel like click has a much better like, uh, filtering than the title itself.</p>
+<p>[22:11] Arda: Okay, no, yeah, I'll do that and I'll add software engineer like a normal software engineer into that title line as well.</p>
+<p>[22:18] Arda: I will try removing the title. Is there something wrong with removing</p>
+<p>[22:25] Arda: it? Sorry, what? I couldn't hear</p>
+<p>[22:29] Arda: you. I was saying, I will just think about removing the title filter you have altogether. Is there something wrong with removing it altogether?</p>
+<p>[22:38] Arda: No, there's not anything wrong with that at all. It'll pull anybody that has, uh, ClickHouse on their profile. Yeah, so I think that would be— it would pull a lot, but I think that still would, you know, it's more people to go through. Which would still be better, right? So I think that's a good path. This is with no constraints.</p>
+<p>[22:58] Arda: I would think about excluding titles rather than including them. Click house in the keywords and excluding titles, I would think, give— would give us better chances.</p>
+<p>[23:10] Arda: Okay. Yeah. So like, I would go on here, like, like I said, it was not going to be a DevOps person, so I would— I could just go here and then you could say doesn't have currently, and then you could go like this, and then it'll remove anybody that has that title as a current. And like, if we're not looking for a manager, I could just remove all of them, and then that way it'll keep, you know, the ones that we would be looking for.</p>
+<p>[23:34] Arda: That makes sense, sir. I think you want to start off by widening the net as much as possible, and then once you start seeing patterns, just like you said, remove all managers, right? Uh, remove all of whatever, I don't know, uh, even like this engineer or something like that. Yeah. Um, then, you know, you'll just keep filtering down. So if we ended up— let's just say if we ended up with a pool of 800 or 1,000, that's great for us because we'll still filter it, but at least now we can have multiple um, sort of campaigns. Like one campaign, we take the first 200, right? And again, we are going to have to rely on a bit of our job description and a little bit of self-selection, uh, for us to help filter out people who are, you know, not going to be a great fit per se for that. Right there, that guy, mikali shiakpo, uh, shiakpo, like that person doesn't seem to be really what we're looking for, even though he has a skills match called ClickHouse. Yep.</p>
+<p>[24:45] Arda: Yeah, yeah, yeah. So I, I agree completely. I think, like you said, you know, when I look at the profiles, like, you know, as I scroll, like, I could, you know, you could kind of see, like, like, I would honestly look into, like, this. Like, even though you, like, we were iffy on the SRE, like, I know that they would usually deal with, like, data, right? You know, like, I feel like I believe, like, you know, I feel like that I have a higher chance of working on the right, like, like they would have more of a match to me than, um, like I said, somebody that just has like an engineering manager or something like that. But like you said, we have somebody, you know, here, Max, that has a software engineer title that, you know, works with ClickHouse. So I can't be too selective, I guess, in a way, now that I think about it.</p>
+<p>[25:33] Arda: It's— yeah, unfortunately, I would filter out</p>
+<p>[25:36] Arda: the site to live with engineers as well.</p>
+<p>[25:38] Arda: I don't think it's ever so— yeah,</p>
+<p>[25:40] Arda: I think you said site to live with engineers closer, but I would filter out site to live with engineer. I would filter out the manager.</p>
+<p>[25:47] Arda: Okay.</p>
+<p>[25:47] Arda: And then see, go from there.</p>
+<p>[25:50] Arda: Yeah, it's gonna be a little bit, uh, brutal, uh, Zach. This, this particular search is gonna be a bit brutal, uh, but we're just gonna have to figure it out because again, it's not a— it's not a common sort of skill that people are, you know, um, yeah, it's not gonna be as straightforward, unfortunately, as the others.</p>
+<p>[26:13] Arda: Yeah, definitely. And I mean, I mean, you know, it comes with the territory, you know. It's one of those things where, you know, it'll be a challenge. But I think, you know, as I think as much as, like I said, when I speak to you guys, you know, today, like, it really does help a lot for, like, you know, sourcing, um, throughout the week and whatnot, because it's very— like I said, like, it's— you said it's not easy at all, but you know, there's really good ideas going on. I feel like— I feel even more confident about finding the right profiles now after just our short conversation.</p>
+<p>[26:42] Arda: So, so first, let's, let's go back in the last 5 minutes to make sure we, uh, are, are clear on the different tracks. On the scraping tracks of the GitHub repo, your takeaway is that 80% comes from Russia and therefore only a smaller pool is really, really viable for us.</p>
+<p>[27:04] Arda: Yeah, yeah, I, I think a large, large majority come from Russia. I don't have the exact, like, percentage off the top of my head, but based off of just looking, yes, I would say— like, I actually have it opened up. Oh, that was the wrong one. One sec. Yeah, so yeah, it's, it's a lot like Amsterdam, Netherlands area, but Russia. So, um, if we're okay with me looking— like, is— and Amsterdam is acceptable, I assume, right? Because I've been sourcing people from there. I think, uh, Arda had mentioned that a lot of— I think the Klaus is like based there, some people. So I'll be sure, like I said, to go through everybody from the Netherlands. Um, But I did build, like I said, the script that we had mentioned about it, um, basically taking the name and then searching for it on LinkedIn and whatnot and looking that way. Um, so I, I'm, I'm working on that, but like I said, it's more about the people that I've seen, like, at Altinity and whatnot, and from</p>
+<p>[28:09] Arda: ClickHouse too.</p>
+<p>[28:09] Arda: Um, well, we, we, we, we probably</p>
+<p>[28:10] Arda: are going to recruit from from ClickHouse, sir. Okay, gotcha.</p>
+<p>[28:13] Arda: Yeah, we are going to recruit from ClickHouse, not Altinity.</p>
+<p>[28:18] Arda: Gotcha, gotcha. Yeah, I'll go ahead and remove the folks from there and make sure I don't source from there. And then, um, I'll also get you over a list of the companies that I did find that are like the Altinities, um, in that space, right?</p>
+<p>[28:32] Arda: So, so let's talk about that task or that track. On that track What was the outcome of your efforts? Like, what did you do and what was the outcome on the, on the company track?</p>
+<p>[28:45] Arda: Yeah, so for the company track, what I did was, is I, uh, I took— I went into Cloud essentially. I took the entire list, I gave the CSV file, and I asked it to sort, you know, the companies that are like Series A to C and not massive. Um, at the time. And so I sourced from the A to C list, um, through that. Like I said, like some of them on there, I think like Metronome might have been on one there, but like you have like the DoorDashes. And so I took it that way and I sourced the people from those companies with the job titles and click, uh, click house keyword as well. Like I had before. So now what I could do is I could go back through knowing, like I said, software engineer. And then even take back the job title like Arda has suggested and then just go from ClickHouse in those companies.</p>
+<p>[29:39] Arda: Got it, got it. And, and are you able to, uh, automate the list here that you have— there's a list here in front of me that you have— and then help run your queries on Recruiter, or are you still just manually doing one at a time? Arda first, then Cloudflare, then Abito, then—</p>
+<p>[30:00] Arda: Uh, yeah, so I am personally too, like, I, Arda had got the API, I believe, for scraping LinkedIn. Um, I didn't use it yet because people are getting banned like a lot. And so I'm like scared. Like, I personally, I, I don't— Wait, it doesn't use your account. Okay. Okay. Then I'll go ahead and add that and then, and then try it. Um, if I have any If I get lost or anything, I'll make sure I ask you guys. Like I said, I didn't because I didn't want anything to go wrong and for me to do it wrong. So maybe, um, if— I mean, if you guys could show me, or one of you two, my next week or</p>
+<p>[30:40] Arda: later, just ask, just ask in the same DM group any questions you have.</p>
+<p>[30:49] Arda: Okay, okay. Yeah, yeah, anything. So just again, right, we want to leverage your brains. Not necessarily your, uh, manual work. So, understood. All right, sir, good stuff. Thanks, man. Really appreciate it. Keep at it. Definitely jump on the Slack and ask people if you have questions in regard to how to use that API, uh,</p>
+<p>[31:07] Arda: and then we'll just keep going. Okay, thank you so much. I appreciate it, guys, and thank you for the ideas. And, um, I'm gonna get started on</p>
+<p>[31:14] Arda: that search right now.</p>
+<p>[31:15] Arda: Thanks, man. We'll see ya. Thank you guys so much.</p>
+<p>[31:17] Arda: Have a good one. See ya.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

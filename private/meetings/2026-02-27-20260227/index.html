@@ -1,0 +1,1940 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-02-27-20260227/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — February 27, 2026 at 09:42 AM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-february-27-2026-at-0942-am" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — February 27, 2026 at 09:42 AM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-february-27-2026-at-0942-am">Meeting — February 27, 2026 at 09:42 AM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>February 27, 2026 at 09:42 AM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~31 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Arda, Hank</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-hockeystack-team-sync-w-arda-hank">Meeting Analysis: HockeyStack Team Sync w/ Arda &amp; Hank</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>The team is preparing to launch outreach campaigns for two engineering roles (ClickHouse Staff Engineer and Backend AI/LLM Engineer), with Zack having sourced 140 strong candidates for ClickHouse and planning to split time 60/40 between the two roles while A/B testing salary disclosure in messaging.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Revise ClickHouse outreach sequence based on Arda's feedback (add bullet points, reframe title as "Staff Engineer," incorporate AI/scaling challenges)
+- Create A/B test: 50% of candidates receive salary info, 50% don't
+- Change salary range to "up to 300K base" (instead of 240-400K range)
+- Send DQ message to Umberto
+- Tag Leo to review Leroy's take-home assignment
+- Send take-home to Liz Wright at 11am
+- Message Jessica about creating week-over-week response rate reporting by sequence
+- Start sourcing for Backend AI/LLM Engineer role (40% time allocation) once job description is ready
+- Launch ClickHouse outreach campaign once Arda approves final messaging</p>
+<p><strong>Arda</strong>
+- Leave detailed comments on ClickHouse messaging document
+- Write requirements/brain dump for Backend AI/LLM-focused engineer role
+- Reach out to Jason to reschedule meeting (was scheduled for 4:30pm their time/6pm)</p>
+<p><strong>Hank</strong>
+- Work with Zack to update Backend AI/LLM job description once Arda provides requirements
+- Check with Jessica if week-over-week response rate report already exists
+- Verify with HR whether salary disclosure is required in outreach messages</p>
+<p><strong>Unassigned</strong>
+- Set up Google Calendar room booking system for the office</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>DQ Umberto from Product Support Engineer role (referral from Eli; mixed technical feedback from Roy and Nevan, no standout qualities)</li>
+<li>Split Zack's time 60% ClickHouse sourcing, 40% Backend AI/LLM Engineer sourcing</li>
+<li>A/B test salary disclosure in ClickHouse outreach: 50% with salary, 50% without</li>
+<li>Change salary positioning to "up to 300K base" for maximum flexibility</li>
+<li>Remove San Francisco office mention from messaging (keep fully remote)</li>
+<li>Reframe ClickHouse role title as "Staff Engineer" with ClickHouse focus rather than limiting title</li>
+<li>Prioritize getting response rates higher for ClickHouse role due to limited candidate pool</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li><strong>ClickHouse sourcing progress</strong>: Zack doubled candidate pipeline from ~70 to 140 strong US-based candidates after calibration sessions, using improved JuiceBox criteria filtering and company list scraping</li>
+<li><strong>Outreach messaging optimization</strong>: Need to improve response rates by adding bullet points, incorporating AI/scaling challenges, and testing salary disclosure approaches</li>
+<li><strong>Product Support Engineer progress</strong>: 12 interviews in 2 weeks with strong candidate quality; most progressing to take-home stage; Jason performed well</li>
+<li><strong>New Backend AI/LLM role</strong>: Opening second search to split Zack's time, targeting recently laid-off talent from tech companies</li>
+<li><strong>Office space challenges</strong>: Sales team occupying conference rooms; need for Google Calendar room booking system</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Revise ClickHouse outreach sequence with Arda's feedback (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create A/B test sequences for salary disclosure (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Request response rate reporting from Jessica (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Provide Backend AI/LLM role requirements (Owner: Arda, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Launch ClickHouse outreach campaign after approval (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Send DQ message to Umberto (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tag Leo for Leroy's take-home review (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Send take-home to Liz Wright (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Reschedule Jason meeting (Owner: Arda, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update Backend AI/LLM job description (Owner: Hank &amp; Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify salary disclosure requirements with HR (Owner: Hank, Priority: Low)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>11:00 AM today</strong> — Send take-home to Liz Wright (Zack)</li>
+<li><strong>4:30 PM today (their time)</strong> — Jason's originally scheduled meeting with Arda (needs rescheduling)</li>
+<li><strong>Today</strong> — Message Jessica about response rate reporting (Zack)</li>
+<li><strong>Today/Monday</strong> — Ready to start Backend AI/LLM sourcing once requirements received (Zack)</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>Does Jessica already have a week-over-week response rate report built that the team hasn't seen yet?</li>
+<li>Are there legal requirements for salary disclosure in outreach messages (vs. job postings)?</li>
+<li>What specific qualifications and requirements does Arda want for the Backend AI/LLM-focused engineer role?</li>
+<li>Should the team target specific recently laid-off engineers from known companies?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Zack successfully doubled his ClickHouse candidate pipeline to 140 strong US-based profiles using improved sourcing techniques and JuiceBox criteria filtering. The team is now preparing to launch outreach campaigns with revised messaging that emphasizes AI/scaling challenges and A/B tests salary disclosure to improve response rates. Additionally, they're opening a second search for a Backend AI/LLM Engineer role, with Zack splitting time 60/40 between the two positions, while continuing to progress Product Support Engineer candidates through the interview pipeline.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:00] Arda: Mm.</p>
+<p>[00:25] Hank: Yo, Zach, how you doing, sir?</p>
+<p>[01:52] Arda: Hey, how you doing, Hank?</p>
+<p>[01:54] Hank: Good, good. I don't know where Arda is. I, uh, don't see him online. Um, I have to be in this room because unfortunately someone took our all-hands conference room. Uh, I think the sales team. I think the sales team is doing that, which is hard, but it's fine. That's the problem with this office, man. There's just not a lot of— there's not a lot of real conference rooms. There's a lot of small phone booths.</p>
+<p>[02:21] Arda: Yeah, is that kind of what you're in? I always wonder. It's kind of like a small little room, I assume.</p>
+<p>[02:24] Hank: Yeah, yeah, phone booths, but not a real, like, a lot of comfortable conference rooms.</p>
+<p>[02:31] Arda: So that's fine. Especially as the team gets bigger, you know.</p>
+<p>[02:37] Hank: Yeah, yeah, maybe a challenge.</p>
+<p>[02:40] Arda: Definitely.</p>
+<p>[02:41] Hank: Yeah, and we also don't have— we also don't have— in Google, we actually don't have our calendars set up with rooms to book. You know how you can set up rooms to book?</p>
+<p>[02:57] Arda: Yeah.</p>
+<p>[02:58] Hank: Yeah, we don't actually have that set up yet, though I think at some point we might have to so that people don't have to keep searching and scrambling for rooms.</p>
+<p>[03:05] Arda: And yeah, especially when you only need it, you know, for something like this, you know, for like 45 minutes, 30-45 minutes a week, you know.</p>
+<p>[03:13] Hank: So yeah, but it's okay, it's okay, it's okay, no worries, no worries, no worries. Again, we have Zoom, everyone has a laptop.</p>
+<p>[03:20] Arda: Yeah, definitely jump in it.</p>
+<p>[03:22] Hank: Yeah, and again, I don't know where he is, so we would have to see if he actually is going to join. Uh, other than that, if If he doesn't join in 5 minutes, we can get started on just, you know, some of the stuff that you've been able to progress on since Tuesday. So, and yeah, I just don't see him. Not online, which is kind of weird. Usually he'll be online, but I mean, I don't know. Again, he might be—</p>
+<p>[03:48] Arda: Yeah, I see that he is off.</p>
+<p>[03:50] Hank: When did— I gotta figure out when was he scheduled to speak with Jason because he wants to reschedule that.</p>
+<p>[03:56] Arda: Oh, it's gonna be tonight, I believe, because I have him send— like, since Arda uses the Calendly link and I just don't blindly throw things on his calendar, like, for reasons like today, um, I had Jason let me know what time he booked for, and I think it was 6— well, it's their time, I think it's like 4:30. Yeah, because I, I don't have to see where he's located.</p>
+<p>[04:20] Hank: He's in the, uh, Colorado.</p>
+<p>[04:22] Arda: Okay, so that's what I already— okay, there goes our—</p>
+<p>[04:27] Hank: so you're saying that— oh, here he is, here he is. Okay, great. Okay, so, uh, unfortunately someone's in all hands and, uh, they're the sales team, so it really sucks. Um, I'm not sure if you're gonna leave soon or not, but, uh, they're in the sales team there. But yeah, sucks. Anyway, no worries, we can get started. All right, Zach, what's going on with you?</p>
+<p>[04:56] Arda: Um, everything was going really well this week. Um, I really like notched up the sourcing, especially after we had our calibrations, which I thought went really well, so kind of put me on the right path. Um, and so this week I've been mainly working on, um, Essentially using the scraping of companies. So I've been getting company lists on top of the ClickHouse company list, and I've been going through those, and it's really been bearing a lot of fruit, I would say. A lot of the profiles I've sourced this week I feel very comfortable with, and I feel like, honestly, when we started the search, it seemed to be a lot more difficult because I guess the title, like I said, wasn't as an issue. And then once we calibrated on those profiles, It kind of gave me like the real confidence, like, hey, you know, it's not as complex and as bad as like I thought it was going to be using the database engineer, you know, type of title. So based off of everything this week, yeah, I think we're looking pretty good. I feel very confident with the pipeline I've built so far. I'm still adding to it. At this point in time, I have— let me see how many people I've sourced.</p>
+<p>[06:08] Hank: If you want to share your screen too, yeah, yeah, yeah, of course.</p>
+<p>[06:12] Arda: Let me go ahead and do that right now. See, boom, boom, boom. So as of right now, I have 140 candidates in here ready to go. I think when we started our calibrations, I was about like maybe like, sorry, I was moving that. I was at like maybe 70 or 80. So I've been able to really bump it up quite a bit. And I think the caliber of everybody I've sourced is pretty solid. And also, I would say a large majority are in the United States since, like I said, the title change, it really like— it really let me put things back in the US so you don't have to really be concerned about going outside. Like I said, that was thanks to Arda with the idea of searching on LinkedIn with no titles. That really was truthfully very helpful. So I reiterated the same thing onto Ashby— I'm sorry, not actually, onto Juice Box. And then I came up with the criteria that I posted as well. And that actually— I never done the criteria on Juice Box. I've done it without criteria this whole time, all the search, all the sourcing I've done. And that actually was like, it's beautiful because it actually, as you can see, I think I might have taken it off, but you literally just go on here and And these are just like default as it goes on. And then you just press update and it actually goes to a table view, which once it loads, it goes to the table view and automatically will like look for it on those profiles. So that already really like was half of the battle that I was doing, was, you know, looking for it on their profile essentially. And then so what I did was I was able to take these and then you could actually go here and then it matches based off of like, does this person have both of the criteria? And then so with pretty good confidence, I'm able to take the 243, for example. I could download right here CSV, and then I was able to put it into like the tools that I've been building for it to parse like that. And then obviously once it goes through, I can still look at it, you know, on a profile by profile. But these two ways just this week You know, that's a lot of profiles. Really was beneficial. I feel like it was really solid helping me with sourcing this week. So once again, thanks for that idea. Like I said, I've just used JuiceBox like as like a, I guess, a normal person. I never, like I said, I didn't know about— I just maybe I've seen it, but I never really knew what it did. So that was really helpful in terms of the amount of people and strong candidates I was able to source for this week so far.</p>
+<p>[08:48] Hank: Nice, nice. So tell us what is going to be the plan now in regards to starting the campaign.</p>
+<p>[08:55] Arda: Okay, yeah, so I actually— let me go ahead and open that up. One second, let me do this. So I actually— hold on, can you guys hear me still? Sorry. Yep, I'm gonna open that up. So I actually did go ahead and created a The sequences, let me go ahead and pull that up and I'll share it in the, um, in our channel on Slack for review after. Let me go ahead and pull that up. So it's right here. Let me go here and then boom. Okay, so I pretty much, as like that, same for the, uh, product support engineer, I pretty much took Arda's voice from them and plug and play. Um, I took the first blurb that he— we had written for the email and put it in there in the spot I believe we wanted it in to replace the original starting of the message. And I think the only part that we might want to think about, like you said, you're with the San Francisco part. Because there are quite a few candidates that I have sourced in that area. So I don't know if you, like I said, you were very, you know, kind of iffy on this person wanting to go into the office. So I don't know if you want me to leave that in there or just put fully remote regardless, or— Oh, Ari, I think you're muted, by the way.</p>
+<p>[10:33] Hank: Good catch.</p>
+<p>[10:34] Arda: I don't think we need that. Um, I would have a couple changes.</p>
+<p>[10:38] Arda: Okay.</p>
+<p>[10:40] Arda: Uh, can you share the document?</p>
+<p>[10:42] Arda: Yep, I'll do that right now.</p>
+<p>[10:45] Arda: The stuff that I'm thinking about is, um, like what I understood from last couple meetings as well is even though we have like good strong profiles being sourced, our response rates have been historically like low, like positive response rates. So a couple things I'm thinking is like we talked about, for example, like some bullet points maybe kind of break up the first part of it.</p>
+<p>[11:11] Arda: Okay, let me go and note that down.</p>
+<p>[11:14] Arda: Yeah, I'll also leave comments probably in the doc as well, but title-wise maybe we should say like Staff Engineer and you'll primarily deal with ClickHouse and like some other scaling challenges type of framework.</p>
+<p>[11:28] Arda: Okay.</p>
+<p>[11:29] Arda: Directly same title as ClickHouse. Um, like, I think you can frame that still as your focus will be ClickHouse while not limiting them in the title as well.</p>
+<p>[11:40] Arda: Okay.</p>
+<p>[11:42] Arda: Um, and also in terms of like what might interest them, I think we can kind of tie the AI stuff back into it because it's not just scaling, you know, like you Sure, we have like huge scale, that's great, but there are all these cool new stuff that ClickHouse is launching. There's all this cool stuff that people are doing about like embeddings, unstructured data, which we also have some of it. So maybe you can kind of touch upon like those other types of challenges that are like new interesting stuff apart from this, the sheer scale of it. So I might want to like I'll, I'll write some stuff down for that as well myself to kind of like position that, um, second paragraph as like a bigger, bigger impact.</p>
+<p>[12:31] Arda: Okay. No, yeah, I think that's a really good idea. Cause like you said, the, the big issue that we are having is the people are wanting to work on, like you said, the best, the newest, you know, they want to see like, you know, the AI sort of like buzzwords, like you mentioned, like the embedded and, you know, the structured data. So I think putting that in there. Especially because we're sourcing people that have done it, maybe expanding it to the AI side will be even more interesting and that'll cut down on any other, any people taking other offers or being more interested in other companies. So maybe we'll be at the forefront there, I think.</p>
+<p>[13:12] Arda: Yeah. In terms of the salary piece, 400 to 300 is kind of wide if you ask me. Um, we might want to make it a bit— maybe instead of 200, maybe that might be a bit higher potentially.</p>
+<p>[13:31] Hank: I know what you think about that, but yeah, yeah, I see what you're saying. I see what you're saying because we are very, very focused on a specific skill set, skill level, and experience. You think that going more like— you see something like 280, 275, is that something you're thinking about? 250?</p>
+<p>[13:51] Arda: Yeah, I was like maybe saying 240.</p>
+<p>[14:00] Hank: 240?</p>
+<p>[14:02] Arda: Okay, let me note that down, put to change it to 240.</p>
+<p>[14:06] Arda: The only problem would be like If we end up being in the lower end of the range in the offers, compared to others, they'll go back to the message and say, ah, why am I not in the higher end? Yeah, but at the same time, we wouldn't wanna— you wouldn't want to miss people that would be maybe in the higher end but they're amazing. Yeah, should we have the— what do you guys— should we have salary in the first message? You guys do, right?</p>
+<p>[14:36] Hank: I think this goes back to about a month ago, about a month ago, Zach was saying that in A/B testing, maybe we should put salary because we just weren't getting opens, weren't getting people to open the email.</p>
+<p>[14:49] Arda: I guess we still aren't getting responses.</p>
+<p>[14:53] Arda: Yeah, I mean, I can't say that it really like changed, you know, anything. I don't see like a negative in it. Um, I don't know, like, I, I'm on board. I, I guess I don't have any like data that said that it really like moved the ball, you know. But also like, I don't know if there's like any downsides to it, I guess, of not having it. Because, you know, we could do another—</p>
+<p>[15:19] Hank: Zach, we could do— I mean, I hate to do this, but we could do another test where, you know, we don't do all 120 candidates with one email, right? Do we do one that says, here's the salary, and do we do one that says competitive salary plus equity?</p>
+<p>[15:37] Arda: Yeah, I think that'll be easier when we start it, right? Then we're in like the actual flow of, you know, sending messages. So I think, yeah, since we haven't sent any, I think it'll be, I mean, it's very easy just to make two separate sequences. Say we split 50/50, you know, half gets, you know, the salary, half doesn't, and then that'll actually be a much measurable way. Instead of like we're like, you know, a month or two into the search and then we switch the messaging. So it's kind of hard to compare and contrast that way. So I think that's a good idea because we can really say, hey, it worked, or hey, it didn't work.</p>
+<p>[16:11] Hank: Yeah.</p>
+<p>[16:13] Arda: Put that down.</p>
+<p>[16:15] Hank: I wouldn't— I think we also have to talk to HR and ask them, are we required to post the salary in our job descriptions?</p>
+<p>[16:25] Arda: So I'm not a legal, right? But I know from past When we, if we're doing it and it's remote, I don't think we need to, like on LinkedIn. I think if it's a strictly California or like Denver or Colorado, I believe too, you have to have the job salary in there, like on LinkedIn. I don't think we have to have it in messaging. I'm fairly certain, I'm obviously not a lawyer by any means, but I'm fairly certain we don't have to have it in messaging. It's just the way to include it because I think that's the first thing that we would get an answer on. You know, it would be the question, but that's not a big deal. You know, I mean, I don't have an issue replying back, oh, this is the salary. You know, that just kind of like reduces the need for that extra touchpoint when it's already in there because I think that's something that people would ask, you know, before.</p>
+<p>[17:15] Arda: Right. Yeah, I'm okay with testing as well, but Yeah, maybe it might be better for this. So it's like, I get it for the product support engineer especially, where like that one is like a more transactional in my head. But this one, maybe like we might— like if the product support engineer came and like tried to negotiate the offer, we'll be a lot more strict. But like if we had a great ClickHouse guy and they tried to negotiate on like numbers, we will be softer. So that's why I don't want to kind of limit ourselves from the get-go. But yeah, we can test both, see the rates.</p>
+<p>[17:58] Arda: Okay.</p>
+<p>[17:58] Arda: My biggest thing though is like, as you said, like I want to get the response rates higher, especially for this role where like the number of people we will be able to reach out to is limited. It's not like every week—</p>
+<p>[18:12] Hank: it's not like support engineer. Support engineer is unlimited.</p>
+<p>[18:14] Arda: Yeah, support. Yeah, support. Yeah, definitely.</p>
+<p>[18:15] Arda: Yeah, I'm saying like for Clickhouse it will be limited, so I do want to make sure the messaging is like, like we really thought about it, everything makes total sense, and like we'd have key things there that will interest them. Yeah, just so we can maximize our time.</p>
+<p>[18:30] Hank: I think, I think if that's the case, I think you're going to have to leave the salary in then. I, I think because I think we do something like up to, right? Something like the role is up to 300K base or something like that, right?</p>
+<p>[18:44] Arda: Yeah, that might be better, maybe.</p>
+<p>[18:46] Hank: Yeah, yeah, that way we have maximum flexibility and it's sort of like gives us, you know, oh, this guy's worth only 250, so fine.</p>
+<p>[18:56] Arda: Um, well, it doesn't really like corral us into a certain, certain, um, band. I get it. That— I think that's— I like that idea.</p>
+<p>[19:03] Hank: Yeah, yeah.</p>
+<p>[19:06] Arda: Okay, so I will leave a bit more comments.</p>
+<p>[19:11] Arda: Okay, thank you. I shared it in the Slack channel. Um, I did have a question about Umberto, um, because I do believe he had his two technicals, um, and I think, was it Nevin? And I think Roy kind of had differing opinions.</p>
+<p>[19:29] Hank: Yeah.</p>
+<p>[19:29] Arda: And so I wanted— I didn't do anything, I didn't DQ him or anything because you didn't say to, and there's nothing explicit. So I wanted to see that, it was open-ended in Slack, so I just wanted to see what you want me to do with that.</p>
+<p>[19:40] Hank: Yep, fair enough, fair enough. I think we should decide it right now in the next 12 minutes, we should decide. So Arda, Roy was pretty harsh. Roy was definitely pretty harsh on the first test, but Nevan actually started off thinking that it would be a short meeting, but it ended up being almost the full half hour with Nevan. And Nevins overall is like, yeah, it's not that bad. But I do want to say something also, just give Arda that context. You know, not really— has done some leadership stuff, team lead kind of stuff. I wouldn't say he formally did it, but he has done some of it.</p>
+<p>[20:24] Arda: Let me post his profile in the channel.</p>
+<p>[20:26] Hank: Yeah. So he has done some of it.</p>
+<p>[20:30] Arda: I found it. Oh, you got it?</p>
+<p>[20:31] Hank: Okay. Wouldn't say that it was the sharpest or the smartest I ever met, or candidate-wise, but he's just a referral from Eli because Eli worked with him before in a previous company startup.</p>
+<p>[20:49] Arda: No one didn't put his feedback.</p>
+<p>[20:51] Hank: Oh, he didn't? Shit. Damn it, never end.</p>
+<p>[20:55] Arda: Yeah, oh, he didn't. Yeah, I think he just pretty much left it, I think, in like the Slack channel. I think he had mentioned it. I don't think it kind of like died there.</p>
+<p>[21:02] Hank: So yeah.</p>
+<p>[21:07] Arda: What is the thing that will excite us about him? Like, sure, he was a referral from Eli.</p>
+<p>[21:12] Hank: That was it. There's nothing that is a standout. I think there's a standout. Q was probably smarter, more intense. Nicholas was probably just as good but has more AI experience. This guy is just the fact that he's worked in our space. He worked specifically in the GTM space. Okay, all right, we did him.</p>
+<p>[21:47] Arda: Okay, I'll go ahead and send him a message and note that down.</p>
+<p>[21:52] Arda: Like, the other thing I will just say is Roy might also be harshy because like he did intrude back in the day for us as well, but I don't think he did intrude for like some time. So this is like him coming back to it. So potentially there might be some calibration that he has to do about like what is good, what signals are it, whatever.</p>
+<p>[22:13] Hank: Yeah.</p>
+<p>[22:15] Arda: But still though, if there wasn't anything stand out, then we don't need to continue.</p>
+<p>[22:20] Hank: Okay.</p>
+<p>[22:21] Arda: Okay.</p>
+<p>[22:21] Arda: Understood. And then did you want me to reach out to Jason to reschedule or were you going to handle it yourself? You do it?</p>
+<p>[22:29] Hank: Okay.</p>
+<p>[22:32] Arda: And then I have a take-home that will be sent out and then at 11 today for Liz Wright. And then I got it back from— let me see, sorry, let me go to this. I got a take-home back from— who was it? From Leroy, because he had told me just to send it to him still. So I'll go ahead and tag Leo in that to go look at it. Or did you want— okay, you want me to tag Leo for him to review it? Okay. And then I think We can do the tactical stuff later on.</p>
+<p>[23:08] Arda: You guys can do it without me as well. Uh, yeah, biggest thing for me is like, let's go through the sequences of like the response rate stuff. Okay, the delayed sequences.</p>
+<p>[23:20] Arda: One sec. Did you want to look at a particular, uh, role?</p>
+<p>[23:46] Arda: We can look at the latest.</p>
+<p>[23:49] Arda: Um, okay, so this is the product support engineer.</p>
+<p>[23:54] Arda: I guess the latest messages were all product support.</p>
+<p>[23:57] Arda: Yeah.</p>
+<p>[23:57] Arda: No Clickhouse yet?</p>
+<p>[24:00] Arda: Yeah, I haven't sent out anything for Clickhouse yet, no.</p>
+<p>[24:06] Arda: Is there a way to kind of see the response rates across the campaigns you run or maybe like over week or week or something?</p>
+<p>[24:15] Arda: Over the whole week? There might be.</p>
+<p>[24:20] Arda: I'm asking because like, If we are, for example, trying stuff, like, how will we be able to kind of see?</p>
+<p>[24:28] Arda: Yeah, I've, I, I know I've looked in to see about response rates across like the different sequences, and I don't believe that's in here, but I'm sure I could, um, find out a way to look.</p>
+<p>[24:40] Hank: I'll send you a link, uh, in Slack messages. I showed Arda earlier, um, one of the reports that Jessica built does actually have sort of week-over-week comparisons, comps.</p>
+<p>[24:52] Arda: I don't remember seeing the response rate metric.</p>
+<p>[24:58] Hank: Oh, you're right, that wasn't a response rate metric. I'll have to see if she had another report. We'll have to see, Zach, we're going to see if Jessica already wrote that report, but we just haven't seen it yet because she wrote so much reports. Um, but yeah, week-over-week response rates I think is going to be the next thing we're asking for if she hasn't already created that report.</p>
+<p>[25:20] Arda: Okay, I could go ahead and ask her for that if she's done that already.</p>
+<p>[25:25] Hank: Right, response rates per campaign, or sorry, not campaign, but per, you know, per sequence.</p>
+<p>[25:33] Arda: Okay, I noted that down. I'll go ahead and make sure I ask her about it. But yeah, for this role, I would say it's pretty, pretty solid. And I think that most of the people that are going throughout this process have been pretty good with getting through to the take-home. And we'll see, like I said, Jason did well on it from what I'm, you know, from what you said. So hopefully, you know, we'll have more success and get this wrapped up.</p>
+<p>[26:03] Hank: Yeah, I've had, I've had 12 in the 2 weeks we started. In the 2 weeks we started, I had 12 interviews. I mean, a few of them I DQ'd right away, but for the most part, you know, I think they're pretty good fits. High energy. I told them explicitly we're Series A, so there's risk, but everyone's still like, no, we actually are looking for joining an earlier stage startup. So I was like, okay. All of them have coded for the most part. Some of them have coded more than others, but overall pretty happy with that.</p>
+<p>[26:34] Arda: Thank you. Thank you. I'm glad to hear that. And like I said, I'm hoping to really carry it over to the ClickHouse engineer role. Excited to see, like I said, how the response rates are, because I really, I really am very happy with the profiles I've sourced. And, um, and I think it'll— I think we'll be able to really get it done, um, with confidence. Um, for sure, I think so.</p>
+<p>[26:58] Arda: Um, one more thing. Um, so we are thinking about the ClickHouse primarily right now. That's what you're sourcing for?</p>
+<p>[27:06] Arda: Yes.</p>
+<p>[27:08] Arda: I was also talking to Hank the other day to see if like this would make sense. If we split the time, like maybe like 60% ClickHouse, 40% this backend AI engineer, LLM-focused, whatever that— like we kind of talked about it a bit. I know like we can kind of like have a refresher and like go through the job description like one more time.</p>
+<p>[27:32] Hank: I think so.</p>
+<p>[27:32] Arda: I don't know if we have like specific one for pure, like, LLM-focused job description. But I was thinking, like, will that make sense to kind of split it that way? Because I know ClickHouse is going to be hard, it's going to take some time. And since the LLM one might be slightly easier because there's, like, it's easier to find the people and there will be a lot more people, if you can kind of do it that way.</p>
+<p>[27:57] Arda: Oh no, yeah, without a doubt. No, I, like, yeah, multitasking is my middle name. That's no problem. I could definitely go 60/40, 50/50, you know, that's no problem. Now obviously, you know, like I said, a lot of the time that I dedicate to the ClickHouse is really like more not even sourcing as much as it is, like you said, building the things that I need and finding the right companies and stuff. Which, like I said, in the past week with us iterating and me messaging in the morning and you guys, you know, bouncing ideas, it really did help. So I don't have— I don't foresee any issues splitting my time with the backend engineer. Um, just Hank and I, or whenever we get like a job description, we could get into it and I could start sourcing, you know, immediately on it. Um, obviously very comfortable with that, you know, it's what we do here. So yeah, without a doubt.</p>
+<p>[28:45] Arda: Yeah, I'm thinking I can maybe like brain dump what I'm thinking somewhere, like written, just like my, my own kind of qualifications. Um, And you guys can also just start the job search.</p>
+<p>[28:59] Hank: Yeah, we take that and update and refresh the, the JD. I do think we are going to be much more explicit than just AI. I think we're going to be much more explicit to just make sure they understand what we're looking for. And we have an opportunity here because, I mean, you guys all heard about the layoffs recently. So if any one of those guys did LLMs, we definitely want to target those guys and girls.</p>
+<p>[29:21] Arda: Definitely. Yeah, no, without a doubt. I— it should be good. And like I said, I, um, whenever we get that started, like I said, we want to do it today, Monday, I'm ready to go on that whenever. Um, it's always nice to have a variety of, you know, something else to look into as well, so I don't mind that at all.</p>
+<p>[29:39] Hank: Um, how much of your tools can be reused for this?</p>
+<p>[29:42] Arda: Everything. Um, yeah, everything, everything. Um, I just have it basically, it'll parse with certain keywords, so You know, LLM would be on there, you know, obviously add large language, you know, model. So yeah, every, everything will be able to be recalibrated for it.</p>
+<p>[29:58] Arda: Okay. I will then give feedback on the ClickHouse messaging doc and then list some requirements I have for the, uh, like focused person.</p>
+<p>[30:10] Hank: Yeah.</p>
+<p>[30:11] Arda: And then you will try to see if the reporting can be done. For response rates.</p>
+<p>[30:16] Arda: Yep, yeah, I'll go ahead and message Jessica today about that. Oh, right after this.</p>
+<p>[30:19] Arda: Once I give feedback on the ClickHouse stuff, then are we just going to just start sending those?</p>
+<p>[30:25] Arda: Yeah, yeah. Did you want me to do half without the salary or just going to keep it on there fully to maximize it?</p>
+<p>[30:36] Arda: I think it should— I, I, I feel like we should try because like I haven't seen any signals from you guys that adding it made a difference. So that's why I'm like, is it worth kind of having that? Plus you said like, yeah, they have to ask after this what's necessary about there, but that means they are responding.</p>
+<p>[30:56] Arda: That's smart. Yeah, it's a touchpoint, right? That's a way to really— I like that. Okay, so once you make the comments on that, we'll go ahead and fix it up to where you would like to see it at. And then today, if you want, we could split it 50/50— half get the salary, half don't— and then we could go from there. We have your other emails fixed, so there's no more R2. So we'll be able to send off of that email, and then we'll see how the responses come in based off of that.</p>
+<p>[31:27] Arda: Okay, sounds good. Perfect.</p>
+<p>[31:32] Hank: Thank you very much.</p>
+<p>[31:34] Arda: Thank you guys, I appreciate it, and I'll talk to you guys soon. I'll see you guys.</p>
+<p>[31:38] Hank: Back to all heads order.</p>
+<p>[31:39] Arda: All right, bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

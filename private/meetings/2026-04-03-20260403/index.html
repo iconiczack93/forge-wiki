@@ -1,0 +1,1939 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-04-03-20260403/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — April 03, 2026 at 04:30 PM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-april-03-2026-at-0430-pm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — April 03, 2026 at 04:30 PM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-april-03-2026-at-0430-pm">Meeting — April 03, 2026 at 04:30 PM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>April 03, 2026 at 04:30 PM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~33 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Hank, Zack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="tldr">🔑 TL;DR</h1>
+<p>Zack needs to shift recruiting strategy from targeting top-tier engineers at prestigious companies to mid-level engineers at second-tier companies in LATAM (Mexico, Brazil, Puerto Rico), focusing on those at firms like IBM, Accenture, Visa, or independent contractors who would be more likely to join a startup.</p>
+<hr />
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Source 5 new engineer candidates from LATAM countries (Mexico, Brazil, Puerto Rico) targeting mid-tier companies
+- Look for candidates at companies like IBM, Accenture, Ernst Young, Deloitte, Visa, MasterCard, American Express, Intuit, or independent contractors
+- Avoid sourcing from top-tier tech companies (Microsoft, Amazon, AWS, OpenAI, etc.)
+- Visit San Francisco April 24th weekend to look at apartments with Linda
+- Notify current rental agency about not renewing lease
+- Return early from Hawaii trip on April 10th for dad's birthday
+- Set up pre-tax commuter benefits ($86/month Muni pass) through Rippling
+- Attend all hands meetings and be in office for on-site visitors</p>
+<p><strong>Hank</strong>
+- Provide apartment hunting advice when Zack visits San Francisco
+- Meet Zack at Hawaii off-site trip (April 7-10)</p>
+<p><strong>Linda (Zack's girlfriend)</strong>
+- Interview at bakeries/Dandelion Chocolate while visiting SF in late April
+- Complete move to San Francisco by June 1st</p>
+<p><strong>Unassigned</strong>
+- None</p>
+<hr />
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Recruiting strategy will shift from Canada to LATAM (Mexico, Brazil, Puerto Rico)</li>
+<li>Target mid-tier engineers at second-tier companies rather than top-tier tech companies</li>
+<li>Zack and Linda will move to San Francisco by June 1st</li>
+<li>Zack will leave current apartment by May 31st (last rent payment May 1st)</li>
+<li>Zack will use pre-tax commuter benefits for public transportation</li>
+</ul>
+<hr />
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li><strong>Recruiting strategy pivot</strong>: Moving away from Canadian candidates who are overqualified and targeting LATAM engineers at mid-tier companies who would be more likely to join a startup</li>
+<li><strong>San Francisco relocation planning</strong>: Zack and Linda's move timeline, apartment hunting in late April, and neighborhood options (Mission District, Bayview, Richmond, etc.)</li>
+<li><strong>Public transportation guidance</strong>: Hank provided detailed overview of SF Muni system, light rail, buses, and commuter benefits</li>
+<li><strong>Work-life balance in SF</strong>: Discussion of Bay Area activities, arts &amp; wine festivals, hiking opportunities, and better weather compared to desert climate</li>
+<li><strong>Office attendance expectations</strong>: Zack plans to be in office for on-site visitors, all hands meetings (Mondays), and key meeting days (Tuesdays/Fridays)</li>
+</ul>
+<hr />
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Source 5 LATAM engineer candidates from mid-tier companies (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up pre-tax commuter benefits on Rippling (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Finalize apartment hunting dates for late April (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Notify current rental agency about lease non-renewal (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Research SF neighborhoods and rental listings on Craigslist/Zillow (Owner: Zack, Priority: Low)</li>
+</ul>
+<hr />
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>April 7-10</strong> — Hawaii off-site trip, Zack attending (leaving early April 10th for dad's birthday)</li>
+<li><strong>April 24 (approx.)</strong> — Zack and Linda visit SF to look at apartments</li>
+<li><strong>May 1</strong> — Last rent payment at current apartment (Zack)</li>
+<li><strong>May 31</strong> — Move out of current apartment (Zack and Linda)</li>
+<li><strong>June 1</strong> — Target move-in date for SF apartment (Zack and Linda)</li>
+</ul>
+<hr />
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>Specific apartment neighborhoods/buildings to prioritize during April visit</li>
+<li>Linda's job search timeline and interview scheduling at Dandelion Chocolate or other bakeries</li>
+<li>Exact dates for apartment hunting trip in late April</li>
+<li>Whether to expand search beyond SF proper to East Bay (Oakland, Berkeley, etc.)</li>
+</ul>
+<hr />
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Hank and Zack discussed recruiting strategy and Zack's upcoming move to San Francisco. The key recruiting insight was to shift from targeting overqualified Canadian engineers to mid-level engineers in LATAM countries (Mexico, Brazil, Puerto Rico) who work at second-tier companies like IBM, Accenture, or Visa, as they'd be more likely to join a startup. Hank provided detailed guidance on SF neighborhoods, public transportation, and apartment hunting, with Zack and his girlfriend Linda planning to visit in late April to find housing for a June 1st move-in date.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:40] Zack: Hey dude, how you doing, Hank?</p>
+<p>[00:42] Hank: I'm doing well.</p>
+<p>[00:43] Zack: Yeah, I'm feeling better, you know, getting— my girlfriend, she actually had her last day at work because, you know, we're moving up there. And so she wakes up at like 5:00 AM, 4:00 AM usually because she's a cake decorator. And so now I'm getting used to being able to sleep till like 5 or 6 o'clock. It was my first day actually being able to sleep in a little bit. And I usually will wake up naturally at about 6, but when she goes to work at 4, it's 3:30 in the morning, and she goes to work at 5 normally, so it's 4:30. And I can't go back to bed. I'm always up. And so, yeah, so she just had her last day and it's like, you know, no alarm went off this morning or anything. It was good.</p>
+<p>[01:32] Hank: Are you— tell me what the plan is. Is the plan that you guys are gonna be on this off-site trip, flying in on Tuesday, and then when you get back on Sunday the 12th or the 13th, Monday, are you trying to come up to SF sometime in April? Yeah, because it seems that she— you guys have some time.</p>
+<p>[02:03] Zack: Yeah, well, to be transparent, she's worked at the store for 7 years and she's just done. I mean, she's just like, you know, like she's been through a lot there and everything. So, you know, it Yeah, so she was waiting. It was actually like her anniversary, so she gets like her anniversary check and stuff. So she was waiting for that. But honestly, yeah, we— she did— she could have stayed, but you know, it's been a long 7 years for her. So our plan is I'll actually— I have to actually take off early on Friday when we're there on the 10th because that's my— I have to head back to California because it's my dad's birthday. Yeah, so I'll be there from the 7th to the 10th. And then I believe we— her and I spoke. I think we're gonna come the last weekend of April to look at apartments. So that will be around, I think, the 24th or something, or I believe. And then hopefully we find something that weekend, and then it would be for June 1st. Yeah, so my last day of paying rent here is May 1st, and then our last day here is like May 28th or whatever the last day of May is. And then, yeah, so we would sign a lease for June 1st.</p>
+<p>[03:19] Hank: Is she looking to, upon moving to San Francisco Bay Area, looking to also find another career or find another opportunity at a bakery shop? What's her plan?</p>
+<p>[03:35] Zack: Oh, her name is Linda.</p>
+<p>[03:37] Hank: Linda. Yeah.</p>
+<p>[03:39] Zack: No, definitely.</p>
+<p>[03:39] Hank: Yeah.</p>
+<p>[03:40] Zack: And we've been looking at bakeries and stuff like that. And it's like one of those things where, um, you know, like she's really been at it for 7 years. Like I said, working at a grocery store, that's where I met her. I worked there too many years ago. And so I understand, you know, it's not, you know, it's not a fun experience most of the time. So definitely I think she's going to get into the looking at the bakeries out there. I think we've seen a couple of them and whatnot. So yeah, definitely her passion. I know she definitely is eyeballing Dandelion Chocolate. I know that she's definitely eyeballing that chocolatier position.</p>
+<p>[04:13] Hank: So nice.</p>
+<p>[04:14] Hank: Yeah, that'd be good. That'd be good if she came up here and maybe do the interview while she's up here.</p>
+<p>[04:19] Zack: Yeah.</p>
+<p>[04:20] Hank: Interview with them. And so another place is while he's up here. Yeah. Okay. Got it. Got it.</p>
+<p>[04:24] Hank: Definitely.</p>
+<p>[04:25] Zack: So we'll be there June 1st.</p>
+<p>[04:27] Hank: We have to be.</p>
+<p>[04:28] Zack: Like I said, yeah, well, she's done with her job and then we'll let— I'll let the rental agency that I'm that we have here, let them know, you know, we're not gonna renew the lease.</p>
+<p>[04:42] Hank: I think, yeah, I can definitely give you some advice later on when you guys are here about, you know, what to look for. Again, something to think about also is keeping your options open of not— if you do not limit yourself to San Francisco and you look at, you know, Oakland, you look at Emeryville and Berkeley, East Bay, or if you look at, you know, somewhere in the peninsula. Now again, nothing is going to be cheap.</p>
+<p>[05:12] Hank: Yeah, yeah, definitely.</p>
+<p>[05:13] Hank: You know, relative to where you are, nothing's going to be cheap.</p>
+<p>[05:16] Hank: Yeah.</p>
+<p>[05:17] Hank: But you know, you don't have to necessarily be in SF, but the challenge will be again, if you're not in SF, or even if you are in SF, You're gonna commute on the public transportation or whatever. Yeah. And then question is, where is she gonna work? And then how bad will her commute be?</p>
+<p>[05:35] Zack: Exactly, you know. So that's the thing, you know, like for her, like for me, I'll get a bike, you know, if it's good enough of a distance, you know. For her, I, you know, I mean, she would probably honestly either, if it's close enough, walk or Uber, probably, to be honest with you. So that was like, yeah, I was always wondering, you know, I see like I don't know, I guess you said that a lot of the engineers live in Oakland, like are—</p>
+<p>[05:58] Hank: No, I mean, a lot of them in the Bay Area, yes. In the Bay Area, a lot of engineers absolutely do live in Oakland because a lot of them would actually just take the BART public transportation to work in the city.</p>
+<p>[06:11] Hank: Yeah, definitely.</p>
+<p>[06:14] Hank: But the majority of the engineers are going to be in the peninsula and the, um, how should I say this, the majority of engineers focus on AI are going to be closer to the city. Oh yeah, that makes sense. Or in the city, right? In the city. Yeah, that's nice. So much of the AI— are you, are you, um, headquartered in— tell me what the plan is. Is the plan that you guys are going to be on this off-site trip flying in on Tuesday?</p>
+<p>[06:43] Hank: That makes sense.</p>
+<p>[06:45] Zack: So my question is, I've literally been every time after work, every night, I'm on Zillow, I'm studying San Francisco, literally studying it. So like, obviously I know, you know, Tenderloins, I know, I've learned about that, I've read about it, you know, I've seen a lot of places, but it's like, I know I have to obviously keep it within, you know, like a lot of the places have like the income requirements, you know, to make 3 times or whatever. So like, Some places are out of, you know, the budget, obviously, right? Because, um, because, because realistically we need— we would want like 2 rooms, you know, like realistically, because like I'd have my computer somewhere and then she need— you know, we need a room to sleep in and stuff like that. So I was thinking it would probably be— I mean, hopefully somewhere— I was— I don't know.</p>
+<p>[07:36] Hank: So here we are, we are in the city. Yeah, okay, okay. So, uh, right now we can see that, uh, uh, so literally that's the office.</p>
+<p>[07:54] Hank: Yep, right.</p>
+<p>[07:55] Hank: Oracle Park is literally— yeah, okay. So then, uh, next is Um, this is called— right, right, right, South of Market, because that street going up and down is Market. Um, it is a bit rough, but it also has some nice apartments. Uh, there are some nice things in it in regards to some facilities and restaurants and whatever. The closer you are to the water edges here, that's going to be more expensive high-rises and whatnot. So rich, you know, other rich neighborhoods is definitely going to be around here.</p>
+<p>[08:47] Hank: Oh, okay. Pacific Heights.</p>
+<p>[08:49] Hank: Other rich neighborhoods, right? Okay. Now If we're looking at really honest rent, like really honest rent, you know, is reasonable, the reality is you might be looking at something like down here in the what they call Mission District.</p>
+<p>[09:09] Hank: Yep.</p>
+<p>[09:10] Hank: Oh yeah, right, heavily Hispanic.</p>
+<p>[09:12] Zack: Oh, okay, that's my girlfriend is Hispanic, so that actually might be— I might actually be more comfortable for her there, actually.</p>
+<p>[09:19] Hank: So this is the Mission District.</p>
+<p>[09:21] Hank: Okay.</p>
+<p>[09:22] Hank: Um, it is somewhat cheaper. Again, all relative, of course. Everything's relative. Yeah. Uh, but it's much cheaper down here. Now, if we talk about, uh, you want it cheaper, okay, well, yeah, let's talk about that. So I think, yeah, I mean, I can definitely give you some advice when you guys are here. About what you want to look for. And again, something to think about also is keeping your options open of not— if you do not limit— here's called the Bayview neighborhood, Indian Bay neighborhood. You know, it's a neighborhood, it's a bit— I'm just going to direct you a little bit, you know, lower end.</p>
+<p>[10:09] Zack: Yeah, no, yeah, no, I'm totally fine with that. Like I said, I, you know, I, you know, You know, going, going to LA often, you know, you got to really understand the neighborhoods. I, I get it, you know.</p>
+<p>[10:19] Hank: And so yeah, it is, you know, it's much cheaper. Now the good news is that this 3rd Street that you see is where the light rail runs.</p>
+<p>[10:28] Zack: Oh, the train. Okay. Oh, let's go to this right here.</p>
+<p>[10:30] Hank: The light rail goes all the way to Oracle Park. Okay, right, so that's the light rail over there, right? So that's another red city relatively cheaper area. Okay, now as we go to the, uh, let's go to the bottom of, um, oops, yeah, yeah, okay, so we're still, we're still somewhat in the city here, uh, quote unquote, quote unquote, the city. No, I mean a lot of big areas somewhere around here is absolutely different. Because a lot of them would actually just take the— Okay, a bit cheaper, you could take the bus, the bus would go on the highway and come into the city, not too bad. But the majority of the engineers— So that's across the highway from the Bayview, so again, not too bad. Another neighborhood is called Visitation Pines. The majority of engineers, post-graduate engineers, are going to be closer to the city. Again, a little rougher, right? A little rougher. So much of the AI. It's still a city, it's still SF, but a little rougher. And again, post-translation, getting used to the city. Otherwise, yeah, proper Amazon here is also what you consider another area that's possibly cheaper. Again, live in rougher area.</p>
+<p>[11:54] Zack: I understand.</p>
+<p>[11:57] Hank: If you live far, if you, for example, live far out what is called the Central Richmond or what is called Central Richmond or Outer Richmond or Outer Sunset. Oh yeah, yeah, yeah. It's definitely, definitely suburbia.</p>
+<p>[12:18] Zack: Okay, how far? Okay, so that's, that's the furthest extent from obviously the office, right? How long? Because I, in my brain, listen, in my brain I know how far it is mile-wise, but I grasp that it's not going to be a 10 or 15 minute ride. I'm guessing it's—</p>
+<p>[12:37] Hank: is it, is it up here? Yeah, you can see that it's going to be, uh, because I imagine there's stoplights on every single one of those streets probably or something. Yeah, that's Okay, so, uh, you know, there's gonna be a light rail here.</p>
+<p>[13:06] Hank: This is called town. There's gonna be a light rail.</p>
+<p>[13:13] Zack: Oh, so they do. Okay, so they have— okay.</p>
+<p>[13:16] Hank: South Market. That street up and down is South Market. It is a bit rough, but it also has some nice apartments. There are some nice things in it.</p>
+<p>[13:29] Zack: Okay.</p>
+<p>[13:30] Hank: In regards to facilities and restaurants and everything. Closest you are to the water edge.</p>
+<p>[13:37] Zack: Okay, okay.</p>
+<p>[13:39] Hank: That's—</p>
+<p>[13:39] Zack: I didn't even know there was, like you said, like rail out there. I thought it would be like the bus, and I was thinking to myself, I could stay I mean, I've seen it and I can see it here, you know, every single little line, you know, I assume that's obviously, you know, the end of the street. So, and then you suggest, um, obviously no matter where I end up, I'll be taking public transportation when I come into the office. Um, we have like the ability, I think it's on Rippling, like before taxes, right? Is that I guess everybody does that. They transfer.</p>
+<p>[14:15] Hank: It's pretty—</p>
+<p>[14:16] Zack: it would be foolish not to, right?</p>
+<p>[14:17] Hank: I mean, yeah, the monthly pass, what is called the Muni, it is somewhat cheaper. Again, the bus— got it too. Uh, but it's somewhat cheaper on a monthly pass. So the buses and light rails all covered by the monthly pass. That's $86. You want it cheaper? Okay, well of course, 24/7. Um, here, and yeah, you just get through your— your will give you the benefits card. It'll put the $86 on your benefits card, and then it will automatically— you can charge your debit card. Um, you are— since you— since you're— here's called the baby.</p>
+<p>[14:57] Hank: You don't—</p>
+<p>[14:57] Hank: you know, it's okay, neighborhood, then you don't need a debit card.</p>
+<p>[15:02] Zack: I'm just going to be Okay, okay, no, that's, that's really helpful. Yeah, because like I said, I, you know, I've never, I mean, I've never lived in a big city, so I never dealt with, I mean, excess. I mean, I mean, even if I did live in proper LA, there's no such thing as public transportation. So this, this entire system, you know, like, it's, you know, but it's, you have to learn it, right? Like, you know, it's the same way when I went to New York last year for the 4 or 5 days, you know, I have to really really, you know, pay attention because we don't—</p>
+<p>[15:36] Hank: I mean, there's no such thing as public transportation in Southern California. There genuinely isn't.</p>
+<p>[15:44] Zack: But we know our freeways down here, I'll tell you that. We know our freeways. Yeah, okay.</p>
+<p>[15:50] Hank: It's a pretty extensive system.</p>
+<p>[15:51] Zack: Yeah, I know it is.</p>
+<p>[15:52] Hank: Yeah, with the light rail and the bus system, this is covered both by both buses. So with the light rails and the bus. We're going to look at somewhere around either Portola. Now, um, there's a different bus system. There's a different bus system that actually takes you a bit cheaper. You could take the bus. Bus will go on the highway, over the Golden Gate Bridge, not too bad, to those— so that's across the highway.</p>
+<p>[16:16] Zack: Oh, those places are beautiful. I've been looking because like I want to go like hike and stuff out there. I want to go like up like above San Francisco. I've actually never been—</p>
+<p>[16:24] Hank: I, I don't think I've been that north actually.</p>
+<p>[16:27] Hank: This is on North Bay, a little rougher.</p>
+<p>[16:39] Hank: It's, it's, I want to warn you, brother, I want to warn you.</p>
+<p>[16:52] Hank: Again, live in rougher areas. If you live far, if you, for example, live in far places, for example, cycling. Yeah, that's what I want to do.</p>
+<p>[17:12] Zack: I want to, you know, get out on the weekends because I mean Like, yeah, there's not much to do here on the weekend, so definitely.</p>
+<p>[17:23] Hank: So plenty of stuff to do in the Bay Area. Plenty of stuff to do in the Bay Area, no question about it. You're coming in good season. Uh, pretty soon in June, July, August, they're going to have each of these small cities up and down this Millbrae, San Mateo, Main Street. You can see that there's going to be, um, Palo Alto, Mountain View, Sunnyvale. Each one of these cities is going to have their one— this could be in the summer. Each one of the cities has their downtown arts and wine festival.</p>
+<p>[18:04] Zack: Oh, nice.</p>
+<p>[18:05] Hank: Okay. So you come at a good time where during this summer period all the way up to— yeah, uh, you know, literally each one of these cities is going to have their downtown arts and wine festival.</p>
+<p>[18:21] Hank: That's awesome.</p>
+<p>[18:22] Zack: Cool. Okay, that's— that sounds really nice, you know, because like I said, like, I've, um, when my family used to go to San Francisco, I remember one time like stopping at Stanford, and I remember how— I mean, it's probably one of the most beautiful things I've seen. I mean, like, we don't Listen, there's no green here. I live in a desert, you know, so seeing green, like, that's— we, like, we— I say this for Linda and I— we look forward to the rain. We look forward to some fog. We look forward to not having to deal with 110 degrees every single summer. You know, this is gonna be the— this is gonna be the coolest summer we've had in our entire lives, literally. You know, like, the average, I would say, on a summer day is about 105 here.</p>
+<p>[19:02] Hank: Yeah, I know, man. It gets hot out there, man. It's hot in the desert, dude.</p>
+<p>[19:05] Hank: Yeah, sure.</p>
+<p>[19:07] Hank: But yeah, um, you know, get, uh, obviously a couple things. Craigslist, uh, get, uh, you know, one of those potential advisors for rent, uh, you know, seeking. Yeah, I mean, the, the, the monthly pass, or what it's called, something that I don't know if you— which is, uh, obviously, and then, you know, As you get cheaper and cheaper, that means that you have to kind of go out to here. Okay, so the buses, you gotta go to San Leandro, you have to look at maybe, uh, Castro Valley, but these are gonna be, these are gonna be with public transportation basically far. Yeah, so you just get the Eurolink, Eurolink will give you, you know, a bus card, longer, $86, yeah, card, and then you do have people who charge more, you do have people who live in Hayward, you do have people who live in Hayward, Oh, OK. Some people just kind of wave their credit card and it will charge you automatically. And again, you have to go back to the mainland to actually catch the BART into the city. Alameda is getting— pricier. But, you know, again, some people actually even take what is called the ferry from here to, you know, the ferry building in SF. And then, uh, his name is Christian. Christian then basically takes the light rail to our office. Uh, from Alameda.</p>
+<p>[20:38] Zack: Oh, that's an interesting commute.</p>
+<p>[20:40] Hank: Every—</p>
+<p>[20:40] Zack: or every so often. That's not that bad, huh? Nice little ferry ride.</p>
+<p>[20:43] Hank: That's interesting. Does that, right? It does that, and you know, it's chill or whatever. Yeah, so you would do that, right? No, it's a pretty extensive— again, that's, that's, you know, yeah, this is the East Bay side and the buses. This covers both light rail. The East Bay side is light rails and buses. You see, yeah, it's a pretty extensive— you're just gonna deal with— now, um, there's a difference.</p>
+<p>[21:04] Hank: Understood.</p>
+<p>[21:05] Zack: Yeah, because I imagine what I would think, like, in terms of how much I would come in, obviously if we have anybody doing on-site You know, I want to greet them. I'll do what Casey did essentially. And then on the days where Tuesdays and Fridays, and then probably Mondays with like the all hands, like I want to be in there and stuff like that. And so definitely the days where we have meetings in person, I want to be there in person. And then for the all hands, and then if somebody goes to the office, certainly I'd like to be there for that.</p>
+<p>[21:32] Hank: I want to warn you, brother. I want to warn you a couple of things. One, besides the fact that—</p>
+<p>[21:38] Zack: Thank you for showing me that, Hank. I appreciate it. Thank you.</p>
+<p>[21:42] Hank: So I just want to give you a heads up. Thank you. You know, again, it's very beautiful, very, very beautiful. I'm going to park through this because unfortunately, unfortunately, it was right up here. I knew this could happen. I wanted to try it out anyway, but I knew this could happen. Basically, we were going to pass all these templates in. They're all from Canada, and unfortunately, I knew this would happen. They're good enough that they wouldn't want the job. Beautiful, absolutely beautiful, absolutely beautiful, absolutely beautiful. They're good enough they wouldn't want the job. I look at career here, even though they're not obviously well-known companies, though Polish actually could be the more well-known company, they're all— Plenty of stuff to do in the Bay Area. Coming this season, pretty soon in June, July, August, they're going to have each of these small cities up and down the West Coast. Millbrae, Willits, San Mateo, Foster City, Redwood City. It's even more interesting. This guy—</p>
+<p>[22:46] Hank: Yeah, his background, I remember. Yeah, I remember that in China too.</p>
+<p>[22:52] Hank: I remember. And then he went to do his master's summer. I should confirm each one of these cities has their downtown. Yeah, he went to do his master's and then one university in testimony. So yes, so you come at a good time where obviously during this summer period, timescale, angle timescale, this is a serious startup, you know, literally each one of these cities is going to have their— it's a serious downtown. Investor, right? This gentleman, École de Technologie Supérieure, which I think is a French— it's like a UC system for California. It's like a— yeah, École de Technologie Supérieure is like a UC system for France.</p>
+<p>[23:38] Hank: Okay.</p>
+<p>[23:39] Hank: Yeah, so again, while maybe not really well-known companies, he did work for 3.5 3 years here at CINC. I do know CINC. Again, another serious company. So yeah, I don't think it's going to take the job.</p>
+<p>[23:57] Zack: So do I have to go— what would make them passable, I guess, is what I'm asking.</p>
+<p>[24:03] Hank: I'm saying here is to be extremely efficient with your time. Get, obviously, company benefits.</p>
+<p>[24:12] Hank: Okay.</p>
+<p>[24:13] Hank: Extremely efficient advisors. We're going to stop looking in Canada. We're now going to target LATAM. We're going to target two countries first. We're going to target Mexico.</p>
+<p>[24:26] Hank: Okay.</p>
+<p>[24:27] Hank: And then as we get cheaper and cheaper, we'll go to Brazil. Oh, I do want you to, as part of this, maybe create a blog. We also want to target Casablanca. Value. But these are going to be— okay, these are going to be— what's probably trying to say is these are going to be, uh, I think those would probably be longer. We started as 3. We do have people who work— we do have people. And why? Let's be very honest, especially open and direct. Why? Because a lot of them may not work for very successful companies. Uh, some of them may work for, um, there. Some people may try to find a rental in this island here called Alevita. IBM or another big giant. And again, you would have to go back to the mainland to actually catch a boat into the city. Alevita is getting pricey. Maybe they work for a local company in Brazil or Mexico. Some people actually even take the best cost ferry from here back to Brazil or whatever, right? —building, but that could be where— and then his name is Christian— find that person who's like, hey, I'm not trying to like, you know, I'm not trying to like freaking, you know, build a Series A $100 million startup.</p>
+<p>[25:44] Zack: Yeah, maybe like the job title I'm looking for— because I understand what you're saying. I guess all the people that I sourced were like more serious engineers, you know.</p>
+<p>[25:51] Hank: Yeah, they were serious engineers.</p>
+<p>[25:52] Zack: It was like going off the job, like the Description? Like, I'm trying to think of like how I would find it with like that job title. Like, that's where I'm—</p>
+<p>[26:01] Hank: it's still gonna be software engineer, my friend. Yeah, the problem is that we figured out now the type of role they had or the quality of the companies they, um, uh, yeah, uh, you know, the quality of companies that they sort It's gonna be the quality of companies that we are going to have to worry about. Because that's what's gonna give us— All right, sir, let me parse through this real quick. And again, this map here is S&amp;P 800.</p>
+<p>[26:40] Zack: Oh, okay, because I went for— I had like companies that like you recognize. So we need like B-tier companies in a way, right? Yeah, okay.</p>
+<p>[26:51] Hank: Okay.</p>
+<p>[26:57] Zack: Yeah, I see all the ones that I put in there wouldn't be right because it's hard. I guess it's not hard. It's like I've never done that before. I guess I'm not programmed to look at B-tier companies and do that. So now I'll have to—</p>
+<p>[27:18] Hank: I could obviously switch it up and do that. Okay.</p>
+<p>[27:21] Hank: They're all, uh, like, for example, this guy went to— yeah, your best instinct, sir, is to— example, some guy in Mexico. So again, oh, he worked for IBM for 3 years. Okay. Florent here is even more interesting. This guy, this guy basically was studying in Europe, you know, some other— and then he went to do his master's at a bank in Mexico.</p>
+<p>[27:59] Hank: And so what are they doing there? Are they— they're software engineers.</p>
+<p>[28:06] Zack: Okay, so they're software engineers with the same job description. They're like maintaining, obviously, You know, they're like, they're, you know, they'll maintain the services and know, like, they're doing that, right? Because it's like the customer side that I'm like, like, like, I feel like I can't find on these profiles, like, you know, doing, you know, the, the tickets and stuff like that.</p>
+<p>[28:29] Hank: It's like, yeah. Yeah, it's like a UC system for France. So look for again, uh, these 3 big, well-known targets in Mexico, Puerto Rico, and Brazil. Okay, didn't work for 3 and 4 years here, maybe work for a well-known, uh, but not necessarily in Capita— yeah, global development. Same thing here. So I would say IBM, Accenture, Ernst Young, Deloitte Touche, um No, I'm saying what I'm saying here is, sir, is extremely efficient.</p>
+<p>[29:07] Zack: No, I was like, I was thinking where you're at, like, you know, places that like, you know, they would employ, like, you know, for example, like big huge companies, you know, and like you went on the Accenture, like I understand, you know, that those type of world, you know, like they're obviously huge and, you know, and, uh, of course, or maybe they are target also Brazil.</p>
+<p>[29:30] Hank: I do want you to, as part of this, maybe 3 targets, and they happen to do assistance for a company in America. It probably won't be a famous company, so if you can target— probably not going to be, you know, OpenAI or Anthropic or whatever.</p>
+<p>[29:51] Hank: But again, they work for—</p>
+<p>[29:54] Hank: okay, I work for Intuit, or like PayPal or something maybe, or like, um, exactly. A lot of them are not working for successful companies. So American Bank, American Express comes to mind.</p>
+<p>[30:05] Zack: Like American Express is like that.</p>
+<p>[30:07] Hank: So if it is going to be like iPost or a big giant— Oh yeah, Visa too.</p>
+<p>[30:12] Zack: I see Visa a ton. Visa, like—</p>
+<p>[30:14] Hank: Visa? Oh, sure. Visa, Mastercard. Yeah, sure, right? They may work for a local company in Brazil. Brazil or Mexico, if it's something to be like, hey, maybe, maybe, uh, so on, right? But that could be where—</p>
+<p>[30:36] Zack: this like 5-minute conversation actually cleared it up completely because that's what I've been worried about going off the job description. And I was just like very confused because I was like, you know, the first iteration we did for the product support engineers, right? Artists seem to want to make it a higher like bar, right? And so I guess I took— it was more like a mid— like I'm in between, right? Because I was sourcing like, you know, legitimate, you know, engineers that are not doing like this. So I need to go in between like the product support engineer where they're at and then level it up, but not to like a full-blown, you know, I worked— I went here to this school, I went to work at this place. So I definitely understand. And like I said, I guess I was a little bit more throwing darts at the wall to see what stuck when I went for that. But now you really helped me clear that up, so thank you. That's helpful.</p>
+<p>[31:23] Hank: Yeah, yeah, but I think you get the gist. Yeah, no, I do. Yeah, like, you know, okay, let's talk about again, I want to ask you, right? If you are the top engineer, yeah, go to school for Mexico or Brazil or Puerto Rico. You might not be in those countries. You might actually either have already gone to the US or Europe, or if you stay in those countries, kind of, you're able to create a way to, like, for example, it's gonna be something like that. It's gonna be something like that. It's like, okay, you had a job. You mean that's necessarily why? Or, you know, whatever. You had a job. Um, can we poach those guys? It'd be nice. Yeah. But would they actually work for us?</p>
+<p>[32:08] Hank: That's true.</p>
+<p>[32:09] Zack: Yeah, because like I said, I did— I remember when I was doing that, I did see some like AWS guys, um, stuff like that, that were like in Mexico.</p>
+<p>[32:17] Hank: Exactly. So if you really see— my take on this is that if they already have a job at a well-established company, their— yeah, your best instinct, sir, is, for example, listen, listen, for example, right? Some guy in the video asked— some guy— about Microsoft.</p>
+<p>[32:35] Zack: Yeah.</p>
+<p>[32:35] Hank: Oh, why would they work for IBM in Brazil? Why would they do it?</p>
+<p>[32:40] Zack: Yeah, no, it's not worth the risk. I understand that completely. You know, like, if you're at Microsoft, they're not going anywhere, you know, in a year. They— it's all about— it's about job security, right? You know, especially when you land a job at Microsoft and, you know, you live somewhere that's not America. You know, it's good. It's a great opportunity. I can see it.</p>
+<p>[32:57] Hank: Be something like, oh, this guy's an independent contractor in Brazil. Okay, fine. Maybe we'll talk to you.</p>
+<p>[33:03] Hank: Definitely. Yeah, that's funny.</p>
+<p>[33:06] Zack: Like, we're talking about this and I was like, I just, like I said, I'm like, I just avoid big companies. Like, I haven't sourced from a big company in so long. So no, I definitely see what you're saying and I know and I appreciate, you know, you still explaining it. And now I feel like, yeah, like I'll send you, um, I can go and do 5 and then I think it'll be totally It's totally fine. I'm not— now I know exactly what I'm going out there for.</p>
+<p>[33:28] Hank: So, thank you. Appreciate it, Hank. Thank you so much.</p>
+<p>[33:33] Hank: I'll catch you next week on the all hands, and then after that I'll see you in Hawaii.</p>
+<p>[33:37] Hank: Yes, sir. I'll see you in Hawaii.</p>
+<p>[33:38] Zack: Take it easy. Thank you so much. Oh, you're from Hawaii, right? You said? I am. Oh, that's great. I'm so excited to be there, Hank. Thank you so much, and I'll see you on the all hands and then in Hawaii. All right, bye, Hank.</p>
+<p>[33:50] Hank: Take it easy. Necessarily top-notch global conglomerate, right? So I'm going to say IBM, Accenture, Ernst Young, Deloitte Touche, what else, maybe do work for— I'm sorry? Yeah, right. And, or maybe they are individual contractors in these countries and they happen to do a stint for a company in America. It probably won't be a famous company, It's probably not going to be obviously OpenAI or Anthropic or whatever. But again, we work for— OK, I went and worked for, I don't know, Intuit, or I did a stint for— yeah, exactly, Pinterest, Intuit. Maybe I did a stint for some American bank, right? I did a stint for American Bank or American Express or something like that, right? So if it is something like that also, okay, yeah, we'll talk to you. Visa, oh, for sure Visa, for sure Visa, MasterCard, yeah, for sure, right? If it's something going to be like, hey, maybe they did some kind of startup locally, right, in Puerto Rico or Mexico, not famous, not famous, but okay, All right, we'll do it, man. We'll talk, right? Yeah, yeah. No, no. Yeah, yeah. Yes, yes, yes. Bye. Fine. Yeah. Fine. Fine. Yeah, yeah. But I think you get the gist. I think you get the gist of it a little more. Of like, you know, because here, okay, let's talk about again open, honest, direct. If you are the top engineer in your school for Mexico or Brazil or for Puerto Rico, you might not be in those countries. You might actually either have already gone to the US or Europe. Or if you stayed in those countries, you were able to figure out a way to like, for example, Hey, I work in Mexico, but you know what? I'm working for Microsoft. Or I'm working for whatever, Amazon or something like that. Can we poach those guys? It'd be nice, but would they actually work for us? Yeah. Exactly, so if they already have, see my take on this is that if they already have a job at a well-established company, their mentality and risk profile is that why would I join a startup if I'm already at Microsoft or I'm already at Amazon, like why would I, like I live in Brazil, why would I join this startup? You see what I'm trying to say? Right? Yeah. Right. Yeah, right, exactly, exactly, right. So it's going to have to be something like, oh, this guy's an independent contractor in Brazil. Okay, fine, they're going to talk to you, right? They're going to talk to you, yeah, yeah. Yeah. Yeah, yeah. Cool. Awesome. All right, brother. You have a good weekend here. All right? I'll catch you next week on the all hands, and then after that I'll see you in Hawaii. All right, man. I am. I am. Okay, take care, man. I'll see you. Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

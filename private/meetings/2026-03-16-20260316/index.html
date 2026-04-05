@@ -1,0 +1,1952 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-16-20260316/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 16, 2026 at 11:57 AM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-16-2026-at-1157-am" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 16, 2026 at 11:57 AM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-16-2026-at-1157-am">Meeting — March 16, 2026 at 11:57 AM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 16, 2026 at 11:57 AM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~35 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Arda</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-eng-recruiting-sync-w-arda">Meeting Analysis: Eng Recruiting Sync w/ Arda</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>The AI engineer role is experiencing poor response rates (1 out of 192 sequences), prompting a strategic shift to personalized outreach using AI-powered customization based on candidates' GitHub/LinkedIn profiles, while continuing ClickHouse recruiting with A/B testing on compensation messaging.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Create a Notion-based agenda document for recurring meetings (reuse Casey's doc format)
+- Build AI-powered personalization system using Claude Opus 4.6 with decision tree logic for candidate outreach
+- Implement personalization variables in Ashby sequences to track customized messages
+- Increase sourcing activity on Bookface (Blind) for AI engineer candidates
+- Start second batch of ClickHouse outreach on Wednesday with 55-55 A/B split (comp in first message vs. comp in second message)
+- Continue using JuiceBox and automated CSV scraping tool for candidate sourcing
+- Send strong ClickHouse candidate profile link to Hank for review</p>
+<p><strong>Hank</strong>
+- Send back-channel reference request email to Liu about Matt
+- Ask Chat (from Riviera) if he has connections at Submittable for Matt back-channel
+- Schedule two additional ClickHouse candidates to interview with Arda
+- Review strong ClickHouse candidate profile that Zack will send</p>
+<p><strong>Arda</strong>
+- Conduct two reference calls for Matt tomorrow (Tuesday)
+- Schedule third reference call for Matt
+- Interview two additional ClickHouse candidates that Hank identifies
+- Document sourcing strategies in the sourcing playbook
+- Review shared LinkedIn connections with Matt for potential back-channels</p>
+<p><strong>Unassigned</strong>
+- None</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Shift AI engineer recruiting strategy from mass outreach to personalized messaging using AI-powered customization</li>
+<li>Continue ClickHouse recruiting despite Matt being in pipeline (don't put all eggs in one basket until offer is signed)</li>
+<li>Run A/B test on second ClickHouse batch: 55 candidates with comp in first message, 55 with comp in second message</li>
+<li>Move compensation information to second email for half of ClickHouse outreach to test impact</li>
+<li>Use Bookface (Blind) as additional sourcing channel for AI engineer role</li>
+<li>Keep all personalized messages within same Ashby sequence for tracking purposes</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>AI engineer role response rate is extremely low (0.5% vs. 39% for staff ClickHouse engineer), likely due to market saturation and generic messaging</li>
+<li>ClickHouse recruiting is performing well with strong response rates, 12 people interviewed, and 111 candidates still to contact</li>
+<li>Matt's hiring process is moving quickly with reference checks scheduled; team seeking back-channel references through Liu and potentially Chat from Riviera</li>
+<li>Response rate hypothesis: ClickHouse success was due to highly targeted approach, while AI engineer messages feel generic to candidates who receive many similar outreaches daily</li>
+<li>Team implementing automated sourcing tools including YC company scraper and JuiceBox CSV extraction</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create Notion agenda document for recurring meetings (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Build AI personalization system with decision tree logic for outreach (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Send back-channel reference requests for Matt to Liu and Chat (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Complete Matt's reference calls (Owner: Arda, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Start Wednesday: Send second ClickHouse batch with 55-55 A/B test split (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Increase Bookface sourcing activity for AI engineer role (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Schedule two additional ClickHouse candidates with Arda (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Document new sourcing strategies in playbook (Owner: Arda, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Review and send strong ClickHouse candidate profile (Owner: Zack, Priority: Low)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>Wednesday</strong> — Start second batch of ClickHouse outreach with A/B testing (Owner: Zack)</li>
+<li><strong>Tomorrow (Tuesday)</strong> — Two reference calls scheduled for Matt (Owner: Arda)</li>
+<li><strong>End of this week</strong> — Potential decision point on Matt's offer (Team)</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>How to implement personalization variables in Ashby while maintaining sequence tracking?</li>
+<li>What is the optimal decision tree structure for AI-powered personalization?</li>
+<li>Should compensation range for AI engineer role be included in outreach messaging?</li>
+<li>Can Liu provide a back-channel reference for Matt given he didn't respond to recruiting outreach?</li>
+<li>Does Chat from Riviera have connections at Submittable for Matt back-channel?</li>
+<li>How is the candidate "fully authorized to work in the U.S. without sponsorship" if he moved from Kazakhstan?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>The team reviewed recruiting progress for ClickHouse and AI engineer roles. While ClickHouse recruiting shows strong results (39% response rate, 12 interviews), the AI engineer role is struggling with only 0.5% response rate from 192 outreach sequences. The team decided to pivot strategy by implementing AI-powered personalization using candidates' GitHub and LinkedIn profiles, increasing Bookface sourcing, and continuing A/B testing on compensation messaging. Meanwhile, Matt's hiring process is advancing with reference checks scheduled, and the team is seeking back-channel references while continuing to interview other ClickHouse candidates as a safety measure.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:00] Arda: I, I don't know.</p>
+<p>[03:14] Arda: Zach, man, how you feeling, brother?</p>
+<p>[03:16] Arda: Uh, I'm all right. Um, I'm getting through, I guess. I thought I was getting better over the weekend, but it moved. Um, I I had a sore throat Friday, like all day, all day. And then I started taking medicine, the soup and all that. And then literally when I was telling you guys I was like ready to go today, it went to my nose as you could probably hear. So I've been— my nose is a faucet. I got the tissues and the trash bag. So I've just been— I mean, I've been blowing my nose since last night, like all night.</p>
+<p>[03:50] Arda: Damn, brother. Damn, that sounded like me. That sounded like me in February, man. Yeah. That sounded like me in February. I was, I was in bad shape in February too.</p>
+<p>[03:57] Arda: Yeah. You know, I was just like, you know, but I was able to get out of bed and I was like, if you're going and you know, you're not feeling that well, I could do it as well, you know? And yeah, so it's a little, it's a little slower, I'll be honest. You know, it's not, you know, the normal day because like Friday I had like, uh, I had like a lot of brain fog. Like I've never really felt it since COVID I genuinely felt like I couldn't think that well. And so my brain is actually back today. It's just like, you know, my entire face is just, it's just running, you know?</p>
+<p>[04:30] Arda: So I hear you, brother. I hear that. Definitely sounded like me, man, during February. I had to like, you know, yeah, it was bad. It was bad, man. It was bad. But, you know, do the right thing. Take care of yourself. Work from home, which you do, obviously get the rest that you need, you know, don't do anything strenuous that might make it worse. Yeah, so yeah, okay. I don't know where Arda is actually.</p>
+<p>[04:56] Arda: He wrote in Slack to give him a minute, I guess.</p>
+<p>[04:58] Arda: So, okay, cool, cool.</p>
+<p>[05:03] Arda: Yeah, it's just, you know, I was like, I was bummed that I got sick on the weekend, but, you know, I was talking to my girlfriend, she's like, well, at least, you know, it's when you don't have to work, you know, use it to to recover or whatnot.</p>
+<p>[05:18] Arda: Yeah, I mean, I was trying— I did the same thing. I was using the weekend to recover too, but it still wasn't enough.</p>
+<p>[05:23] Arda: Yeah, yeah, that's how I feel right now. I think I'll be good by like 100% by Wednesday or so.</p>
+<p>[05:31] Arda: Okay, okay, all right. Yeah, I'm back to normal.</p>
+<p>[06:10] Arda: He's back here.</p>
+<p>[06:11] Arda: Okay, great, great, awesome. Okay, great, we got him.</p>
+<p>[06:17] Arda: Hey, good afternoon.</p>
+<p>[06:20] Arda: He already had a rough weekend too, mother. So, uh, and Zach, you both had rough weekends. I mean, all I did was code, but I did go outside for a little while because it was fantastic weather this weekend.</p>
+<p>[06:31] Arda: That's the hardest part is that I'm looking out the window and it's so nice, but like, I, I'm Like I went outside for like 5 minutes yesterday and it started sneezing. Like, I was just like, I can't do this. Like, and it's just like, really is good outside right now. But yeah, it's not been a good time.</p>
+<p>[06:46] Arda: Don't, don't, don't make it worse for yourself.</p>
+<p>[06:48] Arda: Are you feeling under the weather, Arda?</p>
+<p>[06:51] Arda: I was, it's, I was a bit better than I pushed myself too much and then now I'm in between.</p>
+<p>[06:58] Arda: Yeah. That, that was me when I told you I was feeling under on Friday. It was like a sore throat, a really bad one. And then when I told you guys, I was like, yeah, I'll be good on Monday. You know, like it went to my nose. And so I've just like, I told Hank my nose has just been running since like last night and it's pretty annoying. You know, I hope you feel better soon.</p>
+<p>[07:19] Arda: You too.</p>
+<p>[07:19] Arda: Thank you. I appreciate it. Okay, so hit us, hit us, Zach. All right. So last week before I got sick, I actually worked on something to show you guys. I'm going to obviously add to it. I started working on my ASHP skills with creating dashboards. So I created 5—</p>
+<p>[07:40] Arda: Hang on, Zach, Zach, as we talked, you and I, did you, using that document that perhaps Casey started off with, did you, are you reusing that Google Doc with your agenda? Do you have your agenda now?</p>
+<p>[07:56] Arda: I didn't create an agenda doc, but I will create one and then I'll make sure I add it to the meeting for this Friday. That was my oversight. Sorry about that.</p>
+<p>[08:04] Arda: Okay, no worries. No worries.</p>
+<p>[08:05] Arda: You should have it in Notion, by the way. You should have it in a Notion list where every day is—</p>
+<p>[08:10] Arda: every week is a separate item, and then I'll show you how to do it, Zach.</p>
+<p>[08:15] Arda: Okay, thank you. Yeah, I appreciate that.</p>
+<p>[08:17] Arda: But, um, but before you start, before you start, let's just follow good practice. What are your agenda items for today?</p>
+<p>[08:25] Arda: Oh, my agenda items for today— I was going to talk about, um, how the ClickHouse role is going so far, as well as the backend or the, uh, AI engineer that we started. Um, I sent out outreach so I could speak about that as well. And then, uh, go into details about how I've been sourcing throughout the week.</p>
+<p>[08:44] Arda: Okay, then let's do it. Go ahead.</p>
+<p>[08:46] Arda: Okay. Okay. So these right here, these reports are primarily for the, uh, ClickHouse engineer because we just started the AI engineer, uh, reachouts, but that data is here. Um, first and foremost. When it comes to the AI engineer. Let me go down here. Sorry. When we go to the AI engineer, the response rate has been pretty rough. We have one person interested that wrote us over the weekend that I'm going to respond to. I've sent out around 192 sequences and we've only got one response so far. So that's something that maybe we might have to brainstorm. I did leave the comp out. Because I don't believe— I'm not sure if we settled on one yet or if you wanted that input into the messages. So for that, it's been pretty rough in terms of responses for the AI engineer. And then as you can see, I'll share this. And when I write the agenda, I'll go ahead and share it, but I'll put it in here for this, the Zoom channel right now. Sorry about that. My brain is just kind of coming back today fully. Yeah, it's coming back kind of. And then so throughout the week, we actually have been getting more responses for the ClickHouse engineer. I had one from a pretty strong candidate that I'd like to share with you guys real quick to see if we do want to talk to him just in case, you know, something with Matt does fall through. I wasn't going to schedule anything, but he was a pretty strong candidate.</p>
+<p>[10:21] Arda: So I'm going to go ahead and keep this, keep this, keep this meeting focused on your highlights. Just separately send me the link. I'll review the candidate.</p>
+<p>[10:31] Arda: Okay. I'll go ahead and do that. And then so throughout the week, I've been able to use multiple avenues to source. I used, I created a sourcing mechanism that essentially takes from the YC list that I had given you guys, the CSVs. And it takes all the YC companies and it'll bring it down to the job titles with the skills and it automatically sources it for me, um, through the tool that I created, which has been a pretty good use of sourcing throughout the week. Um, I guess the honest primary thing that I would like to talk to you guys about, which is kind of important, would be the response rates, um, for it., like I said, for that role, for the AI engineer role. It's a bit rough as you can see right here. Um, that's been the thing that's kind of been keeping me up at night other than my nose. Um, because I do believe I'm not, I'm not sure if it's really, like I said, I can't say it's because we don't have the, um, comp in there. I know the messaging looks good to me. Um, so I wanted to get your guys' thoughts on that to move forward. Cause I feel like that's a pretty big action item. To kind of correct early because I'll be able to add— I'm sourcing about 40 to 45 candidates a day for it, so I could get 100 messages out every other day or so. So maybe for the next iteration, we could brainstorm and see if you want me to include anything else to maybe bump up the response rates.</p>
+<p>[12:09] Arda: They're opening. Yeah, my first thought was like whether the emails land in like spam or like some other place where they just see and then disregard, but it shouldn't be spam because it seems like they are opening it.</p>
+<p>[12:28] Arda: Yes, absolutely. And I still do keep it to 100 per day, um, to try to avoid that. Yeah, because if you go back here, if you look at, um, the staff engineer, I mean, it was extremely good. The product support engineer, I mean, 39%, 22%. And then it just seems like all of our engineering roles, um, as you can see, is just like they're not— I don't know why, um, compared, like I said, compared to like these two. Cause like I understand why the product support engineer might be higher because, you know, it's kind of like a, it wasn't like a, like a high tier role, I guess, if you could say. But like the fact that the staff engineer ClickHouse was so high, maybe it was a lot better because it was extremely targeted. I mean, I didn't message anybody that didn't touch ClickHouse, so maybe that was part of it. So I'm not sure as to why this. Is abysmal with that.</p>
+<p>[13:36] Arda: I have a couple thoughts. Of course. Maybe mass outreach isn't the best approach for this role. Okay. This is what I'm thinking right now. Like ClickHouse one, as you said, was targeted. People did feel like, yeah, this guy found me. In this case, since everybody is like doing something with AI, maybe people are seeing it and they're like, yeah, it's just any other outreach I get. I get like 10 of these before lunch. Like that might be the thinking.</p>
+<p>[14:18] Arda: Yeah.</p>
+<p>[14:18] Arda: So what makes me like kind of Like what we can do is either maybe be more focused on the sourcing to have time for certain personalizations.</p>
+<p>[14:35] Arda: Like we spoke about earlier, kind of really, you know, personalized.</p>
+<p>[14:39] Arda: Okay.</p>
+<p>[14:40] Arda: Like we wouldn't hit like very high volumes probably, but certain you can automate it bunch of personalized emails as well using specifically Cloud Opus 4.6. Um, like you already can scrape their LinkedIn, you can scrape their GitHub and you can just say, okay, if they have good GitHub graph, send at this personalization. If they have this at this kind of personalization, like if you have a decision tree sort of and areas of personalization that you can kind of like speak about, that's where That helped me in the past to like mass personalize. So you have the benefit of both like them thinking they talk about me, but also you don't need to like really reduce the volume too much because you have to think every single one.</p>
+<p>[15:29] Arda: Oh, that absolutely makes sense. Like even down to get them though. I like that idea. So I think for what I would do for the next iteration is like you said, I'll build something that will personalize those with like the GitHubs or even like, you know, the details of their profile with, you said the logic tree, was that what I would need to look into?</p>
+<p>[15:49] Arda: Okay. You need to have some kind of like a decision tree basically says if their GitHub has high commits, then send the personalization like, ah, I saw your GitHub. Here's like our CTO GitHub as well. That's like, it's very active too. So you don't ask it to just do personalized by like one-shot the personalization. You just tell it, here's some ideas or templates, you should not stray too much away from it so the output doesn't become too big of an AI slope.</p>
+<p>[16:20] Arda: Like, you know, you read it and you're like, yeah, like, yeah, you could read it from there.</p>
+<p>[16:24] Arda: Yeah, but we should write those, but we should just have it categorized or like give us like ideas that are around that avenue rather than just complete one-shot today. I—</p>
+<p>[16:35] Arda: personalization. Okay. Okay. That's a great idea. I have to think of how we could do that and then get that into Ashby to track that. That's the next step that I'd have to think about how to do that. Because if we're not going to do like a mass sequence— hmm. Okay.</p>
+<p>[16:51] Arda: Let me go ahead and note that down. Probably there's some variables that you can have in Ashby sequences potentially. So this can be a variable you input for candidates.</p>
+<p>[17:01] Arda: Okay, yeah, but all the tokens— okay, yeah, okay. No, thank you for that, it's a great idea.</p>
+<p>[17:06] Arda: It should still be the same sequence so we can track it all together. It will be very weird if there's like many different sequences.</p>
+<p>[17:12] Arda: Yeah, okay, no, thank you for that. Um, and so that—</p>
+<p>[17:16] Arda: I'm sorry, and the other thing I'm thinking is we don't really utilize bookface that much. Maybe, I'm not sure, but maybe there might be like folks that are fitting our profile more. Okay. And the response rate might be like, there's a lot of bullshit in Lookface as well, but this is different than Clickhouse. Like Clickhouse guys, it's very hard for you to find them in Lookface, but smart engineers that want to do something with AI, you can find probably a good amount in Lookface.</p>
+<p>[17:48] Arda: Oh, absolutely. And I guess I'll be the first to admit that I'm not in there as much as I should be. So what I'll do Um, my action plans is I would do— figure out the way to personalize the messages, get it through, um, Ashby. And then I think a great idea, like you said, I mean, to go through Bookface because those are the people that would be, you know, in that, um, in that area.</p>
+<p>[18:12] Arda: I'm going to write this in the sourcing playbook as well. Okay. Just so they're all like in a single place, like our strategies for Thank you. I know, I know why it's so low though. Like, I don't have a clear cause of why it will be that.</p>
+<p>[18:31] Arda: Yeah.</p>
+<p>[18:31] Arda: Yeah. You can ask some of these folks. I'm actually curious.</p>
+<p>[18:34] Arda: Yeah. And that's the thing is like, I was really thinking that it wouldn't be this case, but like you said, I do feel like a lot of these engineers do get 10 messages before lunch. I genuinely believe that. I mean, look at Matt. I mean, Every single person that we've gotten to an offer stage has like 4 other offers at the same time. So I definitely, I think that'll be good because like you said, the ClickHouse was really strong with reply rates because, you know, I'm finding them, that's their specialty. So like you said, if we go ahead and get things from the candidate's backgrounds, like you said, from GitHub or even things off of their LinkedIn, that, you know, there's that little extra touch. And so I think that should definitely, you know, add to the reply rate. Okay, so I think what also has been very helpful with sourcing is going through JuiceBox. I've been using that and I actually created a— inside of the tool that I made, it's a way to scrape like the entire CSV. Which has been very helpful with the criteria. So I think I'm going to continue to do that, um, because I could just do it en masse through different companies as well, um, which should also add more candidates.</p>
+<p>[20:03] Arda: Yeah. So where can we see the pipeline? I guess it's in the dashboard right now. Yeah, that was one guy.</p>
+<p>[20:11] Arda: Yeah, so the one guy so far is— oops, sorry.</p>
+<p>[20:24] Arda: No, this one is fine. This one just says I know this one guy. We should fix this one. See, I'm talking about the click house.</p>
+<p>[20:31] Arda: Oh, the click— oh, sorry about that. So he is all— he worked at Altinity before and then went into Innervate, which is Revjet, and his— he is like a DBA for ClickHouse. Yeah, and he, um, this was his response. So, oh wait, no, I'm not. Sorry, oops, wrong one. Oh, here it goes. My apologies. So he actually ran Kazakhstan's, I think, their telecom with ClickHouse. So he created that over there. Not sure if that's relevant to what you think, but it was a lot of data, I believe.</p>
+<p>[21:47] Arda: Where is he based?</p>
+<p>[21:49] Arda: He's in He's in Texas.</p>
+<p>[21:54] Arda: So he moved for this opti-signs. He might be an H-1B or something. He's fully authorized to work in the U.S. without sponsorship. Does that mean he doesn't need an H-1B? What the—</p>
+<p>[22:09] Arda: how is that possible?</p>
+<p>[22:10] Arda: It says fully authorized to work in the U.S. without it, so. What?</p>
+<p>[22:19] Arda: That's—</p>
+<p>[22:19] Arda: I would love to understand how that's possible.</p>
+<p>[22:22] Arda: Does he have a— he has a bachelor's from USC.</p>
+<p>[22:39] Arda: Uh-huh. So how do you guys think the ClickHouse pipeline is going right now?</p>
+<p>[22:45] Arda: I think it's going well. I could actually show you this. We haven't even— I haven't even reached out to everybody. We still have 111 people that I haven't reached out to. That would be the B sequence because we already have 12 people that have interviewed.</p>
+<p>[23:04] Arda: So I would say that we obviously have Matt in the pipeline. Clayton seems to be still interested, even from, you know, giving a referral to Matt or background channel to Matt. Yeah. So that's May, June. Just to be honest, right?</p>
+<p>[23:20] Arda: Sorry.</p>
+<p>[23:21] Arda: Yeah. Yeah.</p>
+<p>[23:21] Arda: You know. Yeah.</p>
+<p>[23:22] Arda: So you get it.</p>
+<p>[23:23] Arda: May, June. And then there are only two other people that I think would be worth from the original group that we talked to in the last two weeks for talking to Arda. Again, they feel more as if they are— they're definitely senior. I want to be clear, they're definitely senior, very experienced, but they're definitely more, in my observation, leaning towards data platform team more so than infra team in regards to Qlik House experience, right? In regards to having their experience in Qlik House. So we still can schedule them, uh, to talk to Arda, you know, again we should wait until we find out from Matt, of course, first. Hopefully we'll find out.</p>
+<p>[24:09] Arda: It's fine to schedule the other. We don't need to wait for—</p>
+<p>[24:13] Arda: wait, I'm sorry, do we want to hire more than one?</p>
+<p>[24:18] Arda: No, Matt— I mean, Matt didn't work out yet. Sure. Me, it's just like I assume that has like doesn't exist and we keep looking until he signs the actual thing.</p>
+<p>[24:30] Arda: Don't put all your eggs in one basket kind of a thing, I guess.</p>
+<p>[24:34] Arda: We could do it, then that's fine. I can, uh, have Zach and I can schedule with those two other individuals. Um, uh, so yeah, it's totally fine. Okay.</p>
+<p>[24:44] Arda: Yeah, I think overall that should be our approach for like any role, to just until it's signed, I'll just keep like talking to people.</p>
+<p>[24:55] Arda: Okay, okay, we'll do that then. Yeah.</p>
+<p>[24:59] Arda: Okay. Yeah, because I feel like, like I said, we still have a lot more messages to send and that response rate is really well. So yeah, I agree with you.</p>
+<p>[25:08] Arda: I just don't want to— sorry, I definitely myself am pretty busy, so I definitely don't want to have another batch of folks, you know, be sent where they immediately respond, we reschedule them, and then we find out that, oh, by the way, end of this week we we landed mad and then we had to cancel those.</p>
+<p>[25:25] Arda: I mean, to me, cancellation is fine. It's just like, should we spend time like talking with people? And to me, we should, because if it doesn't work out, then we lose a lot more time. And yeah, and probably matters to me more than the time we would have gained otherwise anyway.</p>
+<p>[25:47] Arda: So the opportunity Okay, so do you want to do another batch next week? Is that what you're saying? You want to send the second batch next week?</p>
+<p>[25:58] Arda: I think you said there are two people that I can talk to.</p>
+<p>[26:01] Arda: There are two people that I think you should— well, yeah, I mean, they're not Matt and they're not, you know, Clayton, but you know, you should still talk to them.</p>
+<p>[26:09] Arda: Okay, I can talk with those, and I think we should keep the top of the funnel running with you.</p>
+<p>[26:16] Arda: Okay, okay, uh, in that case then I would say, Zach, let's go ahead and, uh, yeah, this week, maybe Wednesday, start the pipeline for the second batch.</p>
+<p>[26:31] Arda: Okay, do you want me to run that with the B test? With the— no, with the test.</p>
+<p>[26:36] Arda: Okay, the B test is different from the A test because B test doesn't have the comp in the messaging. Oh, Arda, do you still want to do A/B testing or do you want to go back to just using A?</p>
+<p>[26:48] Arda: I mean, did we— what is the result of the test?</p>
+<p>[26:52] Arda: Hang on, we didn't do a true test. All we did was send the A. We didn't do a true test.</p>
+<p>[26:59] Arda: Wait, what is A? What is B?</p>
+<p>[27:02] Arda: A has the comp and B doesn't. I originally sent 100 as A and then we got the response rate, so we never went to B yet.</p>
+<p>[27:12] Arda: A was with the comp, right?</p>
+<p>[27:14] Arda: Yes, yes.</p>
+<p>[27:28] Arda: And the conf wrote was to—</p>
+<p>[27:32] Arda: oh, let me double check the wording. I think we might have put it up to 300, I think is what the wording we used was. Yeah, yeah, I don't think we put like 200 to 300. Yeah, yeah, up to 300 base.</p>
+<p>[27:45] Arda: I mean, that's probably also why they're responding so much. Yeah, that's true. If you put 300 in the engineer, you'll get a lot of response.</p>
+<p>[27:57] Arda: Yeah. Should we do that, sir, in the next test?</p>
+<p>[28:00] Arda: So honestly, it will be nice to see if we split it 50/50 and Worst case, you let 300 in the second message for the, the one without comp. Okay, so we won't lose that many people. But I'm also curious, like, I'm actually curious whether people really—</p>
+<p>[28:20] Arda: okay, so, so for the ClickHouse second group, you want to move the comp information into the second email.</p>
+<p>[28:32] Arda: I was thinking for the half of it, like half currently what we are sending, half different. Up to you guys, if you think it's easier, just send all of them without comp first and then comp in the second, third message.</p>
+<p>[28:45] Arda: That would be easier, yes.</p>
+<p>[28:47] Arda: I mean, yeah, up to you guys. If you think— to me, like, it's better to do the A, B at the same time because then you don't have time as a parameter. Yes. But if that's too hard, then I could break it up.</p>
+<p>[29:02] Arda: So we have 111 that I have sourced, so we could say 60 and 50 to make it easy, right? 60 get the comp in the second message, right? And then 50 would get it none, right? Is that what you're talking about?</p>
+<p>[29:17] Arda: I will do 55-55, but yeah.</p>
+<p>[29:20] Arda: Okay, okay, 55-55.</p>
+<p>[29:22] Arda: Okay.</p>
+<p>[29:22] Arda: I can do that. Yeah, I mean, so yes, so what I'm hearing, Zach, is 55 goes into the A pipeline. Okay. Another 55 goes into the B pipeline, but the B pipeline we also are going to change the second email to actually have the comp info.</p>
+<p>[29:42] Arda: Understood, got it. Yep.</p>
+<p>[29:44] Arda: Got it.</p>
+<p>[29:47] Arda: And then you want me to start that on Wednesday? Yes. Okay, perfect. I'll go ahead and do that. And then, like I said, for the rest of today, I'm going to work on that, the personalization part, and then go on Bookface and then see what I could find there. I think that'll definitely work. Like you said, I didn't really— the wording on the up to 300,000, yeah, that kind of does make sense as to why our response rate was so high. So I'll go ahead and move that over and then get those sent today.</p>
+<p>[30:17] Arda: I'm sorry, Wednesday.</p>
+<p>[30:22] Arda: Yeah.</p>
+<p>[30:22] Arda: Uh, in terms of Matt's current situation, so I have the two references booked for tomorrow and probably I'll get the third one probably soon. It will be nice to have some sort of back channels, like, I'm afraid we have to move fast for this guy, I know.</p>
+<p>[30:47] Arda: Oh, Liu. You know what? Liu was the first guy that Arda said, hey, this guy worked with Clayton. I'm wondering if we just ask Liu also in an email that maybe I can send through Ashby. Just say, hey Liu, you know, just reaching out, love to work with you, but you know what, can you do a background check for this guy? 'Cause you already reached out to Liu, is that correct?</p>
+<p>[31:10] Arda: Yeah, I did. Yeah, I reached out to Liu that day.</p>
+<p>[31:13] Arda: You know what, I'll just use your Ashby profile for Liu, and I'll just send my own email to just say, hey, not recruiting you, just asking for a back channel.</p>
+<p>[31:23] Arda: Did he respond to the recruiting email?</p>
+<p>[31:26] Arda: No, no. He will actually, he will actually.</p>
+<p>[31:32] Arda: Yeah, because the reason I would want like some back channels, and I should probably think about this as well, but we move very fast for this guy, which we should because he has all these like offers and stuff. But usually that's how bad decisions are also made.</p>
+<p>[31:48] Arda: Sure, sure. Yeah, understood, understood.</p>
+<p>[31:51] Arda: It's the risk.</p>
+<p>[31:53] Arda: Early-stage startup, it's a risk. Yeah, let's think if I'll use the same email I sent to Clayton for Liu.</p>
+<p>[32:09] Arda: It's fine. I'm thinking we can try to see if there's any like shared connections between any of us and like Matt.</p>
+<p>[32:22] Arda: No, I looked at my— I don't think there's anything between me and him.</p>
+<p>[32:28] Arda: He has only 200 connections.</p>
+<p>[32:30] Arda: Yeah, it's pretty easy. Yeah, a lot of these kids don't really, uh, do LinkedIn anymore. I'm so surprised. And if they do do LinkedIn, they start very late.</p>
+<p>[32:43] Arda: Sure. It's like, try to see if you can spot anyone that he worked with in the past companies maybe too? Okay. And like, I don't know, just like maybe finding—</p>
+<p>[33:00] Arda: It's hard. So Matt worked for unfortunately big firms. He worked for Hewlett-Packard for 2.5 years. Then he worked for Capital One for 2 years before going to startups, Submittable, 1.5 years. So none of my contacts are really at HP or Capital One.</p>
+<p>[33:17] Arda: No, not our not people we know, but just like, hey, random outreach to as a back channel. Um, I see this submittable chat is following submittable for some reason. I wonder if he has some connection. Chat from Maybe we can also ask if he knows, like, Submittable is kind of a small company. I don't know if he knows someone higher up, maybe.</p>
+<p>[34:06] Arda: Like a manager at Submittable? Yeah. Yeah.</p>
+<p>[34:12] Arda: Yeah, let's see, let's see. So the engineering manager is there.</p>
+<p>[34:26] Arda: We're 1 minute over. Does Arda have to go?</p>
+<p>[34:28] Arda: I have to go, but like, yeah, we should think about this.</p>
+<p>[34:32] Arda: Okay, so I'm going to reach out to Liu, is that correct? Yeah. All right, I'll reach out to Liu.</p>
+<p>[34:36] Arda: You can— if you can also ask chat if he knows Submittable, maybe, maybe not. Wait, ask who? Ask who? Chat from Riviera. He's, he's following the Submittable LinkedIn company page. All right, I wonder if his network has any.</p>
+<p>[34:55] Arda: Okay, I will ask chat, does he have any normal contacts at Submittable as managers? And then that we can, we can reference that, use that register as a back channel. Okay, all right, we'll do that now.</p>
+<p>[35:06] Arda: All right, thank you guys, have a good one.</p>
+<p>[35:08] Arda: Feel better, Arda. Zach, let's stay up for one more minute. Zach, remember, in next week's one, you can reuse Casey's doc, it's fine, right? Just use Casey's doc, it's all in one history. At the very top of the doc, just put your agenda. Okay. And we talked about repeatability, right? Talk about how it's pretty much gonna be the same agenda every week, but we can also put notes there, we can also put additional there, you can put your links there. Hey, my link to my Ashby dashboard or my analysis, analytical graphs and charts, you can all put it there. This is all one place instead of being lost in Slack. Okay, cool, awesome, thanks a lot.</p>
+<p>[35:44] Arda: I'll go and do that, thank you, I'll talk to you soon, Hank. Alright, bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

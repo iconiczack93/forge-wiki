@@ -1,0 +1,1889 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-03-20260303/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 03, 2026 at 02:57 PM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-03-2026-at-0257-pm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 03, 2026 at 02:57 PM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-03-2026-at-0257-pm">Meeting — March 03, 2026 at 02:57 PM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 03, 2026 at 02:57 PM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~25 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Hank</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-hockeystack-11-w-hank">Meeting Analysis: HockeyStack 1:1 w/ Hank</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>The ClickHouse engineer recruitment campaign achieved exceptional response rates (9 replies, 5 calls scheduled from first 100 emails), prompting a strategic pause on further outreach while the team shifts focus to preparing for sourcing LLM/agentic AI engineers.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Hold the second batch (100 emails) of ClickHouse engineer outreach
+- Post the ClickHouse engineer JD on Ashby job board
+- Archive candidates: Riley Cashin, William K
+- Respond to H-1B candidate inquiry (confirm sponsorship for qualified candidates)
+- Begin prep/research phase for LLM/agentic AI engineer sourcing
+- Research Sierra and other agentic AI companies to understand the role requirements
+- Collaborate with Arda in channel to define filters and search approach for LLM engineer role
+- Follow up with Tommy Kendo (take-home due Saturday)</p>
+<p><strong>Hank</strong>
+- Talk to Jason today about his status/next steps
+- Speak with Byron this week
+- Follow up with McKay Archibald today
+- Get Claude Code organization account set up for Zack
+- Await Arda's feedback on JSON decision before resuming product support engineer sourcing</p>
+<p><strong>Unassigned</strong>
+- Wait for Arda's decision on JSON (impacts product support engineer hiring strategy)</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Pause sending second batch of ClickHouse engineer emails due to strong response rate from first batch</li>
+<li>Adopt a more controlled, thoughtful recruiting approach rather than "old-school playbooks" of mass outreach</li>
+<li>Pause product support engineer sourcing until Arda provides feedback on JSON</li>
+<li>Will sponsor H-1B visas for highly qualified candidates</li>
+<li>Archive/close candidates: Riley Cashin (already a manager, won't take role), William K (no response after follow-up)</li>
+<li>Next recruiting focus will be LLM/agentic AI engineer (prep phase starting now)</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>ClickHouse engineer campaign success: 9 replies and 5 scheduled calls from only 100 emails sent, with more responses still expected</li>
+<li>Philosophy shift in recruiting: moving away from traditional high-volume outreach to more strategic, efficient, and thoughtful sourcing enabled by custom tooling</li>
+<li>Product support engineer pipeline challenges: Liz withdrew (received manager promotion), Jason likely disqualified based on Arda's feedback</li>
+<li>Candidate pipeline review: closed loop on previous week's candidates, archived non-responsive or unsuitable candidates</li>
+<li>Next phase preparation: researching and developing sourcing strategy for LLM/agentic AI engineer role, starting with companies like Sierra</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Archive Riley Cashin and William K from candidate pipeline (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Respond to H-1B candidate with sponsorship confirmation (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Post ClickHouse engineer JD on Ashby (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Talk to Jason about status/cursor feedback (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Follow up with McKay Archibald (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Speak with Byron about next steps (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Begin research on agentic AI companies and LLM engineer role requirements (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up Claude Code organization account for Zack (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Collaborate with Arda on LLM engineer search filters and approach (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Follow up with Tommy Kendo on Saturday take-home (Owner: Zack, Priority: Low)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>Thursday, 10 AM</strong> — Zack's dentist appointment (will be partially available)</li>
+<li><strong>Saturday</strong> — Tommy Kendo scheduled to complete take-home assignment</li>
+<li><strong>This week</strong> — Hank to speak with Byron</li>
+<li><strong>Today</strong> — Hank to talk with Jason and reach out to McKay Archibald</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>Will Jason move forward in the process after his cursor-related messages?</li>
+<li>Will Arda approve moving forward with JSON (impacts product support engineer hiring)?</li>
+<li>Will McKay Archibald respond and move forward?</li>
+<li>What will be the outcome of Byron's follow-up conversation?</li>
+<li>What will be the outcome of Tommy Kendo's take-home assignment?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Zack and Hank reviewed recruiting progress, celebrating exceptional response rates for the ClickHouse engineer role (9 replies, 5 calls from 100 emails). They decided to pause further outreach and adopt a more strategic, efficient recruiting approach rather than traditional high-volume methods. The team closed the loop on previous candidates, archiving non-responsive or unsuitable prospects, and is now entering a prep phase to develop sourcing strategies for an LLM/agentic AI engineer role while awaiting decisions on current product support engineer candidates.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:00] Hank: Yo, summon.</p>
+<p>[00:47] Hank: Hey, how you doing, Hank?</p>
+<p>[00:49] Hank: Good, good, good, brother. Um, You know, I think I might have a little bit allergies. Yeah, sometimes I feel it. California is weird. Sometimes, what is this, years I'm like, oh, I have allergies. There's some years I'm like, oh, I don't know, it's like, wait, what is that?</p>
+<p>[01:07] Hank: Yeah, yeah, I know it, maybe it comes in waves or it just affects you like differently some days, you know.</p>
+<p>[01:13] Hank: That's, uh, well, I mean, like, you know, it's usually between winter and spring that's when my allergies usually hit. But all I'm saying is that sometimes even during that same period, I'm like, okay, some years I get hit, some years I don't get hit.</p>
+<p>[01:31] Hank: Maybe you're just exposed to like more like pollen or, you know, something like that.</p>
+<p>[01:36] Hank: Yeah, yeah, that's one thing going on. That's, uh, one year is more, you know, more active.</p>
+<p>[01:44] Hank: Yeah, yeah, exactly. I mean, shoot, I hope you have like a lifetime supply of Claritin or something, because my girlfriend, she has allergies, and we have a bottle everywhere. It's in the car, in the bathroom.</p>
+<p>[02:00] Hank: Yeah, yeah, I hear you, I hear you. Personally, I try to avoid drugs. Yeah, personally.</p>
+<p>[02:08] Hank: Yeah, I don't know, maybe it's just my philosophy of just Oh no, I mean, I totally get it, but like for me, like a stuffy nose is like, it's not a fun day or something like that, you know? But totally understand not wanting to. I mean, that's totally, you know, normal.</p>
+<p>[02:27] Hank: And yeah, yeah, yeah, that's right. We'll see, we'll see. All right, but let's see here, let's power through. I only have a couple things I want to talk about, but what's the situation on your side, sir?</p>
+<p>[02:39] Hank: It's great. I mean, the response rate for the ClickHouse engineer, as you've probably seen your calendar getting blown up, I mean, it's better than I would have imagined. I only sent the A test. I didn't even send the B.</p>
+<p>[02:56] Hank: Okay.</p>
+<p>[02:57] Hank: Because like I said, we've gotten a ton of responses and I was going to split it up because we could only— Arda wants me to do 100 on the email so it doesn't get flagged or anything. So today I'll send 100 more for the— if you want me to, of course. I mean, like, for the— for the— not— this will be the non-salary sequences, but we've already gotten— we've already gotten 5, I think, calls, and I think there's 9 replies. So I'm still waiting on like 3 or 4 more interviews. So I don't know if you want me to really like to—</p>
+<p>[03:27] Hank: no, no, no, no, hold on to it. Hold on to that second batch. Okay.</p>
+<p>[03:34] Hank: Yeah, yeah, because I mean, if the response rate's that way, you know what I mean? Like, it's, you know, we're probably still even going to get more people from the first batch, you know?</p>
+<p>[03:42] Hank: Yeah, exactly, exactly. Yeah, I don't know, maybe for the ClickHouse JD, maybe people react more to the salary.</p>
+<p>[03:52] Hank: Yeah, yeah, you know, and like I said, I mean, they are just coming and coming and coming and coming in. I think 9 replies, 5 scheduled, and then like I said, I'm waiting on 4 more. So I'll hold off, I'll keep on building it, and then, you know, we could kind of just go like, you know, send it whenever you tell me, hey, send 50 or send 100, I'll get it out.</p>
+<p>[04:10] Hank: Yeah, I want to be very, very— I don't— when you join, you and I talked about this, right? I don't want to use old-school playbooks for recruiting and sourcing that I just don't think really works. Anymore in this tech world. Look, we have— I mean, I know you're pretty young, but we've got 20 years of— in the Valley, Silicon Valley, we have 20 years already of, you know, all of this sort of startups and recruiting and emails and boom cycles and bust cycles and everything. I think a lot of people, both who are experienced and who are still young, I think now they are not necessarily going to react the same way as recruiting was earlier on, right? I think now people are just more selective. I think people now have more information of how to find out about your company. I think they're more, you know, it's, yeah, I don't think Yeah, so no, let's not, let's not keep blasting out emails and reaching out. I think we should just have a much more controlled—</p>
+<p>[05:31] Hank: no, I agree, because that way it's like, it's like I didn't, like, I lived— I didn't pick and choose which one, like, who I sent which A or B. I mean, I just picked the first 100, got the A. And so honestly, the B, they're still the same caliber, you know what I mean? So as these interviews go on, you know, I'm sure, like I said, you know what, then, like I said, if we're getting these responses off of 100, you know, if I send say 50, you know, next week, then that's at least, you know, on average would be like, you know, 3 to 4 interviews. So I've always been a fan of that. I've always been a fan of getting the pipeline built and then kind of just like supporting it as it goes on, you know. So that way, you know, because like even scheduling all those, it takes a long time, you know. It took me a while to reply, take the Do that.</p>
+<p>[06:17] Hank: So I totally agree with you that, look, again, we're not doing it the classical way. There is no recruiter. It's just you and me. Again, we don't want to do it the old way. We just need to be much more efficient, which is more thoughtful, which I think we're doing with Arta in regards to our communication content, our outreach strategy. Changing up our content, you know, not that especially since we're focusing on agents. So yeah, that's fine. That's totally fine. Glad to see that. Glad to see that, sir. Okay, anything else, sir? Anything else that I can assist you with?</p>
+<p>[07:00] Hank: Yeah, yeah. So I did meet with Jessica today in regards to the job postings. So I now, I have control over those. It's actually, it is through Ashby. It's instant, which I was impressed by. She was showing me, and so I just wanted to make sure the JD that we had— I'll send it to you after this. So the JDs that we have for the ClickHouse engineer, and do you want me to post that on there and so people could apply and everything? So put that on there. Okay. We removed one of the backend engineers, and I believe she removed one of the team leads like you had mentioned. And the other thing is the product support engineer. I think I'm going to have to source a little bit on it. I think, um, we had Liz over the weekend fell off. She— it was the weirdest thing. She was doing it and then all of a sudden she got like— her manager gave her a manager position. I don't understand it. Like, it's the weirdest thing. Um, and so obviously sounding like with Jason, I don't think he's going to be making it through from what Arda was saying in the channel. I, I left that alone, um, because I thought that was more of a you answering thing. Um, Yeah, I mean, yeah, I saw it come in. I was like, what? You know, but like I said, I, you know, it definitely— I didn't know if that was for me to reply to because definitely seemed more pointed, like, you know, for you.</p>
+<p>[08:18] Hank: So, okay. Uh, he just—</p>
+<p>[08:52] Hank: yeah, that last part, yeah, about the cursor. Yeah, that one. So I'm assuming he's all but DQ'd. That was my assumption. I didn't— like I said, I didn't even reply. I didn't say anything because You know, I, like I said, I don't think that was even like a question for me to answer or anything.</p>
+<p>[09:08] Hank: So yeah, yeah, don't have to reply. Just, did you set it up yet with—</p>
+<p>[09:13] Hank: No, I didn't, because I didn't know if he was gonna do that or if we were going to, so I didn't do anything, honestly.</p>
+<p>[09:18] Hank: I didn't ask him.</p>
+<p>[09:19] Hank: Yeah, because I was going to until he started writing the other messages where he was like going through it like live, you know? So I was like, okay, yeah.</p>
+<p>[09:29] Hank: Okay, no problem. Okay, no problem. I'll talk to him today. I'll talk to him today, what he wants to do. In regards to— let's close the loop on last week. Let's close the loop on last week, every single candidate, and let's see, do we try to reach again or do we sort of like, don't waste our time? So Liz— sorry, not Liz, sorry, the week before. Let's go one by one. Tommy Kendo.</p>
+<p>[09:58] Hank: Yeah, okay, he's gonna be getting his take-home on— he's gonna do it on Saturday.</p>
+<p>[10:02] Hank: No problem.</p>
+<p>[10:02] Hank: Yeah, he got back to me today.</p>
+<p>[10:04] Hank: Got it. Uh, we had a guy named Spencer Haka.</p>
+<p>[10:08] Hank: I, I reached out to— well, let me, let me pull it up on my end as well.</p>
+<p>[10:12] Hank: So yeah, let's make sure we're on the same page. Yep, going right now because some of them I did reject, so I just want to make sure that I— yep.</p>
+<p>[10:22] Hank: So active. Okay, I'm on there right now. So Spencer Haka, you told me that he was gonna get back to— I could message him. This has been weeks. Like, I thought— like, I didn't know. I wasn't going like nudging people, but I certainly can.</p>
+<p>[10:37] Hank: Don't— don't nudge people. Okay, not for this role. Okay, not for this role. Yeah, we definitely want to be conservative of your time also.</p>
+<p>[10:45] Hank: Okay.</p>
+<p>[10:45] Hank: All right, next person was Riley Cashin. Uh, Riley Cashin.</p>
+<p>[10:53] Hank: Let me see.</p>
+<p>[10:57] Hank: Oh yes. Oh yeah, this guy, he was already manager. He's not gonna do the job, no worries. He's not gonna do the job. Riley Cashin is not gonna take the job. I actually think we should close, archive Riley Cashin.</p>
+<p>[11:06] Hank: Okay, I'll do that right now.</p>
+<p>[11:07] Hank: He's a manager already and he's not gonna take the job. No, there's no way. There's no way he's gonna take the job. So no.</p>
+<p>[11:11] Hank: Got you. I'll do that right now, or I'll add it to my list and this way it'll go down.</p>
+<p>[11:15] Hank: Okay. Yeah, next person up is William K. So William K. Yeah, I've messaged—</p>
+<p>[11:23] Hank: I did nudge him for the— because you— I think that he was the guy when you guys had the call, it dropped. I did message him, and so I will— I will archive him because it's been a while, and I did follow up with him after. Okay, you can archive him.</p>
+<p>[11:34] Hank: Yep. Uh, next is going to be, uh, sorry, um It's gonna be Julie. Oh, Julie withdrew. Yeah, I understood why Julie withdrew. Next is gonna be Liz Wright, who withdrew. Totally makes sense. Next is, I want to speak to Byron again today, this week. Yahira Torres.</p>
+<p>[11:59] Hank: Yep, she got to the take-home over the weekend, I think it was Saturday, and also was very honest that she wasn't able to do it.</p>
+<p>[12:10] Hank: Got it. All right, all right, not Leroy, and then Boris Villanova, I said no, and then Kelly Cook last Friday.</p>
+<p>[12:29] Hank: Kelly declined, he actually was gonna stay where he was at.</p>
+<p>[12:35] Hank: That's fine. The faster we find out, the better. Yeah, so then we waste our time. Yep, uh, the faster you find out, the better. Uh, okay, awesome. And then, um, Mon, I rejected.</p>
+<p>[12:55] Hank: Yep, I got the email sent for him. Yep, or I get ready to get sent.</p>
+<p>[12:59] Hank: Okay, and McKay today. McKay, I Archibald hopefully will reach out today. Hopefully he'll reach out, but again, we'll see. Um, no problem, no problem. Um, so really it's just going to be possibly today McKay and possibly let's see what happens with Jason and then Tommy, right?</p>
+<p>[13:24] Hank: And then, uh, Byron, you speak to him tomorrow.</p>
+<p>[13:27] Hank: Oh, Byron, yeah, okay. All right, so should we still continue to source for the— my answer today is pause until we actually hear back from Arda around JSON. Okay, so let's just pause. Okay, let's just pause for now. If we still move forward with JSON, then that will change things calculus-wise.</p>
+<p>[13:51] Hank: Yep.</p>
+<p>[13:51] Hank: So I don't want to do anything extra work until we actually find out from Arda. Understood. Yeah, okay, no problem. And then we have 4 set up for this week. Wow, for the ClickHouse engineers. That's great. That's great. That's totally fine. That's great. Okay, that's awesome. And you have 1 next week.</p>
+<p>[14:12] Hank: Yep. And I had a question. I had a candidate who wrote me. I actually don't know why. I don't know. Do we sponsor H-1B? I know what the change is.</p>
+<p>[14:22] Hank: I assume not, or It would have to be a very, very, very highly qualified candidate.</p>
+<p>[14:27] Hank: Okay, cuz he's on— one second, I'll give you his profile so you can let me know what you'd like me to do. Let me see, leads. And then he wrote me, so he's like a— he's actually one of the gentlemen that I found from like the scraping that I did, so he's not like a traditional-ish profile. I'll put it in here, but I mean, he, he checks the boxes, but maybe not the best looking, most beautiful profile. But I mean, he, he's actually a database administrator. Like, he actually is a database guy.</p>
+<p>[15:04] Hank: So okay, okay, no problem, no problem. This is New York. Mm, okay. So the most clear one is Flowtraders, 5 years, that's consistent. Database team leave, of course. Parts. Okay, and then here's Mindtree. So he only had one row that did ClickHouse. Okay, so he did one row did ClickHouse. Everything else was OLTP. Wow, this guy was— okay, okay, okay, okay, okay.</p>
+<p>[16:43] Hank: Um.</p>
+<p>[16:43] Hank: Yeah, I mean, I'm willing to talk to him. I'm a little nervous because really he only has one experience with ClickHouse, though it could be actually a pretty good experience being that he's part of a trading house. Stop trading. So yeah, no other way to find out. That's fine. I think we'll be willing to sponsor him if he actually is good.</p>
+<p>[17:06] Hank: I just gotta figure out how to word that, like, because he thought I asked, like, you know, if the first one was, you know, is it gonna be remote, like actually remote? And I was like, yeah. And the second was, you know, do you sponsor, you know, the H-1B?</p>
+<p>[17:18] Hank: If we accept him, then we will sponsor him. Okay. So that's— you don't have to answer any questions of him. Just say, yes, we sponsor H-1Bs. Because basically the implication is if we think you're good, we'll hire you.</p>
+<p>[17:30] Hank: Okay, understood. I'll go ahead and note that down.</p>
+<p>[17:33] Hank: Yeah.</p>
+<p>[17:33] Hank: Okay, thank you for that.</p>
+<p>[17:35] Hank: No worries, no worries. Yes, interesting.</p>
+<p>[17:38] Hank: Okay, that's it on me for updates.</p>
+<p>[17:42] Hank: Okay, no worries then, no worries, sir. Um, hmm, let's see, where did this— hang on. This looks like it's— oh yeah, he was in India. Okay, got it. Okay, no problem, no problem. I think right now, I think we are in pretty decent shape, sir. We've gotten you the opportunity and space to build a bunch of tools, and that has actually helped you scale, which is totally freaking awesome.</p>
+<p>[18:25] Hank: Yeah, no, it's, it's honestly, when I wrote that message this morning, I was smiling. I was like, man, I really like— I like when Arda mentioned it, I was like, okay, that's a challenge, I like that one, you know? And so it was, it was fun. Like, I'm really having a good time doing that side of it and then seeing it pay off, and you know what I mean? Like, that's, that's what I like to see. It's cool to be able to do it But to see it actually work and actually be valuable is actually pretty tight. I'm having a great time.</p>
+<p>[18:54] Hank: It's fun.</p>
+<p>[18:55] Hank: It's really fun.</p>
+<p>[18:57] Hank: No, that's awesome. It's awesome. I'm glad that you are, sir. I'm glad you are. I think, as I said earlier, we just can't do recruiting and sourcing like others before. It's just a different world that we have to evolve our approach and our hunting grounds that we now look for. Candidates. We just got to evolve and change with the times too, so I'm glad you're having fun there. I think we're in good shape now for the ClickHouse. Let's see what happens with the first 5 candidates. I think we have the means to continue to, you know, with your tooling now, continue to figure out ways to source more support engineers if we need to. But I don't want to spend any more time unless we actually have to. Yeah, and then I think next week or this week, maybe you should start just thinking a little bit about how would you want to look for or source for candidates who are experienced with building agentic AI apps. Okay. This is basically back in AI world, right? Someone who's done LLMs, someone who's worked in agentic AI. How would we want to, you know, how would we want to filter and put that in your tools so that we can start looking at different hunting grounds of how can we find this candidate, right? So just think about that. I think that'll be the next one up. And again, if we don't get, if Jason doesn't actually get aboard, then yes, we will I have to go back to sourcing a bit more on those candidates. But again, we'll see. Like I said, there's two more people taking the test, right? Tommy and hopefully Archibald. Yeah. Okay, Archibald today, and I talked to Byron tomorrow. So hopefully, we'll see, we'll see, right? But yeah, otherwise, if everything is right now as it is, Then start thinking about just the, okay, what would be your filters or what would be your approach on looking for a candidate who has done building apps with LLMs or, sorry, LLM-driven applications and also maybe agentic AI apps. Yeah. So think about that, ask questions in the channel with Arda and myself. Okay. So we can just help fine-tune your search. But yes, I think that's where we are next. And again, we might have to go back to, like I said, we might have to go back to sourcing some support engineers. We might have to go back to sourcing some ClickHouse engineers. But for now, in this current mode, I think the next step is to think about just, you know, what would be— so, so right now what I'm trying to say is we're in the prep phase, not the execution phase, the prep phase for the LLM.</p>
+<p>[22:08] Hank: And I, and I just want to say, I like, I like how you do that because the prep phase for what was the database administrator turned into the staff engineer, which, you know, and like I said, all the iterations that we've spoken about, like I said, I mean, I feel, I feel like it's been a great success. And with this, yeah, I like the prep phase because it is me getting into another realm to try to understand and break it down. Because before last week, looking at some of the ClickHouse engineer profiles, yeah, I was a little confused still. But now it's like I feel like I'm looking at it and I'm like, okay, I'm reading, I see the words migrated from this to the ClickHouse and it's like clusters, all these things. So yeah, I'm definitely, once I research it and get into it, yeah, I like that and I'm totally ready to research and do that.</p>
+<p>[22:53] Hank: Yeah, I mean, this is why again, like I said, you know, I'll keep repeating it, we just can't do it the old way of recruiting sourcing because they really don't have any thought put into it.</p>
+<p>[23:06] Hank: No, yeah, I agree. And this is— and honestly, I want to say thanks because this is like— this is why I left, you know, where I came from and wanted to do this because this is something, like I said, that I am passionate and excited about. And you know, a lot of places won't, you know, they, I don't think there's a lot of technical sources that are really like getting like tech, like technical, you know what I mean? Like a lot of technical, like they'll have Python's backend and that's it. You know what I mean? So, so like this, like I said, on the weekends, on the weekends, Hank, I'm on Claude Code all weekend. Like I'm really running up the usage like every weekend. That's what, you know, like that's just what I'm doing.</p>
+<p>[23:41] Hank: Again, you know, if you, if you want, happy to issue you I just need to get the administration account from ARDA. But once I do, I can issue you a cloud code account on our organization. So that way you don't have to rack up your bill. No, I appreciate that. I know you're using your own personal cloud code. I know you are. So I'll try to make sure I get you one from the organization. Thank you. Yeah. But yeah, OK, that's the plan then. Let's stick to that. You know, again, holding pattern for support engineer, holding pattern for the ClickHouse engineer for now. Let's start the prep work about the ideation. Let's have a discussion with Arda. Let's go back and forth of just, you know, prepping on starting the search for the LLM engineer, the, you know, LLM, agenting AI engineer. Get you a chance to research it, understand what this industry does. Oh, sorry, what the role is and what it means to actually build agentic AIs. There's going to be some companies that you can look at. For example, obviously one of the most popular ones is Sierra. Sierra is a really well-known one that, you know, big, big successful startup, just, you know, really hot in Silicon Valley. And they do build a lot of agentic AIs. So once you research what they do, you get an idea of like, oh, okay, I get it. I see what agentic AI sort of is. Yeah.</p>
+<p>[25:05] Hank: Okay. Yeah, no, I totally— I mean, I've definitely familiar with them, so I'll go ahead and research them even more. I've heard of, you know what I mean? Like, I, you know, I like the whole area, so I've heard of them. I just haven't dug deep into what they do. So I'll dig into them and then see, you know, kind of pull on the strings and go from there, you know, and see what else is out there. And it means Silicon Valley, there's gonna be a lot of those AI type of, you know, backgrounds and stuff. So I'm definitely— I'm excited about this one too. Like I say every time, it's just, you know, it's fun. It's— I enjoy the hunt and stuff. It's really good. I like it.</p>
+<p>[25:39] Hank: Awesome.</p>
+<p>[25:40] Hank: Awesome. And I also want to let you know, on Thursday I have a dentist appointment at like 10 AM, so I'll be like half in and half out for that. But just letting you know.</p>
+<p>[25:48] Hank: Yeah, appreciate that. Thank you, man. Of course. Thank you. Yeah. Okay, sir. If nothing else, I'll let you go. Thanks, brother.</p>
+<p>[25:53] Hank: Thank you so much, Hank. I'll talk to you soon.</p>
+<p>[25:55] Hank: All right.</p>
+<p>[25:55] Hank: All right. Take it easy.</p>
+<p>[25:56] Hank: Bye. Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

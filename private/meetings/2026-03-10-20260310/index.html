@@ -1,0 +1,1879 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-10-20260310/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 10, 2026 at 02:57 PM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-10-2026-at-0257-pm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 10, 2026 at 02:57 PM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-10-2026-at-0257-pm">Meeting — March 10, 2026 at 02:57 PM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 10, 2026 at 02:57 PM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~34 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Zack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-hockeystack-11-w-hank">Meeting Analysis: HockeyStack 1:1 w/ Hank</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>Hank and Zack are moving forward with a new "agents backend engineer" job description and outreach campaign, with Matt from Twilio scheduled to interview with Arda on Thursday, while establishing a new structured Friday meeting format focused on metrics and pipeline analysis.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Zack</strong>
+- Review and finalize the agents backend engineer JD and sequences posted in the tactical channel
+- Start outreach campaign tomorrow (pending Arda's approval tonight)
+- Schedule candidate interviews for next week, capping at 5 interviews maximum for Hank per week
+- Spread interviews throughout the week when possible (one per day ideally)
+- Develop a repeatable Friday meeting agenda covering: metrics, tooling updates, and strategic initiatives
+- Prepare week-over-week pipeline metrics with percentage changes for each funnel stage
+- Provide color and context when presenting metrics (explain why numbers changed, what worked/didn't work)
+- Review Jessica's Ashby reports and graphs for funnel stage analysis
+- Continue using Prism evaluator tool for candidate filtering</p>
+<p><strong>Hank</strong>
+- Conduct interview with Matt on Thursday at 5:30 PM
+- Review the agents backend engineer JD and sequences tonight
+- Conduct up to 5 interviews next week (spread throughout the week)
+- Determine which other candidates should talk to Arda next week
+- Complete compliance-related work (ongoing)</p>
+<p><strong>Arda</strong>
+- Review and approve the agents backend engineer JD tonight
+- Interview Matt on Thursday at 5:30 PM
+- Determine salary range for the agents backend engineer role</p>
+<p><strong>Unassigned</strong>
+- Set up Calendly configuration as Arda requested
+- Decide whether to include compensation details in outreach</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Using "agents backend engineer" as the job title (instead of AI or LLM engineer) for the new role</li>
+<li>Capping Hank's interviews at 5 per week maximum to manage workload</li>
+<li>Not scheduling Hank interviews this week due to workload</li>
+<li>Launching the agents backend engineer campaign tomorrow (pending Arda's approval)</li>
+<li>Candidates responding mid-week will be scheduled for the following week</li>
+<li>Implementing a structured, repeatable Friday meeting format with Arda focused on metrics first</li>
+<li>Continuing the non-traditional recruiting model where Hank (VP of Engineering) conducts first technical screens</li>
+<li>Continuing to target Twilio employees as a strategic sourcing thread</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>Matt (from Twilio) is a strong candidate who booked the earliest available time with Arda and is still interviewing despite having multiple offers from big-name companies</li>
+<li>The recruiting model of having Hank conduct initial technical screens is proving effective for Series A/B stage, allowing authentic conversations with younger engineers who appreciate transparency over traditional recruiting processes</li>
+<li>Zack has developed a tool called "Prism" that serves as a second brain for candidate evaluation, helping filter through ~1,000 profiles daily</li>
+<li>The company's new focus on "agents" provides a compelling story for recruiting, which is crucial for attracting talent beyond just compensation</li>
+<li>Friday meetings with Arda need to be restructured with a repeatable agenda starting with metrics, then tooling updates, followed by strategic context and color commentary</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Get Arda's approval on agents backend engineer JD and sequences (Owner: Arda, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Launch agents backend engineer outreach campaign (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conduct interview with Matt from Twilio (Owner: Hank &amp; Arda, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Schedule up to 5 candidate interviews for next week, spread throughout the week (Owner: Zack, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identify additional candidates to advance to Arda interviews (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Develop structured Friday meeting agenda with repeatable format (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Prepare week-over-week pipeline metrics with analysis and context (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Review Jessica's Ashby funnel reports and graphs (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Figure out Calendly setup configuration (Owner: Zack, Priority: Low)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>Thursday, 5:30 PM</strong> — Matt's interview with Arda (Owners: Arda, Hank)</li>
+<li><strong>Tonight</strong> — Arda to review and approve agents backend engineer JD and sequences (Owner: Arda)</li>
+<li><strong>Tomorrow</strong> — Launch agents backend engineer outreach campaign if approved (Owner: Zack)</li>
+<li><strong>Next week</strong> — Schedule candidate interviews (up to 5 for Hank) (Owner: Zack)</li>
+<li><strong>Friday</strong> — Implement new structured meeting format with Arda (Owner: Zack)</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>What is the salary range for the agents backend engineer role?</li>
+<li>Should compensation be included in the outreach sequences?</li>
+<li>How should the Calendly setup be configured as Arda requested?</li>
+<li>Which other candidates besides Matt should advance to Arda interviews next week?</li>
+<li>When will Hank complete the compliance-related work?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Hank and Zack discussed progress on recruiting for a new "agents backend engineer" role, with the JD and outreach sequences ready for Arda's approval. Matt from Twilio is scheduled to interview with Arda on Thursday and appears to be a strong candidate despite having multiple offers. They agreed to cap Hank's interviews at 5 per week and established a plan for Zack to restructure Friday meetings with Arda around a repeatable agenda focused on metrics, tooling updates, and strategic context rather than just raw numbers.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:03] Zack: A little too far away from the— yeah, they didn't capitalize off this base much, right? I agree with you. Considering this was all a question mark, they had this— okay, maybe they should have kept one here. Nice. I'm not showing it, but it must have looked really bad. We're able to finish it out, so Paper Rex looking at[No speech] Hey Zach, sorry I'm a little bit late here.</p>
+<p>[06:05] Zack: Hey, no worries at all, Hank. How are you doing today?</p>
+<p>[06:08] Zack: Uh, just, um, not good. Just too much. But it's okay, it's okay, it's okay. Uh, we had a good— we had a couple of good interviews today, so that's not bad. Good. Um, we definitely want to get, uh, we definitely want to get Matt in front of Arda this week as soon as possible.</p>
+<p>[06:27] Zack: Yep. Yeah, he booked Thursday at 5:30 or something, somewhere around there.</p>
+<p>[06:33] Zack: 5:30, that sucks, but okay. Yeah, okay. Um, yeah, it sucks, but it's okay. Uh, and then, um, yeah, for the others, we'll figure out next week who else should talk to Arda. Um, Yeah, yeah. Right now I would say that the two standouts are both of them came from Twilio. Yeah. So I guess people are leaving Twilio. So like, okay, I guess we just keep hiring people from Twilio.</p>
+<p>[07:04] Zack: Oh yeah, because when you had told me about Lou, that's when I literally found the article that they wrote on Twilio about how they created like the ClickHouse database there. So like I said, I took everybody that was listed on there because it was Clayton Lou, and then I think later that night I also went through Twilio again just with like ClickHouse as a keyword and grabbed everyone else.</p>
+<p>[07:27] Zack: So perfect. Perfect. Yeah. Yeah, we got to be strategic like that. We got to be creative like that. Just trying to find people. Once we find a thread and we need to pull on it until it leads us to somewhere. So yeah. Yeah, it's the best we can do at this point.</p>
+<p>[07:49] Zack: I mean, it seems like he was like— I mean, from what you wrote, like, it seems like we would actually have like a, like a pretty good shot, you know, at what he would be interested in, you know, in terms of like startup, you know, and being able to like own the entire process and things like that. So it seems like, you know, even though like Artis said those are some big names, right, it seems more like from what you described, we would be, you know, still a good choice.</p>
+<p>[08:14] Zack: It's possible. He's still interviewing, which is like kind of curious. Like, if you have that much offers, why are you still interviewing?</p>
+<p>[08:19] Zack: Yeah, exactly. And then like I said, it was also interesting how, um, I mean, I emailed him and not even 2 minutes later he booked with Arda. I mean, not even like— I mean, I sent it, I went to the bathroom, came back, and he was like, oh, I booked time with him on Thursday, you know. And so, and he booked the earliest time. That was actually the soonest that Arda had. Um, is what he said. Yeah, yeah. So he said I booked the first time.</p>
+<p>[08:44] Zack: Yeah, okay. That's too bad. That— yeah, yeah, it's too bad.</p>
+<p>[08:54] Zack: But in terms of, um, the, uh, JD, I finished it up last night, as well as the sequences. Um, so whenever you have time, obviously we're not even going to be setting any interviews up with you this week like you said, so Yeah, he's crazy.</p>
+<p>[09:09] Zack: He's kind of just crazy. Art is kind of just fucking crazy. Yeah, it's fine, it's fine. It is what it is. Um, okay, let's get back to the JD. Sorry, go ahead, sir.</p>
+<p>[09:21] Zack: Yeah, so I finished that up, um, the JD. I posted it in the tactical channel as well as the sequences that I made based off of the JD. Um, I, I left obviously like the salary blank. I wasn't sure about that. And then like I said, we're not really gonna be scheduling your interview. So I guess it's just when we're gonna start. Obviously Arda is gonna approve it eventually, and then we have to figure out, let me start sending the outreach next week or whatever, because obviously, you know, it's, it's getting pretty hectic and everything.</p>
+<p>[09:53] Zack: So yeah, back engineer, agents, JD. I like that. I like the fact that we went with agents.</p>
+<p>[09:59] Zack: That's what I kind of thought was like really, because that's what I've seen. I've seen like agent engineers and stuff. I was like, well, agents is like kind of a really good buzzword too, and it is what they're doing.</p>
+<p>[10:08] Zack: Yeah, I— is it— what am I— it's just all like allergies now. But yeah, I agree that I like that using agents instead of AI or LLM. So totally down with that. And review everything for you as well as the sequence messages. Okay, let me see the GD one. Okay, yep, yep, yep, yep, we use his blur at the very top. Hang on, perfect.</p>
+<p>[10:42] Zack: So we use this blur at the very, very top, and then basically everything that I changed was literally beneath the, the lot, the break, because we got up to what you'll do, and then, and Everything down is what I do.</p>
+<p>[11:01] Zack: Got it, got it, got it. Nice, nice, nice. Long chain, long index. Yep, yep, multi-model. Yep. Okay, yeah, we definitely wanted to review this, and then, yeah, we just wanted to review this, and then we'll, we'll execute. Um, okay, cool, cool, cool, cool. And then, uh, excuse messages. All right. Yeah, I like that. I like that. That's awesome. That's fucking awesome. Yeah, we're gonna have to ask Arda too if we're actually gonna do comp. Okay, but I agree with you. Yeah, that's crazy. 1 trillion tokens. Yep, okay, cool. Well, I want to agree with that, but that looks good too. Okay, um, yeah, I think that's good, sir. I think that's good. Thank you for also making that update for the technical team lead on the core applications content. Yep, on the body. So thank you, that's very fast. Um, so yeah, now we just need to, um Get him to sign off and then we'll execute. Do you want to execute now? No, no, fuck. I guess we still need to review it. Once he reviews it, hopefully tonight, then I think we can start the campaign tomorrow.</p>
+<p>[13:26] Zack: Okay, and then anybody that replies, like I said, I'm gonna nod like, hey, pick some times, you know, for next week. Because I said that, like I said, I don't know how to do the Calendly setup that Arda asked for. I'm working on that. Um, because I think the way that we're doing with the availability seems to be working so far. And then I'm just gonna tell people like, hey, you know, um, can you choose some times for next week that work best for you? And stuff like that. Especially if we're sending it midweek, because people are going to want to, you know, jump on Thursday and Friday and whatnot. So it's not a big deal. Hey, um, you know, pick some times that work best for you next week. And then I think, um, obviously I, I'm assuming you're not going to have the compliance stuff done by next week, so I just want to make sure that that I'm keeping up with you and not adding too many, you know, uh, interviews.</p>
+<p>[14:10] Zack: So I appreciate that. I think what's going to happen is that just have them pick something time next week and we'll try to spread it out. Yep. Um, we'll try to spread it out, you know, like if there's 5 next week, then of course one every day is better. Yeah, not always possible. Yeah, not always possible. But I think what you can do is sort of like cap it at like, look, If Hank did 5 next week, that's it, that's it, that's it. Right? He did 5 next week and then we're moving the rest over to the week after.</p>
+<p>[14:38] Zack: Oh yeah, no, I can absolutely do that. 5 a week, like I said, considering your time and all, like I said, so 5 should be good. Yeah, absolutely.</p>
+<p>[14:44] Zack: Yeah, so it's 5 a week, that's fine. Try to spread it out as best you can. I know you might not be able to. I know you might not be able to. Let's try to spread it out. And then that way, yeah, that way we can move forward if anyone does bite.</p>
+<p>[14:58] Zack: Yeah, okay, perfect. Yeah, I just wanted to make sure. It's like I said, I know that, you know, it's— I can't imagine your days, honestly. I sit here and I wonder, I'm like, you know, you got a lot on your plate. I mean, I don't know if we even have plans to get like a technical recruiter or anything, but I hope we do soon, you know, to really— to kind of—</p>
+<p>[15:16] Zack: we don't need to include— I think the technical is the problem. Oh, that is the problem.</p>
+<p>[15:20] Zack: That's true. I mean, it—</p>
+<p>[15:21] Zack: that, you know, the model that you and I are building right now with the way we're interacting I think that's the winning model for Series A, Series B.</p>
+<p>[15:29] Zack: Yeah, no, I agree with you because I think I was thinking about, you know, the normal process, right? Most times engineers will talk to a recruiter that is not an engineer, right? And so as I was reading your update about Matt, I was like, if any other— if it was a real recruiter talking to Matt and he showed them his database, they would have no idea what they're looking at, right? Oh wow, that's nice, you know, but he showed you and everything and, you know, I think that really is like another, it kind of kills like both steps because all you have to do, you know, on your route, obviously you're already getting information where people are interviewing at, which is not easy at all. Like I was actually impressed because you said that he's interviewing all these places and I'm like, how is Hank getting these candidates to like say where they're interviewing at? You know, it's pretty rare. So I mean, it definitely seems to be working well. I like it, you know, especially for me. I'm pretty like non-traditional. I'm always able to hit whatever numbers given to me, but I really do like— I like the fact that you're like, hey, you know, like, don't, don't give me 30 shitty profiles, you know what I mean? Give me 20 strong ones, you know? And I think that's the way to go. And I, and I do try, like I said, I try my best and to make sure that, you know, your time is, you know, not wasted and everything.</p>
+<p>[16:40] Zack: So I appreciate that. I appreciate that. Um, I think that's just In a Series A, Series B, you know, especially in this era that we're living in, I think the— I don't see how the traditional model actually works. I actually don't see how it actually works.</p>
+<p>[16:59] Zack: Yeah, I could see it because I mean, this is like we're kind of proving it, right? In a way, I mean, you know, we're getting somewhere and I think we're getting somewhere pretty well. I mean, honestly, I feel like just since I've been here, I've been doing this for like 5 years, I feel like actually like I feel like I've improved a lot actually. Coming in here, especially like I said with the collaboration that we have with the sync and everything, I think it's really helpful. And so yeah, I agree with you. I think that this is going pretty well in terms of like going back and forth and figuring things out.</p>
+<p>[17:29] Zack: So yeah, I concur. I think, yeah, I'm just trying to share with you that And I think I really did share with you, but I'll just reinforce it. I think now when you're recruiting, and again, we're not recruiting someone who's like 50 years old or 45 years old or 40 years old or 35 years old, right? We're recruiting for a younger bracket per se. I just think that they grew up in an era, in a world where it's not just the old standard of recruiting. I don't think resonates with them. You know, so how we find them is obviously a challenge that we have to do, but I think you're doing well. I think you're doing very, very well on that.</p>
+<p>[18:12] Zack: Thank you.</p>
+<p>[18:13] Zack: And then after that is basically how do we come across with some, you know, a lot of authenticity, a lot of transparency. We want to come across as if, you know, we're excited about them and we have to also inspire them to join us.</p>
+<p>[18:34] Zack: Yeah.</p>
+<p>[18:35] Zack: Yeah. So I just don't see how the older traditional process does that.</p>
+<p>[18:41] Zack: Yeah. No, and I agree completely. Like, you know, it's like even Arda caught me on like the normal recruiting things, you know, with the, you know, the template type of backend engineer, you know, that's, that's, you know, that's habits from the past. And I'm like, you know, that's been dropped, you know? And so it's kind of like you said, it's newer, it's new age, you know, things are different. And like you said, we're getting younger people, but we're getting— I mean, these people are highly intelligent, right? You know, they're not going to fall for the insert job title here type of messaging, you know? And I think— and like I said, Arda's idea of putting the OpenAI trophy in there and stuff like that, you know, that's stuff that people know, right? You work in this world, you know these things.</p>
+<p>[19:18] Zack: Yeah, I think that's exactly it. Uh, yeah, I think that's exactly it. We just need to modernize to meet the candidates that we want where they are.</p>
+<p>[19:29] Zack: Yeah, yeah, no, I think that's perfect. You couldn't have said it any better.</p>
+<p>[19:33] Zack: I think they just, you know, a lot of these candidates just hate a lot of the interview process they see out there from other companies. I think they hate the ghosting. I think they hate a lot of the way things will be treated. Oh, let's have 5 rounds of interviews. Like, wait, why do you need 5 fucking rounds of interviews?</p>
+<p>[19:51] Zack: Exactly, it's all like you're not C-suite, right?</p>
+<p>[19:55] Zack: So I think if we can just understand that and appreciate that, and now granted, you know, I have some experience in recruiting, so it helps a lot in being able to filter through faster.</p>
+<p>[20:05] Zack: Yeah.</p>
+<p>[20:07] Zack: But if we can actually leverage that, I do think we can do— again, it's never, it has never been about volume, it's about always finding the the right candidate for us, right? Yeah. And I don't think it's volume. I don't think it's volume. I think we have to do better upfront on the filtering so that we save time for the rest of the team members.</p>
+<p>[20:32] Zack: Yeah, no, without a doubt. Yeah, I think that is what's important. That's actually why I like— I built like my evaluator and I named it Prism, whatever. And I did it because when I was getting into like recruiting more. I was on like 4 or 5 roles at once. The recruiter I was working with, a lot of the calls weren't really transferring. And so I was like, I need like a second brain, right? Because like a human looks at it, right? And then a machine looks at it completely different, right? Just pure keywords. And then so I use that as like a second brain. And I feel like ever since then it really does help a lot. You know, like I can look at a profile and know if it's right. But like when you're doing, you know, I look at, you know, 1,000 profiles a day, probably more sometimes, you know. So definitely having a second pair of eyes is helpful. So I'm really glad that it's working out and everything, and I, you know, and I see success still.</p>
+<p>[21:19] Zack: Okay, okay, good. Yeah, okay, so that's the plan for the JD. We'll have our interview tonight.</p>
+<p>[21:26] Zack: Yep.</p>
+<p>[21:27] Zack: If we can set it off tomorrow, we will set it off, start it off tomorrow. Yep. Okay, we'll spread out the interviews.</p>
+<p>[21:33] Zack: Yep.</p>
+<p>[21:36] Zack: Yeah, I just want us to be very Again, let's not try to boil the ocean because that's not how you find candidates and that's not how you secure candidates. A lot of this is going to be timing. A lot of this is going to be, do you have a good story? So maybe your timing is not good because you don't have a good story.</p>
+<p>[21:55] Zack: Yeah, no, I agree. I agree.</p>
+<p>[21:58] Zack: Yeah, so I think, you know, we now have started on agents, as you heard from the all-hands, and that means that we now can We can talk about a story, right? We can talk about a story. And I think that's really important for recruiting is that people want to feel, hey, I'm joining a place and it has to be going somewhere.</p>
+<p>[22:16] Zack: Yeah.</p>
+<p>[22:17] Zack: Right? That I think helps seal the deal, not just only money. Because if it's only money, all these people would just stay at Twilio.</p>
+<p>[22:25] Zack: Yeah.</p>
+<p>[22:26] Zack: Because Twilio pays more than us.</p>
+<p>[22:29] Zack: I was gonna say, because Twilio is paying, right? I mean, like, and that's what I was thinking. I was like, when you have all these, like you said Matt had all these offers and interviews, whatever, right? And I was just like, at the end of the day, you worked at Twilio, you got paid. Maybe now it's like, yeah, you're still gonna get paid if you go somewhere else, but maybe you're gonna be working on something you're much more interested in, right? Because like you said, I doubt, you know what I mean? Anthropic is probably paying out of the ass, right? But for him, it's like if he's still going through with our interviews and still wants to go startup, then that means something. Like you said, the story, like I said, that's you talking to him on the first touch, you know what I mean? He's talking to the guy that he's going to be working alongside that understands what the hell he's actually doing, you know what I mean? And so I think that right there is that extra non-recruit, non-traditional recruiting, right? You're talking to the VP of engineering, not a technical recruiter, you know, totally different things. You talk the talk and you can see what he's seeing, you know what I mean? So I think that really is like For me, that would be kind of cool, you know what I mean? I would like that if I were an engineer.</p>
+<p>[23:30] Zack: Yeah, I mean, I think it's just basically helping them also feel that we're not just putting them through a factory assembly line. Yeah. That, you know, they're just gonna go— yeah. So I think by making it a little bit more personal and a little more human touch, I think that helps. I think it helps. Without a doubt. In the end, obviously, you know, it's gonna be a challenge because obviously people are gonna make decisions. Some of it is gonna be based on money, uh, and if we're too far off from that, they just won't join. Yeah, it's not possible that they'll join if it's too far off from that, right?</p>
+<p>[24:06] Zack: Yeah, definitely. I mean, I did look through a couple of like the jobs that he— like you had mentioned, and then we did actually pay more than a couple, which I was surprised about.</p>
+<p>[24:14] Zack: Yeah, yeah, yeah.</p>
+<p>[24:14] Zack: So I think we're okay.</p>
+<p>[24:17] Zack: I think we're okay. I think we're good.</p>
+<p>[24:17] Zack: I think we're good with that. Um, like I said, it's just like you said, at the end of the day, it's the name, right? You know, so At the end of the day, like I said, you know, it's— I feel confident, like I said, based off of your assessment of what he said.</p>
+<p>[24:29] Zack: So, you know, right, right. Um, okay, uh, one thing I want us to start planning and preparing for is, um, you know, your Friday meetings. I think as you getting more comfortable with what you've been doing in regards to your tooling and recruiting, sorry, sourcing, and being able to manage, you know, some of these people's schedules and everything. Now I think we have to get ready to transition to a more, the next sort of step, next level, where on the Friday meetings, I think what we want to do is somewhat like what Casey did, but in reality not exactly the same material. But instead, she had a repeatable agenda. Mm-hmm. Right. So I think what we need to do when we go on Fridays for artist meeting is, because he's also busy, yeah, we need to have already an agenda that's repeatable. And what I mean by that is it's the same bullet points roughly every week. And you want to start off by having an agenda, and then, you know, he's so busy that we just want to get to initially all of the key points. So we start off by saying, look, hey, we're gonna have this every single Friday, we're gonna cover these main topics every single Friday. I think the first topic we're gonna lead off with is going to be metrics. So in your mind, because you have 4 days from now to there doing it, but in your mind you should be thinking of like, okay, got it. If we're gonna start off an agenda, what will be my agenda outline look be? Okay, they want to do metrics, so I need to tell them metrics on each of the running campaigns, right? Each of the running campaigns, what does it look like? If you have other metrics you want to share, that's fine too. That's fine too. But you know, right now one of the most basic ones is going to be if you look at Ashby, that sort of funnel metrics. Continue to look at Ashby and look at some of the reports that I think Jessica wrote with some graphs and charts. They show things like, hey, week over week, how much of each of the stages change? Because that's actually a very useful number for ARDA. Yeah, there's stages in the funnel. In the pipeline. So then at each stage, did it change? And if it changed, how much? For example, a number that went from 5 to 6 is a change, right? So you're like, oh, okay, it went from 5 to 6, good. And the change is like, oh, 1 out of 5, okay, so it went up 20%. Okay, so we know now that in this stage that something went up 20%. Okay, good, not bad, right? That type of metrics where it's not just purely the raw number, but it's also the change, in other words, percentage, that helps, I think, Arda understand how things are going on in the funnel. Where is it failing, per se? So start off with that where you start off with the meeting with like, hey, let's go straight to the numbers. This is the first campaign. For the ClickHouse, this is what we saw, blah, blah, blah, and blah, blah, blah. Hank's basically talking to 12. We basically got folks ready to talk to you, are the next, you know what I mean?</p>
+<p>[28:03] Zack: Yeah, totally.</p>
+<p>[28:04] Zack: Or, you know, an agent's backend. If we hired, if we start looking at the agent backend, hey, this is how many people sent out, this is how many people who responded, clicked, whatever. So you've been doing that, but I want to make sure that's consistent. That's consistently doing over and over again. Okay. And of course, you If you look at the graphs that Jessica built, see if there's a graph that she built that can show like, oh yeah, from this week over week, what was the change for that stage? That stage, week over week, what was that change? So I think that's the first thing. You're gonna have an agenda, it's gonna be repeatable on every single Friday. You're going to lead off with metrics and then start talking about anything in regards to, hey, how you have been working on your tooling and your enrichment platform and anything that you see some wins, anything that you need assistance on so that you're unblocked. Though I know that you give update every day in the chat with China, which, you know, already should have blocked you almost every day. But, you know, you want to talk about that so that he has context of like, okay, got it, that's what he's been working on and trying to improve on efficiency and whatever productivity, blah blah blah blah blah. And then finally, I think you can end it with just sort of like, you know, things like what we just talked about. Hey, do we have to update the JD? Or again, the proactive stance is exactly what you've been doing. Hey, you know, I've taken some of your guys' material. I've been working with Claude or whichever, you know, whichever tool, right? You know, whichever tool that you want to use. And, you know, hey, I'm ready to be able to give you a new JD. Or, you know what I mean? Like, slowly but surely, when you look at the full, what I'm trying to say is that when you look at the full spectrum of the role sourcing to recruiting and whatever, you can just always try to find ways to make it more efficient and use your skills in building out tools that can help you. And you should bring it up. You should bring it up. Right? So that he knows. But yeah, I think that's the idea. The idea is that we're just gonna basically work with you where you are obviously running a lot of our sourcing and our campaigns, which is awesome. So start off with the metrics and then start at the end of metrics. You can definitely tell like, hey, we need to be worried about this, guys. Hey, we need to be ahead of this, guys. I mean, we need to be ahead of this because like, ooh, like proactive versus reactive. Right, yeah, exactly. You know, and then of course after that, all the stuff that you've been working on tool-wise, or you use this new enrichment tool or this new enrichment API, that's totally fine. And then, you know, separately, not necessarily in the meeting, but separately, you can start thinking about, hey, is there anything else that you think the tools can really you using the tools can really just basically, you know, power through and make it even more productive and efficient for everyone. For example, this recent one that we should bring up Friday of like, yeah, I've been using the tool to write a JD, or I've been using a tool to figure out how to get feedback on writing a JD or making it better, right? Um, that's another thing you want to bring up so that he's aware of what you are working on, right? If you are helping out with Jessica or with other people, and that's fine. At the end of the meeting, you should also bring it up, right? Hey, I taught this person, this other recruiter, how to— other sourcer— how to use this tool, or hey, I showed this other person how to leverage the tool that I wrote. Happy to have you also bring it up too in the meetings too, so people have context of what you're working on. So, but yeah, you have 3 days from today. Just start thinking about how do you want to structure your meeting on Friday? What's the agenda? Again, making it repeatable. What are the key things that Arda is looking for? So the first obvious one is going to be just, hey, how's the pipeline moving? How's pipeline moving? And then talk about, again, talk about your strategy of like, Hey Arda, you know, I'm looking at a— let's make it up— the job description for the agent engineer. I've been prepping. My prepping is basically learning more about agents and whatever, and then I've been writing or tuning my tools to sort of find some good agents. And then of course you send him 10 or whatever that he reviewed and, you know, said, oh good, go for it. And now I think my tool is ready to go. My tool is ready to go. I think I can basically get a good pipeline ready for whatever next week or whatever. But don't just talk purely about metrics is what I'm trying to— the long way of me saying, and I'll wrap it up right now, the long way of me saying, Don't talk purely about metrics. After you display the metrics, give color and context. Oh, it dropped because of this. Oh, we have a problem at the top of the funnel. Oh, we have a— you know what I mean? Like, yes, the first couple bullet points, you want to start off with the metrics and whatever week over week changes, whatever, it's fine. But then you as yourself should be giving your opinion on, you know, color and context of why that thing dropped or why we got so much hits, you know, what worked, what didn't work, right?</p>
+<p>[34:12] Zack: Okay, you know, I understand, you know, not just drop the metrics and the graphs, like explain, you know, why I think it's like that, or, you know, or tell it why it's like that, you know. Yeah, so explain, you know, explain the graphs, not just like drop them in there. Okay, I understand that.</p>
+<p>[34:29] Zack: Okay, okay, good. Alright, sir, that's it. Thank you again, sir. I appreciate it.</p>
+<p>[34:33] Zack: I appreciate it, Hank, and I'll talk to you soon. Have a good one.</p>
+<p>[34:36] Zack: Take it easy.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1853 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-24-20260324/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 24, 2026 at 02:57 PM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-24-2026-at-0257-pm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 24, 2026 at 02:57 PM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-24-2026-at-0257-pm">Meeting — March 24, 2026 at 02:57 PM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 24, 2026 at 02:57 PM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~26 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Hank</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-hockeystack-11-w-hank">Meeting Analysis: HockeyStack 1:1 w/ Hank</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>The team is restructuring the AI engineer hiring process to move technical screening to the first interview stage while balancing candidate experience concerns and addressing compensation transparency issues that are affecting response rates.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Hank</strong>
+- Update the interview process Notion doc to move Tech Screen 1 to the first interview stage
+- Remove compensation range from outreach sequences/messages (keep in job description for legal compliance)
+- Continue sourcing candidates with 2-7 years of experience (avoiding excessively senior candidates)
+- Prepare 5-minute opening pitch script for engineers conducting first-round technical screens</p>
+<p><strong>Zack</strong>
+- Work with Hank to improve the sourcing message prompts
+- Discuss with Arda and team members about updating Technical Round 2 questions for AI-focused roles
+- Create new technical interview questions focused on AI-specific topics (prompt tuning, memory, context, beyond basic OpenAI/Anthropic API usage)
+- Train junior engineers (Diaz, Roy, Daniel) on conducting 30-minute first-round interviews with proper opening pitch</p>
+<p><strong>Arda</strong>
+- Collaborate on redesigning Technical Round 2 questions to be more AI-focused</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Technical Screen 1 will become the first interview stage (moving away from recruiter-first approach)</li>
+<li>Compensation range will be removed from outreach messages but kept in job descriptions (legal requirement)</li>
+<li>Tech Screen 1 will be 30 minutes: 10 minutes for company intro/candidate questions, 20 minutes for technical assessment</li>
+<li>Different interview processes may be applied based on seniority level (more flexibility for senior candidates)</li>
+<li>Target candidate experience range remains 2-7 years (not pursuing excessively senior engineers)</li>
+<li>Technical Round 2 needs to be redesigned with AI-specific questions beyond basic API usage</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>Concerns about candidate experience when technical screening is the first touchpoint (especially for senior engineers who may reject the process)</li>
+<li>Compensation expectations are higher than anticipated—multiple candidates indicated the posted range ($220K) is low for "good engineers"</li>
+<li>Importance of maintaining positive employer branding even with rejected/disqualified candidates (currently receiving positive feedback)</li>
+<li>Title inflation in the market is driving unrealistic compensation expectations for candidates with limited actual AI/ML experience</li>
+<li>Need to balance speed of hiring with quality of candidate experience and employer brand protection</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update Notion doc to reflect new interview process flow with Tech Screen 1 first (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Remove compensation from outreach sequences while keeping in job descriptions (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Draft and finalize new AI-focused Technical Round 2 questions (Owner: Zack &amp; Arda, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create 5-minute opening pitch script for first-round technical interviewers (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Train junior engineers on conducting 30-minute first interviews with proper structure (Owner: Zack, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Refine sourcing message prompts to improve response quality (Owner: Zack &amp; Hank, Priority: Medium)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<ul>
+<li><strong>April 7th</strong> — Team travel to Hawaii for company gathering (Hank arrives at 11:30 AM Hawaii time)</li>
+<li><strong>Within 2 weeks</strong> — Hawaii team gathering event</li>
+<li><strong>This evening or tomorrow</strong> — Zack to create new Technical Round 2 questions (self-imposed deadline)</li>
+</ul>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>Should different interview processes be formalized for different seniority levels, or handled case-by-case?</li>
+<li>Is the current compensation range competitive enough for the market, or does it need adjustment?</li>
+<li>Can the job description compensation range legally be removed, or must it stay posted?</li>
+<li>How realistic is it for candidates to complete both algorithm and SQL questions in 20 minutes during Tech Screen 1?</li>
+<li>What specific AI topics should be tested in Technical Round 2 beyond API usage?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Zack and Hank discussed restructuring the AI engineer hiring process, deciding to move technical screening to the first interview stage to speed up hiring while maintaining candidate experience through a structured 30-minute format. They addressed concerns about compensation transparency after receiving feedback that their posted range appears low to candidates, deciding to remove it from outreach messages but keep it in job descriptions for legal compliance. The team also identified the need to update Technical Round 2 with more AI-specific questions and will work on improving sourcing messages and training junior engineers to conduct first-round interviews effectively.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[01:43] Hank: The fuck?</p>
+<p>[02:08] Hank: Hey, I'm doing pretty good, doing pretty good.</p>
+<p>[02:23] Hank: I was New York.</p>
+<p>[02:26] Hank: That's insane. Okay, yeah, cuz you kind of got the thing. I don't want— I wasn't anywhere, and I'm not kidding. I mean, like old data set kind of does. I assume they're going to try to get us to get used to them somehow. I'm pretty excited for that. It's going to be fun.</p>
+<p>[02:51] Hank: In 2 weeks, right?</p>
+<p>[02:52] Hank: Yeah, yeah. I think, uh, yeah, I think 2 weeks to the day. Yeah, the 7th. I'm just trying to see when everybody else is getting in because I assume that majority of the the team is like almost like on the same flight because I think I get in at like 11 Hawaii time. Yeah, yeah, yeah.</p>
+<p>[03:16] Hank: So people are on flights on April 7th. I know a couple are there before too.</p>
+<p>[03:24] Hank: Oh really?</p>
+<p>[03:24] Hank: Some are there on Monday, I think.</p>
+<p>[03:27] Hank: Okay.</p>
+<p>[03:29] Hank: Yeah, I think I will be Tuesday.</p>
+<p>[03:32] Hank: You're, you're there on Tuesday as well? Yeah, I get in at, yeah, 11:30 Hawaii time.</p>
+<p>[03:43] Hank: Yeah, I know where Hank is, by the way. I think we can just start. Okay, it might be in the previous meeting. Yeah, of course.</p>
+<p>[03:52] Hank: Yeah, let me go ahead and share my screen. Where did that go? Why do I not— okay, there it goes.</p>
+<p>[04:04] Hank: Share.</p>
+<p>[04:08] Hank: Okay, so I made—</p>
+<p>[04:11] Hank: Hank said he's waiting to be let in.</p>
+<p>[04:14] Hank: Oh, is he? I, I just looked. Let me look right now.</p>
+<p>[04:17] Hank: Sorry, he said he just joined. Oh, okay, okay. There you go. Hey, sorry I'm late. It's a lot. It's a lot. Today's a lot. So I'm going to probably not continue to— Turn off and then just listen. Yeah.</p>
+<p>[04:40] Hank: Yeah.</p>
+<p>[04:44] Hank: Okay.</p>
+<p>[04:45] Hank: So essentially what I did was starting— I did on Friday, but I made the agenda document. Um, I put the things that I felt were pertinent, you know, I kind of followed Casey's lead and kind of took from what she had and then kind of did my own thing. Um, so up top, we're going to have all the interviews so you could see it just at a panel right there. Um, it's everybody that's in the process right now. And then as you can see, we have 2 people that completed. So we're going to just need to see what the next steps are going to be since you mentioned that we might even switch to just a straight-up technical interview on the first round. Um, so that would be something obviously we're going to have to go ahead and, um, discuss.</p>
+<p>[05:28] Hank: Let me see. Um, yeah, the way we'll run it is going to be similar to Notion Doc we had before. Okay, we process Notion Doc. Okay, of course I have to do it. Yeah, okay, so there is a challenge with, or downside with, on the very first touch point is like, hey, here's this, here's this interview, do it. It does discourage some people because they're like, I don't even know anything about you and you want me to take a test, right? Um, I don't know anything about the job, I don't know anything about you, the person, I don't know anything about the team, and the very opening line is, take a test. Now, why it works, let me give you context. So why it works sort of in the past was that the first touch was actually Casey, a recruiter, a human being. So that got it sort of okay, kind of, sort of. Obviously we saw the downside of that. There was a downside of having the very first touch being a recruiter. But I think that allowed the fact that people were like, oh, okay, fine, I talked to a human being, I get the idea what's going on, okay, fine, let me go and take a test per se, you know, kind of thing. That's the only thing we got to think about just a little bit, which is, you know, we want to attract people We want to sell them. We want to really get them excited about us. And the very first thing is like, oh yeah, here's a test. Take a test. That could be a challenge a little bit. That could be a challenge a little bit. Yeah. The test being— by test you don't mean take-home. The test is basically them going on a call with an engineer and doing the challenge together. Yeah. If it was a take-home, I would definitely agree with you. Skills in a spectrum, it's more human to just talk to the human in a call for 15 minutes versus doing tests directly yourself. Agree. Yeah, agree. I get your point as well. Also, especially for seniors, by the way.</p>
+<p>[07:43] Hank: Yeah.</p>
+<p>[07:44] Hank: Especially if you're going to hire a senior person, they're not going to deal with it. They're like, sweet, I'll just— which means— that's why I think I put this on fake customer engineer. And I also asked the junior other person from the other team to do that. One thing is, what is our branding, right? And what will people say about us after they go through the process? I think for now, I think for the most part, the people that I've been able to interview and talk and whatever, I think they'll get— I do believe they'll say good things about our process, even if they didn't get a job offer or they rejected us, right? They rejected us. We got basically, you know, We got that basically the Sean guy who rejected us, Hugh who rejected us, other people also kind of rejected us too. But overall, I don't think they will give us a negative feedback to other people they know who wants to interview with us, which is great, which is great, right? So that's one thing I have to think about too, just make sure that our process is awesome and the branding is great. —team members there.</p>
+<p>[09:17] Hank: Even as I send out disqualification messages, emails, I still get good things back, you know, like people do say, you know, thank you for the process, thanks for the time, you know, it's never anything negative about our process, even when I am disqualifying people.</p>
+<p>[09:31] Hank: That's good feedback, that's good feedback, Zach, awesome. And that's good to hear, by the way, that's also good to hear. Absolutely. So I understand the challenge of like, hey, we gotta go faster, find more people. I I think the way to do that is either we can kind of split it. I mean, yes, the juniors may be able to just go into a 30-minute— I still think it's a 30-minute meeting with tech screen 1, tech screen 2, or tech screen 1 and then talk to someone for junior, I guess. Yeah. And then I think for a senior, I don't think that's gonna work at all. They were like, "Yeah, screw this. I don't need this." Are there seniors though in the pipeline? Are these people senior? Well, for example, Matt was in the pipeline. Oh, that's out of control. I'm saying everything that I've said so far is about the engineer role. No, no, right now, right now the ones I talked to, at least two that I talked to, are not seniors. Yeah, they're not seniors. Going forward, it's like, also, most, I guess, the rest of the pipeline, and there's no, like, seniors?</p>
+<p>[10:54] Hank: No, no, I'm keeping it— I think the most I'm sourcing is, like, 8 years for someone that's solid. Like, yeah, that's still pushing it, but I'm still keeping it between, like, I think 2 to 7, like 3 to 7 in that range. Nobody excessively senior at all.</p>
+<p>[11:08] Hank: Yeah, yeah, yeah. So yeah, I do think that we have the flexibility if it's pretty senior to just kind of do the warm intro with a Tech Screen 1, which is why I do think it's 30 minutes, it's not 20 minutes. I think they want to know, they do want to know, like they ask a lot of questions. Even juniors, right? Now I agree with you, do I want to spend time, all my time talking to juniors? No, I definitely don't want to spend all my time talking to juniors, that's for sure. So yeah, I'm open to it, I'm open to it. I just want to make sure that we have a great branding with the seniors because those guys obviously have a network, right? Seniors all have networks. Yeah, I just want to show you a quick value. Then the final thing is like it can be per role where we can change the process based on different roles. And like for this role, we're also okay with maybe having the technical one 30 minutes, but we can prep the person, right? Let's smile, be authentic, like etc., all that stuff, right? Yeah, yeah, I think, I think absolutely. I think The Diazes of the world, the Roys of the world, the Daniels of the world, I think you can definitely give them like, hey, here's the 5-minute opening speech, right? The 5-minute opening pitch you got to do first, right? About the company, why you joined, what's going on, like the 5-minute opening pitch. And then yes, if they start, you know, do you have any questions? Can I answer any of your questions? And then start the— start the interview 10 minutes in, which gives it 20 minutes for the tech screen. I think that'd be good. I think that would be good. Yes. Interesting. I hadn't thought of it going for 10 minutes, but I hadn't tried it. Yeah, but we can see. Yeah, yeah. Because some of them will ask questions, right? Some of these even juniors will ask questions of like, oh, there's some people that ask a lot of questions and these folks might not shut them up, and then it's like 15 minutes and you are still talking. That's the only scenario we should avoid, but otherwise, yeah, we will have to train them sort of like, hey, you gotta cut it off at 10 minutes. So I'm talking about junior speakers.</p>
+<p>[13:37] Hank: Be like getting to know you or getting to know someone?</p>
+<p>[13:40] Hank: How do you work that? Okay.</p>
+<p>[13:45] Hank: Technical, is it this, that, and you know, so it's more like module.</p>
+<p>[13:50] Hank: Okay, thank you. And then, um, we're gonna have this done, and then, um, Yeah, no, you can use whichever language you're comfortable with. You'll have access to Google and ask syntax questions if you're not familiar with the language. Gotcha. Okay, just want to make sure. Um, actually, later, later I should talk with Hank and maybe some of the team members about how— whether you want to change anything in this technical round or not. Maybe you want to keep it the same. Maybe there's new opinions. Because it's been a while since we last gave this technical as well. So I don't want it to be stale. We are doing it because this is what we used to do. Yeah. As we actually talked about it. Well, right now we had a— the strategy, by the way, is just the fact that tech screen 1 was algorithms and SQL. So we made it that both algorithms and SQL. And then tech screen 2 was a design question, unless you were the lead and that went to a Delmer sort of, yeah, going to a Delmer. So, yeah. Currently, the way it is written is there is a prefix, some algorithm question, and then says to do the DSSQL question here. So, there's something in the entire data notion. Oh, okay. Yeah. We can ask it to, yeah, we can ask it to make the SQL questions. And we have to think about whether it's actually realistic for them to finish both in 20 minutes or not, because it might also kind of be too, too short for two questions. But anyway, yeah, that's one thing. The second is for technical round 2. I don't think we need to really use Dalmar here. I think no one should do technical round 2. Okay, AI-focused anyway. Yep. Okay, so candidates technical round too. Sure, we can use both, but just to start with, I think I would— I agree with you, uh, uh, Arda, I do agree with you that in tech screen 2, I do agree with you that we need to rethink the question for an AI— for tech screen 2, tech screen 2, we do need to rethink the question for an AI role. That much, that much question is not AI. That question was about OpenAI APIs. Okay, which is good, which is good. Less programming. But I'm just asking you, do we need to discuss— do we need to test for beyond using OpenAI or Anthropic's endpoints? Do we need to think about sort of like questions on, you know, things you guys ran into, uh, uh, prompt tuning, um, uh, memory, context, Um, you know, you know, just to test, just to test how much does this person know. Yeah, yeah, we can see what that is separately. We can see what that is separately. Yeah, okay. I'm gonna write something for us to figure this out, probably either this evening or tomorrow, just so we have— we are prepared for the amount of candidates that will come through. No main complaints that this stuff is also there, but we'll figure something out. But I'm gonna just take it out for me and Hank. Okay, perfect. What's next? We spent a lot of time here. Let's move fast.</p>
+<p>[17:28] Hank: Oh yeah, of course. So, um, continuing on with that, um, so the sourcing and The metrics, um, let me go ahead and share actually. Sorry, I stopped sharing to take some notes. Okay, sorry about that. So the metrics, um, I also did want to point out for these messages, um, the— I know it's a recurring theme, but obviously the comp we are not putting in the sequences as I think you've put on the doc originally, like you're not sure about it. So I wanted to ask you again if you wanted to include it.</p>
+<p>[18:07] Hank: One input I get about that is I think we sent, uh, one message to one Turkish guy working at Delphi, the company. There's the company called Delphi, I guess, not our feature. Um, he said the range was low for a good A and And I was surprised by that. His official mortgage thing starts in 2024, and he's implying the range we had was low.</p>
+<p>[18:41] Hank: I actually did want to bring it up. I had a candidate from Quora. He asked the same things. Let me go ahead and actually pull up his message. I wanted to get you guys' post to to see what to really say because it seemed to be solid. He's like iOS backing though, so I'm not sure how you feel about the profile. I didn't reply back yet, but this was his wording.</p>
+<p>[19:18] Hank: And I'll pull up—</p>
+<p>[19:29] Hank: I think that's also why ClickHouse response rate was through the roof. I mean, it was very good this time. It was in your face. And response rate was great. There's obviously the downside that people call just because they see that. At the same time, they're also suspicious. And so I think that's also another—</p>
+<p>[19:43] Hank: I think for this type of private material, you said?</p>
+<p>[19:45] Hank: Uh, yes, this is his BP packet. It looks like— what he did for these— it's not even one minute.</p>
+<p>[19:51] Hank: What's the part he would intern, right? Um, yes, 2022. So I agree, 2022. 2022 is when he actually started his career. So basically he has 4 years of experience, basically, right? So 4 years of experience. Okay, at 4 years experience, if he was truly an AI engineer, and we said, oh, you did 4 years of AI engineering, okay, yes, I can see how in the Bay Area that will be a higher salary, maybe higher than $220K. I can see that. And then of course then total comp will be the bigger, right, total comp will be the bigger sort of approach to use. Yeah, he's saying here that he's, he's saying here he's done a bunch of things, right? He's done iOS, He's done iOS again, and now he's doing ML team, but that's only for 1 year and a half for ML. I wouldn't pay this guy a quarter million dollars just for 1.5 years of ML, right? We just need to be realistic, right? He's only had 1.5 years of professional ML. This isn't the guy I was talking about, by the way, the person for 3 years. Yeah, I sent his profile. Oh cool.</p>
+<p>[21:01] Hank: Always done Okay, let me see.</p>
+<p>[21:03] Hank: But, and yeah, I'm not saying like, uh, I'm not disagreeing what Hank said, but I also got this input the other day.</p>
+<p>[21:12] Hank: Oh, there it goes. Let me open it up in here.</p>
+<p>[21:23] Hank: So this case, 2024.</p>
+<p>[21:27] Hank: Oh yeah, internship, internship, and in 2024 went to Salesforce and then that's Delphi.</p>
+<p>[21:35] Hank: So 1.5 years of a software engineer for AI agents, okay, 1.5 years. Then did a co-founding stint for 4 months that failed, doesn't really count. Then don't count the research. Then he went Delphi right away, uh, in only 7 months. Okay, you're telling me that this guy has at most 2 and a half, 2 and a half, 2 and a half years, 2 years, 8 months. Yeah. And you're telling me that this guy is asking for a quarter million. Um, he said the current range we have is low for good engineers. Does he consider himself good? That was the implication that I— I see, I see. Um, okay, well, you know, sure, you went and co-founded stuff, but that doesn't count really because you weren't successful. And then two, is Delphi itself a successful, well-known company? I mean, sure, if he's talking about like, you know, Sierra or he's going to go work for Anthropic, sure, you'll get paid for sure. But so far he hasn't worked for either of them, uh, or OpenAI. No, no, we can't shift off the profile as much as you want. This time what I'm saying is like Maybe it's better for the store to not mention the quantity in the first message and get that sense from the initial calls we are doing, just to see how people think about it. Do you want to give them a range or just like— hey, here's like— there's a range, I think, in the JavaScript system. Yes, whatever. But we can remove that, right?</p>
+<p>[23:33] Hank: I don't know if we can, if it's Posted on the website. I— that's an HR question, but I don't think we're able to remove it from a job description posted, at least not on LinkedIn. I'm pretty sure we can't. I don't think, not certain though. Is that because there's an HR legal requirement? Yeah, that was like, uh, 2 years ago where they had— we had to put the salary range and it has to be obviously a realistic salary range within job descriptions. We don't have to put it in sequences 100%, but I'm like 95% sure that we do. If it's posted on our website, it has to be there in a range.</p>
+<p>[24:15] Hank: Fuck. Anyway, I think let's keep going. Keep it in job description, remove from the messaging, and then the conversations that we are having should give us some idea of like how people think about the range. Okay. I'm also— I also agree it's like unrealistic to pay a lot of money to these folks. Like there's— it's just a title inflation. Like the title doesn't really mean that much.</p>
+<p>[24:49] Hank: That's a fair point. I do think the title is adding comp, right? I think that's like that That's a good point. Yeah, it's just the fine-tuning of everything. I put the rules that I've been doing it. I'm not in your mind. Some of them come out great, and they just need to pop off after a time. But these are really nice. And today they're just not great. I spent a long time trying to get them to work.</p>
+<p>[25:21] Hank: Until you get assigned to any of them, like at least 17, 18, or 30. Okay, I appreciate the help.</p>
+<p>[25:33] Hank: Other than that, I'm going to have to get out of here because it's more difficult things I have to do through cloud.</p>
+<p>[25:38] Hank: So definitely that date though. I want to do it, but I know— Hank, can I pass that to you? Or update— sorry, can, can I pass the task of updating the interview process Notion doc so we move the technical interview to first? Yeah, yeah, yeah, yeah, I'll do that. I'll move it. I'll move the tech screen one to first. Yeah. Second one is like you're gonna remove the comp from the messages going forward.</p>
+<p>[26:16] Hank: And the, and the job description, you want me to take that out as well?</p>
+<p>[26:18] Hank: Uh, like the link to— so I think I, I also heard about the legal thing you mentioned where like we do need to have the range in the job description, so let's keep it. Um, third one is I'm gonna work with you to figure out the prompt better.</p>
+<p>[26:34] Hank: Thank you, I appreciate that.</p>
+<p>[26:35] Hank: We'll go from there.</p>
+<p>[26:36] Hank: Perfect, thank you so much, I appreciate it.</p>
+<p>[26:39] Hank: Okay, I'll take a notion now. All right, let me know if you guys need anything.</p>
+<p>[26:44] Hank: Have a good one.</p>
+<p>[26:45] Hank: Thanks, guys.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

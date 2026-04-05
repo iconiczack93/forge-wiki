@@ -1,0 +1,1862 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-09-20260309/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 09, 2026 at 04:40 PM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-09-2026-at-0440-pm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 09, 2026 at 04:40 PM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-09-2026-at-0440-pm">Meeting — March 09, 2026 at 04:40 PM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 09, 2026 at 04:40 PM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~29 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Arda, Hank</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis">Meeting Analysis</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>Zack and Hank are revising the job description for a new Backend Engineer (LLM/AI) role focused on building agentic AI systems, updating the blurb and responsibilities to reflect the mission of creating a single portal for GTM teams powered by AI agents.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Hank</strong>
+- Update the opening blurb on all job postings to match Arda's latest version
+- Create a fresh project/pipeline in Ashby for the Backend Engineer (LLM/AI) role
+- Replace the mission statement with the new version focused on agentic AI and GTM portal
+- Work with Claude/ChatGPT to flesh out the complete job description using Zack's notes
+- Find out which agent framework is being used and include it in the JD
+- Send the completed draft to the tactical channel for review
+- Update the "What You'll Do" section with the new responsibilities outlined</p>
+<p><strong>Zack</strong>
+- Provide the specific agent framework being used (to be sent to Hank later)</p>
+<p><strong>Unassigned</strong>
+- Review and finalize the job description once Hank completes the draft</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>Will create a brand new project/pipeline in Ashby rather than repurposing the old backend engineer role</li>
+<li>The role will be called "Backend Engineer (LLM/AI)" or similar (not finalized between LLM, AI, or agents)</li>
+<li>Will use Arda's latest company blurb: "HockeyStack is building the AI system that runs B2B sales and marketing"</li>
+<li>Python experience is acceptable even though the role uses Node.js/JavaScript/TypeScript (experienced AI engineers can transition)</li>
+<li>The draft JD will be posted in the tactical channel rather than sent directly to Zack</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>Discovered that job postings on the website had old blurbs instead of Arda's updated version, despite Hank believing they were updated</li>
+<li>Discussed the mission statement for the role: building a single portal where GTM teams can grow their business using agentic AI</li>
+<li>Outlined key technical responsibilities including handling memory context, orchestrating multiple agents, and optimizing multi-model frameworks</li>
+<li>Clarified that candidates with Python experience are acceptable since they can learn Node.js/JavaScript</li>
+<li>Reviewed the "What You'll Do" section and updated it to focus on agent development, backend services, and cross-functional collaboration</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update all job posting blurbs to Arda's latest version (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create new Ashby project for Backend Engineer (LLM/AI) role (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Draft complete job description using Claude/ChatGPT with Zack's input (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Identify and include the specific agent framework being used (Owner: Zack/Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Post completed JD draft to tactical channel for team review (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Review and provide feedback on JD draft (Owner: Zack, Priority: Medium)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<p>No specific deadlines mentioned.</p>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<ul>
+<li>What is the exact title for the role? (LLM Engineer, AI Engineer, or Agent Engineer?)</li>
+<li>What specific agent framework is HockeyStack currently using?</li>
+<li>Why did the Ashby job postings revert to old blurbs despite being updated previously?</li>
+<li>Does the JD need Arda's review before being finalized?</li>
+</ul>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Zack and Hank worked on revising the job description for a new Backend Engineer role focused on agentic AI and LLM development. They discovered that previous updates to job postings hadn't saved properly and decided to create a fresh Ashby project for this role. Zack provided key direction on the mission statement (building a single portal for GTM teams using AI agents) and outlined technical responsibilities including agent orchestration, memory context handling, and multi-model optimization. Hank will use Claude/ChatGPT to complete the draft and post it to the tactical channel for review.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[00:00] Arda: new material or content for either the JDs or for the email sequences?</p>
+<p>[00:09] Arda: Neither that I'm aware of. He only added the comments on Notion for the blurb and then like updated his thoughts on sourcing. But yeah, nothing related to the JD at this moment or any sequences because the sequence haven't gotten made because there was the JD hasn't been done yet or whatnot, or any information.</p>
+<p>[00:31] Arda: So, okay, um, let's see here. Okay, that's fine. Uh, let's go to what the Current JD looks like— all right, so, um, current JD that we have posted, let's see if they're good or not. This is good because this is the blurb that he had. I believe this is his blurb at the beginning.</p>
+<p>[01:27] Arda: Yeah, let's see, let's see. I'm opening it up. Current role, outreach messages, blurb. We, uh, that one No, but yeah, his is HockeyStack is building the AI system that runs B2B sales and marketing. So yeah, I have to update that one. I guess I didn't touch the roles on the website that we weren't actively on because I assumed that we were going to be changing this one. So I didn't know, like, I thought the role—</p>
+<p>[02:03] Hank: that's it.</p>
+<p>[02:03] Arda: So let's, let's synchronize. So now that we're going to pursue a backend engineer I'm not sure. Call AI.</p>
+<p>[02:14] Arda: Yeah, that's what the next question was, what we were going to call it, like LLM, AI, or agents.</p>
+<p>[02:19] Arda: Um, yeah, I think might call it LLM, but nonetheless, um, okay, so you're saying that this opening blurb is not the same as the one that he has recently written? Correct.</p>
+<p>[02:45] Arda: Yeah, so this one that I'm putting inside our Slack channel between you and I is the one that he created. Love it, love it.</p>
+<p>[03:04] Arda: Okay, so we definitely want to take that and put that in here to replace this. So I like that. We'll replace this one. That's fine. We'll replace this one. Oh, actually, uh, shit. Let's take a look at this. Let me take a look at, uh, Okay, so this is basically— okay, so even this one seems to be not the same. This could also—</p>
+<p>[03:48] Arda: yeah, let me look on, uh, on Ashby because we updated that. I'm looking at Ashby right now. So that was for the ClickHouse. And then job postings. Yeah, okay, I get— that's really weird. I'm looking at it right now and that is definitely the old one. Yeah, I'm looking at it on my end right now. Huh.</p>
+<p>[04:19] Arda: Is there a way in Ashby to tell when was the last time the JD was updated?</p>
+<p>[04:33] Arda: Yeah, so this one, so that was created on, for the ClickHouse engineer, that was created on the 3rd and published on the 5th because I I remember switching it out. That's what's so odd.</p>
+<p>[04:51] Arda: Wait, so hang on. So you're saying that— and let's make sure I understand. Yeah, you're saying that— or maybe, you know what, okay, we should stop guessing in this age of Zoom. Just share what you're seeing. I can see what— yeah, yeah, of course.</p>
+<p>[05:07] Arda: Go ahead and pull that Zoom, share, advanced, this. Okay, so let me go ahead and pull that up. So on this is where it's at. Let me move this. It's showing on there, so it was published 4 days ago, and then when I click in, it is the old, which is very odd because I remember switching this with, with Jessica. So odd. Interesting. Yeah, but the good thing is, like I said, now I can just go ahead and copy and paste it because it is like instant. And I remember looking at it, which I'm, I'm truly just like confused. Let me get careers. Yeah, so I guess I'll have to double-check that. Are all of them like that? Or maybe we— it's odd. They're all the old one. Yeah. Okay. Yeah, I'll have to— let me add that in to update. Okay, so if I go here and then So this one is fully— oh, cuz he had that written for that. Okay, in our San Francisco office. So this one would be— there we go. And that's his blurb on that one, removed and replaced. Maybe it just didn't. So does that automatically go through? Is my question. Staff mentioned your ClickFunnels. Okay, so it actually is already live on the website.</p>
+<p>[07:39] Hank: Oh, that's—</p>
+<p>[07:39] Arda: yeah, that's instant. It's instant. So how much— that's really weird, but that one is instant on the website. So then I could go ahead and go 2. So this is the one that I was— that this is the project I just made just so I had something separate from the original backend engineer and to place the candidates into that I've sourced so far. So this would actually be the one that we would use. I mean, like I said, I don't know if we were gonna repurpose the backend engineer we already had or start fresh with new data. I assume that you would skew towards the fresh data. Like, if—</p>
+<p>[08:21] Arda: did you—</p>
+<p>[08:22] Arda: okay, so we have like the original backend, like when I started the backend engineer AI role. That's like the— that's the original one. I didn't know if you wanted to start with like, since I've been sourcing on it, the candidates. Yeah, like a new project and job inside of Ashby. Yes, so that way we're not, you know, we have start from the beginning and we're not using the old project essentially. I would agree.</p>
+<p>[08:46] Arda: We're gonna do something, we're gonna do brand new. Yeah, we do a brand new pipeline or project or— yep.</p>
+<p>[08:51] Arda: And I started that right here, so that's already been done, right?</p>
+<p>[08:55] Arda: So then now let's go to the JD and let's figure out the JD, what should be the correct job description. Yep. So we want to copy from what we did on the original AI, right? Okay, copy that as template. We want to replace the opening header using what, uh, our row— okay, yeah, take—</p>
+<p>[09:19] Arda: let me write that down— back and end and our header. Okay, right.</p>
+<p>[09:26] Arda: And then we want to— now I want to look at, uh, Okay, sorry. Now, um, Right, so now what we want to do is I'm looking at the, um, so this is the original backend engineer. What's the latest, what's the latest list that's published? What date is that?</p>
+<p>[10:30] Arda: Uh, so the latest that was published was, um, February 23rd, and I think it's just refreshed. I'm not sure if it's really—</p>
+<p>[10:37] Arda: wait, wait, stop, stop, stop. Go back. Yeah, what's that middle one? That's a draft. Okay, so this is a draft. This was done on January 6th, it looks like, right?</p>
+<p>[10:48] Arda: Um, let me— January— yeah, 5th.</p>
+<p>[10:52] Arda: Yep. Wait, so January 5th. Okay, so this one, um, we can start off with. That's fine. So we can replace the head— the blurb.</p>
+<p>[10:59] Arda: Yep, doing that right now.</p>
+<p>[11:01] Arda: Yeah, replace the blurb. Cool. Now the mission as a backend engineer on the reporting— nope, for sure it's not the backend engineer reporting team. So, um, I would just say, uh, we don't want to say agency team either. We don't want to see that too. Uh, you can just say as backend engineer. Okay. Okay, um, that's it on the GTM. Uh, no, that's not, uh, yeah. Um, I think what we want to do is instead we want to write something more along the lines of Your mission is to— I mean, I'll make it up. I mean, obviously we'll have to still edit it and review it. But something along the lines of, your mission is to build—</p>
+<p>[12:09] Arda: Let me see. Let me just put it here since we're not making it live or anything. We'll see how it looks.</p>
+<p>[12:15] Arda: Well, again, it's gonna be a while, but yeah, your mission is to build— is to something like— I'm making a little exaggerated here, but your mission is to not— let's say, instead of say build, let's say is to harness the power of agentic AI to, uh, your mission is to harness the power of the AI in— you know what, instead of to, we say in building, uh, a In building— oh, you know what? In building the single— I guess it's gonna be like a hub, right? The single hub or something like that. In building the single— not capital— in building a single You know what, it's our Hub Group portal. We're building a single portal where sales— don't do sales, don't do sales— where GTM team members GNT members go to grow the business.</p>
+<p>[14:16] Arda: Yeah, you were, you were flowing there. I like that. I actually really like the portal.</p>
+<p>[14:24] Arda: So we want to start with something like, you know, a little bit high-level but nonetheless aspirational, right? Where— oh, you want to grow their business. You want to grow their business. And then You'll push the boundaries of LLMs to automate the workflows of Sales and marketing workflows to automate the workflows of sales and marketing teams. Yeah, teams. Okay, and then something like Okay, let's move on here.</p>
+<p>[15:45] Arda: Oops.</p>
+<p>[15:45] Hank: Okay, um. Uh, sorry.</p>
+<p>[16:12] Arda: No worries.</p>
+<p>[16:13] Arda: Sorry.</p>
+<p>[16:31] Arda: No problem.</p>
+<p>[16:32] Arda: I mean, if you want, we could, uh, meet early in the morning tomorrow if you want.</p>
+<p>[16:36] Arda: I don't have time. I just Yeah, I don't have time. I just— I don't have time ever.</p>
+<p>[16:41] Arda: Yeah, I, I get that.</p>
+<p>[16:43] Arda: I'm just trying to help you right now before I, I won't be able to. Um, understood.</p>
+<p>[16:46] Arda: Yeah, but let's see.</p>
+<p>[17:04] Hank: Um.</p>
+<p>[17:55] Arda: All right, so, um, I think, I think what I need to do is try to help you so that you can then work with chat or or call to maybe flush out the rest. So each person is— you take notes. This person is working on Agentic AI, trying to figure out how to make Agentic AI automate workflows for sales and marketing teams. They will have to deal with, um, uh, Um, Uh, so, just AI workflows, uh, and then, uh, um, so again, you're gonna put all this through to pause, see if you write a job description, or at least whatever. Yeah. This person will have to deal with handling memory context. This person will have to deal with orchestrating multiple agents simultaneously. This person will have to deal with optimizing a multi-model sort of, I guess, multi-model, because, you know, different models, a multi-model framework or whatever.</p>
+<p>[20:48] Arda: Okay, and I actually understand what you're saying too. That's good. Okay, okay. I think that should be good. And then I said, so the, the languages are still going to be Node they need to know for this? Is that, is that different? Or is it going to be—</p>
+<p>[21:06] Arda: it still be Node. It will still be using, uh, Node. Um, I forgot what framework they are, what agent framework they are. Um, um, what agent —what you're using. I can find out and give it to you later. Okay. Or you can— yeah. And then what else?</p>
+<p>[21:29] Arda: I know on the notes that Arda wrote, he said that they'll have to like have some idea of like JavaScript in a certain kind of way, he said. So I'm going to note that. Because I see a lot of people with Python. I mean, a lot of them use Python. Is that acceptable? Hang on.</p>
+<p>[21:50] Arda: So the answer is yes, if they use Python, you know, have extensive experience with Python, I don't think it'd be too hard for them to use, come into HockeyStack and switch over and use what we're using. Understood, okay. So I don't think it'd be that hard. So whether it's Python or Node.js or JavaScript, TypeScript, I think, I think you'll be fine. Yeah.</p>
+<p>[22:40] Arda: So if you're an accomplished, you know, AI engineer, I would assume you could pick that up, you know, decently. So that makes sense there with like the non-understanding of Node or whatnot. Yeah.</p>
+<p>[22:52] Arda: Okay.</p>
+<p>[22:52] Arda: Yeah.</p>
+<p>[22:53] Arda: Okay.</p>
+<p>[22:53] Arda: No, I think this is actually good to start it. I mean, I don't think there's too many other things that I would need. Um, I'll go ahead and obviously work through it with Claude and everything, and then I'll send over the, um, what I, what I made, and then you can obviously make some revisions. And whatnot. Did you want me to send it to you first or put it into the tactical channel?</p>
+<p>[23:10] Arda: Put it in the tactical channel, it's fine, no worries. The next prompt is gonna be the what do you do. Okay, so what do you do? Own and continuously improve the backend system that power all all, uh, agentic AI features across the platform. Is there reporting to agentic AI features across the platform?</p>
+<p>[23:45] Arda: Okay, let me just put that on here so I have it. Authentic AI features across the platform.</p>
+<p>[23:52] Arda: Okay, designed by everyone who wants to see queries Maybe not as—</p>
+<p>[23:59] Arda: to remove that.</p>
+<p>[24:01] Arda: Um, yeah, it may just not as critical. You probably delete that. Instead, you'll have to design, write, and maintain agents that, um, that are responsible for different tasks of a, uh, GTM teams workflows. You mean like the different tasks of GTM teams? Teams, in this case, you might have to do a partial yes. Oh, yes, perfect. Workflows, yeah. And you see something like comma, instead of workflows comma, leveraging the latest agent frameworks. Okay.</p>
+<p>[25:05] Arda: Jesus, now.</p>
+<p>[25:10] Arda: Bless you.</p>
+<p>[25:12] Arda: Thanks.</p>
+<p>[25:16] Hank: Oh man, um, what the fuck now?</p>
+<p>[25:29] Arda: Jesus, can we just have this in one fucking place?</p>
+<p>[25:41] Arda: One of those days, huh?</p>
+<p>[25:44] Arda: It's just everyone uses Slack as if it's like— well, I don't want to go down the path. I just don't have time anymore. I don't have time and energy. Okay, so right, they're gonna maintain backend services. Yeah, that's fine. Wait, transform raw data into actual output? No. I would say that yes, develop and maintain backend services in Node.js and Express to that powers, yeah, that powers these agents.</p>
+<p>[26:47] Arda: Let me see.</p>
+<p>[26:53] Arda: Improve query, no, we don't need to improve query, so that's a delete. No, not deliver accurate real-time dashboard insight. You can say that yes, you want to work cross-functionally, but we're going to deliver powerful agents that can help GTM teams scale their growth. Again, I'm just making it up. We don't have to see what Claude spits out and what, what does Ardis says. Implement robust caching strategies, education, and right management. No, um, we want to say— you can say something like implements, uh, innovative, um, innovative, uh, innovative strategies to extend an agent's memory context. Yeah. Yeah, again, I don't have— yeah, unfortunately I can't do more right now. I'm just—</p>
+<p>[28:40] Arda: No, no, no, it's totally cool. I think you gave me enough, and so I think I could go from here and then figure it out.</p>
+<p>[28:46] Arda: You know, well, I want— I'll just say take this and then basically ask Claude, like, or ChatGPT, like, um, compared to other job descriptions, right? Uh, how would you, um, make this more, um, uh, uh, either, uh, exciting or either, um, enticing, I guess, enticing.</p>
+<p>[29:17] Arda: Oh yeah, okay, no, I totally got that and I think this is really good to help and to really launch it off and I think you gave me more than I was expecting. So I think this is good to finish it and whatnot.</p>
+<p>[29:31] Arda: Okay, great, great, awesome. All right, thanks, man. I appreciate it.</p>
+<p>[29:35] Arda: Of course, Hank. I hope you have a good day and if you need anything, feel free to message me. Will do.</p>
+<p>[29:39] Arda: All right, take it easy, Hank.</p>
+<p>[29:41] Arda: Talk to you soon. All right, bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

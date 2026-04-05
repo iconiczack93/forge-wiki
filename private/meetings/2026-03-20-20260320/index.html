@@ -1,0 +1,1835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/private/meetings/2026-03-20-20260320/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting — March 20, 2026 at 09:42 AM - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-march-20-2026-at-0942-am" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting — March 20, 2026 at 09:42 AM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/valorant-and-gaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../topics/finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sourcing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-enricher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Enricher
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/pipeline-evaluator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pipeline Evaluator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/linkedin-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LinkedIn Ops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/scheduler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scheduler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/valorant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/vlr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/web-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../modules/news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    News
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-march-20-2026-at-0942-am">Meeting — March 20, 2026 at 09:42 AM</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td>March 20, 2026 at 09:42 AM</td>
+</tr>
+<tr>
+<td><strong>Duration</strong></td>
+<td>~16 minutes</td>
+</tr>
+<tr>
+<td><strong>Speakers</strong></td>
+<td>Arda, Hank</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="analysis">Analysis</h2>
+<h1 id="meeting-analysis-eng-recruiting-sync-w-arda">Meeting Analysis: Eng Recruiting Sync w/ Arda</h1>
+<h2 id="tldr">🔑 TL;DR</h2>
+<p>Hank presented a new recruiting dashboard and meeting agenda template that will be used for repeatable Tuesday/Friday syncs, with Zack emphasizing the importance of time management, transparency about blockers, and consistent meeting structure going forward.</p>
+<h2 id="action-items">📋 Action Items</h2>
+<p><strong>Hank</strong>
+- Update dashboard to include AI engineer role data that's currently missing
+- Create separate dashboard panels for staff engineer roles vs. backend AI engineer roles (different interview stages)
+- Remove redundant "backend engineering review stage" panel and replace with the separate role panels
+- Add a "Blockers" section to the meeting agenda template
+- Continue fine-tuning AI personalization for outreach messages (ongoing monitoring required)
+- Follow the agenda template consistently for all Tuesday/Friday meetings
+- Call out notable metrics or issues at the start of each meeting when presenting dashboard
+- Communicate transparently about time management trade-offs between sourcing, AI tool building, and campaign setup</p>
+<p><strong>Zack</strong>
+- Conduct ClickHouse interviews (upcoming)</p>
+<p><strong>Unassigned</strong>
+- None</p>
+<h2 id="decisions-made">✅ Decisions Made</h2>
+<ul>
+<li>The dashboard structure is approved with minor modifications needed (separate panels for different roles)</li>
+<li>Meeting agenda template will be used as a repeatable format for all Tuesday/Friday syncs</li>
+<li>Dashboard review will start every meeting, with Hank highlighting any standout metrics immediately</li>
+<li>Hank will copy and update the agenda template for each subsequent meeting rather than creating from scratch</li>
+<li>Staff engineer roles will have 3 interview rounds (Zack, Arda, then Zack+Arda together)</li>
+<li>Backend AI engineer roles will have 4 rounds (Zack, screen 1, screen 2, then Arda)</li>
+</ul>
+<h2 id="talking-points">💬 Talking Points</h2>
+<ul>
+<li>Hank created a new recruiting dashboard with 4 panels tracking candidate pipeline metrics, interview stages, and sequence engagement</li>
+<li>Discussion of interview stage differences between staff engineer and backend AI engineer roles requiring separate tracking</li>
+<li>Importance of time management and transparency when juggling multiple responsibilities (sourcing, AI tool development, campaign management)</li>
+<li>AI tools require ongoing monitoring and fine-tuning; they're not "set and forget" solutions</li>
+<li>Establishing repeatable meeting structure to manage expectations and improve efficiency</li>
+</ul>
+<h2 id="weekly-action-list">📌 Weekly Action List</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update dashboard to include AI engineer role data (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create separate dashboard panels for staff vs. backend AI roles (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add "Blockers" section to meeting agenda template (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Continue monitoring and fine-tuning AI personalization for outreach (Owner: Hank, Priority: High)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Remove redundant dashboard panel and replace appropriately (Owner: Hank, Priority: Medium)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Prepare for ClickHouse interviews (Owner: Zack, Priority: High)</li>
+</ul>
+<h2 id="deadlines-mentioned">⏰ Deadlines Mentioned</h2>
+<p>No specific deadlines mentioned.</p>
+<h2 id="unresolved-questions">❓ Unresolved Questions</h2>
+<p>All topics were resolved.</p>
+<h2 id="quick-summary">📝 Quick Summary</h2>
+<p>Hank presented a new recruiting dashboard and meeting agenda template for the Tuesday/Friday engineering recruiting syncs. Zack provided feedback on dashboard improvements (separating staff and backend AI engineer tracking, adding a blockers section) and emphasized the importance of repeatable processes, time management transparency, and ongoing AI tool monitoring. The team aligned on interview stage structures for different roles and established expectations for consistent meeting formats going forward.</p>
+<hr />
+<h2 id="transcript">Transcript</h2>
+<p>[01:57] Arda: Hey, Zach, how are you, sir?</p>
+<p>[01:58] Arda: Hey, good morning, Hank. How are you?</p>
+<p>[02:01] Arda: It's been rough. Okay. Anyway, what I want to do today in a very few— short time is I want to make sure that you— what would have been your agenda today?</p>
+<p>[02:18] Arda: Yeah, yeah, I actually did it. I fixed it up. Yeah, I'll show you right now.</p>
+<p>[02:24] Arda: Okay, let's do it. Yep, yep.</p>
+<p>[02:25] Arda: So I went ahead and fixed it up.</p>
+<p>[02:29] Arda: All right, let me see, sir. Okay, so let me see here. Nice dashboard here.</p>
+<p>[02:50] Hank: Okay. Okay.</p>
+<p>[03:17] Arda: Okay, uh, what is the last section of sequences?</p>
+<p>[03:22] Arda: Yeah, that's just the sequences, just in case that we wanted to look at it as we were going through, you know, to compare the A and B and whatnot. I just listed it there just in case it was, you know, Arda wanted to see it or whatever at a glance.</p>
+<p>[03:34] Arda: Got it. At the very, very top, you started off with engineering dashboard. Let's take a look at it. Okay, now remember, it has to be repeatable, right? Every single time we meet. So what is the important things you want him to take away when he sees these 4 panels?</p>
+<p>[04:02] Arda: Okay. So these would be like, essentially this one right here is showing the amount of days that people are waiting inside interview stages to see if we have any sort of bottlenecks, you know, if things are moving through, you know, through the process. This right here, I'm not sure why it didn't update because it doesn't have, it should have the AI engineer roles, but this is also showing where everybody is at in the stages after they respond. So actually in the process, like how many people do we have in the call with you? How many people do we have scheduled with him?</p>
+<p>[04:35] Arda: I see. And then in that panel, you have active candidates by interview stage. So hiring manager call, then final round for staff engineer and backend roles. The backend roles won't only have 2 rounds. Right.</p>
+<p>[04:53] Arda: Yeah. I'm gonna have to, since we, like, I made this right before we did outreach for the AI engineer role.</p>
+<p>[05:00] Arda: Yeah.</p>
+<p>[05:00] Arda: So I have to go in here and I think just refresh it or make sure that that data is populating in this report.</p>
+<p>[05:10] Arda: Yeah. It's possible, sir, that you might actually have to have another panel. One is active candidates by interview stage for staff engineers, and one is for backend roles.</p>
+<p>[05:19] Arda: Okay, let's keep them separate.</p>
+<p>[05:20] Arda: Okay. Yeah, because the staff in the cookhouse— the cookhouse engineer will probably only have really 3 rounds: me, Arda, and then me and Arda. Yep. Okay, so there's 3 rounds. And the backend AI engineer is going to have the typical round, uh, screen 1, screen 2— wait, sorry, me, screen 1, screen 2, and then Arda.</p>
+<p>[05:41] Arda: Okay, okay, so there will be 2 technicals for it.</p>
+<p>[05:44] Arda: Yeah, for the backend AI.</p>
+<p>[05:46] Arda: Understood. Okay. Okay.</p>
+<p>[05:48] Arda: All right, cool. So yeah, might have to have two for that one. All right, let's go to the lower left. Staff, the backend engineering review stage one of the last three months. Okay.</p>
+<p>[05:58] Arda: So this one right here is showing that, I guess, in a different way. So this one, I suppose I could remove and then replace that with the one that we were just speaking about. So I'm gonna go ahead and just note that this one I've been very iffy on. So I'll go ahead and do that. And then, so for these, these show that the actual names of the candidates and where they're at in the pipeline.</p>
+<p>[06:19] Arda: Okay. All right. And the last one?</p>
+<p>[06:22] Arda: And the last one is the sequences. So this will show the amount of how many stages were completed and how many times the candidates have opened it. So you can see that for every single candidate at a glance.</p>
+<p>[06:32] Arda: Got it. Okay. Awesome. Thank you. Not too bad, not too bad. Okay, yeah, I think this is good. I think, again, as we're building a repeatable process, you definitely want to start off every meeting Tuesday, Friday with, hey, here's the latest, right? And at some point, you know, the key thing to make it efficient, sir, is that when you show the dashboard here, if there is something that stands out, you want to just highlight it and say, hey, take a look at this, guys, or hey, take a look at this, guys.</p>
+<p>[07:08] Arda: Okay.</p>
+<p>[07:09] Arda: Because that way we want to be very efficient with our time.</p>
+<p>[07:12] Arda: Understood.</p>
+<p>[07:14] Arda: So if you already see something that's standing out, just bring it up and call it out immediately.</p>
+<p>[07:18] Arda: Okay.</p>
+<p>[07:19] Arda: Right? So that's good. All right. I like the dashboard. Let's go back to your agenda. All right. So engineers feel good, good, good. Yep.</p>
+<p>[07:30] Arda: Yep.</p>
+<p>[07:31] Arda: Yep. Okay, good. Outreach, yep. Okay. Okay, good, good. This is good, sir. This is very good.</p>
+<p>[07:51] Arda: Yeah, I took some— like I said, when you mentioned the agenda, the agenda, I was like, when I was part— I was here, I was only a part of like 2 of them, I believe, with Casey. So I really was like not really like knowing what was going on with the agenda, this part itself. And so like I said, I scrolled through and I had seen like how she did it and whatnot, how it was done, you know, took my own way and, you know, did it like this. And I feel, you know, it's fine. It's a good overview.</p>
+<p>[08:17] Arda: This is good. This is good. The only thing I would say that you could add, but it's not critical. It is not critical. It's just sort of like if you have any blockers that you need help on. Okay. Now that could be like, you know, obviously AI build tools or that could be whatever, whatever, you know.</p>
+<p>[08:45] Arda: Okay, no problem. Yeah, I'll definitely add that for sure.</p>
+<p>[08:47] Arda: So if you have a section of blockers like, hey, I'm blocked on this, guys. Hey, I need help on this, guys. You know, that's fine. Okay. And again, if you don't, that's fine too. If there's in that meeting, if you have no blockers that day, That's, that's fine too. Okay.</p>
+<p>[09:00] Arda: Yeah. Cause like if I wrote this yesterday before I had like the personalization done, I mean, I would have put it on there. Obviously I've been tuning it, you know, it's, it's, it's, you know, not the easiest thing in the world to, you know, to, to do it. Um, I do feel like it's been an improvement already, like the ones that I had posted. Um, so I guess now I just have to obviously, um, drill down on the fact that obviously we don't use LangChain. And then so like I said, I had told it, hey, we don't use LangChain. Let's keep that part out that we're not using it. And then so I sent the revised version so that way it's really just a bunch of ongoing tinkering. As I get them put out, I read them all one by one and try to change them as I go.</p>
+<p>[09:40] Arda: It always will be, sir. I think you have to realize that with AI now, you can't— it's not— fire and forget. It's not, hey, you know, I got it to work and then it will work forever. Like, it's the state of AI today, unfortunately, is not like that, right? We are going to have to monitor it, see if it begins to get worse or deviates. Yeah. You also have to pay attention very closely when you upgrade whichever model you're using. Okay. So if you go into Office 4.6 and obviously into Office 4.7 or cloud, whatever, it might change. You always have to— the state of AI is such that you cannot at this point believe that once you've got it working, it will stay working. You cannot believe that. You cannot.</p>
+<p>[10:31] Arda: Oh, no, trust me, I understand that. There's a lot of times where I'm like, what do we do? I totally get that, like the hallucinations and things change. So I totally get that. And then when you wrote about fine-tuning, You know, that was like that literal keywords that I'll see on some profiles. You know, like that's what people have to do. You know, we have to go back and forth and fine-tune things. And like I said, and every time I post something and Ari gives me his opinion, I literally plug it straight in. But oh, this is, you know, his thoughts. I was like, could we, you know, reframe it and reword it in this way?</p>
+<p>[11:01] Arda: Exactly, exactly. So I just want to let you know that so that you can manage your own expectations. Because why? Because you need to, and we talked about this before, but It's really important that as you take on this role and work with HockeyStack that you are very growing in your time management. Again, you can't do everything. Even if you work on the weekends, you can't do everything. So you got to time manage and communicate your time management and blockers. Hey, you know, if outer is asking for X and you try and do X, but you're like, hey, I can't do that much time on X because I have to do Y. Y meaning, you know, 1, sourcing, 2, running tools, 3, setting up the campaigns, right? You just got to manage your time wisely, and when you are seeing that something may not be able to be delivered or something is going wrong, that's okay. You just want to bring it up and just let people know, like, you know, transparency, right? Hey guys, I've been working on X, but it's taking longer than I thought. Therefore, you know, we can either have me pause a little bit on X so that I can start finishing up Y or continue on X, but but then delay, why? Okay, right, because you have so many tasks now. You have the task, as I said, of sourcing, building AI tools, fine-tuning the AI tools, which takes time, and of course setting up campaigns, coordinating with some of these candidates who is reaching out to us. So again, you can't do everything unless you actually, you know, even if you work on weekends.</p>
+<p>[12:55] Arda: Yeah, no, I understand that, and I'm moving forward. Absolutely, that was actually You know, going back and being transparent, obviously yesterday, you know, having to go and customize the messages the same day, you know, that was a blocker, right? Because I did have to take time off of sourcing to make sure that the messages were right and going out. So perfect example. So moving forward, I will say that because yeah, I did— I sourced a little bit less yesterday because I said I had to make sure that the messages were looking good and going out. So 100% understood.</p>
+<p>[13:23] Arda: And I want you to to have that transparency because I think once everyone knows that, oh wow, that's what he is working on, oh wow, that's the amount of effort needed, I think it just gives people more context of like, okay, I understand what Zach's doing. Yes, he's doing well, or oh, we need to give him direction to either stop this or start that or whatever. But that way I think with the transparency people just feel very comfortable on what you're doing and being able to just have really good collaboration. Absolutely. So the transparency is what I'm just saying helps with all of that, helps with all of that. Yeah, so, so anyway, let's wrap this up. I think this is a good agenda. I like the way you structured it. Thank you for setting up those dashboards. When we start off, each of these meetings, remember to— this is where you're gonna have to have that discipline of like, you know, hey, I have an agenda, follow the agenda in every meeting. It has to be repeatable. It has to be like, okay, I'm just doing the same thing. I'm just doing the same thing. And I think that helps. Why? Because that sets expectations, but also because it helps us just sort of like know what to expect know how to be efficient at it. You know, you're gonna start with a dashboard, you're gonna point out and call out anything that is something that you want us to realize, right? Hey, something happening here, guys. I want to point it out. Or some metric change here, guys. I want to point it out, right? So yeah, I think this is good. I think this is good. Thank you for that. Okay, I don't have any other items here. I think I've seen all the stuff that you set up already. Yes. And yep, we're gonna start again with the ClickHouse interviews. And yeah, we'll just go from there. Perfect.</p>
+<p>[15:17] Arda: Thank you. No, I appreciate it. And like I said, I feel like going into it, I've never really ran meetings like that on We Do on Friday, so I'm getting into it. And then I feel like with the agenda, like I said, if I follow it, you know, A to Z, I feel like we could repeat it and it'll be a lot more smoother throughout the time.</p>
+<p>[15:32] Arda: Yeah, exactly. That's the whole intent. The whole intent is for everyone to just have their expectations managed, and also make it easier for you to like, yep, I'm just going to do it over and over again. I'm just going to repeat it over and over again. I'm just going to repeat it over and over again. There's nothing crazy, right? You don't have to spend so much time creating things because all you're doing is just filling out your agenda template. You're just filling out your agenda template, boom, boom, boom. You can copy this and then for the next week or next meeting, you can just update it. You can copy it and update it. You just copy it and update it, right? Yeah.</p>
+<p>[16:05] Arda: 100%. Totally understand and I got it. I appreciate it for the help and the mentoring. I, you know, I'm— this is new to me and, you know, hopefully I'm doing well with it and we'll move on and do that, so.</p>
+<p>[16:17] Arda: Awesome, awesome. Thank you. Of course, sir. Good stuff then. Good stuff. All right, man, I'll see you a bit later.</p>
+<p>[16:21] Arda: All right, talk to you later, Hank. Let me know if you need anything.</p>
+<p>[16:23] Arda: Will do.</p>
+<p>[16:24] Arda: Bye.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
