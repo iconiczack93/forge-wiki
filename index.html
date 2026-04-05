@@ -2056,21 +2056,40 @@ document.addEventListener('DOMContentLoaded',function(){
   margin: -16px -16px 40px -16px;
 }
 
-.forge-hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 4.5rem;
-  font-weight: 900;
+.forge-title {
+  font-family: 'Syne', 'Space Grotesk', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 800;
   color: #FFFFFF;
-  margin: 0 0 16px 0;
-  letter-spacing: -0.02em;
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: titleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
 }
 
-.forge-hero p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.25rem;
-  color: #DC2626;
-  margin: 0;
-  font-weight: 500;
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    letter-spacing: 0.4em;
+    text-shadow: 0 0 0px transparent;
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.02);
+    letter-spacing: 0.15em;
+  }
+  80% {
+    transform: translateY(0) scale(1);
+    text-shadow: 0 0 40px rgba(220, 38, 38, 0.5), 0 0 80px rgba(220, 38, 38, 0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 0px transparent;
+  }
 }
 
 .stats-bar {
@@ -2210,8 +2229,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </style>
 
 <div class="forge-hero">
-  <h1>FORGE</h1>
-  <p>AI-Powered Discord Assistant — Internal Knowledge Base</p>
+  <h1 class="forge-title">FORGE</h1>
 </div>
 
 <div class="stats-bar">
@@ -2357,40 +2375,8 @@ The FORGE pipeline processes every Discord message through a high-speed classifi
 </div>
 
 <hr />
-<div class="stats-bar" style="margin-top:60px">
-  <div class="stat-item">
-    <p class="stat-number">70.2%</p>
-    <p class="stat-label">PrizePicks Accuracy</p>
-  </div>
-  <div class="stat-item">
-    <p class="stat-number">85.2%</p>
-    <p class="stat-label">Unders Accuracy</p>
-  </div>
-  <div class="stat-item">
-    <p class="stat-number">34</p>
-    <p class="stat-label">Cogs Registered</p>
-  </div>
-</div>
-
-<div class="stats-bar">
-  <div class="stat-item">
-    <p class="stat-number">~300</p>
-    <p class="stat-label">Action Types Classified</p>
-  </div>
-  <div class="stat-item">
-    <p class="stat-number">65</p>
-    <p class="stat-label">Modules in Production</p>
-  </div>
-  <div class="stat-item">
-    <p class="stat-number">$10</p>
-    <p class="stat-label">Nightly Autonomy Cap</p>
-  </div>
-</div>
-
 <div class="footer-meta">
-<strong>Last compiled:</strong> 2026-04-05  |  <strong>14 topic articles  •  28 modules  •  279 source files</strong>
-
-Built for precision, built for speed.
+<strong>Last compiled:</strong> 2026-04-05
 </div>
 
 
