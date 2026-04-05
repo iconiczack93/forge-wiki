@@ -1,41 +1,7 @@
 
 <!doctype html>
 <html lang="en" class="no-js">
-  <head><script>
-(function(){
-var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
-var s=sessionStorage.getItem('forge_wiki_auth');
-if(s===H)return;
-// Hide page instantly to prevent flash
-document.documentElement.style.visibility='hidden';
-document.addEventListener('DOMContentLoaded',function(){
-  // Create overlay
-  var o=document.createElement('div');
-  o.id='_authGate';
-  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
-  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
-    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
-    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
-    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
-    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
-    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
-    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
-    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
-  document.body.appendChild(o);
-  document.documentElement.style.visibility='visible';
-  document.getElementById('_af').onsubmit=function(e){
-    e.preventDefault();
-    var pw=document.getElementById('_ap').value;
-    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
-      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
-      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
-      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
-    });
-  };
-});
-})();
-</script>
-<meta name="robots" content="noindex, nofollow">
+  <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -2077,6 +2043,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+  
+  
 
 
 
