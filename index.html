@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded',function(){
     <div data-md-component="skip">
       
         
-        <a href="#forge-knowledge-base" class="md-skip">
+        <a href="#core-systems" class="md-skip">
           Skip to content
         </a>
       
@@ -231,7 +231,9 @@ document.addEventListener('DOMContentLoaded',function(){
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -263,8 +265,6 @@ document.addEventListener('DOMContentLoaded',function(){
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -307,8 +307,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -366,17 +364,6 @@ document.addEventListener('DOMContentLoaded',function(){
     <span class="md-ellipsis">
       
         Fun &amp; Utilities
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
       
     </span>
   </a>
@@ -1096,7 +1083,9 @@ document.addEventListener('DOMContentLoaded',function(){
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1104,8 +1093,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1169,17 +1156,6 @@ document.addEventListener('DOMContentLoaded',function(){
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1194,144 +1170,326 @@ document.addEventListener('DOMContentLoaded',function(){
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-<h1 id="forge-knowledge-base">FORGE Knowledge Base</h1>
-<blockquote>
-<p>The complete technical reference for FORGE — Zack's AI-powered Discord assistant.</p>
-</blockquote>
-<p><strong>Last compiled:</strong> 2026-04-04<br />
-<strong>Total topics:</strong> 14 | <strong>Total sources:</strong> 279 files | <strong>Meetings archived:</strong> 17</p>
+
+<style>
+.forge-hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #030303 0%, #1a1a1a 100%);
+  border-bottom: 3px solid #DC2626;
+  margin: -16px -16px 40px -16px;
+}
+
+.forge-hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.forge-hero p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  color: #DC2626;
+  margin: 0;
+  font-weight: 500;
+}
+
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 50px 0;
+  padding: 30px;
+  background: rgba(220, 38, 38, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 8px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #DC2626;
+  margin: 0;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #999;
+  margin: 8px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.topic-section {
+  margin: 50px 0;
+}
+
+.topic-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #DC2626;
+  display: inline-block;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.topic-card {
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.topic-card:hover {
+  border-color: #DC2626;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  transform: translateY(-4px);
+}
+
+.topic-card-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.topic-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+}
+
+.topic-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #CCCCCC;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.architecture-section {
+  margin: 60px 0;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(3, 3, 3, 0.8) 0%, rgba(26, 26, 26, 0.8) 100%);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 8px;
+}
+
+.architecture-section h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #DC2626;
+  display: inline-block;
+}
+
+.footer-meta {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(220, 38, 38, 0.2);
+  text-align: center;
+  color: #666;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .forge-hero h1 {
+    font-size: 3rem;
+  }
+
+  .stats-bar {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .topic-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<div class="forge-hero">
+  <h1>FORGE</h1>
+  <p>AI-Powered Discord Assistant — Internal Knowledge Base</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <p class="stat-number">14</p>
+    <p class="stat-label">Topics</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-number">279</p>
+    <p class="stat-label">Source Files</p>
+  </div>
+  <div class="stat-item">
+    <p class="stat-number">17</p>
+    <p class="stat-label">Meetings Archived</p>
+  </div>
+</div>
+
 <hr />
 <h2 id="core-systems">Core Systems</h2>
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="topics/brain-and-classifier/">Brain &amp; Classifier</a></td>
-<td>Message routing, Haiku classifier (~300 actions), Sonnet brain (tool_use loop), multi-action, bootstrap</td>
-</tr>
-<tr>
-<td><a href="topics/discord-bot-infrastructure/">Discord Infrastructure</a></td>
-<td>bot.py structure, cog system, event bus, middleware chain, progress tracker</td>
-</tr>
-<tr>
-<td><a href="topics/self-healing-and-supervisor/">Self-Healing &amp; Supervisor</a></td>
-<td>3-layer defense, circuit breaker, cog auto-recovery, watchdog</td>
-</tr>
-</tbody>
-</table>
+<div class="topic-grid">
+  <a href="topics/brain-and-classifier.md" class="topic-card">
+    <span class="topic-card-icon">⚡</span>
+    <h3>Brain & Classifier</h3>
+    <p>Message routing, Haiku classifier (~300 actions), Sonnet brain with tool_use loop, multi-action orchestration</p>
+  </a>
+
+  <a href="topics/discord-bot-infrastructure.md" class="topic-card">
+    <span class="topic-card-icon">🤖</span>
+    <h3>Discord Infrastructure</h3>
+    <p>bot.py structure, cog system, event bus, middleware chain, progress tracking and monitoring</p>
+  </a>
+
+  <a href="topics/self-healing-and-supervisor.md" class="topic-card">
+    <span class="topic-card-icon">🛡️</span>
+    <h3>Self-Healing & Supervisor</h3>
+    <p>3-layer defense, circuit breaker, cog auto-recovery, watchdog monitoring and crash protection</p>
+  </a>
+</div>
+
 <h2 id="ai-recruiting">AI &amp; Recruiting</h2>
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="topics/prism-candidate-scoring/">PRISM Candidate Scoring</a></td>
-<td>1-5 scoring (60% tech / 25% env / 15% role), leadership detection, outreach quality gate</td>
-</tr>
-<tr>
-<td><a href="topics/sourcing-and-outreach-pipeline/">Sourcing &amp; Outreach Pipeline</a></td>
-<td>End-to-end recruiting: company raids, enrichment, PRISM scoring, outreach generation</td>
-</tr>
-<tr>
-<td><a href="topics/meeting-recording-voice-fingerprinting/">Meeting Recording &amp; Voice Fingerprinting</a></td>
-<td>Standalone recorder, AssemblyAI transcription, resemblyzer voice embeddings, speaker resolution</td>
-</tr>
-</tbody>
-</table>
+<div class="topic-grid">
+  <a href="topics/prism-candidate-scoring.md" class="topic-card">
+    <span class="topic-card-icon">🎯</span>
+    <h3>PRISM Candidate Scoring</h3>
+    <p>1-5 scoring framework (60% tech / 25% env / 15% role), leadership detection, outreach quality gates</p>
+  </a>
+
+  <a href="topics/sourcing-and-outreach-pipeline.md" class="topic-card">
+    <span class="topic-card-icon">🔍</span>
+    <h3>Sourcing & Outreach Pipeline</h3>
+    <p>End-to-end recruiting: company raids, enrichment, PRISM scoring, personalized outreach generation</p>
+  </a>
+
+  <a href="topics/meeting-recording-voice-fingerprinting.md" class="topic-card">
+    <span class="topic-card-icon">🎤</span>
+    <h3>Meeting Recording & Voice Fingerprinting</h3>
+    <p>Standalone recorder, AssemblyAI transcription, resemblyzer voice embeddings, speaker resolution</p>
+  </a>
+</div>
+
 <h2 id="agents-automation">Agents &amp; Automation</h2>
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="topics/copilot-and-agent-lab/">Copilot &amp; Agent Lab</a></td>
-<td>Persistent Claude Code pipe, Agent Lab (Scout + Analyst), auto-recovery</td>
-</tr>
-<tr>
-<td><a href="topics/overnight-engine-and-scheduling/">Overnight Engine &amp; Scheduling</a></td>
-<td>Nightly cycles ($10 cap), autonomy loop, dream mode, APScheduler</td>
-</tr>
-<tr>
-<td><a href="topics/remote-access-and-bridge/">Remote Access &amp; Bridge</a></td>
-<td>Mobile bridge, remote control sessions, night mode</td>
-</tr>
-</tbody>
-</table>
+<div class="topic-grid">
+  <a href="topics/copilot-and-agent-lab.md" class="topic-card">
+    <span class="topic-card-icon">💻</span>
+    <h3>Copilot & Agent Lab</h3>
+    <p>Persistent Claude Code pipe, Agent Lab (Scout + Analyst), auto-recovery and session persistence</p>
+  </a>
+
+  <a href="topics/overnight-engine-and-scheduling.md" class="topic-card">
+    <span class="topic-card-icon">🌙</span>
+    <h3>Overnight Engine & Scheduling</h3>
+    <p>Nightly autonomy cycles ($10 cap), dream mode, APScheduler integration, batch processing</p>
+  </a>
+
+  <a href="topics/remote-access-and-bridge.md" class="topic-card">
+    <span class="topic-card-icon">📱</span>
+    <h3>Remote Access & Bridge</h3>
+    <p>Mobile bridge, remote control sessions, night mode, cross-device accessibility</p>
+  </a>
+</div>
+
 <h2 id="infrastructure">Infrastructure</h2>
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="topics/knowledge-base-and-rag/">Knowledge Base &amp; RAG</a></td>
-<td>ChromaDB vector store, knowledge graph, 4 memory systems, SQLite</td>
-</tr>
-<tr>
-<td><a href="topics/tts-and-voice/">TTS &amp; Voice</a></td>
-<td>ElevenLabs TTS, voice rotation, "read this" intercept, audio summaries</td>
-</tr>
-</tbody>
-</table>
+<div class="topic-grid">
+  <a href="topics/knowledge-base-and-rag.md" class="topic-card">
+    <span class="topic-card-icon">📚</span>
+    <h3>Knowledge Base & RAG</h3>
+    <p>ChromaDB vector store, knowledge graph, 4 memory systems, SQLite persistence and search</p>
+  </a>
+
+  <a href="topics/tts-and-voice.md" class="topic-card">
+    <span class="topic-card-icon">🔊</span>
+    <h3>TTS & Voice</h3>
+    <p>ElevenLabs TTS, voice rotation, "read this" intercept, audio summaries and streaming</p>
+  </a>
+</div>
+
 <h2 id="fun-utilities">Fun &amp; Utilities</h2>
-<table>
-<thead>
-<tr>
-<th>Topic</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="topics/prizepicks-sports-model/">PrizePicks Sports Model</a></td>
-<td>Multi-sport prop analysis, 4-agent swarm evaluator, 70.2% accuracy</td>
-</tr>
-<tr>
-<td><a href="topics/valorant-and-gaming/">Valorant &amp; Gaming</a></td>
-<td>Valorant API, VLR esports scraping, lineup database, game tracking</td>
-</tr>
-<tr>
-<td><a href="topics/finance-and-utilities/">Finance &amp; Utilities</a></td>
-<td>Stock tracking, Spotify control, smart home, PC control, package tracking</td>
-</tr>
-</tbody>
-</table>
+<div class="topic-grid">
+  <a href="topics/prizepicks-sports-model.md" class="topic-card">
+    <span class="topic-card-icon">📊</span>
+    <h3>PrizePicks Sports Model</h3>
+    <p>Multi-sport prop analysis, 4-agent swarm evaluator, 70.2% accuracy, daily predictions</p>
+  </a>
+
+  <a href="topics/valorant-and-gaming.md" class="topic-card">
+    <span class="topic-card-icon">🎮</span>
+    <h3>Valorant & Gaming</h3>
+    <p>Valorant API integration, VLR esports scraping, lineup database, competitive game tracking</p>
+  </a>
+
+  <a href="topics/finance-and-utilities.md" class="topic-card">
+    <span class="topic-card-icon">💰</span>
+    <h3>Finance & Utilities</h3>
+    <p>Stock tracking, Spotify control, smart home integration, package tracking</p>
+  </a>
+</div>
+
+<div class="architecture-section">
+## Architecture
+
+<pre class="mermaid"><code>graph LR
+    A["💬 Discord Message"] --&gt; B["⚡ Classifier&lt;br/&gt;Haiku Routes to ~300 Actions"]
+    B --&gt; C{Decision}
+    C --&gt;|Fast Path| D["🤖 Cog Handler"]
+    C --&gt;|Complex| E["🧠 Brain&lt;br/&gt;Sonnet + Tool Loop"]
+    D --&gt; F["📨 Discord Response"]
+    E --&gt; G["🔧 Internal Tools&lt;br/&gt;Channel I/O, Copilot"]
+    E --&gt; H["🌐 External Tools&lt;br/&gt;Web, KB, MCP"]
+    G --&gt; F
+    H --&gt; F
+
+    style A fill:#DC2626,stroke:#fff,color:#fff
+    style B fill:#DC2626,stroke:#fff,color:#fff
+    style E fill:#DC2626,stroke:#fff,color:#fff
+    style F fill:#DC2626,stroke:#fff,color:#fff
+    style C fill:#333,stroke:#DC2626,color:#fff
+    style D fill:#444,stroke:#666,color:#fff
+    style G fill:#333,stroke:#666,color:#fff
+    style H fill:#333,stroke:#666,color:#fff</code></pre>
+
+The FORGE pipeline processes every Discord message through a high-speed classifier that routes to either a cog (fast path) or the brain (complex reasoning). The brain operates a tool-use loop for multi-step tasks, accessing internal tools (channel I/O, copilot), research tools (web search, knowledge base), and MCP integrations (browser, Discord, calendar, etc.).
+
+</div>
+
 <hr />
-<h2 id="architecture">Architecture</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Discord Message
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    |
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    v
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[Classifier] — Haiku routes to ~300 action types
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    |
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    +-- Cog handles it (fast path)
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    |
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    +-- [Brain] — Sonnet tool_use loop (up to 10 iterations)
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            |
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            +-- Internal tools (read/write channel, copilot)
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            +-- Research tools (web search, knowledge base)
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            +-- MCP tools (browser, Discord, calendar)
-</code></pre></div>
-<hr />
-<p><em>14 topic articles. 279 source files. 17 meetings archived.</em></p>
+<div class="footer-meta">
+<strong>Last compiled:</strong> 2026-04-04  |  <strong>14 topic articles  •  279 source files  •  17 meetings archived</strong>
+
+Built for precision, built for speed. FORGE is the operational backbone of your AI workforce.
+</div>
 
 
 
@@ -1339,8 +1497,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
