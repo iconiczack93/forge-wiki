@@ -5,11 +5,27 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/private/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/private/meetings/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/topics/brain-and-classifier/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/topics/copilot-and-agent-lab/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/topics/discord-bot-infrastructure/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/topics/finance-and-utilities/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
@@ -33,6 +49,10 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/topics/remote-access-and-bridge/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/topics/self-healing-and-supervisor/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
@@ -42,6 +62,10 @@
     </url>
     <url>
          <loc>http://localhost:8000/topics/tts-and-voice/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/topics/valorant-and-gaming/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
 </urlset>

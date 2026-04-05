@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>FORGE Wiki — Authentication Required</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.auth-container {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 12px;
+  padding: 48px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.logo {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #bb86fc;
+}
+.subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0a0a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input[type="password"]:focus {
+  border-color: #bb86fc;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  background: #bb86fc;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.2s;
+}
+button:hover { background: #ce9ffc; }
+.error {
+  color: #cf6679;
+  font-size: 13px;
+  margin-top: 12px;
+  display: none;
+}
+.footer {
+  color: #555;
+  font-size: 12px;
+  margin-top: 24px;
+}
+</style>
+</head>
+<body>
+<div class="auth-container">
+  <div class="logo">&#9889;</div>
+  <h1>FORGE Wiki</h1>
+  <p class="subtitle">Internal Knowledge Base — Access Required</p>
+  <form onsubmit="return checkAuth()">
+    <input type="password" id="pw" placeholder="Enter access key" autofocus>
+    <button type="submit">Unlock</button>
+  </form>
+  <p class="error" id="err">Invalid access key. Try again.</p>
+  <p class="footer">Protected system. Unauthorized access prohibited.</p>
+</div>
+<div id="content" style="display:none">
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/valorant-and-gaming/">
+      
+      
+        <link rel="prev" href="../tts-and-voice/">
+      
+      
+        <link rel="next" href="../finance-and-utilities/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Valorant & Gaming - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#valorant-gaming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Valorant & Gaming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents & Automation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents & Automation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../copilot-and-agent-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copilot & Agent Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../remote-access-and-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Access & Bridge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Valorant & Gaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#valorant-api-henriks-unofficial-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valorant API: Henrik's Unofficial API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valorant API: Henrik&#39;s Unofficial API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vlrgg-esports-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLR.gg Esports Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VLR.gg Esports Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valorant-lineups-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valorant Lineups Database
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valorant Lineups Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#val-swarm-11-agent-predictor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Val Swarm: 11-Agent Predictor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Val Swarm: 11-Agent Predictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost &amp; Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-session-tracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Session Tracker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Session Tracker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discord-integration-valorant-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discord Integration: Valorant Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finance-and-utilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance & Utilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#valorant-api-henriks-unofficial-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valorant API: Henrik's Unofficial API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valorant API: Henrik&#39;s Unofficial API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vlrgg-esports-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLR.gg Esports Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VLR.gg Esports Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valorant-lineups-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valorant Lineups Database
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Valorant Lineups Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Coverage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#val-swarm-11-agent-predictor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Val Swarm: 11-Agent Predictor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Val Swarm: 11-Agent Predictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost &amp; Data
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-session-tracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Game Session Tracker
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Session Tracker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tracking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discord-integration-valorant-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discord Integration: Valorant Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="valorant-gaming">Valorant &amp; Gaming<a class="headerlink" href="#valorant-gaming" title="Permanent link">&para;</a></h1>
+<p>FORGE's Valorant API integration, esports data pipeline, and gaming activity tracking.</p>
+<h2 id="valorant-api-henriks-unofficial-api">Valorant API: Henrik's Unofficial API<a class="headerlink" href="#valorant-api-henriks-unofficial-api" title="Permanent link">&para;</a></h2>
+<p>Real-time player stats, rank info, and match history via <a href="https://api.henrikdev.xyz">Henrik Dev API</a>.</p>
+<h3 id="core-features">Core Features<a class="headerlink" href="#core-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Player Rank</strong>: competitive rank, RR (rating points), ELO, peak rank</li>
+<li><strong>Last Match</strong>: detailed stats (kills, deaths, assists, ACS, headshot %)</li>
+<li><strong>Match History</strong>: multi-match lookup with per-map breakdown</li>
+<li><strong>Account Info</strong>: player profile, region, agent list</li>
+</ul>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.valorant</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_rank</span><span class="p">,</span> <span class="n">get_last_match</span><span class="p">,</span> <span class="n">get_match_history</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Initialize with player defaults</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">init_valorant</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="n">default_name</span><span class="o">=</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span> <span class="n">default_tag</span><span class="o">=</span><span class="s2">&quot;haha1&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Get rank</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">rank_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_rank</span><span class="p">()</span>  <span class="c1"># uses defaults</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">rank_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_rank</span><span class="p">(</span><span class="s2">&quot;Asuna&quot;</span><span class="p">,</span> <span class="s2">&quot;main&quot;</span><span class="p">)</span>  <span class="c1"># specific player</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Match history (last 5 matches)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">history</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_match_history</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>API</strong>: Async via <code>requests</code> in executor (non-blocking in Discord context).</p>
+<hr />
+<h2 id="vlrgg-esports-integration">VLR.gg Esports Integration<a class="headerlink" href="#vlrgg-esports-integration" title="Permanent link">&para;</a></h2>
+<p>Professional Valorant esports data: player stats, team schedules, per-map breakdowns. Uses <strong>vlrdevapi</strong> (free, no auth).</p>
+<h3 id="data-sources">Data Sources<a class="headerlink" href="#data-sources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>VLR.gg</strong>: esports matches, results, player averages</li>
+<li><strong>PrizePicks API</strong>: unauthenticated current projection lines</li>
+<li><strong>Auto-Grade</strong>: match player picks against actual VLR results</li>
+</ul>
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search_player(name)</code></td>
+<td>Find player by IGN, returns player_id + country</td>
+</tr>
+<tr>
+<td><code>get_player_profile(player_id)</code></td>
+<td>Name, team, country, peak rating</td>
+</tr>
+<tr>
+<td><code>get_player_map_kills(player_id, map_name)</code></td>
+<td>Per-map kill count (last N matches)</td>
+</tr>
+<tr>
+<td><code>get_player_averages(player_id)</code></td>
+<td>K/D/A, ACS, kills per round (cached 30min)</td>
+</tr>
+<tr>
+<td><code>search_matches(date_range)</code></td>
+<td>Upcoming/completed matches</td>
+</tr>
+<tr>
+<td><code>get_pp_lines()</code></td>
+<td>Current PrizePicks Valorant prop lines</td>
+</tr>
+</tbody>
+</table>
+<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Player ID</strong>: in-memory cache (frequent lookups)</li>
+<li><strong>Averages</strong>: 30min TTL (avoid re-hitting VLR)</li>
+<li><strong>Lines</strong>: fresh on each call (PrizePicks updates frequently)</li>
+</ul>
+<hr />
+<h2 id="valorant-lineups-database">Valorant Lineups Database<a class="headerlink" href="#valorant-lineups-database" title="Permanent link">&para;</a></h2>
+<p>Lineup videos/GIFs for agents on specific maps and sites.</p>
+<h3 id="agent-coverage">Agent Coverage<a class="headerlink" href="#agent-coverage" title="Permanent link">&para;</a></h3>
+<p>26 agents with full ability mappings:
+- <strong>Sentinels</strong>: Cypher, Killjoy, Chamber
+- <strong>Duelists</strong>: Jett, Reyna, Phoenix, Yoru, Neon
+- <strong>Initiators</strong>: Sova, Breach, Skye, Fade, Gekko, Kay/O
+- <strong>Controllers</strong>: Viper, Omen, Brimstone, Astra, Clove, Iso, Deadlock</p>
+<h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h3>
+<p>SQLite <code>forge.db</code> table: <code>valorant_lineups</code>
+- Agent, map, site (A/B/mid)
+- Ability name
+- Video URL (YouTube/Invidious)
+- Notes, saved date</p>
+<h3 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">await</span> <span class="n">search_lineups</span><span class="p">(</span><span class="s2">&quot;sova&quot;</span><span class="p">,</span> <span class="s2">&quot;haven&quot;</span><span class="p">,</span> <span class="s2">&quot;a site&quot;</span><span class="p">,</span> <span class="s2">&quot;recon bolt&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="err">→</span> <span class="n">returns</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">}]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">await</span> <span class="n">save_lineup</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="n">map_name</span><span class="p">,</span> <span class="n">site</span><span class="p">,</span> <span class="n">ability</span><span class="p">,</span> <span class="n">notes</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">await</span> <span class="n">get_saved_lineups</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="n">map_name</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">await</span> <span class="n">delete_lineup</span><span class="p">(</span><span class="n">lineup_id</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="val-swarm-11-agent-predictor">Val Swarm: 11-Agent Predictor<a class="headerlink" href="#val-swarm-11-agent-predictor" title="Permanent link">&para;</a></h2>
+<p>Tiered analysis for PrizePicks Valorant props. Runs on VPS only (<code>FORGE_INSTANCE == "vps"</code>).</p>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<p><strong>Tier 1</strong> (8 agents, pure math, $0):
+- Form, Map, Matchup, Role, FirstBlood, Variance, Rounds, OpponentStrength</p>
+<p><strong>Tier 2</strong> (2 agents, Haiku, ~$0.01):
+- EdgeFinder, DevilsAdvocate</p>
+<p><strong>Tier 3</strong> (1 agent, Haiku, ~$0.01):
+- Synthesizer (leader, synthesizes all signals)</p>
+<h3 id="cost-data">Cost &amp; Data<a class="headerlink" href="#cost-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Total: ~$0.02-0.03 per full analysis</li>
+<li>Data: $0 (VLR + PrizePicks free APIs)</li>
+<li>Output: per-player verdict (over/under recommendation + confidence)</li>
+</ul>
+<h3 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.val_swarm</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_swarm_analysis</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Analyze all current lines</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">run_swarm_analysis</span><span class="p">()</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Specific players</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">run_swarm_analysis</span><span class="p">(</span><span class="n">players</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;starxo&quot;</span><span class="p">,</span> <span class="s2">&quot;Asuna&quot;</span><span class="p">])</span>
+</code></pre></div>
+<hr />
+<h2 id="game-session-tracker">Game Session Tracker<a class="headerlink" href="#game-session-tracker" title="Permanent link">&para;</a></h2>
+<p>Monitors Discord presence for gaming activity (Valorant, etc.). Logs to SQLite with weekly summaries.</p>
+<h3 id="tracking">Tracking<a class="headerlink" href="#tracking" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Requires</strong>: presences + members privileged intents</li>
+<li><strong>Trigger</strong>: presence update → detect game start/stop</li>
+<li><strong>Storage</strong>: <code>game_sessions</code> table</li>
+<li>game_name, started_at, ended_at, duration_minutes</li>
+</ul>
+<h3 id="usage_2">Usage<a class="headerlink" href="#usage_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">await</span> <span class="n">on_presence_update</span><span class="p">(</span><span class="n">before_member</span><span class="p">,</span> <span class="n">after_member</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="err">→</span> <span class="n">auto</span><span class="o">-</span><span class="n">detects</span> <span class="n">Valorant</span> <span class="n">starts</span><span class="o">/</span><span class="n">stops</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">await</span> <span class="n">get_session_summary</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="err">→</span> <span class="n">weekly</span> <span class="n">gaming</span> <span class="n">summary</span>
+</code></pre></div>
+<hr />
+<h2 id="discord-integration-valorant-actions">Discord Integration: Valorant Actions<a class="headerlink" href="#discord-integration-valorant-actions" title="Permanent link">&para;</a></h2>
+<p>The [[valorant_actions.py]] cog handles classifier intents:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Intent</th>
+<th>Handler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>val_rank</code></td>
+<td>"what's my rank"</td>
+<td>get_rank()</td>
+</tr>
+<tr>
+<td><code>val_last_match</code></td>
+<td>"last game"</td>
+<td>get_last_match()</td>
+</tr>
+<tr>
+<td><code>val_history</code></td>
+<td>"last 5 matches"</td>
+<td>get_match_history(count=5)</td>
+</tr>
+<tr>
+<td><code>val_account</code></td>
+<td>"account info"</td>
+<td>get_account()</td>
+</tr>
+<tr>
+<td><code>val_lineup</code></td>
+<td>"sova lineup haven"</td>
+<td>search_lineups()</td>
+</tr>
+<tr>
+<td><code>val_lineup_save</code></td>
+<td>"save this lineup"</td>
+<td>save_lineup()</td>
+</tr>
+<tr>
+<td><code>val_lineup_library</code></td>
+<td>"my lineups"</td>
+<td>get_saved_lineups()</td>
+</tr>
+<tr>
+<td><code>val_lineup_delete</code></td>
+<td>"delete lineup X"</td>
+<td>delete_lineup()</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modules/valorant.py</code></td>
+<td>Henrik API client (rank, match history)</td>
+</tr>
+<tr>
+<td><code>modules/valorant_lineups.py</code></td>
+<td>Lineup search &amp; SQLite storage</td>
+</tr>
+<tr>
+<td><code>modules/vlr.py</code></td>
+<td>VLR.gg esports + PrizePicks integration</td>
+</tr>
+<tr>
+<td><code>core/val_swarm.py</code></td>
+<td>11-agent Valorant prop analysis</td>
+</tr>
+<tr>
+<td><code>core/game_tracker.py</code></td>
+<td>Discord presence monitoring, session logging</td>
+</tr>
+<tr>
+<td><code>cogs/valorant_actions.py</code></td>
+<td>Discord command handlers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>See also</strong>: <a href="../finance-and-utilities/#prizepicks-model">finance-and-utilities.md#prizepicks-model</a> | [[forge-systems.md#sports-pipelines]]</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
+</div>
+<script>
+const HASH = "dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+async function sha256(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+async function checkAuth() {
+  const pw = document.getElementById('pw').value;
+  const h = await sha256(pw);
+  if (h === HASH) {
+    sessionStorage.setItem('forge_wiki_auth', h);
+    showContent();
+  } else {
+    document.getElementById('err').style.display = 'block';
+    document.getElementById('pw').value = '';
+  }
+  return false;
+}
+function showContent() {
+  document.querySelector('.auth-container').style.display = 'none';
+  const el = document.getElementById('content');
+  el.style.display = 'block';
+  document.body.style.display = 'block';
+  document.body.style.alignItems = 'stretch';
+  // Replace body with actual content
+  document.body.innerHTML = el.innerHTML;
+}
+// Auto-unlock if already authed this session
+(async () => {
+  const stored = sessionStorage.getItem('forge_wiki_auth');
+  if (stored === HASH) showContent();
+})();
+</script>
+</body>
+</html>
