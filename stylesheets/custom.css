@@ -1,363 +1,324 @@
-/* FORGE Wiki — Premium Dark Theme
-   Design: Wikipedia-inspired with Impeccable design principles
-   - Tinted neutrals (cool blue-gray, not dead gray)
-   - Distinctive fonts (Plus Jakarta Sans + Instrument Serif)
-   - Vertical rhythm based on 24px baseline
-   - OKLCH color space for perceptual uniformity
-   - Increased line-height for dark backgrounds (+0.1)
+/* FORGE Wiki — Brand-matched to imzack.me
+   Background: #030303 (near-true black)
+   Text: #FFFFFF / #9CA3AF
+   Accent: #DC2626 (red)
+   Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (code)
+   Framework influence: Tailwind
 */
 
-/* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&display=swap');
 
 :root {
-  /* Tinted neutrals — cool blue hint for tech/professional feel */
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-tertiary: #1c2128;
-  --bg-elevated: #21262d;
+  --bg-base: #030303;
+  --bg-elevated: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-card: #1C1C1C;
 
-  --border-primary: #30363d;
-  --border-secondary: #21262d;
+  --border: #1f1f1f;
+  --border-hover: #353535;
 
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-tertiary: #6e7681;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
 
-  --link-blue: #58a6ff;
-  --link-hover: #79c0ff;
+  --accent-red: #DC2626;
+  --accent-red-hover: #EF4444;
+  --link: #9CA3AF;
+  --link-hover: #FFFFFF;
 
-  --accent-purple: #bc8cff;
-  --accent-green: #56d364;
+  --radius: 4px;
+  --radius-pill: 9999px;
 
-  /* Spacing: 24px baseline (16px * 1.5 line-height) */
-  --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 24px;
-  --space-lg: 48px;
-  --space-xl: 72px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
 }
 
-/* ── Global Reset ── */
+/* ── Material theme override ── */
 
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: var(--bg-primary) !important;
+  --md-default-bg-color: var(--bg-base) !important;
   --md-default-fg-color: var(--text-primary) !important;
-  --md-primary-fg-color: var(--bg-primary) !important;
-  --md-accent-fg-color: var(--link-blue) !important;
+  --md-primary-fg-color: var(--bg-base) !important;
+  --md-accent-fg-color: var(--accent-red) !important;
 }
 
 body, .md-main, .md-content {
-  background: var(--bg-primary) !important;
+  background: var(--bg-base) !important;
 }
 
-/* ── Header — minimal, dark, no colored bar ── */
+/* ── Header — invisible, blends with background ── */
 
 .md-header {
-  background: var(--bg-primary) !important;
-  border-bottom: 1px solid var(--border-primary) !important;
+  background: var(--bg-base) !important;
+  border-bottom: 1px solid var(--border) !important;
   box-shadow: none !important;
-  height: 56px !important;
 }
 
 .md-header__title {
-  font-family: 'Instrument Serif', Georgia, serif !important;
-  font-size: 1.35rem !important;
-  font-weight: 400 !important;
+  font-family: 'Syne', 'Space Grotesk', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
   color: var(--text-primary) !important;
-  letter-spacing: -0.01em !important;
+  letter-spacing: -0.02em !important;
+  text-transform: uppercase !important;
 }
 
-.md-header__button {
-  color: var(--text-secondary) !important;
-}
-
-/* Hide theme toggle — dark only */
+.md-header__button { color: var(--text-muted) !important; }
 .md-header__option { display: none !important; }
 
 /* ── Typography ── */
 
 .md-typeset {
-  font-family: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif !important;
-  font-size: 0.925rem !important;
-  line-height: 1.7 !important;  /* +0.1 for dark bg readability */
-  color: var(--text-primary) !important;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif !important;
+  font-size: 0.95rem !important;
+  line-height: 1.75 !important;
+  color: var(--text-secondary) !important;
   -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
 }
 
-/* Headlines — serif for warmth and distinction */
 .md-typeset h1 {
-  font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif !important;
-  font-weight: 400 !important;
-  font-size: 2.2rem !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.4rem !important;
   color: var(--text-primary) !important;
-  border-bottom: 1px solid var(--border-primary) !important;
-  padding-bottom: var(--space-sm) !important;
-  margin-bottom: var(--space-md) !important;
+  border-bottom: none !important;
+  margin-bottom: var(--space-sm) !important;
   margin-top: 0 !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.1 !important;
 }
 
 .md-typeset h2 {
-  font-family: 'Instrument Serif', Georgia, serif !important;
-  font-weight: 400 !important;
-  font-size: 1.6rem !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
   color: var(--text-primary) !important;
-  border-bottom: 1px solid var(--border-secondary) !important;
-  padding-bottom: var(--space-xs) !important;
-  margin-top: var(--space-lg) !important;
-  margin-bottom: var(--space-md) !important;
-  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding-bottom: var(--space-sm) !important;
+  margin-top: var(--space-xl) !important;
+  margin-bottom: var(--space-lg) !important;
+  letter-spacing: -0.02em !important;
 }
 
 .md-typeset h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 600 !important;
   font-size: 1.15rem !important;
   color: var(--text-primary) !important;
-  margin-top: var(--space-md) !important;
-  margin-bottom: var(--space-sm) !important;
+  margin-top: var(--space-lg) !important;
+  margin-bottom: var(--space-md) !important;
   border-bottom: none !important;
+  letter-spacing: -0.01em !important;
 }
 
 .md-typeset h4, .md-typeset h5 {
+  font-family: 'Inter', sans-serif !important;
   font-weight: 600 !important;
-  color: var(--text-secondary) !important;
+  color: var(--text-muted) !important;
   text-transform: uppercase !important;
-  font-size: 0.8rem !important;
-  letter-spacing: 0.05em !important;
-  margin-top: var(--space-md) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.08em !important;
+  margin-top: var(--space-lg) !important;
 }
 
-/* ── Links — Wikipedia blue ── */
+/* Strong text — white, not bold-gray */
+.md-typeset strong {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Links — subtle gray → white on hover (like your site) ── */
 
 .md-typeset a {
-  color: var(--link-blue) !important;
+  color: var(--link) !important;
   text-decoration: none !important;
-  transition: color 0.15s ease !important;
+  transition: color 0.2s ease !important;
 }
 
 .md-typeset a:hover {
   color: var(--link-hover) !important;
-  text-decoration: underline !important;
+  text-decoration: none !important;
 }
 
-/* ── Sidebar — ghost-quiet ── */
+/* ── Sidebar — ghost dark ── */
 
 .md-sidebar {
-  background: var(--bg-primary) !important;
+  background: var(--bg-base) !important;
 }
 
 .md-sidebar__scrollwrap {
-  border-right: 1px solid var(--border-secondary) !important;
+  border-right: 1px solid var(--border) !important;
 }
 
 .md-nav__link {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  color: var(--text-tertiary) !important;
+  font-family: 'Inter', sans-serif !important;
+  color: var(--text-muted) !important;
   font-size: 0.8rem !important;
   font-weight: 500 !important;
-  transition: color 0.15s ease !important;
 }
 
-.md-nav__link:hover {
-  color: var(--text-primary) !important;
-}
+.md-nav__link:hover { color: var(--text-primary) !important; }
 
 .md-nav__item--active > .md-nav__link {
-  color: var(--link-blue) !important;
+  color: var(--text-primary) !important;
   font-weight: 600 !important;
 }
 
-/* Section labels in nav */
 .md-nav__item--nested > .md-nav__link {
   font-weight: 700 !important;
-  color: var(--text-secondary) !important;
+  color: var(--text-muted) !important;
   text-transform: uppercase !important;
-  font-size: 0.7rem !important;
-  letter-spacing: 0.08em !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
 }
 
-/* Right TOC sidebar */
 .md-sidebar--secondary .md-nav__link {
-  font-size: 0.75rem !important;
-  color: var(--text-tertiary) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
 }
 
-/* ── Tables — clean, refined ── */
+/* ── Tables — clean, dark ── */
 
 .md-typeset table {
   border-collapse: collapse !important;
   width: 100% !important;
   font-size: 0.85rem !important;
-  margin: var(--space-md) 0 !important;
+  margin: var(--space-lg) 0 !important;
 }
 
 .md-typeset table th {
-  background: var(--bg-secondary) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-primary) !important;
-  padding: 10px 14px !important;
+  background: var(--bg-elevated) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border) !important;
+  padding: 12px 16px !important;
   font-weight: 600 !important;
-  text-align: left !important;
-  font-size: 0.8rem !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.03em !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.06em !important;
 }
 
 .md-typeset table td {
-  border: 1px solid var(--border-secondary) !important;
-  padding: 10px 14px !important;
-  color: var(--text-primary) !important;
-}
-
-.md-typeset table tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.015) !important;
+  border: 1px solid var(--border) !important;
+  padding: 12px 16px !important;
+  color: var(--text-secondary) !important;
 }
 
 .md-typeset table tr:hover td {
-  background: rgba(88, 166, 255, 0.04) !important;
+  background: var(--bg-elevated) !important;
 }
 
-/* ── Code — GitHub dark ── */
+/* ── Code — dark surface ── */
 
 .md-typeset code {
-  background: var(--bg-secondary) !important;
-  color: #e6edf3 !important;
-  padding: 2px 7px !important;
-  border-radius: 5px !important;
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  padding: 2px 8px !important;
+  border-radius: var(--radius) !important;
   font-size: 0.82em !important;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
-  border: 1px solid var(--border-secondary) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  border: 1px solid var(--border) !important;
 }
 
 .md-typeset pre {
-  background: var(--bg-secondary) !important;
-  border: 1px solid var(--border-primary) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
   border-radius: 8px !important;
-  margin: var(--space-md) 0 !important;
+  margin: var(--space-lg) 0 !important;
 }
 
 .md-typeset pre code {
   border: none !important;
   padding: 0 !important;
   font-size: 0.82rem !important;
-  line-height: 1.6 !important;
+  line-height: 1.65 !important;
+  color: var(--text-secondary) !important;
 }
 
 /* ── Content width ── */
 
 .md-content__inner {
-  max-width: 900px !important;
+  max-width: 880px !important;
   margin: 0 auto !important;
-  padding: var(--space-md) var(--space-md) var(--space-xl) !important;
+  padding: var(--space-lg) var(--space-lg) var(--space-xl) !important;
 }
 
 /* ── Search ── */
 
 .md-search__input {
-  background: var(--bg-secondary) !important;
-  border: 1px solid var(--border-primary) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
   color: var(--text-primary) !important;
-  border-radius: 8px !important;
+  border-radius: var(--radius-pill) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
-.md-search__input::placeholder {
-  color: var(--text-tertiary) !important;
-}
+.md-search__input::placeholder { color: var(--text-muted) !important; }
 
 /* ── Footer ── */
 
 .md-footer {
-  background: var(--bg-primary) !important;
-  border-top: 1px solid var(--border-secondary) !important;
-}
-
-.md-footer__link {
-  color: var(--text-secondary) !important;
+  background: var(--bg-base) !important;
+  border-top: 1px solid var(--border) !important;
 }
 
 /* ── Blockquotes ── */
 
 .md-typeset blockquote {
-  border-left: 3px solid var(--border-primary) !important;
+  border-left: 2px solid var(--accent-red) !important;
   color: var(--text-secondary) !important;
   background: transparent !important;
-  padding: var(--space-xs) var(--space-md) !important;
-  margin: var(--space-md) 0 !important;
-  font-style: italic !important;
+  padding: var(--space-sm) var(--space-lg) !important;
+  font-style: normal !important;
 }
 
 /* ── HR ── */
 
 .md-typeset hr {
-  border-color: var(--border-secondary) !important;
-  margin: var(--space-lg) 0 !important;
+  border-color: var(--border) !important;
+  margin: var(--space-xl) 0 !important;
 }
 
 /* ── Lists ── */
 
-.md-typeset ul, .md-typeset ol {
-  margin-left: 1.2rem !important;
-  margin-bottom: var(--space-md) !important;
-}
+.md-typeset ul, .md-typeset ol { margin-left: 1.2rem !important; }
+.md-typeset li { margin-bottom: 6px !important; }
 
-.md-typeset li {
-  margin-bottom: 4px !important;
-}
-
-/* ── Admonitions — subtle, not shouty ── */
+/* ── Admonitions ── */
 
 .md-typeset .admonition {
-  background: var(--bg-secondary) !important;
-  border: 1px solid var(--border-primary) !important;
-  border-left: 3px solid var(--accent-purple) !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--accent-red) !important;
   box-shadow: none !important;
   border-radius: 6px !important;
 }
 
-/* ── Smooth transitions on all interactive elements ── */
+/* ── Scrollbar ── */
 
-* {
-  transition-property: color, background-color, border-color;
-  transition-duration: 0.15s;
-  transition-timing-function: ease;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Selection ── */
+
+::selection {
+  background: rgba(220, 38, 38, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Smooth transitions ── */
+
+a, .md-nav__link, .md-header__button, td {
+  transition: color 0.2s ease, background-color 0.2s ease !important;
 }
 
 /* ── Mobile ── */
 
 @media screen and (max-width: 76.25em) {
-  .md-content__inner {
-    padding: var(--space-sm) !important;
-  }
-  .md-typeset h1 {
-    font-size: 1.8rem !important;
-  }
-}
-
-/* ── Scrollbar — slim, subtle ── */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border-primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
-}
-
-/* ── Selection highlight ── */
-
-::selection {
-  background: rgba(88, 166, 255, 0.25);
-  color: var(--text-primary);
+  .md-content__inner { padding: var(--space-md) !important; }
+  .md-typeset h1 { font-size: 1.8rem !important; }
 }
