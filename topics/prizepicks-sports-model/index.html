@@ -1,3 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>FORGE Wiki — Authentication Required</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.auth-container {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 12px;
+  padding: 48px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.logo {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #bb86fc;
+}
+.subtitle {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: #0a0a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input[type="password"]:focus {
+  border-color: #bb86fc;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  background: #bb86fc;
+  color: #1a1a2e;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.2s;
+}
+button:hover { background: #ce9ffc; }
+.error {
+  color: #cf6679;
+  font-size: 13px;
+  margin-top: 12px;
+  display: none;
+}
+.footer {
+  color: #555;
+  font-size: 12px;
+  margin-top: 24px;
+}
+</style>
+</head>
+<body>
+<div class="auth-container">
+  <div class="logo">&#9889;</div>
+  <h1>FORGE Wiki</h1>
+  <p class="subtitle">Internal Knowledge Base — Access Required</p>
+  <form onsubmit="return checkAuth()">
+    <input type="password" id="pw" placeholder="Enter access key" autofocus>
+    <button type="submit">Unlock</button>
+  </form>
+  <p class="error" id="err">Invalid access key. Try again.</p>
+  <p class="footer">Protected system. Unauthorized access prohibited.</p>
+</div>
+<div id="content" style="display:none">
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -2273,4 +2370,40 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
       
     
   </body>
+</html>
+</div>
+<script>
+const HASH = "dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+async function sha256(msg) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+async function checkAuth() {
+  const pw = document.getElementById('pw').value;
+  const h = await sha256(pw);
+  if (h === HASH) {
+    sessionStorage.setItem('forge_wiki_auth', h);
+    showContent();
+  } else {
+    document.getElementById('err').style.display = 'block';
+    document.getElementById('pw').value = '';
+  }
+  return false;
+}
+function showContent() {
+  document.querySelector('.auth-container').style.display = 'none';
+  const el = document.getElementById('content');
+  el.style.display = 'block';
+  document.body.style.display = 'block';
+  document.body.style.alignItems = 'stretch';
+  // Replace body with actual content
+  document.body.innerHTML = el.innerHTML;
+}
+// Auto-unlock if already authed this session
+(async () => {
+  const stored = sessionStorage.getItem('forge_wiki_auth');
+  if (stored === HASH) showContent();
+})();
+</script>
+</body>
 </html>
