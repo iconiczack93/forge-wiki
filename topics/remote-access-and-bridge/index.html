@@ -83,7 +83,7 @@ button:hover { background: #ce9ffc; }
 </style>
 </head>
 <body>
-<div class="auth-container">
+<div class="auth-container" style="display:none">
   <div class="logo">&#9889;</div>
   <h1>FORGE Wiki</h1>
   <p class="subtitle">Internal Knowledge Base — Access Required</p>
@@ -1859,14 +1859,15 @@ function showContent() {
   el.style.display = 'block';
   document.body.style.display = 'block';
   document.body.style.alignItems = 'stretch';
-  // Replace body with actual content
   document.body.innerHTML = el.innerHTML;
 }
-// Auto-unlock if already authed this session
-(async () => {
-  const stored = sessionStorage.getItem('forge_wiki_auth');
-  if (stored === HASH) showContent();
-})();
+// Check auth SYNCHRONOUSLY before anything renders
+const stored = sessionStorage.getItem('forge_wiki_auth');
+if (stored === HASH) {
+  showContent();
+} else {
+  document.querySelector('.auth-container').style.display = '';
+}
 </script>
 </body>
 </html>
