@@ -1379,6 +1379,319 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -1870,7 +2183,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </ol>
 <p>This two-stage approach catches speakers even if their voice changes (cold, stress, etc.) by also matching speaking patterns.</p>
 <h2 id="auto-recording">Auto-Recording</h2>
-<p>[[calendar_auto_record.py]] provides calendar-based meeting detection:</p>
+<p>calendar_auto_record.py provides calendar-based meeting detection:</p>
 <p><strong>Config</strong>: Stored in <code>data/meeting_auto_record.json</code>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -1887,7 +2200,7 @@ document.addEventListener('DOMContentLoaded',function(){
 4. If <code>expected_speakers</code> is provided, pass count to AssemblyAI as hint for diarization</p>
 <p><strong>Opt-out</strong>: Recurring meetings are stored in <code>data/meeting_recorded_events.json</code> to avoid re-recording same meeting twice in one day.</p>
 <h2 id="speaker-resolution">Speaker Resolution</h2>
-<p>[[speaker_resolution.py]] maps Speaker A/B/C to real names using a three-stage process:</p>
+<p>speaker_resolution.py maps Speaker A/B/C to real names using a three-stage process:</p>
 <h3 id="stage-1-context-building">Stage 1: Context Building</h3>
 <p>Gather hints from:
 - <strong>Me</strong>: Current user (Zack), role, notes
@@ -1942,7 +2255,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </ul>
 <h3 id="4-speaker-name-resolution">4. Speaker Name Resolution</h3>
 <ul>
-<li>Use [[speaker_resolution.py]] to map labels to names</li>
+<li>Use speaker_resolution.py to map labels to names</li>
 <li>Store mapping in metadata file: <code>recordings/{meeting_id}_speakers.json</code></li>
 <li>Flag any unknown speakers for human verification</li>
 </ul>
@@ -1974,47 +2287,47 @@ document.addEventListener('DOMContentLoaded',function(){
 </thead>
 <tbody>
 <tr>
-<td><code>[skills/meeting/__init__.py](&lt;../skills/meeting/__init__.py&gt;)</code></td>
+<td><code>skills/meeting/__init__.py</code></td>
 <td>Package entry point, exports skill API (start_recording, stop_recording, fix_speaker, auto_record_add, etc.)</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/recorder.py](&lt;../skills/meeting/recorder.py&gt;)</code></td>
+<td><code>skills/meeting/recorder.py</code></td>
 <td>Control IPC, lockfile management, post-recording pipeline orchestration</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/transcription.py](&lt;../skills/meeting/transcription.py&gt;)</code></td>
+<td><code>skills/meeting/transcription.py</code></td>
 <td>AssemblyAI API calls, speaker diarization, transcription polling</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/speaker_resolution.py](&lt;../skills/meeting/speaker_resolution.py&gt;)</code></td>
+<td><code>skills/meeting/speaker_resolution.py</code></td>
 <td>Claude-powered speaker name mapping, context builder, embedding similarity scoring</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/voice_fingerprint.py](&lt;../skills/meeting/voice_fingerprint.py&gt;)</code></td>
+<td><code>skills/meeting/voice_fingerprint.py</code></td>
 <td>Resemblyzer embedding extraction, fingerprint database queries, behavioral profiling</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/audio.py](&lt;../skills/meeting/audio.py&gt;)</code></td>
+<td><code>skills/meeting/audio.py</code></td>
 <td>Audio merge, compression, WAV-to-MP3 conversion (deprecated: now in forge_recorder.py)</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/analysis.py](&lt;../skills/meeting/analysis.py&gt;)</code></td>
+<td><code>skills/meeting/analysis.py</code></td>
 <td>Claude meeting analysis, action item extraction, Discord formatting</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/calendar_auto_record.py](&lt;../skills/meeting/calendar_auto_record.py&gt;)</code></td>
+<td><code>skills/meeting/calendar_auto_record.py</code></td>
 <td>Google Calendar polling, pattern matching, auto-start recorder on meeting detection</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/speaker_fingerprint.py](&lt;../skills/meeting/speaker_fingerprint.py&gt;)</code></td>
+<td><code>skills/meeting/speaker_fingerprint.py</code></td>
 <td>Fingerprint database schema (SQLite), behavioral stats aggregation, confidence tracking</td>
 </tr>
 <tr>
-<td><code>[skills/meeting/data_models.py](&lt;../skills/meeting/data_models.py&gt;)</code></td>
+<td><code>skills/meeting/data_models.py</code></td>
 <td>Shared state, config loaders, constants, lockfile management</td>
 </tr>
 <tr>
-<td><code>[[forge_recorder.py]]</code></td>
+<td><code>forge_recorder.py</code></td>
 <td><strong>Standalone process</strong>, ring buffer capture, WASAPI loopback, control file polling, crash recovery</td>
 </tr>
 </tbody>
@@ -2046,10 +2359,10 @@ document.addEventListener('DOMContentLoaded',function(){
 <p><strong>Recommendation</strong>: For large meetings, pre-configure speakers in <code>meeting_speakers.json</code> contacts list with detailed notes.</p>
 <h2 id="related-systems">Related Systems</h2>
 <ul>
-<li><strong>[[holy-grails]]</strong> — Some meeting recordings feed AI grail workflows</li>
-<li><strong>[[knowledge-base]]</strong> — Transcripts indexed for semantic search</li>
-<li><strong>[[brain]]</strong> — Claude Sonnet handles speaker resolution and analysis</li>
-<li><strong>[[autonomy-loop]]</strong> — Night mode can trigger auto-recording for scheduled meetings</li>
+<li><strong>holy-grails</strong> — Some meeting recordings feed AI grail workflows</li>
+<li><strong>knowledge-base</strong> — Transcripts indexed for semantic search</li>
+<li><strong>brain</strong> — Claude Sonnet handles speaker resolution and analysis</li>
+<li><strong>autonomy-loop</strong> — Night mode can trigger auto-recording for scheduled meetings</li>
 </ul>
 
 

@@ -1540,6 +1540,319 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/prism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/knowledge-base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/company-raider/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Company Raider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/sports-props/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Props
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/sports-swarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sports Swarm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/google-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Google Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../changelog/" class="md-nav__link">
         
@@ -2119,16 +2432,16 @@ document.addEventListener('DOMContentLoaded',function(){
 <h2 id="summary">Summary</h2>
 <p>The FORGE brain-and-classifier system routes Discord messages from natural language into executable actions, orchestrating a dual-layer pipeline:</p>
 <ol>
-<li><strong>Classifier</strong>: [[Haiku model|models]] rapidly categorizes messages into ~300 action types with confidence scoring</li>
-<li><strong>Brain</strong>: [[Claude Sonnet|models]] interprets complex requests, loops up to 10 times over tool use, and orchestrates multi-step tasks</li>
+<li><strong>Classifier</strong>: models rapidly categorizes messages into ~300 action types with confidence scoring</li>
+<li><strong>Brain</strong>: models interprets complex requests, loops up to 10 times over tool use, and orchestrates multi-step tasks</li>
 <li><strong>Router</strong>: Legacy pattern-match fallback (disabled when <code>BRAIN_FIRST=1</code>, the default)</li>
 </ol>
-<p>The architecture prioritizes autonomy: the brain can read Discord channels, post messages, queue tasks for the Copilot agent, and manage its own context state through the [[BrainConversation|brain-state]] immutable dataclass.</p>
+<p>The architecture prioritizes autonomy: the brain can read Discord channels, post messages, queue tasks for the Copilot agent, and manage its own context state through the brain-state immutable dataclass.</p>
 <hr />
 <h2 id="classifier-system">Classifier System</h2>
 <h3 id="overview">Overview</h3>
 <p>The classifier operates as a lightweight <strong>intent gatekeeper</strong> before expensive Claude operations. It answers a single question: "What does the user want to do?" The response is structured JSON with an <code>action</code> field (one of ~300 defined action types) and a <code>confidence</code> score (0.0–1.0).</p>
-<p><strong>Model</strong>: [[Claude Haiku|models]] (fastest tier)
+<p><strong>Model</strong>: models (fastest tier)
 <strong>Speed</strong>: ~200ms per classification
 <strong>Cost</strong>: ~150 tokens per call
 <strong>Caching</strong>: Automatic prompt caching for system messages &gt; 1024 chars</p>
@@ -2186,14 +2499,14 @@ document.addEventListener('DOMContentLoaded',function(){
 <li><strong>Message received</strong> → Discord fires <code>on_message</code> event in <code>bot.py</code></li>
 <li><strong>Conversational guard</strong> → Skip if message is simple yes/no/thanks (no point in classifying)</li>
 <li><strong>Pre-classifier intercepts</strong> → Hardcoded triggers for frequently-misrouted actions like <code>rc status</code>, <code>nba picks</code></li>
-<li><strong>Classifier call</strong> → <code>_classify_action(text)</code> calls [[Haiku|models]] with:</li>
+<li><strong>Classifier call</strong> → <code>_classify_action(text)</code> calls models with:</li>
 <li>Static system prompt: ~470 action definitions</li>
 <li>Dynamic examples: Recent correct classifications from feedback system</li>
 <li>Sequence hints: If the user's last action was X, what should they do next?</li>
 <li>Context: Last 4 messages in the conversation</li>
 <li><strong>Result parsing</strong> → JSON extraction from Haiku response</li>
-<li><strong>Confidence check</strong> → If confidence &lt; 0.5, escalate to [[brain]] instead</li>
-<li><strong>Dispatch</strong> → Route to appropriate [[cog|cogs]] or brain</li>
+<li><strong>Confidence check</strong> → If confidence &lt; 0.5, escalate to brain instead</li>
+<li><strong>Dispatch</strong> → Route to appropriate cogs or brain</li>
 </ol>
 <h3 id="confidence-system">Confidence System</h3>
 <p>The classifier returns a confidence float (0.0–1.0). This value gates:</p>
@@ -2220,7 +2533,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <li>Copilot task queuing</li>
 <li>Conversation state persistence</li>
 </ul>
-<p><strong>Model</strong>: [[Claude Sonnet 4.5|models]]
+<p><strong>Model</strong>: models
 <strong>Max iterations</strong>: 10 (tool use loop)
 <strong>Token budget</strong>: Configurable per conversation
 <strong>Cost</strong>: ~$0.003 per call (vs. ~$0.0001 for classifier)</p>
@@ -2308,7 +2621,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </tr>
 <tr>
 <td><code>search_knowledge</code></td>
-<td>Search FORGE's internal [[ChromaDB]] knowledge base</td>
+<td>Search FORGE's internal ChromaDB knowledge base</td>
 </tr>
 <tr>
 <td><code>search_candidates</code></td>
@@ -2382,7 +2695,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <ol>
 <li>User message arrives</li>
 <li>Classifier tags it as <code>forge_multi_action</code></li>
-<li>Brain is invoked with [[Multi-Action Tools]]</li>
+<li>Brain is invoked with Multi-Action Tools</li>
 <li>Brain reads channels, composes messages, posts results</li>
 <li>All three tasks happen in a single brain call</li>
 </ol>
@@ -2550,20 +2863,20 @@ document.addEventListener('DOMContentLoaded',function(){
 <hr />
 <h2 id="related-systems">Related Systems</h2>
 <ul>
-<li>[[Models|core/config.py]] — Haiku/Sonnet/Opus configuration</li>
-<li>[[Cogs]] — Modular action handlers (email, calendar, browser, etc.)</li>
-<li>[[Skills]] — Saved user routines</li>
-<li>[[MCP Manager]] — Integration layer for external tools</li>
-<li>[[ChromaDB]] — Semantic knowledge base (brain search)</li>
-<li>[[Copilot Agent]] — Persistent coding assistant (queued by brain)</li>
+<li>core/config.py — Haiku/Sonnet/Opus configuration</li>
+<li>Cogs — Modular action handlers (email, calendar, browser, etc.)</li>
+<li>Skills — Saved user routines</li>
+<li>MCP Manager — Integration layer for external tools</li>
+<li>ChromaDB — Semantic knowledge base (brain search)</li>
+<li>Copilot Agent — Persistent coding assistant (queued by brain)</li>
 </ul>
 <hr />
 <h2 id="see-also">See Also</h2>
 <ul>
-<li>[[Classifier Feedback System]] — Self-correcting classifier via examples</li>
-<li>[[Routing Optimizer]] — Dynamic examples for faster routing</li>
-<li>[[Pipeline Graph]] — StateGraph runner for multi-phase workflows</li>
-<li>[[Resilience Patterns]] — Circuit breaker, token budgeting, graceful degradation</li>
+<li>Classifier Feedback System — Self-correcting classifier via examples</li>
+<li>Routing Optimizer — Dynamic examples for faster routing</li>
+<li>Pipeline Graph — StateGraph runner for multi-phase workflows</li>
+<li>Resilience Patterns — Circuit breaker, token budgeting, graceful degradation</li>
 </ul>
 
 

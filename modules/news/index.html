@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded',function(){
       
       
       
-        <link rel="canonical" href="http://localhost:8000/private/candidates/">
+        <link rel="canonical" href="http://localhost:8000/modules/news/">
       
       
       
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     
       
-        <title>Candidate Database\n\nAuto-generated from PRISM scoring. Not listed in navigation.\n\n| Candidate | Score | Recommendation | Scored |\n|-----------|-------|---------------|--------|\n - FORGE Wiki</title>
+        <title>News Aggregator - FORGE Wiki</title>
       
     
     
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded',function(){
     <div data-md-component="skip">
       
         
-        <a href="#candidate-databasennauto-generated-from-prism-scoring-not-listed-in-navigationnn-candidate-score-recommendation-scored-n-n" class="md-skip">
+        <a href="#news-aggregator" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Candidate Database\n\nAuto-generated from PRISM scoring. Not listed in navigation.\n\n| Candidate | Score | Recommendation | Scored |\n|-----------|-------|---------------|--------|\n
+              News Aggregator
             
           </span>
         </div>
@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/prism/" class="md-nav__link">
+      <a href="../prism/" class="md-nav__link">
         
   
   
@@ -1062,7 +1062,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/tts/" class="md-nav__link">
+      <a href="../tts/" class="md-nav__link">
         
   
   
@@ -1090,7 +1090,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/knowledge-base/" class="md-nav__link">
+      <a href="../knowledge-base/" class="md-nav__link">
         
   
   
@@ -1118,7 +1118,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/ashby/" class="md-nav__link">
+      <a href="../ashby/" class="md-nav__link">
         
   
   
@@ -1146,7 +1146,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/company-raider/" class="md-nav__link">
+      <a href="../company-raider/" class="md-nav__link">
         
   
   
@@ -1174,7 +1174,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/sports-props/" class="md-nav__link">
+      <a href="../sports-props/" class="md-nav__link">
         
   
   
@@ -1202,7 +1202,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/sports-swarm/" class="md-nav__link">
+      <a href="../sports-swarm/" class="md-nav__link">
         
   
   
@@ -1230,7 +1230,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/outreach/" class="md-nav__link">
+      <a href="../outreach/" class="md-nav__link">
         
   
   
@@ -1258,7 +1258,7 @@ document.addEventListener('DOMContentLoaded',function(){
   
   
     <li class="md-nav__item">
-      <a href="../../modules/google-services/" class="md-nav__link">
+      <a href="../google-services/" class="md-nav__link">
         
   
   
@@ -1333,6 +1333,69 @@ document.addEventListener('DOMContentLoaded',function(){
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1348,7 +1411,62 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
-<h1 id="candidate-databasennauto-generated-from-prism-scoring-not-listed-in-navigationnn-candidate-score-recommendation-scored-n-n">Candidate Database\n\n<em>Auto-generated from PRISM scoring. Not listed in navigation.</em>\n\n| Candidate | Score | Recommendation | Scored |\n|-----------|-------|---------------|--------|\n</h1>
+<h1 id="news-aggregator">News Aggregator</h1>
+<p><em>RSS feed aggregation with Discord integration — polls news sources and posts new articles.</em></p>
+<p><strong>File:</strong> <code>modules/news.py</code> | <strong>Lines:</strong> ~610</p>
+<h2 id="what-it-does">What It Does</h2>
+<p>Polls 20+ RSS sources (WaPo, Reuters, AP, BBC, etc.) every 30 minutes. Deduplicates via SQLite (tracks seen articles, 7-day retention). Posts new articles to <code>📰-news</code> Discord channel as rich embeds with source branding, category emoji, and clickable links. Supports filtering by category (world, tech, national security, etc.).</p>
+<h2 id="key-functions">Key Functions</h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>init_news_aggregator(bot, channel_id)</code></td>
+<td>Start polling loop, create DB table</td>
+</tr>
+<tr>
+<td><code>poll_sources()</code></td>
+<td>Fetch all RSS feeds, parse, dedupe</td>
+</tr>
+<tr>
+<td><code>post_article(article, source)</code></td>
+<td>Format embed and post to Discord</td>
+</tr>
+<tr>
+<td><code>_clean_seen_cache()</code></td>
+<td>Remove articles older than 7 days</td>
+</tr>
+<tr>
+<td><code>add_rss_source(name, url, category)</code></td>
+<td>Register custom RSS feed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration</h2>
+<ul>
+<li><strong>Poll Interval:</strong> 30 minutes</li>
+<li><strong>Max Posts Per Poll:</strong> 5</li>
+<li><strong>Sources:</strong> 20+ default (WaPo, AP, Reuters, CNN, BBC, etc.)</li>
+<li><strong>Categories:</strong> world, national, politics, business, tech, investigative, national security</li>
+<li><strong>Embed Colors:</strong> Per-source branding (WaPo: #2B2B2B, AP: #E3120B, etc.)</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li><code>feedparser</code> — RSS parsing</li>
+<li><code>aiohttp</code> — async HTTP</li>
+<li><code>discord.py</code> — embed formatting</li>
+<li>Database: <code>news_articles</code> table</li>
+</ul>
+<h2 id="related">Related</h2>
+<ul>
+<li><a href="../overnight-engine.md">Overnight Engine</a></li>
+<li><a href="../morning-report.md">Morning Report</a></li>
+</ul>
 
 
 

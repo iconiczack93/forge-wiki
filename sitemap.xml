@@ -9,6 +9,46 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/modules/ashby/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/company-raider/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/google-services/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/knowledge-base/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/news/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/outreach/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/prism/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/sports-props/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/sports-swarm/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/tts/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/private/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
