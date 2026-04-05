@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded',function(){
     <div data-md-component="skip">
       
         
-        <a href="#meeting-recording-and-voice-fingerprinting-system" class="md-skip">
+        <a href="#meeting-intelligence-and-notes-system" class="md-skip">
           Skip to content
         </a>
       
@@ -2637,10 +2637,10 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
-<h1 id="meeting-recording-and-voice-fingerprinting-system">Meeting Recording and Voice Fingerprinting System</h1>
+<h1 id="meeting-intelligence-and-notes-system">Meeting Intelligence and Notes System</h1>
 <p><em>8 min read · Last updated April 04, 2026 · 1,686 words</em></p>
 <h2 id="summary">Summary</h2>
-<p>FORGE's meeting recording system captures audio (system output and microphone) from Windows WASAPI, transcribes conversations with AssemblyAI's speaker diarization, and automatically maps speakers (Speaker A/B/C) to real names using voice embeddings and Claude-powered contextual analysis. The system runs as a decoupled standalone process that survives FORGE crashes, learns speaker identities over time via voice fingerprinting, and produces structured meeting analysis with action items grouped by owner.</p>
+<p>FORGE's meeting intelligence system automatically captures meeting audio, generates timestamped notes with speaker attribution, and produces structured analysis with action items grouped by owner. The system identifies speakers using voice profile matching and Claude-powered contextual analysis, enabling searchable meeting notes across all past conversations. It runs as a standalone process for reliability and integrates with Google Calendar for automatic activation.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
 <p>The meeting recording system consists of six major components working together:</p>
 <pre class="mermaid"><code>graph TD
