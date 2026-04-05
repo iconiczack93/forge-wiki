@@ -1,104 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>FORGE Wiki — Authentication Required</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #1a1a2e;
-  color: #e0e0e0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-.auth-container {
-  background: #16213e;
-  border: 1px solid #0f3460;
-  border-radius: 12px;
-  padding: 48px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-.logo {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
-h1 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #bb86fc;
-}
-.subtitle {
-  color: #888;
-  font-size: 14px;
-  margin-bottom: 32px;
-}
-input[type="password"] {
-  width: 100%;
-  padding: 14px 16px;
-  background: #0a0a1a;
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-input[type="password"]:focus {
-  border-color: #bb86fc;
-}
-button {
-  width: 100%;
-  padding: 14px;
-  background: #bb86fc;
-  color: #1a1a2e;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 16px;
-  transition: background 0.2s;
-}
-button:hover { background: #ce9ffc; }
-.error {
-  color: #cf6679;
-  font-size: 13px;
-  margin-top: 12px;
-  display: none;
-}
-.footer {
-  color: #555;
-  font-size: 12px;
-  margin-top: 24px;
-}
-</style>
-</head>
-<body>
-<div class="auth-container" style="display:none">
-  <div class="logo">&#9889;</div>
-  <h1>FORGE Wiki</h1>
-  <p class="subtitle">Internal Knowledge Base — Access Required</p>
-  <form onsubmit="return checkAuth()">
-    <input type="password" id="pw" placeholder="Enter access key" autofocus>
-    <button type="submit">Unlock</button>
-  </form>
-  <p class="error" id="err">Invalid access key. Try again.</p>
-  <p class="footer">Protected system. Unauthorized access prohibited.</p>
-</div>
-<div id="content" style="display:none">
 
 <!doctype html>
 <html lang="en" class="no-js">
-  <head>
+  <head><script>
+(function(){
+var H="dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
+var s=sessionStorage.getItem('forge_wiki_auth');
+if(s===H)return;
+// Hide page instantly to prevent flash
+document.documentElement.style.visibility='hidden';
+document.addEventListener('DOMContentLoaded',function(){
+  // Create overlay
+  var o=document.createElement('div');
+  o.id='_authGate';
+  o.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#030303;display:flex;align-items:center;justify-content:center';
+  o.innerHTML='<div style="background:#0a0a0a;border:1px solid #1f1f1f;border-radius:12px;padding:48px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8)">'
+    +'<div style="font-size:48px;margin-bottom:8px">&#9889;</div>'
+    +'<h1 style="font-family:Syne,Space Grotesk,sans-serif;font-size:24px;font-weight:700;margin-bottom:8px;color:#DC2626;text-transform:uppercase;letter-spacing:0.05em">FORGE Wiki</h1>'
+    +'<p style="color:#6B7280;font-size:14px;margin-bottom:32px;font-family:Inter,sans-serif">Internal Knowledge Base</p>'
+    +'<form id="_af"><input type="password" id="_ap" placeholder="Enter access key" autofocus style="width:100%;padding:14px 16px;background:#111;border:1px solid #1f1f1f;border-radius:8px;color:#fff;font-size:16px;outline:none;font-family:Inter,sans-serif">'
+    +'<button type="submit" style="width:100%;padding:14px;background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;font-family:Inter,sans-serif;transition:background 0.2s">Unlock</button></form>'
+    +'<p id="_ae" style="color:#EF4444;font-size:13px;margin-top:12px;display:none">Invalid access key.</p>'
+    +'<p style="color:#333;font-size:11px;margin-top:24px;font-family:Inter,sans-serif">Protected system.</p></div>';
+  document.body.appendChild(o);
+  document.documentElement.style.visibility='visible';
+  document.getElementById('_af').onsubmit=function(e){
+    e.preventDefault();
+    var pw=document.getElementById('_ap').value;
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)).then(function(buf){
+      var h=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+      if(h===H){sessionStorage.setItem('forge_wiki_auth',h);o.remove();}
+      else{document.getElementById('_ae').style.display='block';document.getElementById('_ap').value='';}
+    });
+  };
+});
+})();
+</script>
+<meta name="robots" content="noindex, nofollow">
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1262,41 +1199,4 @@ button:hover { background: #ce9ffc; }
       
     
   </body>
-</html>
-</div>
-<script>
-const HASH = "dac21bb22e36265f423b6550fd44091020f8f0e7e92cb523658408eb64f68afd";
-async function sha256(msg) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
-async function checkAuth() {
-  const pw = document.getElementById('pw').value;
-  const h = await sha256(pw);
-  if (h === HASH) {
-    sessionStorage.setItem('forge_wiki_auth', h);
-    showContent();
-  } else {
-    document.getElementById('err').style.display = 'block';
-    document.getElementById('pw').value = '';
-  }
-  return false;
-}
-function showContent() {
-  document.querySelector('.auth-container').style.display = 'none';
-  const el = document.getElementById('content');
-  el.style.display = 'block';
-  document.body.style.display = 'block';
-  document.body.style.alignItems = 'stretch';
-  document.body.innerHTML = el.innerHTML;
-}
-// Check auth SYNCHRONOUSLY before anything renders
-const stored = sessionStorage.getItem('forge_wiki_auth');
-if (stored === HASH) {
-  showContent();
-} else {
-  document.querySelector('.auth-container').style.display = '';
-}
-</script>
-</body>
 </html>
