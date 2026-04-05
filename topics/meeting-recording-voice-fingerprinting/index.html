@@ -1,0 +1,1851 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/meeting-recording-voice-fingerprinting/">
+      
+      
+        <link rel="prev" href="../sourcing-and-outreach-pipeline/">
+      
+      
+        <link rel="next" href="../prizepicks-sports-model/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Meeting Recording & Voice Fingerprinting - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meeting-recording-and-voice-fingerprinting-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Meeting Recording & Voice Fingerprinting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-flow-inter-process-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Flow: Inter-Process Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-fingerprinting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Fingerprinting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice Fingerprinting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-and-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Threshold and Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-profile-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker Profile Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Recording
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker Resolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-context-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Context Building
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-behavioral-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Behavioral Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-claude-arbitration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Claude Arbitration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Processing Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Post-Processing Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-audio-merge-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Audio Merge &amp; Compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-transcription-assemblyai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Transcription (AssemblyAI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-voice-fingerprinting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Voice Fingerprinting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-speaker-name-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Speaker Name Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-analysis-action-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Analysis &amp; Action Items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-knowledge-base-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Knowledge Base Ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-discord-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Discord Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Issues and Limitations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known Issues and Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stuck-typing-post-pipeline-hang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Stuck Typing" Post-Pipeline Hang
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder-crash-loop-historical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder Crash-Loop (Historical)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assemblyai-speaker-count-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AssemblyAI Speaker Count Hints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-similarity-on-noisy-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Similarity on Noisy Calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-meeting-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large Meeting Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#control-flow-inter-process-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Control Flow: Inter-Process Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-fingerprinting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Fingerprinting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice Fingerprinting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threshold-and-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Threshold and Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speaker-profile-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker Profile Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-recording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Recording
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speaker-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Speaker Resolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Speaker Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-context-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Context Building
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-behavioral-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Behavioral Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-3-claude-arbitration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 3: Claude Arbitration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post-Processing Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Post-Processing Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-audio-merge-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Audio Merge &amp; Compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-transcription-assemblyai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Transcription (AssemblyAI)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-voice-fingerprinting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Voice Fingerprinting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-speaker-name-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Speaker Name Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-analysis-action-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Analysis &amp; Action Items
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-knowledge-base-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Knowledge Base Ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-discord-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Discord Output
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-and-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known Issues and Limitations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Known Issues and Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stuck-typing-post-pipeline-hang" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        "Stuck Typing" Post-Pipeline Hang
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder-crash-loop-historical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder Crash-Loop (Historical)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assemblyai-speaker-count-hints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AssemblyAI Speaker Count Hints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-similarity-on-noisy-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Similarity on Noisy Calls
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-meeting-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Large Meeting Performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="meeting-recording-and-voice-fingerprinting-system">Meeting Recording and Voice Fingerprinting System<a class="headerlink" href="#meeting-recording-and-voice-fingerprinting-system" title="Permanent link">&para;</a></h1>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>FORGE's meeting recording system captures audio (system output and microphone) from Windows WASAPI, transcribes conversations with AssemblyAI's speaker diarization, and automatically maps speakers (Speaker A/B/C) to real names using voice embeddings and Claude-powered contextual analysis. The system runs as a decoupled standalone process that survives FORGE crashes, learns speaker identities over time via voice fingerprinting, and produces structured meeting analysis with action items grouped by owner.</p>
+<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
+<p>The meeting recording system consists of six major components working together:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│ FORGE Bot (Orchestrator)                                │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  - Routes /record-start commands                        │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  - Manages post-recording pipeline                      │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  - Stores speaker context, profiles                     │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└────────────────┬────────────────────────────────────────┘
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                 │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ┌────────────┴────────────┐
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │ Control File IPC        │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │ (recorder_control.json) │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └────────────┬────────────┘
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                 │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>┌────────────────▼────────────────────────────────────────┐
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│ forge_recorder.py (Standalone Process)                  │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  - Ring buffer (300s backlog)                           │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  - WASAPI loopback + mic capture                        │
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│  - Writes system.wav and mic.wav                        │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  - Survives FORGE crashes                              │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└────────────────┬────────────────────────────────────────┘
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                 │
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    ┌────────────┴────────────┐
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    │ Audio files             │
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    │ (system.wav, mic.wav)   │
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    └────────────┬────────────┘
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>                 │
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>┌────────────────▼────────────────────────────────────────┐
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│ Post-Recording Pipeline                                 │
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│  1. Merge + compress audio → mp3                        │
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│  2. Transcribe via AssemblyAI (speaker diarization)     │
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│  3. Extract voice embeddings via Resemblyzer           │
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│  4. Resolve Speaker A/B/C → real names (Claude)        │
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│  5. Analyze &amp; extract action items                      │
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│  6. Store in KB + post to Discord                       │
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="control-flow-inter-process-communication">Control Flow: Inter-Process Communication<a class="headerlink" href="#control-flow-inter-process-communication" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>User command</strong>: <code>/record-start "Meeting Title"</code> in Discord</li>
+<li><strong>Bot writes control file</strong>: <code>data/recorder_control.json</code> with <code>{"action": "start", "meeting": "Meeting Title"}</code></li>
+<li><strong>Standalone recorder polls</strong> the control file, sees start command</li>
+<li><strong>Recorder launches</strong> capture threads, starts ring buffer</li>
+<li><strong>Recorder writes lockfile</strong>: <code>data/recordings/.active_recording.json</code> with active PID</li>
+<li><strong>User command</strong>: <code>/record-stop</code></li>
+<li><strong>Bot writes stop command</strong> to control file</li>
+<li><strong>Recorder stops</strong> capture, writes result to <code>data/recorder_result.json</code></li>
+<li><strong>Bot reads result</strong>, launches transcription pipeline</li>
+</ol>
+<p>This IPC design means the recorder can survive FORGE crashing—even if the bot dies, the recorder keeps capturing until <code>/record-stop</code> is called or 1 hour elapses (hard limit).</p>
+<h2 id="voice-fingerprinting">Voice Fingerprinting<a class="headerlink" href="#voice-fingerprinting" title="Permanent link">&para;</a></h2>
+<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<p>Voice fingerprinting uses <strong>Resemblyzer</strong>, a neural speaker embedding model that converts audio segments into 256-dimensional vectors representing unique speaker characteristics.</p>
+<p><strong>Process:</strong>
+1. During transcription, AssemblyAI segments audio by speaker (Speaker A, Speaker B, etc.)
+2. For each segment, extract a 3-5 second audio clip
+3. Resample to 16kHz (Resemblyzer's expected sample rate)
+4. Pass through <code>VoiceEncoder</code> model → 256-dim embedding vector
+5. Compare new embedding against stored speaker profiles using <strong>cosine similarity</strong>
+6. If similarity &gt; 0.75 (threshold), match to known speaker; otherwise flag as new speaker</p>
+<h3 id="threshold-and-tuning">Threshold and Tuning<a class="headerlink" href="#threshold-and-tuning" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Similarity threshold</strong>: 0.75 (cosine distance)</li>
+<li><strong>Sample rate</strong>: 16kHz (Resemblyzer requirement)</li>
+<li><strong>Embedding dimension</strong>: 256</li>
+<li><strong>Model</strong>: Pre-trained speaker recognition encoder from SpeechBrain</li>
+</ul>
+<p>The threshold was chosen to balance false positives (matching wrong speakers) against false negatives (missing known speakers). High-confidence matches (&gt;0.85) are auto-accepted; borderline matches (0.75-0.85) are flagged for human review.</p>
+<h3 id="speaker-profile-database">Speaker Profile Database<a class="headerlink" href="#speaker-profile-database" title="Permanent link">&para;</a></h3>
+<p>Profiles are stored in <code>forge.db</code> in three related tables:</p>
+<p><strong><code>speaker_fingerprints</code></strong> (per-utterance):
+- <code>speaker_name</code> — name of known speaker
+- <code>embedding</code> — 256-dim vector (JSON)
+- <code>utterance</code> — text of confirmed utterance
+- <code>confidence</code> — human confidence (0.0-1.0)</p>
+<p><strong><code>speaker_behavioral_stats</code></strong> (aggregated):
+- <code>speaker_name</code>
+- <code>filler_rate</code> — fillers per 100 words (um, uh, like, etc.)
+- <code>question_rate</code> — % of utterances that are questions
+- <code>avg_utterance_length</code> — mean words per utterance
+- <code>common_phrases</code> — distinctive 2-3 word phrases
+- <code>sample_utterances</code> — 3 most recent confirmed utterances
+- <code>sample_size</code> — total confirmed utterances</p>
+<p><strong><code>calibration_sessions</code></strong> (per-meeting accuracy):
+- <code>meeting_date</code>
+- <code>total_speakers</code> — how many unique speakers detected
+- <code>matched_speakers</code> — how many had names resolved
+- <code>accuracy_score</code> — (matched / total)</p>
+<h3 id="active-learning">Active Learning<a class="headerlink" href="#active-learning" title="Permanent link">&para;</a></h3>
+<p>The fingerprint database improves over time:</p>
+<ol>
+<li><strong>Calibration</strong>: After initial speaker resolution, prompt user to verify speakers in Discord</li>
+<li><strong>Correction</strong>: User runs <code>/fix-speaker "Speaker A" "John"</code> → stores utterances as confirmed</li>
+<li><strong>Behavioral profiling</strong>: System analyzes confirmed utterances to extract filler rate, vocabulary patterns</li>
+<li><strong>Next meeting</strong>: New speakers are compared against behavioral profiles <em>and</em> embeddings together</li>
+</ol>
+<p>This two-stage approach catches speakers even if their voice changes (cold, stress, etc.) by also matching speaking patterns.</p>
+<h2 id="auto-recording">Auto-Recording<a class="headerlink" href="#auto-recording" title="Permanent link">&para;</a></h2>
+<p>[[calendar_auto_record.py]] provides calendar-based meeting detection:</p>
+<p><strong>Config</strong>: Stored in <code>data/meeting_auto_record.json</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;meetings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eng Sync&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]},</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all-hands&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Linda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</code></pre></div></p>
+<p><strong>How it works:</strong>
+1. Periodic job (runs every 5 min) checks Google Calendar for next 30 minutes of events
+2. For each event, check if event title contains any configured pattern (case-insensitive substring match)
+3. If matched and meeting hasn't already been recorded today, auto-start recorder
+4. If <code>expected_speakers</code> is provided, pass count to AssemblyAI as hint for diarization</p>
+<p><strong>Opt-out</strong>: Recurring meetings are stored in <code>data/meeting_recorded_events.json</code> to avoid re-recording same meeting twice in one day.</p>
+<h2 id="speaker-resolution">Speaker Resolution<a class="headerlink" href="#speaker-resolution" title="Permanent link">&para;</a></h2>
+<p>[[speaker_resolution.py]] maps Speaker A/B/C to real names using a three-stage process:</p>
+<h3 id="stage-1-context-building">Stage 1: Context Building<a class="headerlink" href="#stage-1-context-building" title="Permanent link">&para;</a></h3>
+<p>Gather hints from:
+- <strong>Me</strong>: Current user (Zack), role, notes
+- <strong>Contacts</strong>: Known colleagues (Arda, Linda, Hank, etc.), roles, notes
+- <strong>Recurring meetings</strong>: Day-of-week patterns ("Eng Sync is always Monday with Zack, Arda, Hank")
+- <strong>Ambiguity hints</strong>: Common confusion pairs ("If there are only 2 speakers, Speaker B is likely Hank, not Arda")</p>
+<h3 id="stage-2-behavioral-comparison">Stage 2: Behavioral Comparison<a class="headerlink" href="#stage-2-behavioral-comparison" title="Permanent link">&para;</a></h3>
+<p>For each detected speaker:
+1. Extract voice embedding from sample utterances
+2. Compare against stored speaker fingerprints using cosine similarity
+3. If high confidence match (&gt;0.85), propose name
+4. Combine with behavioral stats (filler rate, question patterns)</p>
+<h3 id="stage-3-claude-arbitration">Stage 3: Claude Arbitration<a class="headerlink" href="#stage-3-claude-arbitration" title="Permanent link">&para;</a></h3>
+<p>Send to Claude:
+- <strong>Context hints</strong> (who's likely in this meeting)
+- <strong>Transcription samples</strong> (first 2-3 utterances per speaker)
+- <strong>Embedding distances</strong> (if fingerprints exist: "Speaker A is 0.88 similar to Hank, 0.71 to Arda")
+- <strong>Behavioral signals</strong> (Speaker B has 12% filler rate → matches Arda profile)</p>
+<p>Claude synthesizes all signals and returns structured mapping:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;?Unknown&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.82</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+</code></pre></div></p>
+<p>Unknown speakers are flagged for manual calibration.</p>
+<h2 id="post-processing-pipeline">Post-Processing Pipeline<a class="headerlink" href="#post-processing-pipeline" title="Permanent link">&para;</a></h2>
+<p>After recording stops, the system runs a sequential pipeline:</p>
+<h3 id="1-audio-merge-compression">1. Audio Merge &amp; Compression<a class="headerlink" href="#1-audio-merge-compression" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Read <code>system.wav</code> (system output) and <code>mic.wav</code> (microphone)</li>
+<li>Mix both into a single stereo WAV (left=system, right=mic)</li>
+<li>Compress to MP3 (128kbps) to save space</li>
+<li>Store as <code>recordings/{date}_{meeting_title}.mp3</code></li>
+</ul>
+<h3 id="2-transcription-assemblyai">2. Transcription (AssemblyAI)<a class="headerlink" href="#2-transcription-assemblyai" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Upload MP3 to AssemblyAI API</li>
+<li>Request speaker diarization with <code>speaker_labels=True</code></li>
+<li>Optionally pass speaker count hint from calendar if known</li>
+<li>Poll for completion (typically 1-3 minutes for 1-hour meeting)</li>
+<li>Result includes speaker labels (Speaker A, Speaker B, etc.) and timestamps</li>
+</ul>
+<h3 id="3-voice-fingerprinting">3. Voice Fingerprinting<a class="headerlink" href="#3-voice-fingerprinting" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For each unique speaker label, extract 5-second audio clip at midpoint of their longest utterance</li>
+<li>Resample to 16kHz</li>
+<li>Compute 256-dim embedding vector</li>
+<li>Compare against stored profiles in <code>speaker_fingerprints</code> table</li>
+<li>Output similarity scores for top 3 matches per speaker</li>
+</ul>
+<h3 id="4-speaker-name-resolution">4. Speaker Name Resolution<a class="headerlink" href="#4-speaker-name-resolution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use [[speaker_resolution.py]] to map labels to names</li>
+<li>Store mapping in metadata file: <code>recordings/{meeting_id}_speakers.json</code></li>
+<li>Flag any unknown speakers for human verification</li>
+</ul>
+<h3 id="5-analysis-action-items">5. Analysis &amp; Action Items<a class="headerlink" href="#5-analysis-action-items" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Replace generic Speaker A/B/C with resolved names in transcript</li>
+<li>Send full transcript to Claude</li>
+<li>Extract: TL;DR, action items (grouped by owner), decisions made</li>
+<li>Store analysis in <code>recordings/{meeting_id}_analysis.json</code></li>
+</ul>
+<h3 id="6-knowledge-base-ingestion">6. Knowledge Base Ingestion<a class="headerlink" href="#6-knowledge-base-ingestion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add transcript + analysis to FORGE's vector KB (ChromaDB)</li>
+<li>Chunk by speaker turns for precise retrieval</li>
+<li>Index by date, attendees, keywords</li>
+</ul>
+<h3 id="7-discord-output">7. Discord Output<a class="headerlink" href="#7-discord-output" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Post summary to <code>#meeting-recordings</code> (if configured)</li>
+<li>Include: title, attendees, TL;DR, action items, link to full transcript</li>
+</ul>
+<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[skills/meeting/__init__.py](&lt;../skills/meeting/__init__.py&gt;)</code></td>
+<td>Package entry point, exports skill API (start_recording, stop_recording, fix_speaker, auto_record_add, etc.)</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/recorder.py](&lt;../skills/meeting/recorder.py&gt;)</code></td>
+<td>Control IPC, lockfile management, post-recording pipeline orchestration</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/transcription.py](&lt;../skills/meeting/transcription.py&gt;)</code></td>
+<td>AssemblyAI API calls, speaker diarization, transcription polling</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/speaker_resolution.py](&lt;../skills/meeting/speaker_resolution.py&gt;)</code></td>
+<td>Claude-powered speaker name mapping, context builder, embedding similarity scoring</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/voice_fingerprint.py](&lt;../skills/meeting/voice_fingerprint.py&gt;)</code></td>
+<td>Resemblyzer embedding extraction, fingerprint database queries, behavioral profiling</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/audio.py](&lt;../skills/meeting/audio.py&gt;)</code></td>
+<td>Audio merge, compression, WAV-to-MP3 conversion (deprecated: now in forge_recorder.py)</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/analysis.py](&lt;../skills/meeting/analysis.py&gt;)</code></td>
+<td>Claude meeting analysis, action item extraction, Discord formatting</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/calendar_auto_record.py](&lt;../skills/meeting/calendar_auto_record.py&gt;)</code></td>
+<td>Google Calendar polling, pattern matching, auto-start recorder on meeting detection</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/speaker_fingerprint.py](&lt;../skills/meeting/speaker_fingerprint.py&gt;)</code></td>
+<td>Fingerprint database schema (SQLite), behavioral stats aggregation, confidence tracking</td>
+</tr>
+<tr>
+<td><code>[skills/meeting/data_models.py](&lt;../skills/meeting/data_models.py&gt;)</code></td>
+<td>Shared state, config loaders, constants, lockfile management</td>
+</tr>
+<tr>
+<td><code>[[forge_recorder.py]]</code></td>
+<td><strong>Standalone process</strong>, ring buffer capture, WASAPI loopback, control file polling, crash recovery</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-issues-and-limitations">Known Issues and Limitations<a class="headerlink" href="#known-issues-and-limitations" title="Permanent link">&para;</a></h2>
+<h3 id="stuck-typing-post-pipeline-hang">"Stuck Typing" Post-Pipeline Hang<a class="headerlink" href="#stuck-typing-post-pipeline-hang" title="Permanent link">&para;</a></h3>
+<p><strong>Symptom</strong>: After transcription completes, speaker resolution appears to hang for 2-5 minutes. No errors logged. Claude calls seem blocked.</p>
+<p><strong>Root cause</strong>: Resemblyzer's <code>VoiceEncoder</code> model loads lazily (first time used). Loading the ~100MB model from disk on first embedding extraction blocks the event loop.</p>
+<p><strong>Workaround</strong>: Pre-load encoder in <code>bootstrap.py</code> by calling <code>_get_encoder()</code> once on bot startup. Or move embedding extraction to background thread pool.</p>
+<p><strong>Status</strong>: Identified, not yet fixed. Consider batching embedding computation or async subprocess call.</p>
+<h3 id="recorder-crash-loop-historical">Recorder Crash-Loop (Historical)<a class="headerlink" href="#recorder-crash-loop-historical" title="Permanent link">&para;</a></h3>
+<p><strong>Previous issue (now fixed)</strong>: Recorder thread crashed on WASAPI initialization → lockfile not cleared → next start attempt read stale PID → think recording already active.</p>
+<p><strong>Fix applied</strong>: 
+- Moved audio capture to standalone <code>forge_recorder.py</code> with independent lifecycle
+- Ring buffer survives FORGE crashes
+- Supervisor process auto-restarts recorder if it dies
+- Lockfile includes timestamp + PID validation</p>
+<h3 id="assemblyai-speaker-count-hints">AssemblyAI Speaker Count Hints<a class="headerlink" href="#assemblyai-speaker-count-hints" title="Permanent link">&para;</a></h3>
+<p><strong>Limitation</strong>: Passing <code>expected_speakers</code> count to AssemblyAI improves diarization accuracy <em>only if count is exact</em>. If you hint 3 speakers but there are actually 2, AssemblyAI may hallucinate a third speaker with ~30% silence.</p>
+<p><strong>Mitigation</strong>: Use <code>expected_speakers</code> only when you're confident (calendar shows exact attendee count, or recurring meeting with fixed attendees).</p>
+<h3 id="voice-similarity-on-noisy-calls">Voice Similarity on Noisy Calls<a class="headerlink" href="#voice-similarity-on-noisy-calls" title="Permanent link">&para;</a></h3>
+<p><strong>Known issue</strong>: On calls with high background noise or poor connection, Resemblyzer embeddings can drift, causing similarity scores to drop below 0.75 even for known speakers.</p>
+<p><strong>Mitigation</strong>: 
+- Fallback to behavioral profile matching (filler rate, question rate)
+- Manually verify speakers in Discord after each meeting (<code>/fix-speaker "Speaker A" "John"</code>)
+- Calibration feedback improves fingerprints for future meetings</p>
+<h3 id="large-meeting-performance">Large Meeting Performance<a class="headerlink" href="#large-meeting-performance" title="Permanent link">&para;</a></h3>
+<p><strong>Limitation</strong>: For meetings with 5+ speakers, speaker resolution becomes ambiguous. Claude's contextual hints help, but absent explicit "who's who" cues, accuracy degrades.</p>
+<p><strong>Recommendation</strong>: For large meetings, pre-configure speakers in <code>meeting_speakers.json</code> contacts list with detailed notes.</p>
+<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>[[holy-grails]]</strong> — Some meeting recordings feed AI grail workflows</li>
+<li><strong>[[knowledge-base]]</strong> — Transcripts indexed for semantic search</li>
+<li><strong>[[brain]]</strong> — Claude Sonnet handles speaker resolution and analysis</li>
+<li><strong>[[autonomy-loop]]</strong> — Night mode can trigger auto-recording for scheduled meetings</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

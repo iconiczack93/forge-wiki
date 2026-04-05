@@ -1,0 +1,2397 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/overnight-engine-and-scheduling/">
+      
+      
+        <link rel="prev" href="../knowledge-base-and-rag/">
+      
+      
+        <link rel="next" href="../tts-and-voice/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Overnight Engine & Scheduling - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overnight-engine-scheduling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overnight Engine & Scheduling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-overnight-engine-coreovernight_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overnight Engine (core/overnight_engine.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-autonomy-loop-coreautonomy_looppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Autonomy Loop (core/autonomy_loop.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dream-mode-coredream_modepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dream Mode (core/dream_mode.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dream-candidates-coredream_candidatespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dream Candidates (core/dream_candidates.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling Infrastructure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apscheduler-core-modulesschedulerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APScheduler Core (modules/scheduler.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictive-scheduling-corepredictive_schedulingpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive Scheduling (core/predictive_scheduling.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-worker-modulessleep_workerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Worker (modules/sleep_worker.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#company-sourcing-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Sourcing Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Company Sourcing Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#company-raider-modulescompany_raiderpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Raider (modules/company_raider.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#company-replenisher-modulescompany_replenisherpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Replenisher (modules/company_replenisher.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#news-aggregation-modulesnewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        News Aggregation (modules/news.py)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files &amp; Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overnight-engine-10night-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overnight Engine ($10/night cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autonomy-loop-5day-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autonomy Loop ($5/day cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dream-mode-050night-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dream Mode ($0.50/night cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring &amp; Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring &amp; Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-overnight-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View overnight progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-autonomy-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View autonomy improvements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-dream-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View dream insights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disableenable-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable/enable systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-overnight-engine-coreovernight_enginepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overnight Engine (core/overnight_engine.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-autonomy-loop-coreautonomy_looppy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Autonomy Loop (core/autonomy_loop.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dream-mode-coredream_modepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Dream Mode (core/dream_mode.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dream-candidates-coredream_candidatespy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dream Candidates (core/dream_candidates.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheduling-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scheduling Infrastructure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheduling Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apscheduler-core-modulesschedulerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APScheduler Core (modules/scheduler.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictive-scheduling-corepredictive_schedulingpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive Scheduling (core/predictive_scheduling.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sleep-worker-modulessleep_workerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sleep Worker (modules/sleep_worker.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#company-sourcing-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Sourcing Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Company Sourcing Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#company-raider-modulescompany_raiderpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Raider (modules/company_raider.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#company-replenisher-modulescompany_replenisherpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Company Replenisher (modules/company_replenisher.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#news-aggregation-modulesnewspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        News Aggregation (modules/news.py)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files &amp; Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overnight-engine-10night-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overnight Engine ($10/night cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autonomy-loop-5day-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autonomy Loop ($5/day cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dream-mode-050night-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dream Mode ($0.50/night cap)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring &amp; Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring &amp; Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-overnight-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View overnight progress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-autonomy-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View autonomy improvements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-dream-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View dream insights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disableenable-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable/enable systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="overnight-engine-scheduling">Overnight Engine &amp; Scheduling<a class="headerlink" href="#overnight-engine-scheduling" title="Permanent link">&para;</a></h1>
+<p><strong>Overnight productivity engine for FORGE — makes idle VPS hours productive without burning Zack's interactive time.</strong></p>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Overnight Engine is a family of systems that execute deep work (research, profiling, maintenance) when FORGE is idle — typically 9 PM to 7 AM Pacific. Instead of wasting 10 idle hours per night, these systems:</p>
+<ul>
+<li><strong>Continue pipeline work</strong> — score unscoreds, enrich profiles with GitHub data</li>
+<li><strong>Build company intelligence</strong> — research profiles for target companies  </li>
+<li><strong>Raid company rosters</strong> — discover candidates via LinkedIn from unscanned AI companies</li>
+<li><strong>Replenish sourcing lists</strong> — auto-discover new companies to raid</li>
+<li><strong>Dream &amp; synthesize</strong> — connect unrelated knowledge, surface insights</li>
+<li><strong>Maintain systems</strong> — re-index knowledge base, prune duplicates, decay stale memories</li>
+</ul>
+<p><strong>Cost cap</strong>: $10/night (actual spend typically $3–6)<br />
+<strong>Architecture</strong>: APScheduler (cron) + 3-model pipeline (Haiku → Opus → Sonnet)<br />
+<strong>Runs on</strong>: VPS only (7 PM–7 AM PDT)</p>
+<hr />
+<h2 id="core-systems">Core Systems<a class="headerlink" href="#core-systems" title="Permanent link">&para;</a></h2>
+<h3 id="1-overnight-engine-coreovernight_enginepy">1. Overnight Engine (<code>core/overnight_engine.py</code>)<a class="headerlink" href="#1-overnight-engine-coreovernight_enginepy" title="Permanent link">&para;</a></h3>
+<p><strong>Orchestrator for all overnight work cycles.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cycles</strong></td>
+<td>4 per night at 9:30 PM, 12:30 AM, 3:30 AM, 6:30 AM Pacific</td>
+</tr>
+<tr>
+<td><strong>Schedule</strong></td>
+<td>CronTrigger via APScheduler (UTC hours 5, 8, 11, 14 = PDT -7)</td>
+</tr>
+<tr>
+<td><strong>Cost tracking</strong></td>
+<td>Nightly cap $10 USD, resets each night</td>
+</tr>
+<tr>
+<td><strong>Task priority</strong></td>
+<td>Company raids &gt; unscored candidates &gt; GitHub enrichment &gt; company intel &gt; KB maintenance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Task types (in execution order):</strong></p>
+<ol>
+<li><strong>Company raids</strong> (priority 0)</li>
+<li>Blast through unscanned AI companies (LinkedIn profiles via Apify)</li>
+<li>~50 companies per cycle, ~30s each</li>
+<li>
+<p>When exhausted, triggers company replenishment</p>
+</li>
+<li>
+<p><strong>Score unscoreds</strong> (priority 1)</p>
+</li>
+<li>Find candidates evaluated today with score = 0</li>
+<li>
+<p>Run PRISM scoring to populate scores</p>
+</li>
+<li>
+<p><strong>GitHub enrichment</strong> (priority 2)</p>
+</li>
+<li>High-scoring candidates (3+) with missing profile_data</li>
+<li>
+<p>Query GitHub API for activity, repos, contributions</p>
+</li>
+<li>
+<p><strong>Company intelligence</strong> (priority 3)</p>
+</li>
+<li>Distinct companies from recent candidate evals (7-day window)</li>
+<li>
+<p>Build company profiles for market research</p>
+</li>
+<li>
+<p><strong>KB maintenance</strong> (priority 4)</p>
+</li>
+<li>Re-index ChromaDB for stale embeddings</li>
+<li>Prune duplicate knowledge entries</li>
+</ol>
+<p><strong>Key methods:</strong>
+- <code>run_cycle()</code> — Main overnight loop, checks VPS instance, cost cap, resets nightly
+- <code>_pick_task()</code> — Query DB for eligible work, rank by priority, return next task
+- <code>_execute_task(task)</code> — Route to appropriate module (raider, enricher, etc.)
+- <code>get_last_night_summary()</code> — Return summary of completed work</p>
+<p><strong>State persistence:</strong>
+- <code>data/overnight_state.json</code> — Tracks nightly cost, completed tasks, timestamps
+- <code>data/overnight.log</code> — Logs all cycles, task selection, cost tracking</p>
+<hr />
+<h3 id="2-autonomy-loop-coreautonomy_looppy">2. Autonomy Loop (<code>core/autonomy_loop.py</code>)<a class="headerlink" href="#2-autonomy-loop-coreautonomy_looppy" title="Permanent link">&para;</a></h3>
+<p><strong>Self-improvement engine — FORGE detects bugs/gaps and fixes itself via a 3-model pipeline.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Role</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Haiku</strong></td>
+<td>Research &amp; root cause analysis</td>
+<td>~$0.01–0.02 per cycle</td>
+</tr>
+<tr>
+<td><strong>Opus</strong></td>
+<td>Architectural design &amp; risk assessment</td>
+<td>~$0.10–0.20 per cycle</td>
+</tr>
+<tr>
+<td><strong>Sonnet</strong></td>
+<td>Implementation via copilot</td>
+<td>Copilot cost (tool_use)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>5-phase workflow:</strong></p>
+<ol>
+<li><strong>ANALYZE</strong> (Local)</li>
+<li>Read friction signals from <code>data/friction.jsonl</code></li>
+<li>Mine failure logs from <code>forge.db</code> (errors, timeouts)</li>
+<li>
+<p>Identify capability gaps from chat history</p>
+</li>
+<li>
+<p><strong>RESEARCH</strong> (Haiku, cheap)</p>
+</li>
+<li>Investigate root cause</li>
+<li>Read relevant source files (up to 100 lines each)</li>
+<li>
+<p>Suggest approach</p>
+</li>
+<li>
+<p><strong>DESIGN</strong> (Opus, deep)</p>
+</li>
+<li>Review Haiku's findings</li>
+<li>Propose architectural changes</li>
+<li>Score confidence (0.0–1.0)</li>
+<li>
+<p>Skip if confidence &lt; 0.4</p>
+</li>
+<li>
+<p><strong>EXECUTE</strong> (Sonnet + Copilot)</p>
+</li>
+<li>Follow Opus's plan</li>
+<li>Write code, run tests</li>
+<li>
+<p>Commit with detailed message</p>
+</li>
+<li>
+<p><strong>TRACK</strong></p>
+</li>
+<li>Log result to <code>autonomy_log.jsonl</code></li>
+<li>Update <code>autonomy_state.json</code> (improvements count, cost, last_cycle)</li>
+</ol>
+<p><strong>Budgets:</strong>
+- <code>MAX_IMPROVEMENTS_PER_DAY = 5</code> (env: <code>AUTONOMY_MAX_DAILY</code>)
+- <code>DAILY_BUDGET_USD = 5.0</code> (env: <code>AUTONOMY_DAILY_BUDGET</code>)
+- <code>CYCLE_INTERVAL_HOURS = 4</code> (env: <code>AUTONOMY_CYCLE_HOURS</code>)</p>
+<p><strong>Runs:</strong> Every 4–6 hours, async loop in bot.py</p>
+<p><strong>Dataclasses:</strong>
+- <code>ImprovementCandidate</code> — source, category, title, description, priority_score, evidence, estimated_complexity
+- <code>ResearchReport</code> — issue, root_cause, relevant_files, code_context, suggested_approach, cost_usd
+- <code>DesignPlan</code> — files_to_modify, changes_summary, risks, rollback_plan, confidence, cost_usd
+- <code>ImprovementResult</code> — candidate_title, status (success/failed/skipped/deferred), copilot_response, timestamp, cost_usd</p>
+<hr />
+<h3 id="3-dream-mode-coredream_modepy">3. Dream Mode (<code>core/dream_mode.py</code>)<a class="headerlink" href="#3-dream-mode-coredream_modepy" title="Permanent link">&para;</a></h3>
+<p><strong>Subconscious synthesis engine — connects unrelated knowledge, surfaces unexpected insights.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>When</strong></td>
+<td>Midnight–6 AM Pacific (off-hours)</td>
+</tr>
+<tr>
+<td><strong>Frequency</strong></td>
+<td>Max 3 dreams per night</td>
+</tr>
+<tr>
+<td><strong>Cost cap</strong></td>
+<td>$0.50/night</td>
+</tr>
+<tr>
+<td><strong>Model</strong></td>
+<td>Haiku (fast, cheap)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Process:</strong>
+1. Gather context fragments:
+   - Recent meeting action items
+   - Recent candidates scored (5 most recent)
+   - User facts (5 most recent)
+   - Goals + milestones from KB</p>
+<ol>
+<li>Pass to <code>_DREAM_SYSTEM</code> prompt:</li>
+<li>Look for non-obvious patterns across domains</li>
+<li>Find skills/people from one area helping another</li>
+<li>Detect timing coincidences</li>
+<li>
+<p>Flag contradictions needing resolution</p>
+</li>
+<li>
+<p>Synthesize → DreamInsight:</p>
+</li>
+<li>title, synthesis (2–3 sentences), connections (pairs), confidence (0.0–1.0)</li>
+<li>
+<p>Only store if confidence ≥ 0.5</p>
+</li>
+<li>
+<p>Store in <code>dream_insights</code> table:</p>
+</li>
+<li>title, synthesis, connections (JSON array), confidence, dreamed_at, cost_usd, surfaced (flag)</li>
+</ol>
+<p><strong>Dataclass:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">DreamInsight</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">synthesis</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">connections</span><span class="p">:</span> <span class="nb">tuple</span>  <span class="c1"># (&quot;fact A&quot;, &quot;fact B&quot;), ...</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">dreamed_at</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># ISO timestamp</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">cost_usd</span><span class="p">:</span> <span class="nb">float</span>
+</code></pre></div></p>
+<p><strong>Log:</strong> <code>data/dream_log.jsonl</code></p>
+<hr />
+<h3 id="4-dream-candidates-coredream_candidatespy">4. Dream Candidates (<code>core/dream_candidates.py</code>)<a class="headerlink" href="#4-dream-candidates-coredream_candidatespy" title="Permanent link">&para;</a></h3>
+<p><strong>24/7 autonomous channel discovery — finds new talent communities beyond explicitly configured channels.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Discovery methods</strong></td>
+<td>AI-guided search for new platforms, communities, events</td>
+</tr>
+<tr>
+<td><strong>Target stacks</strong></td>
+<td>ClickHouse, OLAP, data engineering, Rust, Go, distributed systems, real-time analytics, observability</td>
+</tr>
+<tr>
+<td><strong>Known platforms</strong></td>
+<td>GitHub, LinkedIn, StackOverflow, Ashby (skip to avoid duplication)</td>
+</tr>
+<tr>
+<td><strong>Cost estimation</strong></td>
+<td>Ranks discoveries by relevance + cost impact</td>
+</tr>
+<tr>
+<td><strong>Auto-wiring</strong></td>
+<td>Approved channels auto-integrate into sourcing pipeline</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dataclass:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">ChannelDiscovery</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">platform</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># &quot;discord&quot;, &quot;slack&quot;, &quot;meetup&quot;, &quot;github_org&quot;, etc.</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">description</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">estimated_reach</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># members/followers</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">estimated_cost</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># &quot;free&quot;, &quot;$X/mo&quot;, &quot;one-time $X&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">relevance</span><span class="p">:</span> <span class="nb">float</span>  <span class="c1"># 0.0–1.0</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">status</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># &quot;pending&quot;, &quot;approved&quot;, &quot;rejected&quot;, &quot;wired&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">discovered_at</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div></p>
+<p><strong>Workflow:</strong>
+1. Query <code>channel_discoveries</code> table for pending recommendations
+2. Score by relevance × cost-benefit
+3. Surface top N to Zack (via Discord or briefing)
+4. Auto-wire approved channels into sourcing pipeline</p>
+<hr />
+<h2 id="scheduling-infrastructure">Scheduling Infrastructure<a class="headerlink" href="#scheduling-infrastructure" title="Permanent link">&para;</a></h2>
+<h3 id="apscheduler-core-modulesschedulerpy">APScheduler Core (<code>modules/scheduler.py</code>)<a class="headerlink" href="#apscheduler-core-modulesschedulerpy" title="Permanent link">&para;</a></h3>
+<p><strong>Central task scheduler using APScheduler (asyncio).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Timezone</strong></td>
+<td><code>America/Los_Angeles</code> (PST/PDT)</td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td>SQLite <code>scheduled_tasks</code> table</td>
+</tr>
+<tr>
+<td><strong>Task types</strong></td>
+<td>Reminder (one-time), Recurring (cron), Special (briefing, raiding)</td>
+</tr>
+<tr>
+<td><strong>Job defaults</strong></td>
+<td><code>misfire_grace_time=3600</code>, <code>coalesce=True</code> (skip missed occurrences)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Initialization:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">init_scheduler</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">brain</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="c1"># Load all enabled tasks from DB</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="c1"># Register each as APScheduler job (DateTrigger or CronTrigger)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># Auto-clear browser cookies hourly</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># Catch up on missed recurring jobs (e.g., bot restart during scheduled task)</span>
+</code></pre></div></p>
+<p><strong>DB Schema (scheduled_tasks):</strong>
+- id, description, task_type, cron_expression, run_at (ISO), enabled, created_at, last_run</p>
+<p><strong>Key behaviors:</strong>
+- <strong>Cleanup past reminders</strong> — Disable one-time tasks with run_at in the past
+- <strong>Catch-up missed jobs</strong> — If bot restarts during a scheduled task, run it immediately
+- <strong>Auto-cookie-clear</strong> — Every hour, clear cookies from paywalled sites (bypass paywall limits)</p>
+<p><strong>Task execution:</strong>
+- Defers to <code>_execute_task(task)</code> per task_type
+- Checks <code>is_my_scheduler_window()</code> — only this FORGE instance runs tasks (prevents duplicates)
+- Logs result to DB (last_run timestamp)</p>
+<hr />
+<h3 id="predictive-scheduling-corepredictive_schedulingpy">Predictive Scheduling (<code>core/predictive_scheduling.py</code>)<a class="headerlink" href="#predictive-scheduling-corepredictive_schedulingpy" title="Permanent link">&para;</a></h3>
+<p><strong>Learn user behavior patterns, schedule tasks intelligently.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>Message timestamps from chat history (mining when user is active)</td>
+</tr>
+<tr>
+<td><strong>Pattern detection</strong></td>
+<td>Day-of-week, hour-of-day histograms, frequency, consistency score</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Optimal timing for reminders, deferred tasks during busy windows</td>
+</tr>
+<tr>
+<td><strong>Tables</strong></td>
+<td>user_action_log, detected_patterns, suggestion_responses</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pattern types:</strong>
+- Recurring behaviors (e.g., "Zack always checks messages 8–10 AM")
+- Busy windows (suppress reminders, defer expensive tasks)
+- Response patterns (when does Zack respond fastest to specific message types?)</p>
+<p><strong>Key method:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">should_send_now</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">importance</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  <span class="c1"># &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">module</span><span class="p">:</span> <span class="nb">str</span>       <span class="c1"># &quot;sourcing&quot;, &quot;meeting&quot;, &quot;maintenance&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</code></pre></div></p>
+<p>Checks current hour against detected patterns — returns True if timing is good.</p>
+<hr />
+<h3 id="sleep-worker-modulessleep_workerpy">Sleep Worker (<code>modules/sleep_worker.py</code>)<a class="headerlink" href="#sleep-worker-modulessleep_workerpy" title="Permanent link">&para;</a></h3>
+<p><strong>Runs maintenance tasks when Discord channel is idle (&gt; 120 seconds).</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Idle threshold</strong></td>
+<td>120 seconds without incoming messages</td>
+</tr>
+<tr>
+<td><strong>Check interval</strong></td>
+<td>Every 30 seconds</td>
+</tr>
+<tr>
+<td><strong>Once-per-idle rule</strong></td>
+<td>Runs once, then waits for new activity before re-running</td>
+</tr>
+<tr>
+<td><strong>Tasks</strong></td>
+<td>Memory decay, KB re-indexing, cache cleanup</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># In on_ready()</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.sleep_worker</span><span class="w"> </span><span class="kn">import</span> <span class="n">start_sleep_worker</span><span class="p">,</span> <span class="n">note_activity</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">await</span> <span class="n">start_sleep_worker</span><span class="p">(</span><span class="n">brain</span><span class="p">,</span> <span class="n">bot</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># In on_message()</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">note_activity</span><span class="p">()</span>  <span class="c1"># Reset idle timer</span>
+</code></pre></div></p>
+<p><strong>Tasks executed (sequential):</strong>
+1. Memory decay — reduce confidence on stale memories
+2. KB cleanup — prune old, low-confidence entries
+3. Cache eviction — clear old cached API responses
+4. (More can be added)</p>
+<hr />
+<h2 id="company-sourcing-systems">Company Sourcing Systems<a class="headerlink" href="#company-sourcing-systems" title="Permanent link">&para;</a></h2>
+<h3 id="company-raider-modulescompany_raiderpy">Company Raider (<code>modules/company_raider.py</code>)<a class="headerlink" href="#company-raider-modulescompany_raiderpy" title="Permanent link">&para;</a></h3>
+<p><strong>End-to-end company roster scraping — blast through target companies, discover candidates.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>Company name (e.g., "Resolve AI")</td>
+</tr>
+<tr>
+<td><strong>Search</strong></td>
+<td>Apify LinkedIn actor (batch: 3–5yr + 6–10yr experience)</td>
+</tr>
+<tr>
+<td><strong>Filter</strong></td>
+<td>Confirm match, 2–7yr experience, Bay Area location</td>
+</tr>
+<tr>
+<td><strong>Dedup</strong></td>
+<td>Against Ashby pipeline, candidate_evals, profile_scrape_cache</td>
+</tr>
+<tr>
+<td><strong>Store</strong></td>
+<td>ALL profiles (8+ yr → senior_backlog tag)</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>Qualified candidates ready for PRISM scoring</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key constraint:</strong>
+- <strong>ALWAYS batch Apify calls</strong> — 2 calls per company (3–5yr, 6–10yr), never 1 profile at a time
+- Previous violations cost $200+ in wasted Apify credits</p>
+<p><strong>Engineering keywords:</strong> engineer, developer, MTS, ML, AI, software, SWE, backend, full stack, data scientist, etc.</p>
+<p><strong>Bay Area filter:</strong> 50+ US cities + "Bay Area", "SF Bay", "San Francisco Bay", etc.</p>
+<p><strong>Blocklist:</strong> HockeyStack, Stripe, big tech (Google, Meta, Apple, Microsoft, etc.)</p>
+<p><strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.company_raider</span><span class="w"> </span><span class="kn">import</span> <span class="n">raid</span><span class="p">,</span> <span class="n">print_raid_results</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">raid</span><span class="p">(</span><span class="s2">&quot;Resolve AI&quot;</span><span class="p">,</span> <span class="n">max_profiles</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">print_raid_results</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</code></pre></div></p>
+<hr />
+<h3 id="company-replenisher-modulescompany_replenisherpy">Company Replenisher (<code>modules/company_replenisher.py</code>)<a class="headerlink" href="#company-replenisher-modulescompany_replenisherpy" title="Permanent link">&para;</a></h3>
+<p><strong>Auto-discover new companies to raid — mine previous employers, search web for new AI startups.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Source</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Candidate mining</strong></td>
+<td>Extract companies from profiles scored ≥ 3.0</td>
+<td>Every cycle</td>
+</tr>
+<tr>
+<td><strong>Web discovery</strong></td>
+<td>Search YC batches, funding announcements, AI startup rankings</td>
+<td>Every cycle or weekly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data source:</strong> <code>data/ai_companies_master.csv</code></p>
+<p><strong>Blocklist</strong> (→ never add):
+- HockeyStack, all big tech (Google, Meta, Amazon, Microsoft, Apple, etc.)
+- Big finance &amp; consulting (JPMorgan, Goldman Sachs, Deloitte, etc.)
+- Big enterprise (Salesforce, Adobe, VMware, SAP, etc.)
+- Research labs (UC Berkeley, Stanford, MIT, etc.)
+- Junk artifacts (Stealth Mode, Full-Time, Self-Employed, etc.)</p>
+<p><strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.company_replenisher</span><span class="w"> </span><span class="kn">import</span> <span class="n">replenish_from_candidates</span><span class="p">,</span> <span class="n">replenish_from_web</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">added</span> <span class="o">=</span> <span class="k">await</span> <span class="n">replenish_from_candidates</span><span class="p">(</span><span class="n">min_score</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>  <span class="c1"># Mine DB</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">added</span> <span class="o">=</span> <span class="k">await</span> <span class="n">replenish_from_web</span><span class="p">()</span>  <span class="c1"># Web search</span>
+</code></pre></div></p>
+<hr />
+<h2 id="news-aggregation-modulesnewspy">News Aggregation (<code>modules/news.py</code>)<a class="headerlink" href="#news-aggregation-modulesnewspy" title="Permanent link">&para;</a></h2>
+<p><strong>RSS-based news feed — polls 20+ sources every 30 minutes, posts to 📰-news channel.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Type</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Washington Post (5 feeds), Reuters, AP, CNN, BBC, Guardian, NPR, Intercept, ProPublica, Wired, Ars Technica</td>
+<td>Mainstream + investigative</td>
+<td>Every 30 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deduplication:</strong> SQLite seen_items table (7-day retention)</p>
+<p><strong>Rich embeds:</strong> Category emoji, source color coding, article summary (Claude Haiku)</p>
+<p><strong>Max posts per poll:</strong> 5 (avoid flooding)</p>
+<hr />
+<h2 id="key-files-paths">Key Files &amp; Paths<a class="headerlink" href="#key-files-paths" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Key Tables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>core/overnight_engine.py</code></td>
+<td>Orchestrator for overnight cycles</td>
+<td>N/A (state → JSON)</td>
+</tr>
+<tr>
+<td><code>core/autonomy_loop.py</code></td>
+<td>Self-improvement via Haiku→Opus→Sonnet</td>
+<td>autonomy_log.jsonl, autonomy_state.json</td>
+</tr>
+<tr>
+<td><code>core/dream_mode.py</code></td>
+<td>Subconscious synthesis</td>
+<td>dream_insights (SQLite), dream_log.jsonl</td>
+</tr>
+<tr>
+<td><code>core/dream_candidates.py</code></td>
+<td>Auto-discover talent channels</td>
+<td>channel_discoveries (SQLite)</td>
+</tr>
+<tr>
+<td><code>modules/scheduler.py</code></td>
+<td>APScheduler orchestration</td>
+<td>scheduled_tasks (SQLite)</td>
+</tr>
+<tr>
+<td><code>core/predictive_scheduling.py</code></td>
+<td>User behavior pattern mining</td>
+<td>user_action_log, detected_patterns</td>
+</tr>
+<tr>
+<td><code>modules/sleep_worker.py</code></td>
+<td>Idle-triggered maintenance</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td><code>modules/company_raider.py</code></td>
+<td>Company roster scraping</td>
+<td>candidate_evals, profile_scrape_cache</td>
+</tr>
+<tr>
+<td><code>modules/company_replenisher.py</code></td>
+<td>New company discovery</td>
+<td>ai_companies_master.csv</td>
+</tr>
+<tr>
+<td><code>modules/news.py</code></td>
+<td>RSS news aggregation</td>
+<td>N/A (Discord only)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>State files:</strong>
+- <code>data/overnight_state.json</code> — Nightly cost, tasks, timestamps
+- <code>data/autonomy_state.json</code> — Improvements count, cost, last_cycle
+- <code>data/dream_log.jsonl</code> — Dream cycle history
+- <code>data/autonomy_log.jsonl</code> — Improvement attempts log</p>
+<hr />
+<h2 id="cost-model">Cost Model<a class="headerlink" href="#cost-model" title="Permanent link">&para;</a></h2>
+<h3 id="overnight-engine-10night-cap">Overnight Engine ($10/night cap)<a class="headerlink" href="#overnight-engine-10night-cap" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Typical cost</th>
+<th>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Company raid (50 companies)</td>
+<td>$1.50–2.50</td>
+<td>Every cycle</td>
+</tr>
+<tr>
+<td>Score unscoreds (batch of 10)</td>
+<td>$0.10–0.20</td>
+<td>1× per cycle</td>
+</tr>
+<tr>
+<td>GitHub enrichment (batch of 5)</td>
+<td>$0.05–0.10</td>
+<td>1× per cycle</td>
+</tr>
+<tr>
+<td>Company intel research</td>
+<td>$0.50–1.00</td>
+<td>1× per cycle</td>
+</tr>
+<tr>
+<td>KB maintenance</td>
+<td>&lt;$0.01</td>
+<td>1× per cycle</td>
+</tr>
+<tr>
+<td><strong>Total per cycle</strong></td>
+<td><strong>$2–4</strong></td>
+<td><strong>4 cycles/night</strong></td>
+</tr>
+<tr>
+<td><strong>Total per night</strong></td>
+<td><strong>$8–16</strong></td>
+<td><strong>Capped at $10</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="autonomy-loop-5day-cap">Autonomy Loop ($5/day cap)<a class="headerlink" href="#autonomy-loop-5day-cap" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Model</th>
+<th>Typical cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Research</td>
+<td>Haiku (100 lines code, ~500 tokens)</td>
+<td>$0.01–0.02</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Opus (architecture review, 1000+ tokens)</td>
+<td>$0.10–0.20</td>
+</tr>
+<tr>
+<td>Execute</td>
+<td>Sonnet + Copilot (tool_use x 10 iter)</td>
+<td>$0.50–1.00</td>
+</tr>
+<tr>
+<td><strong>Per improvement</strong></td>
+<td>—</td>
+<td><strong>$0.61–1.22</strong></td>
+</tr>
+<tr>
+<td><strong>5 improvements/day</strong></td>
+<td>—</td>
+<td><strong>$3.05–6.10</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dream-mode-050night-cap">Dream Mode ($0.50/night cap)<a class="headerlink" href="#dream-mode-050night-cap" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gather context (DB queries)</td>
+<td>&lt;$0.001</td>
+</tr>
+<tr>
+<td>Haiku synthesis (3 dreams max)</td>
+<td>$0.10–0.15 per dream</td>
+</tr>
+<tr>
+<td><strong>3 dreams/night</strong></td>
+<td><strong>$0.30–0.45</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="execution-flow">Execution Flow<a class="headerlink" href="#execution-flow" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>┌─────────────────────────────────────────────────────────┐
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│ Bot startup (on_ready)                                  │
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>├─────────────────────────────────────────────────────────┤
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│ 1. init_scheduler() — load scheduled_tasks from DB      │
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│ 2. Register overnight_engine.register()                 │
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>│ 3. Register autonomy_engine cycle (every 4–6h)         │
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>│ 4. Register dream_engine cycle (off-hours)             │
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>│ 5. Register sleep_worker (every 30s idle check)        │
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>│ 6. Register news poll (every 30 min)                   │
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>└─────────────────────────────────────────────────────────┘
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>                            ↓
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        ┌───────────────────────────────────────────┐
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        │ Each night (9:30 PM → 7 AM PDT)          │
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        ├───────────────────────────────────────────┤
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        │ 4 overnight cycles:                        │
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        │  • 9:30 PM — Company raids                │
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>        │  • 12:30 AM — Score unscoreds             │
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        │  • 3:30 AM — GitHub enrichment            │
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        │  • 6:30 AM — Company intel / KB maint     │
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>        │                                            │
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>        │ Max cost: $10 (typical: $6–8)             │
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>        └───────────────────────────────────────────┘
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>                            ↓
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>        ┌───────────────────────────────────────────┐
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>        │ Autonomy loop (every 4–6 hours)          │
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>        ├───────────────────────────────────────────┤
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        │ 1. Haiku research ($0.01–0.02)            │
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>        │ 2. Opus design ($0.10–0.20)               │
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>        │ 3. Sonnet implementation (copilot cost)   │
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>        │ 4. Log result                             │
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>        │                                            │
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>        │ Max 5/day, $5 budget                      │
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>        └───────────────────────────────────────────┘
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>                            ↓
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>        ┌───────────────────────────────────────────┐
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>        │ Dream mode (midnight → 6 AM PDT)         │
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>        ├───────────────────────────────────────────┤
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>        │ Max 3 insights/night, $0.50 cap           │
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>        │ Trigger: offline hours + idle             │
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>        └───────────────────────────────────────────┘
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>                            ↓
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>        ┌───────────────────────────────────────────┐
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>        │ Sleep worker (every 30s idle check)       │
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>        ├───────────────────────────────────────────┤
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>        │ Triggers at 120s+ idle:                   │
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a>        │  • Memory decay                           │
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a>        │  • KB cleanup                             │
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>        │  • Cache eviction                         │
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>        └───────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[autonomy_loop|Autonomy Loop]] — Self-improvement via Haiku→Opus→Sonnet</li>
+<li>[[company_sourcing|Company Sourcing]] — Raider + Replenisher + Enrichment</li>
+<li>[[knowledge_base|Knowledge Base]] — ChromaDB embeddings, semantic search</li>
+<li>[[prism|PRISM Scoring]] — AI engineer candidate evaluation</li>
+<li>[[apscheduler|APScheduler]] — Cron-based task scheduling</li>
+</ul>
+<hr />
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Env Var</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTONOMY_MAX_DAILY</code></td>
+<td>5</td>
+<td>Max improvements per day</td>
+</tr>
+<tr>
+<td><code>AUTONOMY_DAILY_BUDGET</code></td>
+<td>5.0</td>
+<td>Max cost per day (USD)</td>
+</tr>
+<tr>
+<td><code>AUTONOMY_CYCLE_HOURS</code></td>
+<td>4</td>
+<td>Hours between autonomy cycles</td>
+</tr>
+<tr>
+<td><code>FORGE_INSTANCE</code></td>
+<td>local/vps</td>
+<td>Prevents duplicate runs on local + VPS</td>
+</tr>
+<tr>
+<td><code>NIGHTLY_COST_CAP</code></td>
+<td>$10.00</td>
+<td>Overnight cycle total cap</td>
+</tr>
+<tr>
+<td><code>MAX_DREAMS_PER_NIGHT</code></td>
+<td>3</td>
+<td>Max dream insights per night</td>
+</tr>
+<tr>
+<td><code>DREAM_COST_CAP</code></td>
+<td>$0.50</td>
+<td>Dream mode total cap per night</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="monitoring-debugging">Monitoring &amp; Debugging<a class="headerlink" href="#monitoring-debugging" title="Permanent link">&para;</a></h2>
+<h3 id="view-overnight-progress">View overnight progress<a class="headerlink" href="#view-overnight-progress" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Check last night&#39;s summary</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT * FROM overnight_log ORDER BY created_at DESC LIMIT 5;&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Tail overnight engine logs</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>tail<span class="w"> </span>-f<span class="w"> </span>data/overnight.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Overnight&quot;</span>
+</code></pre></div>
+<h3 id="view-autonomy-improvements">View autonomy improvements<a class="headerlink" href="#view-autonomy-improvements" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check improvement history</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cat<span class="w"> </span>data/autonomy_log.jsonl<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[] | {title, status, cost_usd}&#39;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Check current state</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>cat<span class="w"> </span>data/autonomy_state.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</code></pre></div>
+<h3 id="view-dream-insights">View dream insights<a class="headerlink" href="#view-dream-insights" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Check dream log</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT title, confidence, dreamed_at FROM dream_insights ORDER BY dreamed_at DESC LIMIT 5;&quot;</span>
+</code></pre></div>
+<h3 id="disableenable-systems">Disable/enable systems<a class="headerlink" href="#disableenable-systems" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Disable overnight engine (set instance to &quot;local&quot;)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FORGE_INSTANCE</span><span class="o">=</span><span class="nb">local</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Disable autonomy (set daily budget to 0)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AUTONOMY_DAILY_BUDGET</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Disable dream mode (set cost cap to 0)</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DREAM_COST_CAP</span><span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<hr />
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[scheduler|Scheduler]]</li>
+<li>[[autonomy_loop|Autonomy Loop]]  </li>
+<li>[[overnight_engine|Overnight Engine]]</li>
+<li>[[dream_mode|Dream Mode]]</li>
+<li>[[company_raider|Company Raider]]</li>
+<li>[[company_replenisher|Company Replenisher]]</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2340 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/self-healing-and-supervisor/">
+      
+      
+        <link rel="prev" href="../discord-bot-infrastructure/">
+      
+      
+        <link rel="next" href="../prism-candidate-scoring/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Self-Healing & Supervisor - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#self-healing-and-supervisor-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Self-Healing & Supervisor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-1-preflight-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1: Preflight Defense
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 1: Preflight Defense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Scenario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-2-supervisor-process-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2: Supervisor Process Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 2: Supervisor Process Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeat System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-transitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Transitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder-co-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder Co-Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-3-self-healing-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3: Self-Healing Engine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 3: Self-Healing Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-sub-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Sub-Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Sub-Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3a-cog-auto-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3A. Cog Auto-Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3b-failure-adaptation-circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3B. Failure Adaptation (Circuit Breaker)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3c-friction-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3C. Friction Escalation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-health-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D. Health Pulse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrated-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrated Monitoring
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrated Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watchdog-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watchdog Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitor Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#independence-loop-event-bus-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independence Loop (Event Bus Wiring)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Independence Loop (Event Bus Wiring)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learn Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heal-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heal Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awareness-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Awareness Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-recovery-with-user-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Recovery with User Choice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference Table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Guidelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-trust-auto-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Trust Auto-Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-intervene-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Intervene Manually
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-for-custom-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration for Custom Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-1-preflight-defense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1: Preflight Defense
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 1: Preflight Defense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Scenario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-2-supervisor-process-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2: Supervisor Process Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 2: Supervisor Process Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Responsibilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heartbeat-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heartbeat System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state-transitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Transitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recorder-co-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recorder Co-Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-3-self-healing-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3: Self-Healing Engine
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer 3: Self-Healing Engine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-sub-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three Sub-Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Three Sub-Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3a-cog-auto-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3A. Cog Auto-Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3b-failure-adaptation-circuit-breaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3B. Failure Adaptation (Circuit Breaker)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3c-friction-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3C. Friction Escalation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3d-health-pulse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D. Health Pulse
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrated-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integrated Monitoring
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrated Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watchdog-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Watchdog Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitor-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitor Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#independence-loop-event-bus-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Independence Loop (Event Bus Wiring)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Independence Loop (Event Bus Wiring)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learn Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heal-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Heal Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awareness-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Awareness Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-recovery-with-user-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Recovery with User Choice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference Table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Guidelines
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operational Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-to-trust-auto-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Trust Auto-Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-to-intervene-manually" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Intervene Manually
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-for-custom-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration for Custom Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See Also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="self-healing-and-supervisor-systems">Self-Healing and Supervisor Systems<a class="headerlink" href="#self-healing-and-supervisor-systems" title="Permanent link">&para;</a></h1>
+<p><strong>Last Updated:</strong> 2026-04-04<br />
+<strong>Category:</strong> Architecture, Resilience, Operations</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>FORGE implements a three-layer autonomous defense system to achieve "Unkillable FORGE" — a Discord bot that can detect and recover from failures without human intervention. This system bridges the gap between traditional error handling and true autonomy: <strong>FORGE detects problems and fixes them independently</strong>, rather than waiting for Claude Code to intervene.</p>
+<p>The defense comprises:</p>
+<ol>
+<li><strong>Preflight Defense</strong> (before crash): Import validation catches broken edits before restart</li>
+<li><strong>Supervisor Process Management</strong> (during runtime): External watchdog manages bot.py lifecycle</li>
+<li><strong>Self-Healing Engine</strong> (after detection): Autonomous cog recovery, circuit breaker adaptation, and escalation</li>
+</ol>
+<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌──────────────────────────────────────────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│     forge_supervisor.py (External Process)       │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  • Launches bot.py subprocess                    │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  • Monitors exit codes                           │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  • Preflight checks on crash                     │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  • Crash loop protection (MAX_CONSECUTIVE_CRASHES) │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  • Heartbeat monitoring (~20min stale threshold) │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  • Recorder process management                   │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└──────────────────────────────────────────────────┘
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>                       │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                       ├─ launches/monitors ─┐
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                       │                      │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        ┌──────────────▼─────────────┐      │
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        │  bot.py (FORGE Discord)     │◄─────┘
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        │  ┌─────────────────────┐   │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        │  │ Event Bus           │   │
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        │  │ (independence_loop) │   │
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        │  └──────────┬──────────┘   │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        │             │              │
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        │  ┌──────────▼──────────┐   │
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        │  │ Learn Loop          │   │
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        │  │ Heal Loop           │   │
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        │  │ Awareness Loop      │   │
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        │  └─────────────────────┘   │
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        └────────────────────────────┘
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>           │          │         │
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>           ▼          ▼         ▼
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>      ┌────────┐┌──────────┐┌───────────┐
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>      │Watchdog││Monitor   ││Self-Healer│
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>      │        ││          ││           │
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>      │ Silent │││ERROR+   ││Escalation │
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>      │failure │││logging  ││Adaptation │
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>      │detect  ││          ││Circuit    │
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>      │        ││          ││Breaking   │
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>      └────────┘└──────────┘└───────────┘
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>           │          │         │
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>           └──────────┴─────────┘
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>                  │
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>            ┌─────▼──────┐
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>            │#📡-monitor │
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>            │  Discord   │
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            │  Channel   │
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>            └────────────┘
+</code></pre></div>
+<h2 id="layer-1-preflight-defense">Layer 1: Preflight Defense<a class="headerlink" href="#layer-1-preflight-defense" title="Permanent link">&para;</a></h2>
+<p><strong>File:</strong> <code>forge_supervisor.py</code> (lines 1-100+)<br />
+<strong>Trigger:</strong> On FORGE crash (non-zero exit code)<br />
+<strong>Cost:</strong> ~2 seconds  </p>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>Before restarting bot.py, the supervisor runs import checks on recently modified files. If any file fails to import, it's automatically reverted to the last known-good version.</p>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Pseudo-logic from forge_supervisor.py</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="mf">1.</span> <span class="n">bot</span><span class="o">.</span><span class="n">py</span> <span class="n">exits</span> <span class="p">(</span><span class="n">crash</span> <span class="n">detected</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="mf">2.</span> <span class="n">Supervisor</span> <span class="n">scans</span> <span class="n">MODIFIED_FILE_WINDOW</span> <span class="p">(</span><span class="mi">600</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span> <span class="nb">min</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="mf">3.</span> <span class="n">For</span> <span class="n">each</span> <span class="n">recently</span> <span class="n">modified</span> <span class="n">Python</span> <span class="n">file</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   <span class="o">-</span> <span class="n">Import</span> <span class="n">file</span> <span class="n">via</span> <span class="n">Python</span> <span class="n">interpreter</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   <span class="o">-</span> <span class="n">If</span> <span class="ne">ImportError</span> <span class="err">→</span> <span class="n">revert</span> <span class="n">file</span> <span class="kn">from</span><span class="w"> </span><span class="nn">git</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>   <span class="o">-</span> <span class="n">Log</span> <span class="n">reversion</span> <span class="n">to</span> <span class="n">supervisor</span><span class="o">.</span><span class="n">log</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="mf">4.</span> <span class="n">Restart</span> <span class="n">bot</span><span class="o">.</span><span class="n">py</span>
+</code></pre></div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAX_CONSECUTIVE_CRASHES</code></td>
+<td>3</td>
+<td>Halt restarts after N fast crashes</td>
+</tr>
+<tr>
+<td><code>FAST_CRASH_THRESHOLD</code></td>
+<td>30s</td>
+<td>Crash within 30s = "fast crash"</td>
+</tr>
+<tr>
+<td><code>MODIFIED_FILE_WINDOW</code></td>
+<td>600s</td>
+<td>Look back 10 minutes for changed files</td>
+</tr>
+<tr>
+<td><code>CRASH_COOLDOWN</code></td>
+<td>300s</td>
+<td>Wait 5 min before retry (after halt)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>State file:</strong> <code>data/supervisor_state.json</code> — JSON record of last crash, reverted files, state transitions</li>
+<li><strong>PID file:</strong> <code>data/supervisor_pid.json</code> — Supervisor process ID (for external monitoring)</li>
+<li><strong>Log:</strong> <code>logs/supervisor.log</code> — All supervisor actions, formatted with timestamps</li>
+</ul>
+<h3 id="example-scenario">Example Scenario<a class="headerlink" href="#example-scenario" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>10:15:03 [FORGE.supervisor] Starting bot.py (PID 8492)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>10:15:35 [FORGE.supervisor] bot.py crashed with code 1
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>10:15:35 [FORGE.supervisor] Scanning modified files (last 600s)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>10:15:35 [FORGE.supervisor] Found: cogs/my_cog.py (modified 2min ago)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>10:15:36 [FORGE.supervisor] Preflight check: import cogs.my_cog → ImportError
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>10:15:36 [FORGE.supervisor] Reverting cogs/my_cog.py to last git commit
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>10:15:37 [FORGE.supervisor] Starting bot.py (attempt 1/3)
+</code></pre></div>
+<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Only catches <strong>import-time errors</strong> (syntax, missing dependencies, circular imports)</li>
+<li>Does NOT catch runtime errors (those are handled by Layer 3)</li>
+<li>Cannot revert files if git is unavailable or repo is corrupted</li>
+</ul>
+<hr />
+<h2 id="layer-2-supervisor-process-management">Layer 2: Supervisor Process Management<a class="headerlink" href="#layer-2-supervisor-process-management" title="Permanent link">&para;</a></h2>
+<p><strong>File:</strong> <code>forge_supervisor.py</code> (lines 40-300+)<br />
+<strong>Lifecycle:</strong> Continuous during FORGE runtime</p>
+<h3 id="core-responsibilities">Core Responsibilities<a class="headerlink" href="#core-responsibilities" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Subprocess Management</strong> — Launches bot.py with proper I/O handling</li>
+<li><strong>Heartbeat Monitoring</strong> — Checks <code>data/heartbeat.json</code> written by watchdog every 10 minutes</li>
+<li><strong>Crash Loop Protection</strong> — Halts after <code>MAX_CONSECUTIVE_CRASHES</code> fast crashes</li>
+<li><strong>Recorder Co-Management</strong> — Also launches/monitors <code>forge_recorder.py</code> (standalone voice recorder)</li>
+<li><strong>State Tracking</strong> — Writes to <code>supervisor_state.json</code> for visibility</li>
+</ol>
+<h3 id="heartbeat-system">Heartbeat System<a class="headerlink" href="#heartbeat-system" title="Permanent link">&para;</a></h3>
+<p>The supervisor reads a heartbeat file written by the watchdog module (every 10 minutes during active hours).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-04T15:30:00Z&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;uptime_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;memory_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">425.3</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">&quot;event_loop_lag&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.002</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nt">&quot;last_message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-04T15:29:45Z&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>If the heartbeat is <strong>stale for &gt; 20 minutes</strong> (<code>HEARTBEAT_STALE_THRESHOLD</code>), the supervisor considers FORGE hung and may restart it.</p>
+<h3 id="state-transitions">State Transitions<a class="headerlink" href="#state-transitions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[HEALTHY]
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>   │ (crash detected)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>   ▼
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>[CRASHED] → Preflight check → revert files
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>   │
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>   ├─ (fast restart succeeds) ─► [HEALTHY]
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>   │
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>   └─ (fast restart fails again) ─► [CRASHED] again
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                                          │
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                                          └─ (repeat until MAX_CONSECUTIVE_CRASHES)
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                                               │
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                                               ▼
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                                          [HALTED]
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                                               │
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                                               ├─ Wait CRASH_COOLDOWN (300s)
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>                                               │
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>                                               └─ Reset counters, try again
+</code></pre></div>
+<h3 id="recorder-co-management">Recorder Co-Management<a class="headerlink" href="#recorder-co-management" title="Permanent link">&para;</a></h3>
+<p>The supervisor also manages <code>forge_recorder.py</code>, a standalone process that:
+- Captures FORGE's output in a ring buffer
+- Survives bot crashes (separate process)
+- Written to in real-time by FORGE
+- Readable for diagnostic purposes</p>
+<p>Launched alongside bot.py, managed with same lifecycle.</p>
+<hr />
+<h2 id="layer-3-self-healing-engine">Layer 3: Self-Healing Engine<a class="headerlink" href="#layer-3-self-healing-engine" title="Permanent link">&para;</a></h2>
+<p><strong>Files:</strong>
+- <code>core/self_healing.py</code> — Main SelfHealer class
+- <code>core/resilience.py</code> — Circuit breaker pattern
+- <code>core/error_recovery.py</code> — Discord error recovery buttons
+- <code>modules/forge_watchdog.py</code> — Silent failure detection
+- <code>modules/forge_monitor.py</code> — Centralized error logging
+- <code>modules/circuit_breaker.py</code> — DB-backed circuit breaker state
+- <code>core/forge_loop.py</code> — Event bus wiring</p>
+<p><strong>Trigger:</strong> Autonomous, scheduled + event-driven<br />
+<strong>Scope:</strong> Self-correcting without human input</p>
+<h3 id="three-sub-components">Three Sub-Components<a class="headerlink" href="#three-sub-components" title="Permanent link">&para;</a></h3>
+<h4 id="3a-cog-auto-recovery">3A. Cog Auto-Recovery<a class="headerlink" href="#3a-cog-auto-recovery" title="Permanent link">&para;</a></h4>
+<p>When a cog (module) crashes or becomes unresponsive:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># From self_healing.py :: CogAutoRecovery</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="mf">1.</span> <span class="n">Watchdog</span> <span class="n">detects</span> <span class="n">cog</span> <span class="ow">not</span> <span class="n">responding</span> <span class="n">to</span> <span class="n">events</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="mf">2.</span> <span class="n">Triggers</span> <span class="n">self_healer</span><span class="o">.</span><span class="n">recover_cog</span><span class="p">(</span><span class="n">cog_name</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="mf">3.</span> <span class="n">Unloads</span> <span class="n">broken</span> <span class="n">cog</span> <span class="k">with</span> <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">unload_extension</span><span class="p">()</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="mf">4.</span> <span class="n">Waits</span> <span class="mi">2</span> <span class="n">seconds</span> <span class="p">(</span><span class="n">resource</span> <span class="n">cleanup</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="mf">5.</span> <span class="n">Reloads</span> <span class="n">cog</span> <span class="k">with</span> <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">load_extension</span><span class="p">()</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="mf">6.</span> <span class="n">Posts</span> <span class="n">recovery</span> <span class="n">message</span> <span class="n">to</span> <span class="c1">#📡-monitor</span>
+</code></pre></div>
+<p><strong>Status tracking:</strong> Cog-level recovery tracked in database, history in <code>watchdog_cog_recovery</code> table.</p>
+<h4 id="3b-failure-adaptation-circuit-breaker">3B. Failure Adaptation (Circuit Breaker)<a class="headerlink" href="#3b-failure-adaptation-circuit-breaker" title="Permanent link">&para;</a></h4>
+<p><strong>File:</strong> <code>core/resilience.py</code><br />
+<strong>Pattern:</strong> Three-state finite state machine</p>
+<p>The circuit breaker wraps external API calls (Anthropic, GitHub, Apify, Tavily, Exa) with failure tracking:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>CLOSED (normal)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  │ (N consecutive failures)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  ▼
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>OPEN (rejecting all calls)
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  │ (timeout elapsed)
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  ▼
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>HALF_OPEN (testing recovery)
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>  ├─ (M successes) ─► CLOSED
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  └─ (any failure) ─► OPEN
+</code></pre></div>
+<p><strong>Configuration</strong> (per-service, in <code>CircuitConfig</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>failure_threshold</code></td>
+<td>5</td>
+<td>Open after N failures</td>
+</tr>
+<tr>
+<td><code>success_threshold</code></td>
+<td>2</td>
+<td>Close after N successes in HALF_OPEN</td>
+</tr>
+<tr>
+<td><code>reset_timeout</code></td>
+<td>60s</td>
+<td>Wait before trying HALF_OPEN</td>
+</tr>
+<tr>
+<td><code>half_open_max_calls</code></td>
+<td>3</td>
+<td>Max concurrent test calls</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Database-backed</strong> via <code>modules/circuit_breaker.py</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">circuit_breakers</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="n">service</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">state</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">        </span><span class="c1">-- &#39;closed&#39;, &#39;open&#39;, &#39;half_open&#39;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="n">failure_count</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="n">opened_at</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w">    </span><span class="c1">-- ISO8601</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="n">cooldown_seconds</span><span class="w"> </span><span class="nb">INT</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Automatic Adaptation:</strong> The self-healer periodically reviews failure patterns and adjusts thresholds. High-failure services get stricter thresholds; recovering services get relaxed thresholds.</p>
+<h4 id="3c-friction-escalation">3C. Friction Escalation<a class="headerlink" href="#3c-friction-escalation" title="Permanent link">&para;</a></h4>
+<p><strong>File:</strong> <code>core/self_healing.py</code> :: <code>FrictionEscalator</code></p>
+<p>Detects recurring error patterns and promotes them to <strong>enforced preferences</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Escalation workflow</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="mf">1.</span> <span class="n">Every</span> <span class="mi">6</span> <span class="n">hours</span><span class="p">,</span> <span class="n">scan</span> <span class="n">friction</span><span class="o">.</span><span class="n">jsonl</span> <span class="p">(</span><span class="n">error</span> <span class="n">history</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="mf">2.</span> <span class="n">Count</span> <span class="n">patterns</span><span class="p">:</span> <span class="s2">&quot;API timeout on enrichment&quot;</span> <span class="p">(</span><span class="mi">3</span><span class="n">x</span> <span class="ow">in</span> <span class="n">past</span> <span class="n">week</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="mf">3.</span> <span class="n">If</span> <span class="n">pattern</span> <span class="n">exceeds</span> <span class="n">threshold</span><span class="p">:</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>   <span class="n">a</span><span class="o">.</span> <span class="n">Create</span> <span class="n">preference</span> <span class="n">rule</span><span class="p">:</span> <span class="s2">&quot;Retry enrichment API max 2 times, then skip&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>   <span class="n">b</span><span class="o">.</span> <span class="n">Write</span> <span class="n">to</span> <span class="n">preference_rules</span> <span class="n">table</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>   <span class="n">c</span><span class="o">.</span> <span class="n">Reload</span> <span class="n">classifier</span> <span class="n">to</span> <span class="n">bake</span> <span class="ow">in</span> <span class="n">rule</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>   <span class="n">d</span><span class="o">.</span> <span class="n">Post</span> <span class="n">escalation</span> <span class="n">to</span> <span class="c1">#📡-monitor: &quot;🔥 Escalated: Enrichment API retry limit&quot;</span>
+</code></pre></div>
+<p>Benefits:
+- <strong>Learns</strong> from repeated failures
+- <strong>Prevents</strong> cascading failures by making recovery automatic
+- <strong>Reduces</strong> human intervention (no need to re-architect after pattern emerges)</p>
+<h4 id="3d-health-pulse">3D. Health Pulse<a class="headerlink" href="#3d-health-pulse" title="Permanent link">&para;</a></h4>
+<p><strong>Schedule:</strong> Every 15 minutes<br />
+<strong>Scope:</strong> Periodic self-check</p>
+<p>Runs comprehensive health checks:
+- Event loop lag (should be &lt; 0.01s)
+- Memory usage (alert if &gt; 80% of baseline)
+- Database connections (all open?)
+- Scheduled tasks (all running on time?)
+- Discord connectivity (guild members visible?)
+- Last message timestamp (recent or stale?)</p>
+<p>Posts summary to #📡-monitor with color-coded status:
+- 🟢 All healthy
+- 🟡 Warnings (e.g., lag &gt; 0.005s but &lt; 0.02s)
+- 🔴 Critical (e.g., event loop lag &gt; 0.05s)</p>
+<hr />
+<h2 id="integrated-monitoring">Integrated Monitoring<a class="headerlink" href="#integrated-monitoring" title="Permanent link">&para;</a></h2>
+<h3 id="watchdog-module">Watchdog Module<a class="headerlink" href="#watchdog-module" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>modules/forge_watchdog.py</code></p>
+<p>Goes beyond crash monitoring — detects <strong>silent failures</strong>:</p>
+<ul>
+<li>Scheduled tasks not firing (briefing, email, meeting prep, autopilot)</li>
+<li>Commands going unanswered</li>
+<li>Stale data (weather, emails, last message timestamp)</li>
+<li>API degradation (slow responses, auth failures)</li>
+<li>Resource issues (memory growth, event loop lag)</li>
+</ul>
+<p><strong>Schedule:</strong> Every 10 minutes during active hours (7am-11pm)<br />
+<strong>Cost:</strong> $0 (pure Python introspection, no API calls)<br />
+<strong>Alert States:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Color</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 Recovery</td>
+<td>Green</td>
+<td>Was broken, now working (auto-clears after 2 consecutive passes)</td>
+</tr>
+<tr>
+<td>🟡 Warning</td>
+<td>Yellow</td>
+<td>Degraded but functional</td>
+</tr>
+<tr>
+<td>🔴 Critical</td>
+<td>Red</td>
+<td>Something is broken</td>
+</tr>
+</tbody>
+</table>
+<p>Alert state machine prevents spam: once alerted, won't re-alert same issue for 30 minutes (cooldown).</p>
+<h3 id="monitor-module">Monitor Module<a class="headerlink" href="#monitor-module" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>modules/forge_monitor.py</code></p>
+<p>Hooks into Python's logging system to catch all ERROR+ level events:</p>
+<ol>
+<li><strong>DiscordErrorHandler</strong> — Logging handler that captures <code>logger.error()</code> and <code>logger.critical()</code></li>
+<li><strong>Deduplication</strong> — Same error suppressed for 5 minutes (prevents spam)</li>
+<li><strong>Rate Limiting</strong> — Queues Discord posts, processes sequentially</li>
+<li><strong>Module Tracking</strong> — Counts errors per module, alerts if spike detected</li>
+<li><strong>Startup Health Check</strong> — Posts boot summary to #📡-monitor on bot ready</li>
+</ol>
+<p>Every error becomes a Discord embed in #📡-monitor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>🔴 ERROR: enrichment_api
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Module: FORGE.modules.enrichment
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Func: enrich_candidate_sync
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Message: &quot;API timeout after 30s&quot;
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Time: 2026-04-04 15:42:19 UTC
+</code></pre></div>
+<h3 id="process-monitor">Process Monitor<a class="headerlink" href="#process-monitor" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>modules/process_monitor.py</code></p>
+<p>Wires into the process registry singleton and posts lifecycle events to #📡-monitor:</p>
+<ul>
+<li>▶️ <strong>Started</strong> — Background task launched</li>
+<li>✅ <strong>Completed</strong> — Task finished successfully (includes duration)</li>
+<li>❌ <strong>Failed</strong> — Task crashed (includes error)</li>
+<li>🛑 <strong>Stopped</strong> — Task manually stopped</li>
+</ul>
+<p>Example embed:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>▶️ Started: enrichment_batch
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Channel: #⚡-forge
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Source: scheduler (hourly job)
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Expected: 15 mins
+</code></pre></div></p>
+<hr />
+<h2 id="independence-loop-event-bus-wiring">Independence Loop (Event Bus Wiring)<a class="headerlink" href="#independence-loop-event-bus-wiring" title="Permanent link">&para;</a></h2>
+<p><strong>File:</strong> <code>core/forge_loop.py</code></p>
+<p>Connects all feedback loops via event bus subscriptions (fire-and-forget):</p>
+<h3 id="learn-loop">Learn Loop<a class="headerlink" href="#learn-loop" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>classifier corrected
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>        │
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        ▼
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  update WAL
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>        │
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        ▼
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>  pattern detection
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        │
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>        ▼
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  dynamic few-shot
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        │
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        ▼
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>  better classifier
+</code></pre></div>
+<p>When Zack corrects the classifier, the correction is logged to the <strong>Write-Ahead Log (WAL)</strong>, then used to improve the classifier's few-shot examples.</p>
+<h3 id="heal-loop">Heal Loop<a class="headerlink" href="#heal-loop" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>API failure detected
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>        │
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        ▼
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>circuit breaker trips
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        │
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        ▼
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>self-healer notified
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        │
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        ▼
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>threshold adaptation
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>        │
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>        ▼
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>monitor alert posted
+</code></pre></div>
+<h3 id="awareness-loop">Awareness Loop<a class="headerlink" href="#awareness-loop" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>unknown request
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>        │
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        ▼
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>gap recorded
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        │
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>        ▼
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>brain analyzes
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        │
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        ▼
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>suggests exact command
+</code></pre></div>
+<p>When the classifier returns <code>None</code> (no match), the user's message is recorded as a <strong>capability gap</strong>, and the brain (Sonnet) later suggests which command to add or which classifier rule to fix.</p>
+<hr />
+<h2 id="error-recovery-with-user-choice">Error Recovery with User Choice<a class="headerlink" href="#error-recovery-with-user-choice" title="Permanent link">&para;</a></h2>
+<p><strong>File:</strong> <code>core/error_recovery.py</code></p>
+<p>When an error occurs during a user-facing operation (enrichment, scraping, etc.), the bot:</p>
+<ol>
+<li><strong>Detects error type</strong> via regex pattern matching</li>
+<li><strong>Suggests recovery actions</strong> with Discord buttons</li>
+<li><strong>Waits for user choice</strong> (retry, skip, switch provider, check logs)</li>
+<li><strong>Acts on choice</strong> and continues operation</li>
+</ol>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>⚠️ Enrichment API timeout after 30s
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>[🔄 Retry] [⏳ Wait 60s] [⏭️ Skip]
+</code></pre></div>
+<p>Recovery patterns recognized:</p>
+<ul>
+<li>Timeouts → Retry / Skip</li>
+<li>Rate limits → Wait + Retry / Skip</li>
+<li>Connection errors → Retry / Skip</li>
+<li>Auth errors → Check Logs / Skip</li>
+<li>Database errors → Retry / Check Logs</li>
+<li>Circuit breaker open → Wait + Retry / Skip</li>
+</ul>
+<hr />
+<h2 id="key-files-reference-table">Key Files Reference Table<a class="headerlink" href="#key-files-reference-table" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Lines</th>
+<th>Key Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>forge_supervisor.py</code></td>
+<td>External watchdog, auto-revert, crash loop protection</td>
+<td>~400</td>
+<td>Main supervisor loop, preflight checks</td>
+</tr>
+<tr>
+<td><code>core/self_healing.py</code></td>
+<td>Main self-healer, orchestrates all recovery</td>
+<td>~300</td>
+<td><code>SelfHealer.init()</code>, <code>run_friction_escalation()</code></td>
+</tr>
+<tr>
+<td><code>core/resilience.py</code></td>
+<td>Circuit breaker pattern, async wrapper</td>
+<td>~400</td>
+<td><code>AsyncCircuitBreaker</code>, <code>BreakerRegistry</code></td>
+</tr>
+<tr>
+<td><code>core/error_recovery.py</code></td>
+<td>Discord error buttons, user-driven recovery</td>
+<td>~200</td>
+<td><code>ErrorRecoveryView</code>, <code>suggest_recovery()</code></td>
+</tr>
+<tr>
+<td><code>modules/circuit_breaker.py</code></td>
+<td>DB-backed circuit breaker state</td>
+<td>~150</td>
+<td><code>check_breaker()</code>, <code>record_success()</code></td>
+</tr>
+<tr>
+<td><code>modules/forge_watchdog.py</code></td>
+<td>Silent failure detection, 10-min checks</td>
+<td>~500+</td>
+<td><code>run_all_checks()</code>, <code>init_watchdog()</code></td>
+</tr>
+<tr>
+<td><code>modules/forge_monitor.py</code></td>
+<td>Centralized error logging to Discord</td>
+<td>~400+</td>
+<td><code>DiscordErrorHandler</code>, <code>setup_logging()</code></td>
+</tr>
+<tr>
+<td><code>modules/process_monitor.py</code></td>
+<td>Process lifecycle events to #📡-monitor</td>
+<td>~150</td>
+<td><code>_handle_event()</code></td>
+</tr>
+<tr>
+<td><code>core/forge_loop.py</code></td>
+<td>Event bus wiring for feedback loops</td>
+<td>~150</td>
+<td><code>setup_independence_loop()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="operational-guidelines">Operational Guidelines<a class="headerlink" href="#operational-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="when-to-trust-auto-recovery">When to Trust Auto-Recovery<a class="headerlink" href="#when-to-trust-auto-recovery" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Simple cog reloads (network glitch, timeout)</li>
+<li>API circuit breaker trips (service degraded)</li>
+<li>Friction escalation (pattern-based optimization)</li>
+<li>Watchdog alerts (informational, no action taken)</li>
+</ul>
+<h3 id="when-to-intervene-manually">When to Intervene Manually<a class="headerlink" href="#when-to-intervene-manually" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Multiple consecutive crashes (supervisor halts after 3)</li>
+<li>Heartbeat stale for 20+ minutes (possible infinite loop)</li>
+<li>High error rate spike (&gt; 10 errors/hour in single module)</li>
+<li>Database corruption or git repo issues</li>
+</ul>
+<h3 id="debugging-commands">Debugging Commands<a class="headerlink" href="#debugging-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Check supervisor state</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cat<span class="w"> </span>data/supervisor_state.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># View supervisor logs (real-time)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>tail<span class="w"> </span>-f<span class="w"> </span>logs/supervisor.log
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Check heartbeat freshness</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>cat<span class="w"> </span>data/heartbeat.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.timestamp
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Check circuit breaker states</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT * FROM circuit_breakers&quot;</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1"># Check watchdog alerts (DB)</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT * FROM watchdog_alerts ORDER BY alerted_at DESC LIMIT 20&quot;</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="c1"># Manually trigger health check</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>discord<span class="w"> </span>command:<span class="w"> </span><span class="s2">&quot;watchdog check&quot;</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="c1"># View monitor channel logs</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>discord:<span class="w"> </span><span class="c1">#📡-monitor (scroll up to see all alerts)</span>
+</code></pre></div>
+<h3 id="configuration-for-custom-behavior">Configuration for Custom Behavior<a class="headerlink" href="#configuration-for-custom-behavior" title="Permanent link">&para;</a></h3>
+<p>Edit these constants in source files:</p>
+<p><strong>Supervisor</strong> (<code>forge_supervisor.py</code>):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">MAX_CONSECUTIVE_CRASHES</span> <span class="o">=</span> <span class="mi">3</span>          <span class="c1"># Halt after N crashes</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">FAST_CRASH_THRESHOLD</span> <span class="o">=</span> <span class="mi">30</span>            <span class="c1"># Crash within 30s = fast crash</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">CRASH_COOLDOWN</span> <span class="o">=</span> <span class="mi">300</span>                 <span class="c1"># 5 min wait before retry</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">HEARTBEAT_STALE_THRESHOLD</span> <span class="o">=</span> <span class="mi">1200</span>     <span class="c1"># 20 min = consider hung</span>
+</code></pre></div></p>
+<p><strong>Self-Healer</strong> (<code>core/self_healing.py</code>):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Friction escalation every 6 hours</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1"># Failure adaptation every 30 minutes</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Health pulse every 15 minutes</span>
+</code></pre></div></p>
+<p><strong>Watchdog</strong> (<code>modules/forge_watchdog.py</code>):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">_CHECK_INTERVAL</span> <span class="o">=</span> <span class="mi">10</span>                 <span class="c1"># 10 min between checks</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">_ALERT_COOLDOWN</span> <span class="o">=</span> <span class="mi">30</span> <span class="o">*</span> <span class="mi">60</span>            <span class="c1"># 30 min before re-alert</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">_RECOVERY_THRESHOLD</span> <span class="o">=</span> <span class="mi">2</span>              <span class="c1"># 2 consecutive passes to clear</span>
+</code></pre></div></p>
+<hr />
+<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../core/bootstrap">Bootstrap &amp; Boot Process</a> — Where self-healing is initialized</li>
+<li><a href="../../../core/database">Database Schema</a> — <code>circuit_breakers</code>, <code>watchdog_alerts</code> tables</li>
+<li><a href="../../../modules/process_monitor">Process Registry</a> — Background task lifecycle</li>
+<li><a href="../../../core/event_bus">Event Bus</a> — Fire-and-forget pub/sub</li>
+<li><a href="../../../cogs">Cogs</a> — Recoverable Discord bot modules</li>
+</ul>
+<hr />
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Memory:</strong> <code>~/.claude/projects/C--Users-User-FORGE/memory/MEMORY.md</code> — "Unkillable FORGE: 3-layer defense"</li>
+<li><strong>Architecture:</strong> <code>[[forge-systems]]</code> — Multi-process orchestration</li>
+<li><strong>Monitoring:</strong> <code>[[operational-dashboards]]</code> — Real-time health visibility</li>
+</ul>
+<hr />
+<p><strong>Created:</strong> 2026-04-04 | <strong>Status:</strong> Current</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

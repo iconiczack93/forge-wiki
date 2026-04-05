@@ -1,0 +1,1809 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/prism-candidate-scoring/">
+      
+      
+        <link rel="prev" href="../self-healing-and-supervisor/">
+      
+      
+        <link rel="next" href="../sourcing-and-outreach-pipeline/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PRISM Candidate Scoring - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prism-candidate-scoring-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PRISM Candidate Scoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoring Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-5-scale-with-05-increments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-5 Scale with 0.5 Increments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighting-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weighting Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Scoring Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prism-v2-system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRISM V2 System Prompt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PRISM V2 System Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leadership-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leadership Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leadership Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detected-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detected Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leadership-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leadership Report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tech-stack-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tech Stack Matching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tech Stack Matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matching Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasteval-vs-v2-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastEval vs V2 Batch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FastEval vs V2 Batch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fasteval-single-candidate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastEval (Single Candidate)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-batch-multiple-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 Batch (Multiple Candidates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outreach-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outreach Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outreach Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-category-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Category Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-template-filling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Template Filling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outreach-quality-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outreach Quality Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scoring Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scoring Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-5-scale-with-05-increments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1-5 Scale with 0.5 Increments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighting-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weighting Breakdown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-scoring-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Scoring Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prism-v2-system-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PRISM V2 System Prompt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PRISM V2 System Prompt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leadership-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leadership Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Leadership Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detected-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detected Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leadership-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leadership Report
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tech-stack-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tech Stack Matching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tech Stack Matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-technologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Technologies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Matching Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fasteval-vs-v2-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastEval vs V2 Batch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FastEval vs V2 Batch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fasteval-single-candidate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FastEval (Single Candidate)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2-batch-multiple-candidates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V2 Batch (Multiple Candidates)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outreach-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outreach Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Outreach Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-category-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 1: Category Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-template-filling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stage 2: Template Filling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outreach-quality-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outreach Quality Gate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Topics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="prism-candidate-scoring-system">PRISM Candidate Scoring System<a class="headerlink" href="#prism-candidate-scoring-system" title="Permanent link">&para;</a></h1>
+<p><strong>PRISM</strong> is FORGE's technical candidate evaluator, a port of the glassattempt Chrome extension logic into the Discord bot. It scores candidates against a job description (JD) on a <strong>1-5 scale</strong> (0.5 increments) using a three-part framework: technical fit (60%), environment fit (25%), and role-specific signals (15%).</p>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#scoring-framework">Scoring Framework</a></li>
+<li><a href="#prism-v2-system-prompt">PRISM V2 System Prompt</a></li>
+<li><a href="#leadership-detection">Leadership Detection</a></li>
+<li><a href="#tech-stack-matching">Tech Stack Matching</a></li>
+<li><a href="#fasteval-vs-v2-batch">FastEval vs V2 Batch</a></li>
+<li><a href="#outreach-integration">Outreach Integration</a></li>
+<li><a href="#key-files">Key Files</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>PRISM evaluates candidates by answering three core questions:
+1. <strong>Can they do the job on day 1-30?</strong> (Technical Fit — 60%)
+2. <strong>Will they thrive here?</strong> (Environment Fit — 25%)
+3. <strong>Do they meet JD-specific requirements?</strong> (Role Signals — 15%)</p>
+<p>The scoring is <strong>depth-driven, not keyword-driven</strong>. A candidate who lists "AI Agents" because they built one RAG chatbot is NOT an agent engineer. Real experience is measured by:
+- What they actually <strong>built</strong> (not what they list)
+- At what <strong>companies</strong> (tech company vs consulting vs academic)
+- At what <strong>scale</strong> (production shipping vs course project)</p>
+<p>The system enforces a critical distinction between <strong>hard-to-learn skills</strong> (domain expertise, system design patterns) and <strong>easy-to-learn skills</strong> (specific languages, frameworks). A strong backend engineer missing a specific language is far more valuable than someone who knows the language but has never built the type of system the JD describes.</p>
+<hr />
+<h2 id="scoring-framework">Scoring Framework<a class="headerlink" href="#scoring-framework" title="Permanent link">&para;</a></h2>
+<h3 id="1-5-scale-with-05-increments">1-5 Scale with 0.5 Increments<a class="headerlink" href="#1-5-scale-with-05-increments" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5</strong></td>
+<td>Technical bullseye + environment fit — top candidate in any pipeline</td>
+</tr>
+<tr>
+<td><strong>4.5</strong></td>
+<td>Strong technical match + clear environment fit — worth fast-tracking</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Good technical match, may need ramp on 1-2 easy-to-learn areas — solid interview candidate</td>
+</tr>
+<tr>
+<td><strong>3.5</strong></td>
+<td>Partial technical match OR strong adjacent experience that transfers — worth a screen</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Relevant background but missing key requirements from the JD</td>
+</tr>
+<tr>
+<td><strong>2.5</strong></td>
+<td>Tangentially related — would need significant ramp</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>General engineer, minimal overlap with what the JD asks for</td>
+</tr>
+<tr>
+<td><strong>1.5</strong></td>
+<td>Wrong domain entirely or too junior to be useful</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>No relevance to the role</td>
+</tr>
+</tbody>
+</table>
+<h3 id="weighting-breakdown">Weighting Breakdown<a class="headerlink" href="#weighting-breakdown" title="Permanent link">&para;</a></h3>
+<p><strong>Technical Fit (60%)</strong> — hands-on experience with JD technologies, production shipping history, real depth vs surface-level keywords</p>
+<p><strong>Environment Fit (25%)</strong> — startup/early-stage experience, pace signals (shipped fast, wore many hats, 0-to-1 building), trajectory indicators</p>
+<p><strong>Role Signals (15%)</strong> — location, seniority, domain expertise, any explicit JD requirements</p>
+<h3 id="key-scoring-rules">Key Scoring Rules<a class="headerlink" href="#key-scoring-rules" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Score based on what the JD asks for</strong>, not what seems impressive</li>
+<li><strong>Degree field does not matter</strong> — judge by what they have BUILT, not what they studied</li>
+<li><strong>Startup experience is a tiebreaker</strong>, not a score booster. Two equal candidates? The startup person wins. But startup DNA alone doesn't compensate for missing core tech</li>
+<li><strong>Big-company-only experience is a soft negative</strong> for early-stage roles, not a hard reject</li>
+<li><strong>Past founder/CTO/CEO at small startups are POSITIVE signals</strong> if they returned to IC (Individual Contributor) work. Evaluate what they did and what they're doing NOW</li>
+<li><strong>Internships don't count as real experience</strong> — only full-time roles. Interns-only profiles cap at 2, max 2.5 if exceptional</li>
+<li><strong>Degree field irrelevant.</strong> Math, physics, self-taught — judge by what they built</li>
+<li><strong>Years of experience: use the JD's seniority signal.</strong> Don't penalize senior people unless the JD explicitly targets junior candidates</li>
+</ol>
+<hr />
+<h2 id="prism-v2-system-prompt">PRISM V2 System Prompt<a class="headerlink" href="#prism-v2-system-prompt" title="Permanent link">&para;</a></h2>
+<p>The V2 prompt is a unified instruction set injected into Claude's system context when evaluating candidates. It defines the scoring framework, rules, and critical depth-vs-keywords distinction.</p>
+<h3 id="key-sections">Key Sections<a class="headerlink" href="#key-sections" title="Permanent link">&para;</a></h3>
+<p><strong>DEPTH vs KEYWORDS (CRITICAL)</strong></p>
+<p>This is the most important section. It explicitly warns against keyword-matching:</p>
+<blockquote>
+<p>Having a keyword on your profile is NOT the same as having real experience. Someone who lists 'AI Agents' because they built one RAG chatbot is NOT an agent engineer.</p>
+<p>Look at WHAT they actually built, at WHAT companies, at WHAT scale. A 'Solutions Engineer' or 'AI Solutions' title at a data labeling company is NOT software engineering.</p>
+<p>5 means you would bet money this person can walk in and BUILD the systems the JD describes. Not that they have touched similar tools. BUILT, SHIPPED, IN PRODUCTION, AT SCALE.</p>
+</blockquote>
+<p><strong>Hard-to-Learn vs Easy-to-Learn Skills</strong></p>
+<p>The prompt emphasizes that specific languages and frameworks are easy to learn, but domain expertise and system design patterns are hard:</p>
+<blockquote>
+<p>Distinguish between HARD-TO-LEARN skills (domain expertise, system design patterns) and EASY-TO-LEARN skills (specific languages, frameworks). A strong backend engineer missing a specific language is far more valuable than someone who knows the language but has never built the type of system the JD describes.</p>
+</blockquote>
+<p><strong>Company Context Signals</strong></p>
+<p>Non-tech companies and roles carry lower weight:</p>
+<blockquote>
+<p>Non-profit, government, academic, and consulting roles are weaker signals than shipping production software at a tech company. Weight accordingly.</p>
+</blockquote>
+<hr />
+<h2 id="leadership-detection">Leadership Detection<a class="headerlink" href="#leadership-detection" title="Permanent link">&para;</a></h2>
+<p>PRISM includes a <strong>local, regex-based leadership detection engine</strong> that identifies leadership signals without API calls. This runs before the main evaluation for roles marked as "leadership" in the JD.</p>
+<h3 id="detected-signals">Detected Signals<a class="headerlink" href="#detected-signals" title="Permanent link">&para;</a></h3>
+<p>The leadership engine uses pattern matching to find:</p>
+<ul>
+<li><strong>Team Management</strong> (<code>led a team of X</code>, <code>managed X engineers</code>)</li>
+<li><strong>Mentorship</strong> (<code>mentored X engineers</code>, <code>mentored junior developers</code>)</li>
+<li><strong>Hiring</strong> (<code>hired</code>, <code>recruited</code>, <code>onboarded</code> engineers)</li>
+<li><strong>Team Growth</strong> (<code>grew team from X to Y</code>)</li>
+<li><strong>Process/Standards</strong> (<code>established engineering practices</code>, <code>defined technical direction</code>)</li>
+<li><strong>0→1 Building</strong> (<code>built from scratch</code>, <code>greenfield</code>)</li>
+<li><strong>Founding Engineer</strong> (<code>founding engineer</code>, <code>first engineer</code>, <code>employee #X</code>)</li>
+<li><strong>Early Employee</strong> (<code>early engineer</code>, <code>early employee</code>)</li>
+<li><strong>Cross-Functional Work</strong> (<code>cross-functional collaboration</code>, <code>worked with product/design</code>)</li>
+<li><strong>Architecture Ownership</strong> (<code>designed</code>, <code>architected</code>, <code>owned</code> system design)</li>
+<li><strong>Title Progression</strong> (<code>Junior → Engineer → Senior → Staff → Lead/Manager</code>)</li>
+</ul>
+<p>Each signal carries a weighted point value. For example:
+- Founding engineer: +25 points
+- Managed X engineers: +15 points
+- Early engineer: +20 points
+- Title progression 3+ levels: +20 points</p>
+<p>Maximum leadership score: 100 points.</p>
+<h3 id="leadership-report">Leadership Report<a class="headerlink" href="#leadership-report" title="Permanent link">&para;</a></h3>
+<p>For leadership roles, PRISM also generates:
+- <strong>Leadership Score</strong> (out of 100)
+- <strong>Startup Fit Score</strong> (out of 100)
+- <strong>Tech Stack Match</strong> (from JD technologies)
+- <strong>Recommendation</strong> (Strong/Moderate/Weak/Not Recommended fit)</p>
+<p>Example recommendation thresholds:
+- Leadership ≥70 + Startup ≥50: <strong>Strong Fit</strong>
+- Leadership ≥50 + Startup ≥30: <strong>Moderate Fit</strong> (verify in interview)
+- Leadership ≥30: <strong>Weak Fit</strong> (better for IC role)
+- Leadership &lt;30: <strong>Not Recommended</strong> for leadership role</p>
+<hr />
+<h2 id="tech-stack-matching">Tech Stack Matching<a class="headerlink" href="#tech-stack-matching" title="Permanent link">&para;</a></h2>
+<p>PRISM dynamically extracts technologies from the JD and matches them against the candidate's profile. This is <strong>not hardcoded</strong> — the tech list is built from the JD content using regex patterns with word boundaries.</p>
+<h3 id="supported-technologies">Supported Technologies<a class="headerlink" href="#supported-technologies" title="Permanent link">&para;</a></h3>
+<p><strong>Languages:</strong> Node.js, TypeScript, JavaScript, Python, Go, Rust, Java, C++, Ruby, Scala, Kotlin</p>
+<p><strong>Frontend:</strong> React, Vue.js, Angular, Next.js</p>
+<p><strong>Backend:</strong> FastAPI, Flask, Django, Express</p>
+<p><strong>Data:</strong> ClickHouse, PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch, Kafka, DynamoDB</p>
+<p><strong>Cloud:</strong> AWS, GCP, Azure</p>
+<p><strong>Infrastructure:</strong> Docker, Kubernetes, Terraform</p>
+<p><strong>AI/ML:</strong> LangChain, LLM, OpenAI, Anthropic, Braintrust, Cerebras, PyTorch, TensorFlow, ChromaDB, Pinecone</p>
+<h3 id="matching-algorithm">Matching Algorithm<a class="headerlink" href="#matching-algorithm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Extract all tech keywords from JD using regex patterns (with word boundaries to avoid false matches)</li>
+<li>Search candidate profile for each technology</li>
+<li>Calculate match percentage: <code>found / total</code></li>
+<li>Assign match level:</li>
+<li><strong>Strong</strong> ≥75% of JD technologies found</li>
+<li><strong>Moderate</strong> 40-74% found</li>
+<li><strong>Weak</strong> &lt;40% found</li>
+</ol>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<p>JD mentions: <code>Node.js, TypeScript, PostgreSQL, React, Docker</code></p>
+<p>Candidate has: <code>Node.js, TypeScript, Docker</code></p>
+<p>Result: <strong>Moderate Match</strong> (3/5 = 60%)</p>
+<hr />
+<h2 id="fasteval-vs-v2-batch">FastEval vs V2 Batch<a class="headerlink" href="#fasteval-vs-v2-batch" title="Permanent link">&para;</a></h2>
+<p>PRISM supports two evaluation modes, optimized for different workflows.</p>
+<h3 id="fasteval-single-candidate">FastEval (Single Candidate)<a class="headerlink" href="#fasteval-single-candidate" title="Permanent link">&para;</a></h3>
+<p>Used for individual candidate evaluation. Generates a detailed report with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Score: [1-5 with 0.5 increments] / 5
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Justification:
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[One short paragraph explaining overall fit]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Key Points:
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>- Bullet 1
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>- Bullet 2
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>- Bullet 3
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>- Bullet 4
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Why not a 5:
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>[One or two sentences explaining what held them back]
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Sponsorship Check:
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>Sponsorship Confidence Score: XX%
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>[Brief explanation of visa sponsorship likelihood]
+</code></pre></div>
+<p><strong>Temperature:</strong> 0 (deterministic)
+<strong>Max tokens:</strong> 2048</p>
+<h3 id="v2-batch-multiple-candidates">V2 Batch (Multiple Candidates)<a class="headerlink" href="#v2-batch-multiple-candidates" title="Permanent link">&para;</a></h3>
+<p>Used for bulk evaluation of 10+ candidates. Outputs <strong>JSON only</strong>, one object per candidate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strong technical match&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personalization&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relevant but missing key reqs&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minimal overlap&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">]</span>
+</code></pre></div>
+<p>Fields:
+- <code>i</code> — candidate index (from input order)
+- <code>s</code> — score (1-5 with 0.5 increments)
+- <code>r</code> — reason (max 15 words)
+- <code>p</code> — personalization (1-2 sentences as Arda, CTO) — <strong>only for 4+ scores</strong></p>
+<p><strong>Automatic Filter:</strong> Candidates at their current company &lt;6 months score 1.0 (not reachable).</p>
+<p><strong>Personalization Format</strong> (for 4+ scores only):
+- Direct and specific to their profile
+- Reference GitHub repos if available, else company/technical work
+- 1-2 sentences
+- No greetings or sign-offs
+- Written as if from Arda (the CTO voice)</p>
+<p>Example: "Your ClickHouse work at Databricks + TypeScript depth is exactly what we need. That scale of data pipeline experience is rare."</p>
+<hr />
+<h2 id="outreach-integration">Outreach Integration<a class="headerlink" href="#outreach-integration" title="Permanent link">&para;</a></h2>
+<p>For candidates scoring <strong>3.5 or higher</strong>, FORGE automatically generates personalized outreach messages. The system uses a two-stage approach:</p>
+<h3 id="stage-1-category-classification">Stage 1: Category Classification<a class="headerlink" href="#stage-1-category-classification" title="Permanent link">&para;</a></h3>
+<p>The [[outreach_personalizer|outreach_personalizer]] module classifies candidates into one of 8 personalization categories using rule-based decision trees:</p>
+<ol>
+<li><strong>Active GitHub Builder</strong> — 10+ public repos, starred repos</li>
+<li><strong>Open Source Contributor</strong> — forked repos, contributed</li>
+<li><strong>Strong Company Pedigree</strong> — top-tier company (Google, Meta, Stripe, etc.)</li>
+<li><strong>Direct Skill Match</strong> — matches JD technologies</li>
+<li><strong>YC/Startup Network</strong> — Y Combinator or venture-backed company</li>
+<li><strong>Elite Education</strong> — Stanford, MIT, CMU, etc.</li>
+<li><strong>Working on Interesting Product</strong> — notable technical work at current company</li>
+<li><strong>Recently Changed Roles</strong> — role change within 6 months</li>
+<li><strong>Default</strong> — strong background, generic</li>
+</ol>
+<h3 id="stage-2-template-filling">Stage 2: Template Filling<a class="headerlink" href="#stage-2-template-filling" title="Permanent link">&para;</a></h3>
+<p>Human-written templates for each category are filled with candidate-specific details using Claude Haiku. Output is a <strong>1-2 sentence personalization</strong> injected as an Ashby sequence variable.</p>
+<h3 id="outreach-quality-gate">Outreach Quality Gate<a class="headerlink" href="#outreach-quality-gate" title="Permanent link">&para;</a></h3>
+<p>Before sending ANY outreach message, the system performs 25-rule validation:</p>
+<p><strong>Hard Bans (fix before sending):</strong>
+- NO em dashes (—) anywhere — use commas, periods, or parentheses
+- NO "Worth a chat/conversation/call"
+- NO "on your radar"
+- NO "I came across your profile" / "I was impressed by" / "caught my eye"
+- NO filler sentences ("That's a pretty unique combo", "That's exactly the kind of...")
+- NO time commitments ("15 min", "quick call", "30 min")
+- NO restating resume back at them</p>
+<p><strong>Format Rules:</strong>
+- 1-2 sentences MAX
+- Blurb only — no "Hi [Name]" wrapper (Ashby template handles that)
+- No CTA — personalization is the opener
+- Close with "Happy to share more if you're curious" or "Open to chatting if you are"
+- OR ask a genuine question instead of CTA</p>
+<p><strong>Example (Good)</strong></p>
+<blockquote>
+<p>Saw that you led the infrastructure team at Stripe building their rate-limiting system — that's the exact scale of problem we're solving at HockeyStack. If you're ever curious about shaping GTM infrastructure from scratch, happy to chat.</p>
+</blockquote>
+<p><strong>Example (Bad)</strong></p>
+<blockquote>
+<p>I came across your profile and was really impressed by your work at Stripe. We're building something similar and I think you'd be a great fit. Would love to grab a quick 15-min call to chat more about it.</p>
+</blockquote>
+<hr />
+<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../modules/prism.py">modules/prism.py</a></td>
+<td>Core PRISM evaluation engine — leadership detection, tech matching, FastEval/V2 prompts</td>
+</tr>
+<tr>
+<td><a href="../modules/outreach.py">modules/outreach.py</a></td>
+<td>Outreach message drafting — system prompt, candidate profile → message variants</td>
+</tr>
+<tr>
+<td><a href="../modules/outreach_personalizer.py">modules/outreach_personalizer.py</a></td>
+<td>Decision-tree personalization — categorizes candidates, fills templates</td>
+</tr>
+<tr>
+<td><a href="../cogs/sourcing_prism.py">cogs/sourcing_prism.py</a></td>
+<td>PRISM Discord cog — handles <code>prism_eval</code>, <code>prism_drop</code>, <code>personalize_outreach</code> commands</td>
+</tr>
+<tr>
+<td><a href="../core/sourcing_filters.py">core/sourcing_filters.py</a></td>
+<td>Candidate filtering logic — title matching, location, keywords, excluded companies</td>
+</tr>
+<tr>
+<td><a href="../modules/jd_manager.py">modules/jd_manager.py</a></td>
+<td>Job description storage/retrieval — per-JD configuration, filters, exclusions</td>
+</tr>
+<tr>
+<td><a href="../jds/index.json">jds/index.json</a></td>
+<td>JD registry — all stored job descriptions, per-JD filter overrides</td>
+</tr>
+<tr>
+<td><a href="../data/personalization_config.json">data/personalization_config.json</a></td>
+<td>Personalization categories — decision tree conditions, templates</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[sourcing-pipeline|Sourcing Pipeline]] — end-to-end candidate sourcing workflow</li>
+<li>[[linkedin-enrichment|LinkedIn Enrichment]] — profile data collection via RapidAPI</li>
+<li>[[ashby-integration|Ashby Integration]] — candidate tracking and outreach sequences</li>
+<li>[[scoring-rules|Scoring Rules]] — detailed decision-making guidelines for evaluators</li>
+</ul>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Codebase:</strong> <code>modules/prism.py</code> (main scoring logic), <code>cogs/sourcing_prism.py</code> (Discord integration)</li>
+<li><strong>Configuration:</strong> <code>core/config.py</code> (sourcing defaults), <code>jds/index.json</code> (per-JD overrides)</li>
+<li><strong>Memory:</strong> See [[FORGE Memory Index|FORGE Memory Index]] for sourcing rules and guidelines</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

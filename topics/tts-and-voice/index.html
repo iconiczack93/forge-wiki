@@ -1,0 +1,1994 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/tts-and-voice/">
+      
+      
+        <link rel="prev" href="../overnight-engine-and-scheduling/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>TTS & Voice - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#text-to-speech-voice-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TTS & Voice
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elevenlabs-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ElevenLabs Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ElevenLabs Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-rotation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Rotation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice Rotation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#never-repeat-last-voice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Never Repeat Last Voice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-history-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice History Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-to-speech-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Speech API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text-to-Speech API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-function-text_to_speech" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Function: text_to_speech()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helper Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Action Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_text-read-arbitrary-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_text — Read Arbitrary Text
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_last-read-previous-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_last — Read Previous Message
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_url-scrape-summarize-read-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_url — Scrape, Summarize, Read URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_brief-morning-brief-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_brief — Morning Brief Audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tts-intercept-fast-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TTS Intercept (Fast-Path)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Other Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morning-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Morning Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meeting-summaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meeting Summaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert-sounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Sounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Gallery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance &amp; Limits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obsidian-wikilinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Wikilinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elevenlabs-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ElevenLabs Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ElevenLabs Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-rotation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Rotation System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voice Rotation System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#never-repeat-last-voice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Never Repeat Last Voice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-history-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice History Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Metadata
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-to-speech-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text-to-Speech API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text-to-Speech API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-function-text_to_speech" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Function: text_to_speech()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helper-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Helper Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-handlers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action Handlers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Action Handlers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_text-read-arbitrary-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_text — Read Arbitrary Text
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_last-read-previous-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_last — Read Previous Message
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_url-scrape-summarize-read-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_url — Scrape, Summarize, Read URL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tts_read_brief-morning-brief-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tts_read_brief — Morning Brief Audio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tts-intercept-fast-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TTS Intercept (Fast-Path)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-other-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration with Other Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Other Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morning-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Morning Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meeting-summaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meeting Summaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert-sounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Sounds
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-gallery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Gallery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-limits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance &amp; Limits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obsidian-wikilinks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Wikilinks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Commands
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roadmap
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="text-to-speech-voice-system">Text-to-Speech &amp; Voice System<a class="headerlink" href="#text-to-speech-voice-system" title="Permanent link">&para;</a></h1>
+<p>FORGE integrates <strong>ElevenLabs AI voice synthesis</strong> for reading text, messages, URLs, and morning briefs aloud. The system features intelligent voice rotation that ensures you never hear the same voice twice in a row, with audio files stored locally for caching and replay.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The TTS system consists of three layers:
+1. <strong>API layer</strong> (<code>modules/tts.py</code>) — ElevenLabs integration, voice rotation logic, MP3 generation
+2. <strong>Action handlers</strong> (<code>cogs/tts_actions.py</code>) — Discord command dispatch for read text/last/URL/brief
+3. <strong>Trigger intercept</strong> (<code>bot.py</code> <code>on_message</code>) — Fast-path recognition of "read this" phrases before classifier</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Message → on_message TTS intercept
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>         ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    &quot;read this ...&quot; → tts_read_text
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    &quot;read that&quot; → tts_read_last
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    &quot;read brief&quot; → tts_read_brief
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>         ↓
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    classifier (if no TTS intercept match)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>         ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    brain / cog dispatch
+</code></pre></div>
+<p>The TTS intercept is <strong>positioned at the top of <code>on_message</code></strong> (before classifier) to provide sub-100ms response for common voice commands.</p>
+<h2 id="elevenlabs-integration">ElevenLabs Integration<a class="headerlink" href="#elevenlabs-integration" title="Permanent link">&para;</a></h2>
+<p><strong>Provider</strong>: ElevenLabs API v1<br />
+<strong>Base URL</strong>: <code>https://api.elevenlabs.io/v1</code><br />
+<strong>Auth</strong>: <code>ELEVENLABS_API_KEY</code> in <code>.env</code><br />
+<strong>Model</strong>: <code>eleven_turbo_v2_5</code> (fast + cost-efficient, default)<br />
+<strong>Quality model</strong>: <code>eleven_multilingual_v2</code> (highest quality, 29 languages)</p>
+<h3 id="api-flow">API Flow<a class="headerlink" href="#api-flow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">POST</span> <span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">speech</span><span class="o">/</span><span class="p">{</span><span class="n">voice_id</span><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Headers</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="o">-</span> <span class="n">xi</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">key</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ELEVENLABS_API_KEY</span><span class="o">&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  <span class="o">-</span> <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">Body</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="s2">&quot;eleven_turbo_v2_5&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="s2">&quot;voice_settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>      <span class="s2">&quot;stability&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>      <span class="c1"># 0 = expressive, 1 = monotone</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>      <span class="s2">&quot;similarity_boost&quot;</span><span class="p">:</span> <span class="mf">0.75</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>  <span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">Response</span><span class="p">:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  <span class="mi">200</span> <span class="n">OK</span> <span class="err">→</span> <span class="n">audio</span><span class="o">/</span><span class="n">mpeg</span> <span class="n">binary</span> <span class="n">stream</span> <span class="p">(</span><span class="n">MP3</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  <span class="o">!=</span> <span class="mi">200</span> <span class="err">→</span> <span class="n">JSON</span> <span class="n">error</span> <span class="n">message</span>
+</code></pre></div>
+<h2 id="voice-rotation-system">Voice Rotation System<a class="headerlink" href="#voice-rotation-system" title="Permanent link">&para;</a></h2>
+<h3 id="never-repeat-last-voice">Never Repeat Last Voice<a class="headerlink" href="#never-repeat-last-voice" title="Permanent link">&para;</a></h3>
+<p>The voice selection logic <strong>guarantees you never hear the same voice twice in a row</strong>. This is critical for morning briefs, daily reads, and repeated use cases.</p>
+<p><strong>Algorithm</strong> (in <code>pick_daily_voice()</code>):</p>
+<ol>
+<li>Load voice usage history from <code>data/tts/voice_history.json</code></li>
+<li>Filter available voices: exclude <code>used</code> list AND <code>last_voice</code></li>
+<li>If all voices exhausted: reset <code>used</code> list (but still exclude <code>last_voice</code>)</li>
+<li>Pick random voice from filtered pool</li>
+<li>Append voice_id to <code>used</code> list and save history</li>
+<li>Log: "Today's voice: {name} ({accent}, {gender})"</li>
+</ol>
+<h3 id="voice-history-schema">Voice History Schema<a class="headerlink" href="#voice-history-schema" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;used&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;voice_id_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;voice_id_2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">],</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;last_voice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;voice_id_3&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;last_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-04&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Storage</strong>: <code>data/tts/voice_history.json</code></p>
+<h3 id="voice-metadata">Voice Metadata<a class="headerlink" href="#voice-metadata" title="Permanent link">&para;</a></h3>
+<p>Each voice from <code>GET /v1/voices</code> includes:
+- <code>voice_id</code>: Unique identifier (used in TTS requests)
+- <code>name</code>: Display name (e.g., "Adam", "Alice", "Luna")
+- <code>preview_url</code>: Sample audio clip
+- <code>labels</code>: Object with <code>accent</code> (e.g., "American"), <code>gender</code> (e.g., "male")</p>
+<h2 id="text-to-speech-api">Text-to-Speech API<a class="headerlink" href="#text-to-speech-api" title="Permanent link">&para;</a></h2>
+<p><strong>Module</strong>: <code>modules/tts.py</code></p>
+<h3 id="main-function-text_to_speech">Main Function: <code>text_to_speech()</code><a class="headerlink" href="#main-function-text_to_speech" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">text_to_speech</span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">voice_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_MODEL</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">stability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">similarity_boost</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert text to speech using ElevenLabs.</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="sd">    Args:</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="sd">        text: Text to speak</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="sd">        output_path: Where to save MP3. Auto-generated if None.</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="sd">        voice_id: Specific voice to use. If None, picks today&#39;s rotation voice.</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="sd">        model: ElevenLabs model ID</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="sd">        stability: Voice stability (0-1). Lower = more expressive.</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="sd">        similarity_boost: How closely to match the voice (0-1).</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="sd">        Path to generated MP3 file.</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<p><strong>Behavior</strong>:
+- If <code>voice_id</code> is None: calls <code>pick_daily_voice()</code> to get rotation voice
+- Generates timestamped filename: <code>brief_20260404_145230.mp3</code>
+- Saves to <code>data/tts/</code> directory
+- Logs file size (KB), character count, and voice name
+- Raises <code>ValueError</code> if API fails or no API key configured</p>
+<p><strong>Example Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Auto voice rotation</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">audio_path</span> <span class="o">=</span> <span class="k">await</span> <span class="n">text_to_speech</span><span class="p">(</span><span class="s2">&quot;Hello, this is a test.&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Returns: Path(&quot;data/tts/brief_20260404_145230.mp3&quot;)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Specific voice</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">audio_path</span> <span class="o">=</span> <span class="k">await</span> <span class="n">text_to_speech</span><span class="p">(</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="s2">&quot;Hello, this is a test.&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">voice_id</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">,</span>  <span class="c1"># Use &quot;Adam&quot; voice specifically</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">stability</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>     <span class="c1"># More expressive</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="helper-functions">Helper Functions<a class="headerlink" href="#helper-functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_get_api_key()</code></td>
+<td>Loads <code>ELEVENLABS_API_KEY</code> from <code>.env</code> or environment</td>
+</tr>
+<tr>
+<td><code>_load_voice_history()</code></td>
+<td>Reads <code>voice_history.json</code>, returns dict with <code>used</code>/<code>last_voice</code></td>
+</tr>
+<tr>
+<td><code>_save_voice_history(history)</code></td>
+<td>Writes voice history to JSON</td>
+</tr>
+<tr>
+<td><code>get_available_voices()</code></td>
+<td>Fetches full voice list from ElevenLabs API</td>
+</tr>
+<tr>
+<td><code>pick_daily_voice(voices)</code></td>
+<td>Selects next voice in rotation, never repeats last</td>
+</tr>
+<tr>
+<td><code>speak_alert(text, channel)</code></td>
+<td>Generate + post audio alert to Discord channel</td>
+</tr>
+<tr>
+<td><code>morning_brief_audio(brief_text)</code></td>
+<td>Render morning brief as audio (see [[morning-brief]])</td>
+</tr>
+</tbody>
+</table>
+<h2 id="action-handlers">Action Handlers<a class="headerlink" href="#action-handlers" title="Permanent link">&para;</a></h2>
+<p><strong>Module</strong>: <code>cogs/tts_actions.py</code><br />
+<strong>Cog</strong>: <code>TTSCog</code></p>
+<p>Dispatched by classifier when TTS actions detected. Each handler runs async, posts status/result to Discord.</p>
+<h3 id="tts_read_text-read-arbitrary-text"><code>tts_read_text</code> — Read Arbitrary Text<a class="headerlink" href="#tts_read_text-read-arbitrary-text" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger</strong>: "read this text", "say this message", "read aloud: ..."<br />
+<strong>Handler</strong>: <code>_read_text(intent, message)</code></p>
+<ol>
+<li>Extract text from message or <code>intent.query</code></li>
+<li>Try prefixes: "read this:", "say this:", "read aloud:", etc.</li>
+<li>Call <code>text_to_speech(text)</code></li>
+<li>If MP3 &lt; 10 MB: post as Discord audio file</li>
+<li>If &gt;= 10 MB: post error message suggesting shorter text</li>
+</ol>
+<p><strong>Prefixes Recognized</strong>:
+- "read this out loud:" / "read this out loud"
+- "read this:" / "read this"
+- "say this:" / "say this"
+- "read aloud:" / "read aloud"
+- "speak:" / "speak"</p>
+<h3 id="tts_read_last-read-previous-message"><code>tts_read_last</code> — Read Previous Message<a class="headerlink" href="#tts_read_last-read-previous-message" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger</strong>: "read that", "read the last message", "read that out loud"<br />
+<strong>Handler</strong>: <code>_read_last(message)</code></p>
+<ol>
+<li>Search channel history (limit 5) for previous non-bot message</li>
+<li>Fallback to bot messages if no human message found</li>
+<li>Call <code>text_to_speech(previous_message.content)</code></li>
+<li>Post MP3 to channel</li>
+</ol>
+<p><strong>Error Handling</strong>: Returns "No previous message to read." if history is empty.</p>
+<h3 id="tts_read_url-scrape-summarize-read-url"><code>tts_read_url</code> — Scrape, Summarize, Read URL<a class="headerlink" href="#tts_read_url-scrape-summarize-read-url" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger</strong>: "read this URL", "read this link"<br />
+<strong>Handler</strong>: <code>_read_url(intent, message)</code></p>
+<ol>
+<li>Extract URL from <code>intent.query</code> or message content (regex)</li>
+<li>Fetch page via aiohttp (timeout: 15s)</li>
+<li>Strip HTML tags with regex: <code>&lt;[^&gt;]+&gt;</code> → space</li>
+<li>Collapse whitespace</li>
+<li>Truncate to first 3000 chars (avoid ElevenLabs char limits)</li>
+<li>Call <code>text_to_speech(text)</code></li>
+<li>Post MP3 to channel</li>
+</ol>
+<p><strong>Error Handling</strong>:
+- URL fetch timeout or non-200 status → "Couldn't fetch URL (status X)"
+- TTS API error → propagated to user</p>
+<h3 id="tts_read_brief-morning-brief-audio"><code>tts_read_brief</code> — Morning Brief Audio<a class="headerlink" href="#tts_read_brief-morning-brief-audio" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger</strong>: "read brief", "read the brief", "listen to brief"<br />
+<strong>Handler</strong>: <code>_read_brief(message)</code></p>
+<ol>
+<li>Check for local file: <code>data/tts/latest_brief.md</code></li>
+<li>If not found: search channel history (limit 20) for "Morning Brief" or "Dream Cycle" text</li>
+<li>Call <code>morning_brief_audio(brief_text)</code> to render audio</li>
+<li>Post MP3 with caption "<strong>Morning Brief</strong> — audio:"</li>
+</ol>
+<p><strong>Related</strong>: See [[morning-brief]] for brief generation pipeline.</p>
+<h2 id="tts-intercept-fast-path">TTS Intercept (Fast-Path)<a class="headerlink" href="#tts-intercept-fast-path" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <code>bot.py</code> <code>on_message()</code> — positioned <strong>before classifier</strong></p>
+<p><strong>Trigger Recognition</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Normalize punctuation after trigger phrase</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">_tts_normalized</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="sa">r</span><span class="s2">&quot;^(read this|say this|speak this|forge read|forge say|tts|read aloud)[.,;:!?\s]+&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="sa">r</span><span class="s2">&quot;\1 &quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># Check if starts with normalized trigger</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">if</span> <span class="n">_tts_normalized</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;read this &quot;</span><span class="p">,</span> <span class="s2">&quot;say this &quot;</span><span class="p">,</span> <span class="s2">&quot;tts &quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)):</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="n">action</span> <span class="o">=</span> <span class="s2">&quot;tts_read_text&quot;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">query</span> <span class="o">=</span> <span class="n">extracted_text</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="err">→</span> <span class="n">dispatch</span> <span class="n">to</span> <span class="n">TTSCog</span> <span class="n">immediately</span>
+</code></pre></div>
+<p><strong>Phrases Matched</strong>:
+- "read this. text" → "read this text" (punctuation normalized)
+- "read this, text" → "read this text"
+- "read this: text" → normalized to "read this text"
+- "say this! text" → normalized
+- "tts text" → direct pass-through
+- "read that", "read the last message" → <code>tts_read_last</code>
+- "read brief", "listen to brief" → <code>tts_read_brief</code></p>
+<p><strong>Why Pre-Classifier?</strong>
+- Eliminates 50-100ms of classifier latency for common voice use cases
+- Ensures "read this" feels instant (Discord UX)
+- Reduces API token spend (no brain call for trivial reads)</p>
+<h2 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modules/tts.py</code></td>
+<td>ElevenLabs API, voice rotation, MP3 generation</td>
+<td>~210</td>
+</tr>
+<tr>
+<td><code>cogs/tts_actions.py</code></td>
+<td>Discord action handlers (read text/last/URL/brief)</td>
+<td>~220</td>
+</tr>
+<tr>
+<td><code>bot.py</code> (TTS intercept)</td>
+<td>Fast-path phrase recognition in <code>on_message()</code></td>
+<td>~70</td>
+</tr>
+<tr>
+<td><code>data/tts/</code></td>
+<td>Output directory for generated MP3 files</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>data/tts/voice_history.json</code></td>
+<td>Voice rotation state (persisted)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>data/tts/latest_brief.md</code></td>
+<td>Morning brief text (used by <code>tts_read_brief</code>)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p><strong>Environment Variables</strong>:
+- <code>ELEVENLABS_API_KEY</code> — Required. Loaded from <code>.env</code> via <code>_get_api_key()</code></p>
+<p><strong>Model Defaults</strong>:
+- <code>DEFAULT_MODEL = "eleven_turbo_v2_5"</code> (fast + cost-efficient)
+- Can override per call: <code>text_to_speech(..., model="eleven_multilingual_v2")</code></p>
+<p><strong>Voice Settings</strong>:
+- <code>stability=0.5</code> — Default (balanced)
+- <code>similarity_boost=0.75</code> — Default (strong voice matching)
+- Customizable per call</p>
+<p><strong>Storage</strong>:
+- Voice history: <code>data/tts/voice_history.json</code>
+- MP3 output: <code>data/tts/brief_&lt;timestamp&gt;.mp3</code>
+- Directory auto-created if missing</p>
+<h2 id="integration-with-other-systems">Integration with Other Systems<a class="headerlink" href="#integration-with-other-systems" title="Permanent link">&para;</a></h2>
+<h3 id="morning-brief">Morning Brief<a class="headerlink" href="#morning-brief" title="Permanent link">&para;</a></h3>
+<p>[[morning-brief]] calls <code>morning_brief_audio()</code> to render the daily briefing as audio. Results in scheduled podcast posted to Discord.</p>
+<p><strong>Flow</strong>:
+1. Autonomy loop generates brief text → <code>data/tts/latest_brief.md</code>
+2. <code>morning_brief_audio(brief_text)</code> converts to MP3
+3. Brief is posted to Discord with audio attachment
+4. Users can say "read brief" to replay</p>
+<h3 id="meeting-summaries">Meeting Summaries<a class="headerlink" href="#meeting-summaries" title="Permanent link">&para;</a></h3>
+<p>TTS can render meeting summaries to audio for async listening. Not yet integrated into scheduled flows — see [[future-work]] for roadmap.</p>
+<h3 id="alert-sounds">Alert Sounds<a class="headerlink" href="#alert-sounds" title="Permanent link">&para;</a></h3>
+<p><code>speak_alert(text, channel)</code> generates and posts audio alerts for:
+- High-priority candidate drops
+- Crash notifications
+- Important FORGE state changes</p>
+<p><strong>Example</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">await</span> <span class="n">speak_alert</span><span class="p">(</span><span class="s2">&quot;New candidate matched: Alice Chen&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="voice-gallery">Voice Gallery<a class="headerlink" href="#voice-gallery" title="Permanent link">&para;</a></h2>
+<p>ElevenLabs offers 30+ voices across accents (American, British, Indian, etc.) and genders. Full list fetched dynamically via <code>get_available_voices()</code>.</p>
+<p><strong>Common Voices</strong>:
+- Adam (American male)
+- Alice (American female)
+- Luna (British female, distinctive)
+- Sophia (American female, warm)
+- Jackson (American male, deep)
+- Rachel (American female, professional)</p>
+<p>Run <code>/current-voice</code> or check logs to see today's selected voice.</p>
+<h2 id="performance-limits">Performance &amp; Limits<a class="headerlink" href="#performance-limits" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Limit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Max text length</td>
+<td>~5000 chars</td>
+<td>ElevenLabs API limit. TTS errors if exceeded.</td>
+</tr>
+<tr>
+<td>Output MP3 size</td>
+<td>&lt; 10 MB</td>
+<td>Hard Discord file limit. Cog warns if exceeded.</td>
+</tr>
+<tr>
+<td>API rate</td>
+<td>~100 req/min</td>
+<td>Based on subscription tier. No explicit rate limiting in code.</td>
+</tr>
+<tr>
+<td>Voice list cache</td>
+<td>Per request</td>
+<td>Fetched fresh from ElevenLabs every <code>text_to_speech()</code> call. Consider caching if high volume.</td>
+</tr>
+<tr>
+<td>File generation</td>
+<td>~2-5s</td>
+<td>Depends on text length and network latency.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Handling</th>
+<th>Recovery</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Missing <code>ELEVENLABS_API_KEY</code></td>
+<td>Raises <code>ValueError</code></td>
+<td>Add API key to <code>.env</code>, restart bot</td>
+</tr>
+<tr>
+<td>ElevenLabs API returns non-200</td>
+<td>Raises <code>ValueError</code> with HTTP status + error text</td>
+<td>Check API key, quota, network</td>
+</tr>
+<tr>
+<td>No voices available from API</td>
+<td>Raises <code>ValueError</code></td>
+<td>Temporary API issue; retry</td>
+</tr>
+<tr>
+<td>MP3 &gt; 10 MB</td>
+<td>User gets warning message</td>
+<td>Ask user to provide shorter text</td>
+</tr>
+<tr>
+<td>URL fetch timeout (15s)</td>
+<td>User gets "Couldn't fetch URL"</td>
+<td>URL may be slow or unresponsive</td>
+</tr>
+<tr>
+<td>Channel history empty (read_last)</td>
+<td>User gets "No previous message to read."</td>
+<td>Need at least one previous message</td>
+</tr>
+</tbody>
+</table>
+<h2 id="obsidian-wikilinks">Obsidian Wikilinks<a class="headerlink" href="#obsidian-wikilinks" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[morning-brief]] — Daily briefing audio generation</li>
+<li>[[discord-cogs]] — Cog system overview</li>
+<li>[[bot-py]] — Main bot entry point (<code>on_message</code>, classifier routing)</li>
+<li>[[elevenlabs-api]] — External API reference</li>
+<li>[[voice-rotation]] — Detailed voice selection algorithm</li>
+<li>[[modules-overview]] — All FORGE modules</li>
+</ul>
+<h2 id="related-commands">Related Commands<a class="headerlink" href="#related-commands" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>/tts</code> — CLI wrapper for text-to-speech (if implemented)</li>
+<li><code>/current-voice</code> — Show today's voice + metadata (if implemented)</li>
+<li><code>/read this: ...</code> — Trigger via Discord message (fast-path)</li>
+<li><code>/read that</code> — Read previous message (fast-path)</li>
+<li><code>/read brief</code> — Listen to morning brief (fast-path)</li>
+</ul>
+<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Voice caching — reduce API calls by caching voice list for 24h</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Meeting summary audio — auto-render meeting notes to MP3</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Voice preset selection — let user pick "professional" vs "casual" voice</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Text length validation — warn before sending &gt;4000 char text to API</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Fallback voices — if selected voice unavailable, pick backup automatically</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Audio trimming — remove leading/trailing silence from MP3s</li>
+</ul>
+<hr />
+<p><strong>Last Updated</strong>: 2026-04-04<br />
+<strong>Status</strong>: Stable (voice rotation verified, TTS intercept optimized 2026-03-29)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/knowledge-base-and-rag/">
+      
+      
+        <link rel="prev" href="../prizepicks-sports-model/">
+      
+      
+        <link rel="next" href="../overnight-engine-and-scheduling/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Knowledge Base & RAG - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#knowledge-base-rag-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Knowledge Base & RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../discord-bot-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-store-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Store: ChromaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector Store: ChromaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported File Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lazy Loading
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Graph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-canonicalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Canonicalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Router
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-queries-knowledge-graph-light-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Queries → Knowledge Graph + Light Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptual-queries-vector-search-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptual Queries → Vector Search Only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixeddefault-hybrid-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed/Default → Hybrid (Parallel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing Logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conversation-memory-short-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conversation Memory (Short-Term)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-forge-memory-semantic-category-driven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forge Memory (Semantic, Category-Driven)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fact-memory-per-user-extracted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fact Memory (Per-User, Extracted)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reflection-store-therapy-like-introspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reflection Store (Therapy-Like Introspection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints-cogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Endpoints (Cogs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints (Cogs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-result-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Result Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunking-ingestion-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunking &amp; Ingestion Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chunking &amp; Ingestion Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-ingestion-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Ingestion Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-source-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Source Ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Injection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-prompt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Prompt Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-system-prompt-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example System Prompt Injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-profile-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Profile Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Prune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-multiple-memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Multiple Memory Systems?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-lazy-load-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Lazy-Load ChromaDB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-knowledge-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Knowledge Router?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-chromadb-over-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why ChromaDB Over Alternatives?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vector-store-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vector Store: ChromaDB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vector Store: ChromaDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported File Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document-chunking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Chunking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semantic Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lazy Loading
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Graph
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-canonicalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Canonicalization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#knowledge-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Router
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Knowledge Router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Query Classification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entity-queries-knowledge-graph-light-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Queries → Knowledge Graph + Light Vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conceptual-queries-vector-search-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptual Queries → Vector Search Only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixeddefault-hybrid-parallel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mixed/Default → Hybrid (Parallel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#routing-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing Logic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Memory Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-conversation-memory-short-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Conversation Memory (Short-Term)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-forge-memory-semantic-category-driven" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Forge Memory (Semantic, Category-Driven)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fact-memory-per-user-extracted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fact Memory (Per-User, Extracted)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reflection-store-therapy-like-introspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Reflection Store (Therapy-Like Introspection)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints-cogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Endpoints (Cogs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Endpoints (Cogs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-result-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Result Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chunking-ingestion-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chunking &amp; Ingestion Pipeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chunking &amp; Ingestion Pipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-ingestion-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Ingestion Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Extraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-source-ingestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Source Ingestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Context Injection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Context Injection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-prompt-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Prompt Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-system-prompt-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example System Prompt Injection
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cache-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cache Layers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache Layers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-base-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Knowledge Base Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entity-profile-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entity Profile Cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-prune" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-Prune
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Decisions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design Decisions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-multiple-memory-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Multiple Memory Systems?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-lazy-load-chromadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Lazy-Load ChromaDB?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-knowledge-router" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Knowledge Router?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-chromadb-over-alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why ChromaDB Over Alternatives?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="knowledge-base-rag-system">Knowledge Base &amp; RAG System<a class="headerlink" href="#knowledge-base-rag-system" title="Permanent link">&para;</a></h1>
+<p>FORGE's knowledge base implements Retrieval Augmented Generation (RAG) to ground Claude's responses in real documents. The system combines three retrieval mechanisms: <strong>ChromaDB vector search</strong> for semantic matching, <strong>Knowledge Graph</strong> for entity relationships, and <strong>Knowledge Router</strong> for query-aware retrieval strategy selection.</p>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The knowledge base system consists of:</p>
+<ol>
+<li><strong>Vector Store</strong> (ChromaDB) — semantic document search</li>
+<li><strong>Knowledge Graph</strong> — entity and relationship extraction</li>
+<li><strong>Knowledge Router</strong> — intelligent query routing</li>
+<li><strong>Memory Systems</strong> — user facts, reflections, conversation history</li>
+<li><strong>SQLite Database</strong> — persistent storage for all features</li>
+</ol>
+<p>Queries against the knowledge base are automatically routed to the optimal retrieval mechanism based on query intent, then results are injected into Claude's system prompt.</p>
+<hr />
+<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>User Query
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Knowledge Router] — Detect query type (entity / conceptual / hybrid)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ↓
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    ├─→ &quot;Who is...&quot; → [Knowledge Graph] (entity-first, + light vector)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    ├─→ &quot;How to...&quot; → [ChromaDB] (conceptual, vector-only)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    └─→ Default → [Graph + ChromaDB] (parallel, hybrid)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ↓
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>[Merge Results] → System Prompt Context
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    ↓
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Claude Response
+</code></pre></div>
+<hr />
+<h2 id="vector-store-chromadb">Vector Store: ChromaDB<a class="headerlink" href="#vector-store-chromadb" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <code>data/chroma_db/</code><br />
+<strong>Module</strong>: <a href="../modules/knowledge_base.py">modules/knowledge_base.py</a></p>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Local, GPU-free</strong>: Uses ONNX embeddings (no GPU required)</li>
+<li><strong>Lazy-load</strong>: Defers initialization to first use, avoiding 30s boot spike</li>
+<li><strong>Auto-ingest</strong>: Watches <code>knowledge/</code>, <code>jds/</code>, and <code>vault/</code> directories</li>
+<li><strong>File tracking</strong>: SQLite table <code>kb_documents</code> tracks ingestion state</li>
+</ul>
+<h3 id="supported-file-types">Supported File Types<a class="headerlink" href="#supported-file-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li>PDF, DOCX, TXT, MD, CSV, JSON</li>
+<li>Job descriptions (from <code>jds/</code> directory)</li>
+<li>Vault notes (from <code>vault/daily</code>, <code>vault/notes</code>, <code>vault/meetings</code>, etc.)</li>
+</ul>
+<h3 id="document-chunking">Document Chunking<a class="headerlink" href="#document-chunking" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">500</span>          <span class="c1"># tokens (~2000 chars)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">CHUNK_OVERLAP</span> <span class="o">=</span> <span class="mi">50</span>        <span class="c1"># tokens (~200 chars)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">CHARS_PER_TOKEN</span> <span class="o">=</span> <span class="mi">4</span>       <span class="c1"># rough estimate</span>
+</code></pre></div>
+<p>Text is split into overlapping chunks to preserve context boundaries. Overlap prevents losing information at chunk edges.</p>
+<h3 id="semantic-search">Semantic Search<a class="headerlink" href="#semantic-search" title="Permanent link">&para;</a></h3>
+<p><strong>Score Threshold</strong>: <strong>0.3</strong> (cosine similarity)</p>
+<p>Results with scores above 0.3 are returned. The threshold balances precision (fewer false positives) with recall (finding relevant content).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Search ChromaDB and return top K results with scores ≥ 0.3&quot;&quot;&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">results</span> <span class="o">=</span> <span class="n">_collection</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="n">query_texts</span><span class="o">=</span><span class="p">[</span><span class="n">query</span><span class="p">],</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="n">n_results</span><span class="o">=</span><span class="n">top_k</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># Fetch 2x, filter by threshold</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># Filter: score &gt;= 0.3</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">filtered</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">]</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">return</span> <span class="n">filtered</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="lazy-loading">Lazy Loading<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
+<p>ChromaDB is not loaded on bot startup. Instead, it's initialized on first use (<code>_ensure_chromadb()</code>), avoiding:
+- 30-second CPU spike during boot
+- Unnecessary loading if KB is unused
+- Complex async state management at startup</p>
+<p>When initialized, the system ingests all tracked files (JDs, knowledge/, vault/) in parallel.</p>
+<hr />
+<h2 id="knowledge-graph">Knowledge Graph<a class="headerlink" href="#knowledge-graph" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <a href="../modules/knowledge_graph.py">modules/knowledge_graph.py</a></p>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>Extracts and stores <strong>entities</strong> (people, organizations, projects, technologies) and <strong>relationships</strong> between them. Enables structured fact retrieval and entity-focused queries.</p>
+<h3 id="entity-types">Entity Types<a class="headerlink" href="#entity-types" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">VALID_ENTITY_TYPES</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span> <span class="s2">&quot;project&quot;</span><span class="p">,</span> <span class="s2">&quot;organization&quot;</span><span class="p">,</span> 
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">&quot;technology&quot;</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="relationships">Relationships<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">VALID_PREDICATES</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;married_to&quot;</span><span class="p">,</span> <span class="s2">&quot;parent_of&quot;</span><span class="p">,</span> <span class="s2">&quot;works_at&quot;</span><span class="p">,</span> <span class="s2">&quot;uses&quot;</span><span class="p">,</span> <span class="s2">&quot;owns&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">&quot;built_with&quot;</span><span class="p">,</span> <span class="s2">&quot;related_to&quot;</span><span class="p">,</span> <span class="s2">&quot;member_of&quot;</span><span class="p">,</span> <span class="o">...</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="database-tables">Database Tables<a class="headerlink" href="#database-tables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entities</code></td>
+<td>Entity definitions (name, type, canonical form)</td>
+</tr>
+<tr>
+<td><code>relationships</code></td>
+<td>Links between entities (subject, predicate, object)</td>
+</tr>
+<tr>
+<td><code>entity_access</code></td>
+<td>Tracks which entities are most queried</td>
+</tr>
+</tbody>
+</table>
+<h3 id="entity-canonicalization">Entity Canonicalization<a class="headerlink" href="#entity-canonicalization" title="Permanent link">&para;</a></h3>
+<p>Entity names are normalized to prevent duplicates:
+- Lowercase
+- Strip whitespace
+- Replace <code>-</code> with <code>_</code>
+- Remove <code>'</code></p>
+<p>Example: <code>"John Smith"</code> → <code>"john smith"</code>, <code>"John-Smith"</code> → <code>"john smith"</code> (same entity)</p>
+<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
+<p>Entity profiles are cached with a 10-minute TTL:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">_entity_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">_CACHE_TTL</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># seconds</span>
+</code></pre></div></p>
+<p>Prevents repeated database queries for frequently accessed entities.</p>
+<hr />
+<h2 id="knowledge-router">Knowledge Router<a class="headerlink" href="#knowledge-router" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <a href="../modules/knowledge_router.py">modules/knowledge_router.py</a></p>
+<h3 id="query-classification">Query Classification<a class="headerlink" href="#query-classification" title="Permanent link">&para;</a></h3>
+<p>Routes queries to the optimal retrieval strategy:</p>
+<h4 id="entity-queries-knowledge-graph-light-vector">Entity Queries → Knowledge Graph + Light Vector<a class="headerlink" href="#entity-queries-knowledge-graph-light-vector" title="Permanent link">&para;</a></h4>
+<p>Triggers on entity-focused prefixes:
+- "Who is...", "Where is...", "What is..."
+- "Tell me about...", "Search for...", "Info on..."</p>
+<p><strong>Behavior</strong>: Fetch from knowledge graph first, supplement with 2 vector results.</p>
+<h4 id="conceptual-queries-vector-search-only">Conceptual Queries → Vector Search Only<a class="headerlink" href="#conceptual-queries-vector-search-only" title="Permanent link">&para;</a></h4>
+<p>Triggers on explanatory prefixes and keywords:
+- "How to...", "Why does...", "Explain..."
+- "Compare...", "What are the differences...", "Best practice"</p>
+<p><strong>Behavior</strong>: Use ChromaDB only (no graph lookup).</p>
+<h4 id="mixeddefault-hybrid-parallel">Mixed/Default → Hybrid (Parallel)<a class="headerlink" href="#mixeddefault-hybrid-parallel" title="Permanent link">&para;</a></h4>
+<p>Triggers when no specific signals match.</p>
+<p><strong>Behavior</strong>: Query both graph and vector in parallel, merge results.</p>
+<h3 id="routing-logic">Routing Logic<a class="headerlink" href="#routing-logic" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">route_query</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns: &quot;entity&quot;, &quot;conceptual&quot;, or &quot;hybrid&quot; &quot;&quot;&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="c1"># 1. Check prefix matches (highest confidence)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">if</span> <span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;who &quot;</span><span class="p">,</span> <span class="s2">&quot;where &quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)):</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="k">return</span> <span class="s2">&quot;entity&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">if</span> <span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;how &quot;</span><span class="p">,</span> <span class="s2">&quot;why &quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)):</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="k">return</span> <span class="s2">&quot;conceptual&quot;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="c1"># 2. Check keywords anywhere in query</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\b(how does|explain|trade-?offs?)\b&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="k">return</span> <span class="s2">&quot;conceptual&quot;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="c1"># 3. Check entity patterns (proper nouns, @mentions)</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>        <span class="k">return</span> <span class="s2">&quot;entity&quot;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="k">return</span> <span class="s2">&quot;hybrid&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="memory-systems">Memory Systems<a class="headerlink" href="#memory-systems" title="Permanent link">&para;</a></h2>
+<p>FORGE implements <strong>four complementary memory layers</strong>, each with distinct semantics and uses.</p>
+<h3 id="1-conversation-memory-short-term">1. Conversation Memory (Short-Term)<a class="headerlink" href="#1-conversation-memory-short-term" title="Permanent link">&para;</a></h3>
+<p><strong>Table</strong>: <code>conversation_messages</code><br />
+<strong>Module</strong>: <a href="../modules/memory.py">modules/memory.py</a></p>
+<p>Stores every message in a channel. When retrieving context, the system fetches:
+1. Summaries (if older than context window allows)
+2. Recent N messages (most recent first)
+3. Current message</p>
+<p><strong>Use</strong>: Building multi-turn conversation context for Claude.</p>
+<hr />
+<h3 id="2-forge-memory-semantic-category-driven">2. Forge Memory (Semantic, Category-Driven)<a class="headerlink" href="#2-forge-memory-semantic-category-driven" title="Permanent link">&para;</a></h3>
+<p><strong>Table</strong>: None (file-based)<br />
+<strong>File</strong>: <code>~/.claude/projects/C--Users-User-FORGE/memory/MEMORY.md</code><br />
+<strong>Module</strong>: <a href="../modules/forge_memory.py">modules/forge_memory.py</a></p>
+<p>A <strong>semantic, hierarchical knowledge system</strong> organized into categories:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Priority</th>
+<th>Auto-Decayed?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td>1</td>
+<td>No (protected)</td>
+</tr>
+<tr>
+<td>family</td>
+<td>2</td>
+<td>No (protected)</td>
+</tr>
+<tr>
+<td>preference</td>
+<td>3</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>project</td>
+<td>4</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>decision</td>
+<td>5</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>person</td>
+<td>6</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>learning</td>
+<td>7</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>history</td>
+<td>8</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Use</strong>: Long-term semantic knowledge about Zack, projects, decisions, and learnings. Injected into system prompt in priority order.</p>
+<p><strong>Immutable Core</strong> (<code>WORM_PERSONA</code>): A write-once block describing FORGE's identity and capabilities, never updated.</p>
+<hr />
+<h3 id="3-fact-memory-per-user-extracted">3. Fact Memory (Per-User, Extracted)<a class="headerlink" href="#3-fact-memory-per-user-extracted" title="Permanent link">&para;</a></h3>
+<p><strong>Table</strong>: <code>user_facts</code><br />
+<strong>Module</strong>: <a href="../modules/fact_memory.py">modules/fact_memory.py</a></p>
+<p>Automatically extracts structured facts about users via Claude Haiku after each conversation.</p>
+<p><strong>Data Model</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserFact</span><span class="p">:</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span>                    <span class="c1"># UUID</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Discord user ID</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># &quot;User prefers dark mode&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span>              <span class="c1"># preference|knowledge|context|behavior|goal</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">confidence</span><span class="p">:</span> <span class="nb">float</span>          <span class="c1"># 0.0-1.0</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">created_at</span><span class="p">:</span> <span class="nb">str</span>            <span class="c1"># ISO 8601</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span>                <span class="c1"># &quot;discord_msg_123&quot;</span>
+</code></pre></div></p>
+<p><strong>Extraction Rules</strong>:
+- Confidence ≥ 0.9: explicit facts ("I live in LA")
+- Confidence 0.7-0.9: strongly implied facts
+- Confidence &lt; 0.7: skipped</p>
+<p><strong>Deduplication</strong>: <code>UNIQUE(user_id, content)</code> prevents duplicate facts.</p>
+<p><strong>Use</strong>: Personalized responses tailored to individual user preferences, knowledge, and goals.</p>
+<hr />
+<h3 id="4-reflection-store-therapy-like-introspection">4. Reflection Store (Therapy-Like Introspection)<a class="headerlink" href="#4-reflection-store-therapy-like-introspection" title="Permanent link">&para;</a></h3>
+<p><strong>Tables</strong>: <code>reflection_entries</code>, <code>reflection_sessions</code>, <code>therapist_memory</code><br />
+<strong>Module</strong>: <a href="../modules/reflection_store.py">modules/reflection_store.py</a></p>
+<p>Structured reflection data for introspection and pattern analysis.</p>
+<p><strong>Tables</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+<th>Key Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reflection_entries</code></td>
+<td>Individual Q&amp;A entries</td>
+<td>date, session, question, answer, category</td>
+</tr>
+<tr>
+<td><code>reflection_sessions</code></td>
+<td>Session grouping</td>
+<td>date, status (pending/completed), questions_json, answers_json, therapist_response</td>
+</tr>
+<tr>
+<td><code>therapist_memory</code></td>
+<td>Extracted patterns</td>
+<td>date, note, category (observation/pattern/insight)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Queries</strong>:
+- Find all reflection entries by date or category
+- Retrieve session progress (pending answers, completed sessions)
+- Extract patterns from therapist notes</p>
+<p><strong>Use</strong>: Self-reflection, pattern recognition, and personal growth tracking.</p>
+<hr />
+<h2 id="database-layer">Database Layer<a class="headerlink" href="#database-layer" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <a href="../core/database.py">core/database.py</a><br />
+<strong>Path</strong>: <code>data/forge.db</code></p>
+<h3 id="connection-management">Connection Management<a class="headerlink" href="#connection-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">aiosqlite</span><span class="o">.</span><span class="n">Connection</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Get or create shared database with health check.&quot;&quot;&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="c1"># Reuses single connection, health-checks on access</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="c1"># Reconnects if connection stale</span>
+</code></pre></div>
+<p><strong>Features</strong>:
+- Single shared connection (all features use same DB)
+- Health check on every access (reconnect if stale)
+- WAL mode for concurrent access
+- 5-second busy timeout</p>
+<h3 id="key-configuration">Key Configuration<a class="headerlink" href="#key-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">_db</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">aiosqlite</span><span class="o">.</span><span class="n">Row</span>    <span class="c1"># Dict-like row access</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">await</span> <span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA journal_mode=WAL&quot;</span><span class="p">)</span>      <span class="c1"># Better concurrency</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">await</span> <span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA busy_timeout=5000&quot;</span><span class="p">)</span>     <span class="c1"># 5s busy timeout</span>
+</code></pre></div>
+<h3 id="table-summary">Table Summary<a class="headerlink" href="#table-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Table</th>
+<th>Purpose</th>
+<th>Key Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kb_documents</code></td>
+<td>KB file tracking</td>
+<td>file_name, file_hash, chunk_count, ingested_at</td>
+</tr>
+<tr>
+<td><code>entities</code></td>
+<td>Knowledge graph nodes</td>
+<td>name, entity_type, canonical_name, access_count</td>
+</tr>
+<tr>
+<td><code>relationships</code></td>
+<td>Knowledge graph edges</td>
+<td>subject_id, predicate, object_id, valid_from, valid_to</td>
+</tr>
+<tr>
+<td><code>conversation_messages</code></td>
+<td>Channel message history</td>
+<td>channel_id, role, content, timestamp</td>
+</tr>
+<tr>
+<td><code>conversation_summaries</code></td>
+<td>Compressed older messages</td>
+<td>channel_id, summary, messages_covered</td>
+</tr>
+<tr>
+<td><code>user_facts</code></td>
+<td>Per-user extracted facts</td>
+<td>user_id, content, category, confidence</td>
+</tr>
+<tr>
+<td><code>reflection_entries</code></td>
+<td>Introspection Q&amp;A</td>
+<td>date, session, question, answer, category</td>
+</tr>
+<tr>
+<td><code>reflection_sessions</code></td>
+<td>Reflection sessions</td>
+<td>date, status, questions_json, answers_json</td>
+</tr>
+<tr>
+<td><code>therapist_memory</code></td>
+<td>Pattern notes</td>
+<td>date, note, category</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="api-endpoints-cogs">API Endpoints (Cogs)<a class="headerlink" href="#api-endpoints-cogs" title="Permanent link">&para;</a></h2>
+<p><strong>Location</strong>: <a href="../cogs/kb_actions.py">cogs/kb_actions.py</a></p>
+<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Action</th>
+<th>Handler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kb_search &lt;query&gt;</code></td>
+<td>Search ChromaDB</td>
+<td><code>kb_search()</code> → top_k=5 results</td>
+</tr>
+<tr>
+<td><code>kb_add &lt;text&gt;</code></td>
+<td>Add text to KB</td>
+<td><code>ingest_text()</code></td>
+</tr>
+<tr>
+<td><code>kb_add &lt;path&gt;</code></td>
+<td>Add file to KB</td>
+<td><code>ingest_file()</code> (PDF/DOCX/TXT/MD/CSV)</td>
+</tr>
+<tr>
+<td><code>kb_list</code></td>
+<td>List ingested files</td>
+<td><code>list_documents()</code></td>
+</tr>
+<tr>
+<td><code>kb_stats</code></td>
+<td>Show KB size/file count</td>
+<td><code>get_kb_stats()</code></td>
+</tr>
+<tr>
+<td><code>kb_delete &lt;filename&gt;</code></td>
+<td>Remove file from KB</td>
+<td><code>delete_document()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="search-result-format">Search Result Format<a class="headerlink" href="#search-result-format" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>📚 **Knowledge Base Search** — &quot;&lt;query&gt;&quot;
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>1. filename.md (87% match)
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>   [First 300 chars of chunk...]
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>2. other_file.pdf (72% match)
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>   [First 300 chars...]
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>💡 Say **send me that** or **send me #1** to get the source file.
+</code></pre></div>
+<hr />
+<h2 id="chunking-ingestion-pipeline">Chunking &amp; Ingestion Pipeline<a class="headerlink" href="#chunking-ingestion-pipeline" title="Permanent link">&para;</a></h2>
+<h3 id="file-ingestion-flow">File Ingestion Flow<a class="headerlink" href="#file-ingestion-flow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_ingest_if_new</span><span class="p">(</span><span class="n">fpath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;knowledge&quot;</span><span class="p">):</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="sd">    1. Compute file hash</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="sd">    2. Check if already ingested (hash lookup)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    3. Extract text (PDF, DOCX, TXT, MD, CSV)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">    4. Split into chunks (overlap: 50 tokens)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="sd">    5. Embed chunks via ChromaDB</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="sd">    6. Track in kb_documents table</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div>
+<h3 id="text-extraction">Text Extraction<a class="headerlink" href="#text-extraction" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>PDF</strong>: PyPDF2</li>
+<li><strong>DOCX</strong>: python-docx</li>
+<li><strong>TXT/MD</strong>: Raw text</li>
+<li><strong>CSV</strong>: Concatenate rows</li>
+<li><strong>JSON</strong>: Serialize values</li>
+</ul>
+<h3 id="multi-source-ingestion">Multi-Source Ingestion<a class="headerlink" href="#multi-source-ingestion" title="Permanent link">&para;</a></h3>
+<p>Startup ingest scans:
+- <code>jds/</code> — All .txt job descriptions
+- <code>knowledge/</code> — All supported file types
+- <code>vault/daily/</code>, <code>vault/notes/</code>, <code>vault/meetings/</code>, etc. — All .md markdown</p>
+<p>Ingestion happens in parallel (4-semaphore) to avoid blocking.</p>
+<hr />
+<h2 id="context-injection">Context Injection<a class="headerlink" href="#context-injection" title="Permanent link">&para;</a></h2>
+<h3 id="system-prompt-integration">System Prompt Integration<a class="headerlink" href="#system-prompt-integration" title="Permanent link">&para;</a></h3>
+<p>When Claude is invoked:
+1. <strong>Route query</strong> (if applicable) → entity/conceptual/hybrid
+2. <strong>Retrieve context</strong> from selected source(s)
+3. <strong>Filter by score threshold</strong> (≥0.3)
+4. <strong>Inject into system prompt</strong> as contextual knowledge
+5. <strong>Claude responds</strong> with grounded, sourced information</p>
+<h3 id="example-system-prompt-injection">Example System Prompt Injection<a class="headerlink" href="#example-system-prompt-injection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;knowledge_context&gt;
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>## Relevant Documents
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>**Document**: deployment-guide.md (92% match)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>To deploy FORGE, run: docker compose -f docker-compose.prod.yml up -d
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>**Related**: config-reference.md (78% match)
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>Configure via environment variables in .env...
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>**Entity Context**: 
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>FORGE is a Discord bot by Zack. Uses Claude Haiku for classification...
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>&lt;/knowledge_context&gt;
+</code></pre></div>
+<hr />
+<h2 id="cache-layers">Cache Layers<a class="headerlink" href="#cache-layers" title="Permanent link">&para;</a></h2>
+<h3 id="knowledge-base-cache">Knowledge Base Cache<a class="headerlink" href="#knowledge-base-cache" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">_kb_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">_KB_CACHE_TTL</span> <span class="o">=</span> <span class="mi">300</span>          <span class="c1"># 5 minutes</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">_KB_CACHE_MAX</span> <span class="o">=</span> <span class="mi">50</span>           <span class="c1"># Max entries</span>
+</code></pre></div>
+<p>Caches full search results by query hash. Prevents repeated ChromaDB queries for same query within 5 minutes.</p>
+<h3 id="entity-profile-cache">Entity Profile Cache<a class="headerlink" href="#entity-profile-cache" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">_entity_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">_CACHE_TTL</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># 10 minutes</span>
+</code></pre></div>
+<p>Caches entity profiles (with relationships) by entity ID.</p>
+<h3 id="auto-prune">Auto-Prune<a class="headerlink" href="#auto-prune" title="Permanent link">&para;</a></h3>
+<p>Both caches auto-prune when:
+- Cache exceeds size limit (50 for KB, 200 for entities)
+- Entry TTL expires</p>
+<hr />
+<h2 id="key-files-reference">Key Files Reference<a class="headerlink" href="#key-files-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Key Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../modules/knowledge_base.py">modules/knowledge_base.py</a></td>
+<td>RAG retrieval, document ingestion</td>
+<td><code>search()</code>, <code>ingest_file()</code>, <code>ingest_text()</code></td>
+</tr>
+<tr>
+<td><a href="../modules/knowledge_graph.py">modules/knowledge_graph.py</a></td>
+<td>Entity &amp; relationship storage</td>
+<td><code>find_or_create_entity()</code>, <code>get_entity_profile()</code></td>
+</tr>
+<tr>
+<td><a href="../modules/knowledge_router.py">modules/knowledge_router.py</a></td>
+<td>Query routing</td>
+<td><code>route_query()</code>, <code>get_routed_context()</code></td>
+</tr>
+<tr>
+<td><a href="../modules/memory.py">modules/memory.py</a></td>
+<td>Conversation history</td>
+<td><code>save_message()</code>, <code>get_context_messages()</code></td>
+</tr>
+<tr>
+<td><a href="../modules/forge_memory.py">modules/forge_memory.py</a></td>
+<td>Semantic user knowledge</td>
+<td>MEMORY.md file management</td>
+</tr>
+<tr>
+<td><a href="../modules/fact_memory.py">modules/fact_memory.py</a></td>
+<td>Per-user fact extraction</td>
+<td><code>extract_facts()</code>, <code>save_fact()</code></td>
+</tr>
+<tr>
+<td><a href="../modules/reflection_store.py">modules/reflection_store.py</a></td>
+<td>Introspection persistence</td>
+<td><code>save_reflection_session()</code>, <code>get_patterns()</code></td>
+</tr>
+<tr>
+<td><a href="../cogs/kb_actions.py">cogs/kb_actions.py</a></td>
+<td>User commands (kb_search, kb_add, etc.)</td>
+<td><code>handle_action()</code></td>
+</tr>
+<tr>
+<td><a href="../core/database.py">core/database.py</a></td>
+<td>SQLite connection &amp; schema</td>
+<td><code>get_db()</code>, <code>init_tables()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="design-decisions">Design Decisions<a class="headerlink" href="#design-decisions" title="Permanent link">&para;</a></h2>
+<h3 id="why-multiple-memory-systems">Why Multiple Memory Systems?<a class="headerlink" href="#why-multiple-memory-systems" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Conversation Memory</strong>: Short-term, turn-by-turn context (can be summarized)</li>
+<li><strong>Forge Memory</strong>: Semantic, long-term, user-level knowledge (Zack-specific facts)</li>
+<li><strong>Fact Memory</strong>: Automatically extracted, per-user behavioral insights</li>
+<li><strong>Reflection Store</strong>: Introspection &amp; pattern analysis</li>
+</ul>
+<p>Each addresses a distinct use case and retrieval pattern.</p>
+<h3 id="why-lazy-load-chromadb">Why Lazy-Load ChromaDB?<a class="headerlink" href="#why-lazy-load-chromadb" title="Permanent link">&para;</a></h3>
+<p>Initializing ChromaDB takes ~30 seconds and loads pydantic compatibility patches. Deferring to first use:
+- Keeps bot startup fast
+- Only initializes if KB actually used
+- Still async-safe (concurrent calls wait on first init)</p>
+<h3 id="why-knowledge-router">Why Knowledge Router?<a class="headerlink" href="#why-knowledge-router" title="Permanent link">&para;</a></h3>
+<p>Different query types benefit from different retrieval:
+- Entity queries (who, where) → graph-first (structured, exact)
+- Conceptual queries (how, why) → vector-only (semantic, flexible)
+- Mixed/unknown → hybrid (cover both)</p>
+<p>Router prevents wasting context on irrelevant retrievals.</p>
+<h3 id="why-chromadb-over-alternatives">Why ChromaDB Over Alternatives?<a class="headerlink" href="#why-chromadb-over-alternatives" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Local</strong>: No API calls, no rate limits</li>
+<li><strong>GPU-free</strong>: ONNX embeddings work on CPU</li>
+<li><strong>Persistent</strong>: Survives bot restart</li>
+<li><strong>Query-flexible</strong>: Supports various filtering/metadata options</li>
+</ul>
+<hr />
+<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[Conversation Brain|cogs/brain_actions.py]] — Uses knowledge context for multi-turn responses</li>
+<li>[[Sourcing Pipeline|modules/sourcing_pipeline.py]] — Enriches candidate profiles with KB context</li>
+<li>[[Reflection System|modules/reflection_system.py]] — Stores introspection in reflection_store</li>
+<li>[[Autonomy Loop|core/autonomy_loop.py]] — May query KB for autonomous task context</li>
+</ul>
+<hr />
+<h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>RAG</strong>: Retrieval Augmented Generation — grounding LLM responses in retrieved documents</li>
+<li><strong>Semantic Search</strong>: Finding documents by meaning/relevance, not keyword matching</li>
+<li><strong>Chunking</strong>: Splitting documents into overlapping segments for embedding</li>
+<li><strong>Entity</strong>: A unique concept (person, organization, technology) tracked in the knowledge graph</li>
+<li><strong>Predicate</strong>: A relationship type (works_at, owns, uses) between entities</li>
+<li><strong>Canonical Form</strong>: Normalized version of a name for deduplication</li>
+<li><strong>TTL</strong>: Time-to-Live — how long a cached value remains valid</li>
+<li><strong>WAL</strong>: Write-Ahead Logging — SQLite mode for better concurrent access</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

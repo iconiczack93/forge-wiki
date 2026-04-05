@@ -1,0 +1,3074 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal knowledge base for FORGE — Zack's AI Discord assistant">
+      
+      
+      
+        <link rel="canonical" href="http://localhost:8000/topics/discord-bot-infrastructure/">
+      
+      
+        <link rel="prev" href="../brain-and-classifier/">
+      
+      
+        <link rel="next" href="../self-healing-and-supervisor/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Discord Infrastructure - FORGE Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#discord-bot-infrastructure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FORGE Wiki" class="md-header__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FORGE Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Discord Infrastructure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FORGE Wiki" class="md-nav__button md-logo" aria-label="FORGE Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    FORGE Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../brain-and-classifier/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brain & Classifier
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discord Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bot-initialization-message-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bot Initialization &amp; Message Routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bot Initialization &amp; Message Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-instance-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate Instance Guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-message-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Message Handler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cog-system-handled_actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cog System (HANDLED_ACTIONS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cog System (HANDLED_ACTIONS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handled_actions-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HANDLED_ACTIONS Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-cogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Cogs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hot-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hot-Reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Bus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-dataclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Dataclass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleware Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleware Chain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Middleware Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-middlewares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Middlewares
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Middlewares">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventbusmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EventBusMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costtrackingmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CostTrackingMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subagentlimitmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SubagentLimitMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-in-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage in FORGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progress Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progresstracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProgressTracker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Streaming Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress Bar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nooptracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoOpTracker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discord-channel-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discord Channel Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discord Channel Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Info
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudediscord-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude↔Discord Relay
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude↔Discord Relay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-prefixes-trigger-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attention Prefixes (trigger DM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-prefixes-no-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Prefixes (no DM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Admin Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirmview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConfirmView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destructiveconfirmview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DestructiveConfirmView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoutcontrolview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScoutControlView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bot_main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bot_main()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_long" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_long()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_long_message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_long_message()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_confirm_yes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_confirm_yes()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Articles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../self-healing-and-supervisor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Self-Healing & Supervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prism-candidate-scoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRISM Candidate Scoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sourcing-and-outreach-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sourcing & Outreach Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meeting-recording-voice-fingerprinting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meeting Recording & Voice Fingerprinting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prizepicks-sports-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PrizePicks Sports Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Infrastructure
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../knowledge-base-and-rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge Base & RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overnight-engine-and-scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overnight Engine & Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts-and-voice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS & Voice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bot-initialization-message-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bot Initialization &amp; Message Routing
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bot Initialization &amp; Message Routing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#duplicate-instance-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplicate Instance Guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-message-handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Message Handler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cog-system-handled_actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cog System (HANDLED_ACTIONS)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cog System (HANDLED_ACTIONS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handled_actions-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HANDLED_ACTIONS Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-cogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Cogs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hot-reload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hot-Reload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Bus
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-dataclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event Dataclass
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#middleware-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleware Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#middleware-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Middleware Chain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Middleware Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Data Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-middlewares" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Built-in Middlewares
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Middlewares">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventbusmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EventBusMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#costtrackingmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CostTrackingMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subagentlimitmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SubagentLimitMiddleware
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-in-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage in FORGE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress Tracking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progress Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progresstracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProgressTracker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streaming-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Streaming Support
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progress Bar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nooptracker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NoOpTracker
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discord-channel-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discord Channel Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discord Channel Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing Messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Advanced Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Channel Info
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claudediscord-relay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude↔Discord Relay
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude↔Discord Relay">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-prefixes-trigger-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attention Prefixes (trigger DM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-prefixes-no-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Prefixes (no DM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#admin-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin Commands
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Admin Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Views
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interactive Views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#confirmview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConfirmView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destructiveconfirmview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DestructiveConfirmView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scoutcontrolview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScoutControlView
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Utilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bot_main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bot_main()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_long" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_long()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_long_message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        send_long_message()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_confirm_yes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        is_confirm_yes()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-files-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Files Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Articles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="discord-bot-infrastructure">Discord Bot Infrastructure<a class="headerlink" href="#discord-bot-infrastructure" title="Permanent link">&para;</a></h1>
+<p>FORGE is a sophisticated Discord bot built on discord.py that orchestrates AI-powered workflows, sourcing pipelines, and real-time progress tracking. This article covers the core architectural components that make FORGE function across 6,698 lines of bot logic, 34 cogs, and 38+ modules.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#overview">#Overview</a></li>
+<li><a href="#bot-initialization-message-routing">#Bot Initialization &amp; Message Routing</a></li>
+<li><a href="#cog-system-handled_actions">#Cog System (HANDLED_ACTIONS)</a></li>
+<li><a href="#event-bus">#Event Bus</a></li>
+<li><a href="#middleware-chain">#Middleware Chain</a></li>
+<li><a href="#progress-tracking">#Progress Tracking</a></li>
+<li><a href="#discord-channel-management">#Discord Channel Management</a></li>
+<li><a href="#claudediscord-relay">#Claude↔Discord Relay</a></li>
+<li><a href="#admin-commands">#Admin Commands</a></li>
+<li><a href="#interactive-views">#Interactive Views</a></li>
+<li><a href="#key-files-reference">#Key Files Reference</a></li>
+</ol>
+<hr />
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>FORGE operates on a <strong>dispatcher + event-driven</strong> architecture:</p>
+<ul>
+<li><strong>Classifier</strong>: Routes natural language → ~300 action types</li>
+<li><strong>Cog System</strong>: 34 specialized cogs handle domain-specific logic (sourcing, lab, admin, views, etc.)</li>
+<li><strong>Event Bus</strong>: Lightweight pub/sub for cross-module causation tracking</li>
+<li><strong>Middleware Chain</strong>: Pre/post-processing around Claude API calls</li>
+<li><strong>Progress Tracker</strong>: Real-time Discord message updates for long-running tasks</li>
+<li><strong>Channel Manager</strong>: Unified interface for reading/writing Discord messages</li>
+</ul>
+<p>This design separates concerns while maintaining a single message handler in bot.py that stays clean and testable.</p>
+<hr />
+<h2 id="bot-initialization-message-routing">Bot Initialization &amp; Message Routing<a class="headerlink" href="#bot-initialization-message-routing" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: [[bot.py]]</p>
+<h3 id="duplicate-instance-guard">Duplicate Instance Guard<a class="headerlink" href="#duplicate-instance-guard" title="Permanent link">&para;</a></h3>
+<p>FORGE prevents two bot.py processes from running simultaneously using PID tracking:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bot_pid.json → stores PID + startup timestamp
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>_check_bot_duplicate() → verifies process is still alive before allowing startup
+</code></pre></div>
+<p>The guard uses <code>psutil</code> to validate:
+1. Process exists and is Python
+2. Process is running bot.py (not a recycled PID)</p>
+<h3 id="core-message-handler">Core Message Handler<a class="headerlink" href="#core-message-handler" title="Permanent link">&para;</a></h3>
+<p>The main <code>on_message</code> event processes every Discord message through:</p>
+<ol>
+<li><strong>Ignore checks</strong>: Skip bot messages, private DMs, empty content</li>
+<li><strong>Relay check</strong>: If Claude-app relay is active, intercept and forward</li>
+<li><strong>Classifier</strong>: Natural language → action type</li>
+<li><strong>Dispatcher</strong>: Action type → cog handler via HANDLED_ACTIONS</li>
+<li><strong>Brain call</strong> (optional): Invoke Claude for multi-action workflows</li>
+<li><strong>Cog execution</strong>: Async task execution with error handling</li>
+</ol>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p><strong>File</strong>: <a href="../core/config.py">core/config.py</a></p>
+<p>Environment-based settings include:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">DISCORD_BOT_TOKEN</span>           <span class="c1"># Bot authentication</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">DISCORD_GUILD_ID</span>            <span class="c1"># Primary guild</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">DISCORD_CHANNEL_ID</span>          <span class="c1"># Default channel (⚡-forge)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">MODELS</span>                      <span class="c1"># Haiku, Sonnet, Opus endpoints</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">API_KEYS</span>                    <span class="c1"># Anthropic, Tavily, Exa, Notte, etc.</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">LAB_CHANNEL_ID</span>              <span class="c1"># 💡-lab (autonomous brainstorming)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">SCOUT_CHANNEL_ID</span>            <span class="c1"># Sourcing scout operations</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">MONITOR_CHANNEL_ID</span>          <span class="c1"># 📡-monitor (error detection)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">COPILOT_CHANNEL_ID</span>          <span class="c1"># 🎮-copilot (Claude↔Discord bridge)</span>
+</code></pre></div>
+<p>All config is lazy-loaded to support hot-reload of values.</p>
+<hr />
+<h2 id="cog-system-handled_actions">Cog System (HANDLED_ACTIONS)<a class="headerlink" href="#cog-system-handled_actions" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../cogs/__init__.py">cogs/<strong>init</strong>.py</a> (typically minimal)</p>
+<p>Each cog is a <code>commands.Cog</code> subclass that:</p>
+<ol>
+<li>Defines <strong>one or more actions</strong> via <code>HANDLED_ACTIONS</code> dict</li>
+<li>Implements <strong><code>handle_action(action, **kwargs)</code></strong> async method</li>
+<li>Lives in <code>cogs/</code> directory and is auto-loaded at startup</li>
+</ol>
+<h3 id="handled_actions-pattern">HANDLED_ACTIONS Pattern<a class="headerlink" href="#handled_actions-pattern" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># In a cog:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">HANDLED_ACTIONS</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">&quot;retrieve_jd&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Fetch job description from Ashby&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;job_id&quot;</span><span class="p">],</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="p">},</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="s2">&quot;evaluate_candidate&quot;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Run PRISM evaluation&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;profile_text&quot;</span><span class="p">,</span> <span class="s2">&quot;score_threshold&quot;</span><span class="p">],</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="p">},</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;retrieve_jd&quot;</span><span class="p">:</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_jd</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;job_id&quot;</span><span class="p">])</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;evaluate_candidate&quot;</span><span class="p">:</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prism_evaluate</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;profile_text&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;score_threshold&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="built-in-cogs">Built-in Cogs<a class="headerlink" href="#built-in-cogs" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Cog</th>
+<th>Purpose</th>
+<th>Key Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>admin.py</strong></td>
+<td>Owner-only commands</td>
+<td><code>reload</code>, <code>reload_all</code>, <code>sync_commands</code>, <code>cogs</code></td>
+</tr>
+<tr>
+<td><strong>views.py</strong></td>
+<td>Persistent UI panels</td>
+<td><code>ConfirmView</code>, <code>DestructiveConfirmView</code>, <code>ScoutControlView</code></td>
+</tr>
+<tr>
+<td><strong>sourcing_cmds.py</strong></td>
+<td>Candidate sourcing</td>
+<td><code>search_linkedin</code>, <code>enrich_profile</code>, <code>score_candidate</code></td>
+</tr>
+<tr>
+<td><strong>lab.py</strong></td>
+<td>Autonomous brainstorming</td>
+<td><code>agent_run</code>, <code>agent_status</code>, <code>agent_output</code></td>
+</tr>
+<tr>
+<td><strong>tts_actions.py</strong></td>
+<td>Text-to-speech pipeline</td>
+<td><code>speak</code>, <code>stream_audio</code></td>
+</tr>
+<tr>
+<td><em>~30 more</em></td>
+<td>Specialized domains</td>
+<td>Valorant, PrizePicks, enrichment, monitoring, etc.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hot-reload">Hot-Reload<a class="headerlink" href="#hot-reload" title="Permanent link">&para;</a></h3>
+<p>Admin commands allow live cog reloading without restarting the bot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/reload sourcing_cmds  # Reloads just sourcing_cmds cog
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>/reload_all            # Reloads all cogs
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>/sync_commands         # Re-syncs slash commands to Discord
+</code></pre></div>
+<hr />
+<h2 id="event-bus">Event Bus<a class="headerlink" href="#event-bus" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../core/event_bus.py">core/event_bus.py</a> — <em>Holy Grail #9</em></p>
+<p>A lightweight async pub/sub system for cross-module causation tracking.</p>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Typed Events</strong>: Dataclass-based events with correlation IDs</li>
+<li><strong>Causation Chains</strong>: Parent event IDs track call hierarchy</li>
+<li><strong>SQLite Persistence</strong>: Events survive crashes for analytics</li>
+<li><strong>Bounded Queue</strong>: Prevents backlog (MAX_QUEUE = 500)</li>
+<li><strong>Subscriber Isolation</strong>: One bad handler doesn't crash others</li>
+</ul>
+<h3 id="event-dataclass">Event Dataclass<a class="headerlink" href="#event-dataclass" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@dataclass</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span>              <span class="c1"># &quot;candidate_found&quot;, &quot;brain_call_completed&quot;, etc.</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span>                   <span class="c1"># Payload</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">source_module</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># &quot;pipeline_scout&quot;, &quot;middleware.cost_tracking&quot;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">event_id</span><span class="p">:</span> <span class="nb">str</span>                <span class="c1"># Auto-generated UUID</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">parent_event_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>   <span class="c1"># Links to parent (causation)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">correlation_id</span><span class="p">:</span> <span class="nb">str</span>          <span class="c1"># Groups related events</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">timestamp</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># ISO 8601</span>
+</code></pre></div>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.event_bus</span><span class="w"> </span><span class="kn">import</span> <span class="n">event_bus</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Emit an event</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">event_id</span> <span class="o">=</span> <span class="k">await</span> <span class="n">event_bus</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="s2">&quot;candidate_found&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;github&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">},</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">source_module</span><span class="o">=</span><span class="s2">&quot;pipeline_scout&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">parent_event_id</span><span class="o">=</span><span class="n">strategy_event_id</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Subscribe to events</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nd">@event_bus</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;candidate_found&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">handle_candidate</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New candidate: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># Query causation chain (root → leaf)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">chain</span> <span class="o">=</span> <span class="k">await</span> <span class="n">event_bus</span><span class="o">.</span><span class="n">get_chain</span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="c1"># Get all events in a correlation group</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">group</span> <span class="o">=</span> <span class="k">await</span> <span class="n">event_bus</span><span class="o">.</span><span class="n">get_correlation_group</span><span class="p">(</span><span class="n">correlation_id</span><span class="p">)</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Get descendants (recursive)</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">descendants</span> <span class="o">=</span> <span class="k">await</span> <span class="n">event_bus</span><span class="o">.</span><span class="n">get_descendants</span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="middleware-integration">Middleware Integration<a class="headerlink" href="#middleware-integration" title="Permanent link">&para;</a></h3>
+<p>The event bus is automatically wired into <a href="#middleware-chain">#Middleware Chain</a>:</p>
+<ul>
+<li><strong>EventBusMiddleware</strong>: Emits <code>brain_call_started</code> / <code>brain_call_completed</code> events</li>
+<li><strong>CostTrackingMiddleware</strong>: Emits <code>brain_cost_tracked</code> with token counts and pricing</li>
+</ul>
+<hr />
+<h2 id="middleware-chain">Middleware Chain<a class="headerlink" href="#middleware-chain" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../core/middleware_chain.py">core/middleware_chain.py</a></p>
+<p>Inspired by Deer-Flow, adapted for FORGE's immutable-first design.</p>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<p>Middlewares are applied in <strong>onion model</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>before_brain:     mw[0] → mw[1] → mw[2] → (pass through in order)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>after_brain:      mw[2] → mw[1] → mw[0] → (reverse order, like unwinding)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>wrap_tool:        mw[0](mw[1](mw[2](base_handler)))
+</code></pre></div>
+<h3 id="core-data-types">Core Data Types<a class="headerlink" href="#core-data-types" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BrainContext</span><span class="p">:</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Immutable snapshot before Claude API call.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">messages</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">system_prompt</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">channel_id</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">model</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">tools</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="n">correlation_id</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="n">extra</span><span class="p">:</span> <span class="nb">dict</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="k">class</span><span class="w"> </span><span class="nc">BrainResponse</span><span class="p">:</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Immutable snapshot after Claude API call.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="n">usage</span><span class="p">:</span> <span class="nb">dict</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">float</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    <span class="n">stop_reason</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+<h3 id="built-in-middlewares">Built-in Middlewares<a class="headerlink" href="#built-in-middlewares" title="Permanent link">&para;</a></h3>
+<h4 id="eventbusmiddleware">EventBusMiddleware<a class="headerlink" href="#eventbusmiddleware" title="Permanent link">&para;</a></h4>
+<p>Emits lifecycle events around Claude calls:</p>
+<ul>
+<li><code>brain_call_started</code>: Before API call (includes message count, tool count)</li>
+<li><code>brain_call_completed</code>: After API call (includes duration, stop_reason, tool_call_count)</li>
+</ul>
+<p>Tracks start times per correlation_id to calculate duration.</p>
+<h4 id="costtrackingmiddleware">CostTrackingMiddleware<a class="headerlink" href="#costtrackingmiddleware" title="Permanent link">&para;</a></h4>
+<p>Logs cost and usage tokens:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Brain call cost: $0.002345 (in=512, out=128, model=claude-sonnet-4-5)
+</code></pre></div>
+<p>Emits <code>brain_cost_tracked</code> event for centralized cost aggregation.</p>
+<h4 id="subagentlimitmiddleware">SubagentLimitMiddleware<a class="headerlink" href="#subagentlimitmiddleware" title="Permanent link">&para;</a></h4>
+<p>Prevents runaway <code>forge_copilot_task</code> tool spawning:</p>
+<ul>
+<li>Default: max 3 copilot calls per brain response</li>
+<li>Excess calls are truncated with a warning</li>
+<li>Helps prevent token explosion from nested subagent spawning</li>
+</ul>
+<h3 id="usage-in-forge">Usage in FORGE<a class="headerlink" href="#usage-in-forge" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.middleware_chain</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_chain</span><span class="p">,</span> <span class="n">BrainContext</span><span class="p">,</span> <span class="n">BrainResponse</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">chain</span> <span class="o">=</span> <span class="n">default_chain</span><span class="p">()</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="c1"># Before call</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">ctx</span> <span class="o">=</span> <span class="n">BrainContext</span><span class="p">(</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">messages</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">messages</span><span class="p">),</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">system_prompt</span><span class="o">=</span><span class="n">system</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">user_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">author</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="n">channel_id</span><span class="o">=</span><span class="n">channel</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">tools</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tools</span><span class="p">),</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">correlation_id</span><span class="o">=</span><span class="n">correlation_id</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="n">ctx</span> <span class="o">=</span> <span class="k">await</span> <span class="n">chain</span><span class="o">.</span><span class="n">run_before</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="c1"># Make Claude API call</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">messages</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="c1"># After call</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="n">resp</span> <span class="o">=</span> <span class="n">BrainResponse</span><span class="p">(</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>    <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>    <span class="n">tool_calls</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">tool_dicts</span><span class="p">),</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>    <span class="n">usage</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;input_tokens&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">input_tokens</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="n">cost</span><span class="o">=</span><span class="n">calculated_cost</span><span class="p">,</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>    <span class="n">stop_reason</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">stop_reason</span><span class="p">,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="p">)</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="n">resp</span> <span class="o">=</span> <span class="k">await</span> <span class="n">chain</span><span class="o">.</span><span class="n">run_after</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="c1"># Wrap tool execution</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">chain</span><span class="o">.</span><span class="n">run_tool</span><span class="p">(</span><span class="s2">&quot;forge_read_channel&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">base_handler</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="progress-tracking">Progress Tracking<a class="headerlink" href="#progress-tracking" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../core/progress.py">core/progress.py</a></p>
+<p>Universal progress display for long-running operations. Shows real-time status in Discord via throttled message edits.</p>
+<h3 id="progresstracker">ProgressTracker<a class="headerlink" href="#progresstracker" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">tracker</span> <span class="o">=</span> <span class="n">ProgressTracker</span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;PRISM Evaluation&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="n">edit_interval</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>  <span class="c1"># Throttle edits to avoid rate limits</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">show_elapsed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">show_spinner</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">max_display_steps</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="k">async</span> <span class="k">with</span> <span class="n">tracker</span><span class="p">:</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">&quot;Loading JD...&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="c1"># ... do work ...</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">&quot;Evaluating candidate...&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">substep</span><span class="p">(</span><span class="s2">&quot;Checking tech stack&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>    <span class="c1"># ... do work ...</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="s2">&quot;Score: 4.2/5&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="display-format">Display Format<a class="headerlink" href="#display-format" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>🔄 **PRISM Evaluation**
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>✅ Loading JD...
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>✅ Fetching GitHub history...
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>⠋ Evaluating candidate...
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>   └ Checking tech stack
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>⏱️ 3.2s
+</code></pre></div>
+<p>When finished:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>✅ **PRISM Evaluation**
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>✅ Loading JD...
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>✅ Evaluating candidate...
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Score: 4.2/5
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>⏱️ 12.4s
+</code></pre></div>
+<h3 id="streaming-support">Streaming Support<a class="headerlink" href="#streaming-support" title="Permanent link">&para;</a></h3>
+<p>For Claude responses, use <code>on_token</code> callback:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">tracker</span> <span class="o">=</span> <span class="n">ProgressTracker</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Thinking&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">async</span> <span class="k">with</span> <span class="n">tracker</span><span class="p">:</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">brain</span><span class="o">.</span><span class="n">ask_stream</span><span class="p">(</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>        <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>        <span class="n">on_token</span><span class="o">=</span><span class="n">tracker</span><span class="o">.</span><span class="n">stream_text</span><span class="p">,</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="p">)</span>
+</code></pre></div>
+<p>Shows last ~200 chars of streaming text as preview.</p>
+<h3 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">progress_bar</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Enriching...&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># [████████░░] 80% (40/50) Enriching...</span>
+</code></pre></div>
+<h3 id="nooptracker">NoOpTracker<a class="headerlink" href="#nooptracker" title="Permanent link">&para;</a></h3>
+<p>For optional progress tracking, use <code>NoOpTracker</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_tracker</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">long_operation</span><span class="p">(</span><span class="n">tracker</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">tracker</span> <span class="o">=</span> <span class="n">get_tracker</span><span class="p">(</span><span class="n">tracker</span><span class="p">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="s2">&quot;Starting...&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="c1"># ... now safe to call tracker even if None</span>
+</code></pre></div>
+<hr />
+<h2 id="discord-channel-management">Discord Channel Management<a class="headerlink" href="#discord-channel-management" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../modules/discord_channels.py">modules/discord_channels.py</a></p>
+<p>Unified interface for reading/writing Discord messages across any channel FORGE can access.</p>
+<h3 id="channel-resolution">Channel Resolution<a class="headerlink" href="#channel-resolution" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.discord_channels</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_channel</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Resolve by ID</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="mi">1473339250396364900</span><span class="p">)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1"># Resolve by name (with emoji normalization)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="s2">&quot;⚡-forge&quot;</span><span class="p">)</span>      <span class="c1"># → &quot;forge&quot;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="s2">&quot;forge&quot;</span><span class="p">)</span>        <span class="c1"># → exact match</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1"># Resolve by alias</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="s2">&quot;lab&quot;</span><span class="p">)</span>          <span class="c1"># → LAB_CHANNEL_ID</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="s2">&quot;monitor&quot;</span><span class="p">)</span>      <span class="c1"># → MONITOR_CHANNEL_ID</span>
+</code></pre></div>
+<p>Priority: numeric ID → config alias → fuzzy guild scan.</p>
+<h3 id="reading-messages">Reading Messages<a class="headerlink" href="#reading-messages" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="n">read_channel_messages</span><span class="p">(</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">limit</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;evaluation&quot;</span><span class="p">,</span>  <span class="c1"># Optional text filter (case-insensitive)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">after</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">before</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="p">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># Returns:</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1"># [</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1">#   {</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="c1">#     &quot;id&quot;: 123456,</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="c1">#     &quot;author&quot;: &quot;Jane&quot;,</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="c1">#     &quot;author_id&quot;: 789,</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="c1">#     &quot;is_bot&quot;: false,</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="c1">#     &quot;content&quot;: &quot;Check this candidate&quot;,</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="c1">#     &quot;timestamp&quot;: &quot;2026-03-22T14:30:00+00:00&quot;,</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="c1">#     &quot;attachments&quot;: [&quot;cv.pdf&quot;],</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="c1">#     &quot;embeds&quot;: 1,</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="c1">#   },</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="c1"># ]</span>
+</code></pre></div>
+<h3 id="writing-messages">Writing Messages<a class="headerlink" href="#writing-messages" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.discord_channels</span><span class="w"> </span><span class="kn">import</span> <span class="n">write_channel_message</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Simple message</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">await</span> <span class="n">write_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># With embed</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">embed</span> <span class="o">=</span> <span class="n">discord</span><span class="o">.</span><span class="n">Embed</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Score&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;4.2/5&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="k">await</span> <span class="n">write_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">embed</span><span class="o">=</span><span class="n">embed</span><span class="p">)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="c1"># With file</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="k">await</span> <span class="n">write_channel_message</span><span class="p">(</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;See attached report&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;/path/to/report.pdf&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;PRISM_Results.pdf&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="p">)</span>
+</code></pre></div>
+<p>Automatically splits long content (&gt;2000 chars) into multiple messages.</p>
+<h3 id="message-operations">Message Operations<a class="headerlink" href="#message-operations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Edit</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">await</span> <span class="n">edit_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="s2">&quot;Updated content&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># Delete</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="k">await</span> <span class="n">delete_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">)</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Pin</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="k">await</span> <span class="n">pin_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">)</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1"># Reactions</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="k">await</span> <span class="n">add_message_reaction</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="s2">&quot;👍&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="k">await</span> <span class="n">remove_message_reaction</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="s2">&quot;👍&quot;</span><span class="p">,</span> <span class="n">bot_user</span><span class="p">)</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="n">reactions</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_message_reactions</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">)</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="c1"># [{&quot;emoji&quot;: &quot;👍&quot;, &quot;count&quot;: 5, &quot;users&quot;: [...]}, ...]</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="c1"># Find recent bot message</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">find_recent_bot_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">bot</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">content_query</span><span class="o">=</span><span class="s2">&quot;evaluation&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Threads</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_thread</span><span class="p">(</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>    <span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PRISM Evaluation Thread&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">message_id</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span>  <span class="c1"># Reply to this message</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">auto_archive_minutes</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Discussion starts here...&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="p">)</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1"># Webhooks</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="n">wh_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_webhook</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FORGE Pipeline&quot;</span><span class="p">,</span> <span class="n">avatar_url</span><span class="o">=</span><span class="s2">&quot;https://...&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="k">await</span> <span class="n">send_webhook_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="s2">&quot;FORGE Pipeline&quot;</span><span class="p">,</span> <span class="s2">&quot;Build passed ✅&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="c1"># Embeds</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="k">await</span> <span class="n">send_embed</span><span class="p">(</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    <span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Candidate Score&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Alice Johnson&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>    <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tech Score&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;4.5&quot;</span><span class="p">,</span> <span class="s2">&quot;inline&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Domain Match&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5.0&quot;</span><span class="p">,</span> <span class="s2">&quot;inline&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>    <span class="p">],</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>    <span class="n">footer</span><span class="o">=</span><span class="s2">&quot;PRISM v2.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="p">)</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="c1"># Polls</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_poll</span><span class="p">(</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>    <span class="n">channel</span><span class="p">,</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>    <span class="n">question</span><span class="o">=</span><span class="s2">&quot;Use approach A or B?&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Approach A&quot;</span><span class="p">,</span> <span class="s2">&quot;Approach B&quot;</span><span class="p">,</span> <span class="s2">&quot;Hybrid&quot;</span><span class="p">],</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a>    <span class="n">duration_minutes</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a><span class="p">)</span>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a><span class="c1"># DMs</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a><span class="k">await</span> <span class="n">send_dm</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="s2">&quot;Check the copilot channel for updates&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a>
+<a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a><span class="c1"># Search across channels</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38" href="#__codelineno-20-38"></a><span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">search_messages_across_channels</span><span class="p">(</span>
+<a id="__codelineno-20-39" name="__codelineno-20-39" href="#__codelineno-20-39"></a>    <span class="n">bot</span><span class="p">,</span>
+<a id="__codelineno-20-40" name="__codelineno-20-40" href="#__codelineno-20-40"></a>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;evaluation&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-41" name="__codelineno-20-41" href="#__codelineno-20-41"></a>    <span class="n">channel_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;⚡-forge&quot;</span><span class="p">,</span> <span class="s2">&quot;📡-monitor&quot;</span><span class="p">],</span>
+<a id="__codelineno-20-42" name="__codelineno-20-42" href="#__codelineno-20-42"></a><span class="p">)</span>
+</code></pre></div>
+<h3 id="channel-info">Channel Info<a class="headerlink" href="#channel-info" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Voice state</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">voice_channels</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_voice_state</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># [</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1">#   {</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1">#     &quot;channel&quot;: &quot;General VC&quot;,</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1">#     &quot;channel_id&quot;: 123,</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1">#     &quot;members&quot;: [</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1">#       {&quot;name&quot;: &quot;Zack&quot;, &quot;id&quot;: 456, &quot;bot&quot;: false, &quot;self_mute&quot;: false, ...}</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1">#     ]</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="c1">#   }</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># ]</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="c1"># Guild info</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="n">guilds</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_guild_info</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="c1"># Member info</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="n">member</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_member_info</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">user_id</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="c1"># {&quot;name&quot;: &quot;Zack&quot;, &quot;username&quot;: &quot;zack#haha1&quot;, &quot;roles&quot;: [&quot;Owner&quot;, &quot;Mod&quot;], ...}</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="c1"># Change bot presence</span>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="k">await</span> <span class="n">set_bot_presence</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;online&quot;</span><span class="p">,</span> <span class="n">activity_type</span><span class="o">=</span><span class="s2">&quot;watching&quot;</span><span class="p">,</span> <span class="n">activity_text</span><span class="o">=</span><span class="s2">&quot;the forge&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="claudediscord-relay">Claude↔Discord Relay<a class="headerlink" href="#claudediscord-relay" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../modules/relay.py">modules/relay.py</a></p>
+<p>Enables Claude (from the Claude desktop app) to post to #copilot and receive Zack's replies via Discord MCP without spawning the copilot CLI.</p>
+<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Claude posts to #copilot via Discord MCP</li>
+<li>FORGE detects Claude² bot message</li>
+<li>If message has <strong>attention prefix</strong>, FORGE DMs Zack</li>
+<li>Zack replies in #copilot (from phone, etc.)</li>
+<li>Claude reads reply via Discord MCP (no CLI spawn)</li>
+<li>Session auto-times out after 15m idle</li>
+</ol>
+<h3 id="attention-prefixes-trigger-dm">Attention Prefixes (trigger DM)<a class="headerlink" href="#attention-prefixes-trigger-dm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>🔔 Need input: [question]
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>❓ Should we do X?
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>⚠️ Found a problem: [details]
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>❌ Build failed
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>✅ Task complete
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>🏁 Session done
+</code></pre></div>
+<h3 id="status-prefixes-no-dm">Status Prefixes (no DM)<a class="headerlink" href="#status-prefixes-no-dm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>📋 Working on X...
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>🔧 Editing file Y
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>📝 Found 3 issues
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>⏳ In progress
+</code></pre></div>
+<h3 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.relay</span><span class="w"> </span><span class="kn">import</span> <span class="n">handle_relay_message</span><span class="p">,</span> <span class="n">get_relay_status</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># In on_message handler</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">if</span> <span class="k">await</span> <span class="n">handle_relay_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="k">return</span>  <span class="c1"># Message handled, skip copilot CLI</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Get relay status</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="n">status</span> <span class="o">=</span> <span class="n">get_relay_status</span><span class="p">()</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="c1"># &quot;🟢 **Relay active** (5m) — 12 messages&quot;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c1"># &quot;⚫ **Relay idle** — post to #copilot to start&quot;</span>
+</code></pre></div>
+<h3 id="session-control">Session Control<a class="headerlink" href="#session-control" title="Permanent link">&para;</a></h3>
+<p>In #copilot, Zack can:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>end relay        # End relay, restore copilot CLI
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>stop relay       # (alias)
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>copilot mode     # (alias)
+</code></pre></div>
+<hr />
+<h2 id="admin-commands">Admin Commands<a class="headerlink" href="#admin-commands" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../cogs/admin.py">cogs/admin.py</a></p>
+<p>Owner-only commands (ZACK_ID) for managing FORGE.</p>
+<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/reload {cog}</code></td>
+<td>Hot-reload a single cog</td>
+</tr>
+<tr>
+<td><code>/reload_all</code></td>
+<td>Hot-reload all cogs</td>
+</tr>
+<tr>
+<td><code>/sync_commands</code></td>
+<td>Re-sync slash commands to Discord</td>
+</tr>
+<tr>
+<td><code>/cogs</code></td>
+<td>List loaded cogs and status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nd">@app_commands</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;reload&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">cmd_reload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">Interaction</span><span class="p">,</span> <span class="n">cog</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_owner</span><span class="p">(</span><span class="n">interaction</span><span class="p">):</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>        <span class="k">await</span> <span class="n">interaction</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Owner only.&quot;</span><span class="p">,</span> <span class="n">ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>        <span class="k">return</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">ext</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cogs.</span><span class="si">{</span><span class="n">cog</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">bot</span><span class="o">.</span><span class="n">reload_extension</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>        <span class="k">await</span> <span class="n">interaction</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reloaded `</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">`.&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>        <span class="k">await</span> <span class="n">interaction</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>All admin commands are owner-guarded via <code>_is_owner()</code> check.</p>
+<hr />
+<h2 id="interactive-views">Interactive Views<a class="headerlink" href="#interactive-views" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../cogs/views.py">cogs/views.py</a></p>
+<p>Persistent button-based UI panels using discord.py views.</p>
+<h3 id="confirmview">ConfirmView<a class="headerlink" href="#confirmview" title="Permanent link">&para;</a></h3>
+<p>Simple yes/no confirmation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">view</span> <span class="o">=</span> <span class="n">ConfirmView</span><span class="p">(</span><span class="n">author_id</span><span class="o">=</span><span class="n">ZACK_ID</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Proceed with enrichment?&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">if</span> <span class="k">await</span> <span class="n">view</span><span class="o">.</span><span class="n">wait</span><span class="p">():</span>  <span class="c1"># Wait for interaction</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>        <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;✅ Confirmed&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>        <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;❌ Cancelled&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="destructiveconfirmview">DestructiveConfirmView<a class="headerlink" href="#destructiveconfirmview" title="Permanent link">&para;</a></h3>
+<p>Confirmation with countdown timer for destructive actions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">view</span> <span class="o">=</span> <span class="n">DestructiveConfirmView</span><span class="p">(</span><span class="s2">&quot;Restart FORGE&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;⚠️ **Restart FORGE?** This will interrupt tasks.&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">await</span> <span class="n">view</span><span class="o">.</span><span class="n">start_countdown</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="k">if</span> <span class="k">await</span> <span class="n">view</span><span class="o">.</span><span class="n">wait</span><span class="p">():</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="k">if</span> <span class="n">view</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>        <span class="c1"># User confirmed after countdown</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>        <span class="c1"># Timed out or cancelled</span>
+</code></pre></div>
+<p>Countdown runs 10 → 8 → 6 → 4 → 2 seconds on the button label.</p>
+<h3 id="scoutcontrolview">ScoutControlView<a class="headerlink" href="#scoutcontrolview" title="Permanent link">&para;</a></h3>
+<p>Sourcing scout operations (run, stats, autopilot):</p>
+<ul>
+<li>Button-based control for pipeline operations</li>
+<li>Persistent across restarts (custom_id + timeout=None)</li>
+<li>Integrates with <a href="#progress-tracking">#Progress Tracking</a> for status updates</li>
+</ul>
+<h3 id="implementation-pattern">Implementation Pattern<a class="headerlink" href="#implementation-pattern" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyView</span><span class="p">(</span><span class="n">discord</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># Persistent</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="nd">@discord</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Confirm&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">discord</span><span class="o">.</span><span class="n">ButtonStyle</span><span class="o">.</span><span class="n">green</span><span class="p">)</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">confirm_btn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">Interaction</span><span class="p">,</span> <span class="n">button</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">Button</span><span class="p">):</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>        <span class="k">if</span> <span class="n">interaction</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span> <span class="o">!=</span> <span class="n">ZACK_ID</span><span class="p">:</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>            <span class="k">await</span> <span class="n">interaction</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Not authorized&quot;</span><span class="p">,</span> <span class="n">ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>            <span class="k">return</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>        <span class="k">await</span> <span class="n">interaction</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">edit_message</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<p>All views use <code>custom_id</code> for persistent message handling across bot restarts.</p>
+<hr />
+<h2 id="shared-utilities">Shared Utilities<a class="headerlink" href="#shared-utilities" title="Permanent link">&para;</a></h2>
+<p><strong>File</strong>: <a href="../cogs/_utils.py">cogs/_utils.py</a></p>
+<h3 id="bot_main">bot_main()<a class="headerlink" href="#bot_main" title="Permanent link">&para;</a></h3>
+<p>Access the main bot module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">_m</span> <span class="o">=</span> <span class="n">bot_main</span><span class="p">()</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_m</span><span class="o">.</span><span class="n">search_candidate_db</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
+</code></pre></div>
+<p>Useful in cogs that need to call bot.py-defined functions.</p>
+<h3 id="send_long">send_long()<a class="headerlink" href="#send_long" title="Permanent link">&para;</a></h3>
+<p>Split long messages at newlines to stay under Discord 2000-char limit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">await</span> <span class="n">send_long</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">very_long_text</span><span class="p">)</span>
+</code></pre></div>
+<p>Preserves first message for reaction tracking.</p>
+<h3 id="send_long_message">send_long_message()<a class="headerlink" href="#send_long_message" title="Permanent link">&para;</a></h3>
+<p>Interaction-aware version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">await</span> <span class="n">send_long_message</span><span class="p">(</span><span class="n">interaction</span><span class="p">,</span> <span class="n">very_long_text</span><span class="p">,</span> <span class="n">suppress_embeds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="is_confirm_yes">is_confirm_yes()<a class="headerlink" href="#is_confirm_yes" title="Permanent link">&para;</a></h3>
+<p>Parse user confirmation response:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">user_reply</span> <span class="o">=</span> <span class="s2">&quot;yeah go&quot;</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">if</span> <span class="n">is_confirm_yes</span><span class="p">(</span><span class="n">user_reply</span><span class="p">):</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="c1"># Proceed</span>
+</code></pre></div>
+<p>Recognizes: yes, y, run, ok, sure, go, yep, yeah, and variations.</p>
+<hr />
+<h2 id="key-files-reference">Key Files Reference<a class="headerlink" href="#key-files-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Key Classes/Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>bot.py</strong></td>
+<td>Main entry point</td>
+<td><code>_check_bot_duplicate()</code>, <code>on_message</code>, cog loading</td>
+</tr>
+<tr>
+<td><strong>core/config.py</strong></td>
+<td>Environment configuration</td>
+<td><code>DISCORD_BOT_TOKEN</code>, <code>MODELS</code>, <code>LAB_CHANNEL_ID</code>, etc.</td>
+</tr>
+<tr>
+<td><strong>core/event_bus.py</strong></td>
+<td>Pub/sub event system</td>
+<td><code>Event</code>, <code>CrossModuleEventBus</code>, <code>event_bus</code> singleton</td>
+</tr>
+<tr>
+<td><strong>core/middleware_chain.py</strong></td>
+<td>Claude call pre/post-processing</td>
+<td><code>BrainContext</code>, <code>BrainResponse</code>, <code>MiddlewareChain</code>, default middlewares</td>
+</tr>
+<tr>
+<td><strong>core/progress.py</strong></td>
+<td>Real-time Discord progress display</td>
+<td><code>ProgressTracker</code>, <code>NoOpTracker</code>, <code>get_tracker()</code></td>
+</tr>
+<tr>
+<td><strong>modules/discord_channels.py</strong></td>
+<td>Channel operations</td>
+<td><code>resolve_channel()</code>, <code>read_channel_messages()</code>, <code>write_channel_message()</code>, etc.</td>
+</tr>
+<tr>
+<td><strong>modules/relay.py</strong></td>
+<td>Claude↔Discord relay</td>
+<td><code>handle_relay_message()</code>, <code>get_relay_status()</code></td>
+</tr>
+<tr>
+<td><strong>cogs/<strong>init</strong>.py</strong></td>
+<td>Cog auto-loader</td>
+<td>Typically minimal; cogs discovered from <code>cogs/</code> directory</td>
+</tr>
+<tr>
+<td><strong>cogs/admin.py</strong></td>
+<td>Admin commands</td>
+<td><code>/reload</code>, <code>/reload_all</code>, <code>/sync_commands</code>, <code>/cogs</code></td>
+</tr>
+<tr>
+<td><strong>cogs/views.py</strong></td>
+<td>Interactive UI panels</td>
+<td><code>ConfirmView</code>, <code>DestructiveConfirmView</code>, <code>ScoutControlView</code></td>
+</tr>
+<tr>
+<td><strong>cogs/_utils.py</strong></td>
+<td>Shared cog utilities</td>
+<td><code>bot_main()</code>, <code>send_long()</code>, <code>is_confirm_yes()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Discord Message
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    ↓
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>bot.py: on_message
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    ├─ Ignore checks (bot messages, empty content)
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    ├─ Relay check (Claude↔Discord bridge)
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    ├─ Classifier (NLP → action type)
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>    ├─ HANDLED_ACTIONS dispatcher
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    └─ Cog handler execution
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>         ├─ Progress tracking (ProgressTracker)
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>         ├─ Claude API calls (via middleware chain)
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>         │  ├─ EventBusMiddleware
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>         │  ├─ CostTrackingMiddleware
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>         │  └─ SubagentLimitMiddleware
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>         └─ Channel I/O (discord_channels module)
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>Event Bus (cross-module pub/sub)
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>    ├─ brain_call_started
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>    ├─ brain_call_completed
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>    ├─ brain_cost_tracked
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>    ├─ candidate_found
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>    └─ ... (100+ event types)
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>Admin Commands (/reload, /sync_commands, etc.)
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>    └─ Hot-reload cogs without restart
+</code></pre></div>
+<hr />
+<h2 id="design-principles">Design Principles<a class="headerlink" href="#design-principles" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Immutability</strong>: All context/response objects are frozen dataclasses</li>
+<li><strong>Causation tracking</strong>: Event bus links parent→child relationships</li>
+<li><strong>Isolation</strong>: Middleware failures don't crash the chain</li>
+<li><strong>Throttling</strong>: Progress tracker batches Discord edits (default 1.5s)</li>
+<li><strong>Lazy loading</strong>: Config values fetched on-demand for hot-reload support</li>
+<li><strong>Observer pattern</strong>: Cogs register actions at startup, dispatcher invokes</li>
+<li><strong>Error recovery</strong>: Graceful degradation for Discord API failures</li>
+</ol>
+<hr />
+<h2 id="related-articles">Related Articles<a class="headerlink" href="#related-articles" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[[core-bootstrap]] — Bot startup sequence and initialization</li>
+<li>[[pipeline-graph]] — StateGraph-based workflow orchestration</li>
+<li>[[cog-patterns]] — Best practices for writing FORGE cogs</li>
+<li>[[event-bus-integration]] — Using the event bus in your modules</li>
+</ul>
+<hr />
+<p><em>Last updated: 2026-04-04</em>
+<em>Part of FORGE Documentation Suite</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
