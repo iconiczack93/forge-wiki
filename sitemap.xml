@@ -17,11 +17,19 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/modules/copilot/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/modules/google-services/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/modules/knowledge-base/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/linkedin-ops/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
@@ -33,7 +41,23 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/modules/pipeline-enricher/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/pipeline-evaluator/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/modules/prism/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/scheduler/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/sourcing-pipeline/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
@@ -46,6 +70,18 @@
     </url>
     <url>
          <loc>http://localhost:8000/modules/tts/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/valorant/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/vlr/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/modules/web-search/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>

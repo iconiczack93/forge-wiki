@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded',function(){
       
       
       
-        <link rel="canonical" href="http://localhost:8000/modules/outreach/">
+        <link rel="canonical" href="http://localhost:8000/modules/sourcing-pipeline/">
       
       
-        <link rel="prev" href="../prism/">
+        <link rel="prev" href="../ashby/">
       
       
-        <link rel="next" href="../ashby/">
+        <link rel="next" href="../pipeline-enricher/">
       
       
         
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     
       
-        <title>Outreach - FORGE Wiki</title>
+        <title>Sourcing Pipeline - FORGE Wiki</title>
       
     
     
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded',function(){
     <div data-md-component="skip">
       
         
-        <a href="#outreach-drafter" class="md-skip">
+        <a href="#sourcing-pipeline-orchestrator" class="md-skip">
           Skip to content
         </a>
       
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Outreach
+              Sourcing Pipeline
             
           </span>
         </div>
@@ -1063,6 +1063,62 @@ document.addEventListener('DOMContentLoaded',function(){
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../outreach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outreach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ashby/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ashby
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1082,7 +1138,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <span class="md-ellipsis">
     
   
-    Outreach
+    Sourcing Pipeline
   
 
     
@@ -1100,7 +1156,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <span class="md-ellipsis">
     
   
-    Outreach
+    Sourcing Pipeline
   
 
     
@@ -1148,17 +1204,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1184,62 +1229,6 @@ document.addEventListener('DOMContentLoaded',function(){
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ashby/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ashby
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sourcing-pipeline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sourcing Pipeline
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1748,17 +1737,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1797,11 +1775,11 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
-<h1 id="outreach-drafter">Outreach Drafter</h1>
-<p><em>Generates personalized LinkedIn/email messages for candidates on behalf of HockeyStack.</em></p>
-<p><strong>File:</strong> <code>modules/outreach.py</code> | <strong>Lines:</strong> ~58</p>
+<h1 id="sourcing-pipeline-orchestrator">Sourcing Pipeline Orchestrator</h1>
+<p><em>4-Agent orchestrator: creates queues, wires agents (Scout, Enricher, Analyzer, Evaluator), manages checkpoints and live dashboard.</em></p>
+<p><strong>File:</strong> <code>modules/sourcing_pipeline.py</code> | <strong>Lines:</strong> ~782</p>
 <h2 id="what-it-does">What It Does</h2>
-<p>Drafts 2 variant outreach messages (Direct and Rapport-first) for candidates. Operates as a thin wrapper around brain (Claude). Enforces HockeyStack voice: conversational, specific to candidate's background, no corporate jargon. Includes soft CTAs without time commitments or overused phrases.</p>
+<p>Multi-stage async pipeline for candidate discovery and evaluation. Accepts search criteria (GitHub repos, Slack communities, companies), spins up 4 independent agents with inter-queue handoff, monitors progress in real-time dashboard, persists checkpoint state, and gracefully shuts down or force-cancels on request.</p>
 <h2 id="key-functions">Key Functions</h2>
 <table>
 <thead>
@@ -1812,27 +1790,47 @@ document.addEventListener('DOMContentLoaded',function(){
 </thead>
 <tbody>
 <tr>
-<td><code>draft_outreach(brain, candidate_profile, role, channel, tone)</code></td>
-<td>Generate message variants</td>
+<td><code>run_pipeline()</code></td>
+<td>Start full 4-agent pipeline with given config</td>
+</tr>
+<tr>
+<td><code>dry_run_pipeline()</code></td>
+<td>Strategist-only preview, returns plan for approval</td>
+</tr>
+<tr>
+<td><code>get_pipeline_status()</code></td>
+<td>Live snapshot of all agent stats</td>
+</tr>
+<tr>
+<td><code>stop_pipeline()</code></td>
+<td>Graceful shutdown of running agents</td>
+</tr>
+<tr>
+<td><code>kill_pipeline()</code></td>
+<td>Force-cancel pipeline session</td>
+</tr>
+<tr>
+<td><code>get_pipeline_config()</code></td>
+<td>Load config from DB (or defaults)</td>
+</tr>
+<tr>
+<td><code>set_pipeline_config()</code></td>
+<td>Persist config updates</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration</h2>
-<ul>
-<li><strong>System Prompt:</strong> HockeyStack context, voice guidelines, branding</li>
-<li><strong>Input:</strong> candidate profile, role, channel (email/InMail), tone (casual/formal)</li>
-<li><strong>Output:</strong> 2 message variants with subject lines (if applicable)</li>
-<li><strong>Model params:</strong> max_tokens=1500, temperature=0.6</li>
-</ul>
 <h2 id="dependencies">Dependencies</h2>
 <ul>
-<li><code>brain</code> object — must implement <code>ask(prompt, system, ...)</code></li>
-<li>Outreach style rules: see Memory <a href="../../.claude/memory/outreach-style-guide.md">outreach-style-guide.md</a></li>
+<li><code>asyncio</code> — multi-agent concurrency</li>
+<li><code>core.checkpoint.CheckpointManager</code> — session state persistence</li>
+<li><code>core.config.now_pst</code>, <code>safe_create_task</code></li>
+<li>Pipeline agents: Scout, Enricher, Analyzer, Evaluator (in separate modules)</li>
+<li>DB: pipeline_config table for persistent settings</li>
 </ul>
 <h2 id="related">Related</h2>
 <ul>
-<li><a href="../prism/">PRISM Evaluator</a> — scores before outreach</li>
-<li><a href="../ashby/">Ashby Integration</a> — syncs to applicant pool</li>
+<li>Agents: <a href="../agents/scout.md">Pipeline Scout</a>, <a href="../pipeline-enricher/">Pipeline Enricher</a>, <a href="../pipeline-evaluator/">Pipeline Evaluator</a></li>
+<li>Config: <a href="sourcing-filters.md">Sourcing Filters</a></li>
 </ul>
 
 
