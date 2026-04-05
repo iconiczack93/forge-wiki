@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded',function(){
     
     
       
-        <title>Meeting Recording & Voice Fingerprinting - FORGE Wiki</title>
+        <title>Meeting Intelligence & Notes - FORGE Wiki</title>
       
     
     
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded',function(){
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Meeting Recording & Voice Fingerprinting
+              Meeting Intelligence & Notes
             
           </span>
         </div>
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <span class="md-ellipsis">
     
   
-    Meeting Recording & Voice Fingerprinting
+    Meeting Intelligence & Notes
   
 
     
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded',function(){
   <span class="md-ellipsis">
     
   
-    Meeting Recording & Voice Fingerprinting
+    Meeting Intelligence & Notes
   
 
     
@@ -702,10 +702,10 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-recording" class="md-nav__link">
+  <a href="#auto-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-Recording
+        Auto-Notes
       
     </span>
   </a>
@@ -891,10 +891,10 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
         
           <li class="md-nav__item">
-  <a href="#recorder-crash-loop-historical" class="md-nav__link">
+  <a href="#process-recovery-historical-historical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recorder Crash-Loop (Historical)
+        Process Recovery (Historical) (Historical)
       
     </span>
   </a>
@@ -2372,10 +2372,10 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
       
         <li class="md-nav__item">
-  <a href="#auto-recording" class="md-nav__link">
+  <a href="#auto-notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto-Recording
+        Auto-Notes
       
     </span>
   </a>
@@ -2561,10 +2561,10 @@ document.addEventListener('DOMContentLoaded',function(){
 </li>
         
           <li class="md-nav__item">
-  <a href="#recorder-crash-loop-historical" class="md-nav__link">
+  <a href="#process-recovery-historical-historical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recorder Crash-Loop (Historical)
+        Process Recovery (Historical) (Historical)
       
     </span>
   </a>
@@ -2642,7 +2642,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <h2 id="summary">Summary</h2>
 <p>FORGE's meeting intelligence system automatically captures meeting audio, generates timestamped notes with speaker attribution, and produces structured analysis with action items grouped by owner. The system identifies speakers using voice profile matching and Claude-powered contextual analysis, enabling searchable meeting notes across all past conversations. It runs as a standalone process for reliability and integrates with Google Calendar for automatic activation.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
-<p>The meeting recording system consists of six major components working together:</p>
+<p>The meeting intelligence system consists of six major components working together:</p>
 <pre class="mermaid"><code>graph TD
     A["FORGE Bot&lt;br/&gt;Routes /record-start&lt;br/&gt;Manages post-pipeline&lt;br/&gt;Stores context"] --&gt; B["Control File IPC&lt;br/&gt;recorder_control.json"]
     B --&gt; C["forge_recorder.py&lt;br/&gt;Standalone Process&lt;br/&gt;Ring buffer 300s&lt;br/&gt;WASAPI + mic capture&lt;br/&gt;Survives crashes"]
@@ -2714,7 +2714,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <li><strong>Next meeting</strong>: New speakers are compared against behavioral profiles <em>and</em> embeddings together</li>
 </ol>
 <p>This two-stage approach catches speakers even if their voice changes (cold, stress, etc.) by also matching speaking patterns.</p>
-<h2 id="auto-recording">Auto-Recording</h2>
+<h2 id="auto-notes">Auto-Notes</h2>
 <p>calendar_auto_record.py provides calendar-based meeting detection:</p>
 <p><strong>Config</strong>: Stored in <code>data/meeting_auto_record.json</code>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
@@ -2870,10 +2870,10 @@ document.addEventListener('DOMContentLoaded',function(){
 <p><strong>Root cause</strong>: Resemblyzer's <code>VoiceEncoder</code> model loads lazily (first time used). Loading the ~100MB model from disk on first embedding extraction blocks the event loop.</p>
 <p><strong>Workaround</strong>: Pre-load encoder in <code>bootstrap.py</code> by calling <code>_get_encoder()</code> once on bot startup. Or move embedding extraction to background thread pool.</p>
 <p><strong>Status</strong>: Identified, not yet fixed. Consider batching embedding computation or async subprocess call.</p>
-<h3 id="recorder-crash-loop-historical">Recorder Crash-Loop (Historical)</h3>
+<h3 id="process-recovery-historical-historical">Process Recovery (Historical) (Historical)</h3>
 <p><strong>Previous issue (now fixed)</strong>: Recorder thread crashed on WASAPI initialization → lockfile not cleared → next start attempt read stale PID → think recording already active.</p>
 <p><strong>Fix applied</strong>: 
-- Moved audio capture to standalone <code>forge_recorder.py</code> with independent lifecycle
+- Moved audio processing to standalone <code>forge_recorder.py</code> with independent lifecycle
 - Ring buffer survives FORGE crashes
 - Supervisor process auto-restarts recorder if it dies
 - Lockfile includes timestamp + PID validation</p>
@@ -2891,10 +2891,10 @@ document.addEventListener('DOMContentLoaded',function(){
 <p><strong>Recommendation</strong>: For large meetings, pre-configure speakers in <code>meeting_speakers.json</code> contacts list with detailed notes.</p>
 <h2 id="related-systems">Related Systems</h2>
 <ul>
-<li><strong>holy-grails</strong> — Some meeting recordings feed AI grail workflows</li>
+<li><strong>holy-grails</strong> — Some meeting notes feed AI grail workflows</li>
 <li><strong>knowledge-base</strong> — Transcripts indexed for semantic search</li>
 <li><strong>brain</strong> — Claude Sonnet handles speaker resolution and analysis</li>
-<li><strong>autonomy-loop</strong> — Night mode can trigger auto-recording for scheduled meetings</li>
+<li><strong>autonomy-loop</strong> — Night mode can trigger auto-notes for scheduled meetings</li>
 </ul>
 
 
