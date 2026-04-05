@@ -1833,41 +1833,17 @@ button:hover { background: #ce9ffc; }
 <p>FORGE's meeting recording system captures audio (system output and microphone) from Windows WASAPI, transcribes conversations with AssemblyAI's speaker diarization, and automatically maps speakers (Speaker A/B/C) to real names using voice embeddings and Claude-powered contextual analysis. The system runs as a decoupled standalone process that survives FORGE crashes, learns speaker identities over time via voice fingerprinting, and produces structured meeting analysis with action items grouped by owner.</p>
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <p>The meeting recording system consists of six major components working together:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│ FORGE Bot (Orchestrator)                                │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  - Routes /record-start commands                        │
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  - Manages post-recording pipeline                      │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│  - Stores speaker context, profiles                     │
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└────────────────┬────────────────────────────────────────┘
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                 │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ┌────────────┴────────────┐
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │ Control File IPC        │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │ (recorder_control.json) │
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    └────────────┬────────────┘
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                 │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>┌────────────────▼────────────────────────────────────────┐
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│ forge_recorder.py (Standalone Process)                  │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  - Ring buffer (300s backlog)                           │
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  - WASAPI loopback + mic capture                        │
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│  - Writes system.wav and mic.wav                        │
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  - Survives FORGE crashes                              │
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└────────────────┬────────────────────────────────────────┘
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                 │
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    ┌────────────┴────────────┐
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    │ Audio files             │
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    │ (system.wav, mic.wav)   │
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    └────────────┬────────────┘
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>                 │
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>┌────────────────▼────────────────────────────────────────┐
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>│ Post-Recording Pipeline                                 │
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│  1. Merge + compress audio → mp3                        │
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│  2. Transcribe via AssemblyAI (speaker diarization)     │
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>│  3. Extract voice embeddings via Resemblyzer           │
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>│  4. Resolve Speaker A/B/C → real names (Claude)        │
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>│  5. Analyze &amp; extract action items                      │
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>│  6. Store in KB + post to Discord                       │
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>└─────────────────────────────────────────────────────────┘
-</code></pre></div>
+<pre class="mermaid"><code>graph TD
+    A["FORGE Bot&lt;br/&gt;Routes /record-start&lt;br/&gt;Manages post-pipeline&lt;br/&gt;Stores context"] --&gt; B["Control File IPC&lt;br/&gt;recorder_control.json"]
+    B --&gt; C["forge_recorder.py&lt;br/&gt;Standalone Process&lt;br/&gt;Ring buffer 300s&lt;br/&gt;WASAPI + mic capture&lt;br/&gt;Survives crashes"]
+    C --&gt; D["Audio Files&lt;br/&gt;system.wav&lt;br/&gt;mic.wav"]
+    D --&gt; E["Post-Recording Pipeline"]
+    E --&gt; F["1. Merge + compress"]
+    F --&gt; G["2. AssemblyAI transcribe"]
+    G --&gt; H["3. Extract embeddings&lt;br/&gt;Resemblyzer"]
+    H --&gt; I["4. Speaker resolution&lt;br/&gt;Claude"]
+    I --&gt; J["5. Analyze + action items"]
+    J --&gt; K["6. Store KB + Discord"]</code></pre>
 <h3 id="control-flow-inter-process-communication">Control Flow: Inter-Process Communication<a class="headerlink" href="#control-flow-inter-process-communication" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>User command</strong>: <code>/record-start "Meeting Title"</code> in Discord</li>
@@ -1931,13 +1907,13 @@ button:hover { background: #ce9ffc; }
 <h2 id="auto-recording">Auto-Recording<a class="headerlink" href="#auto-recording" title="Permanent link">&para;</a></h2>
 <p>[[calendar_auto_record.py]] provides calendar-based meeting detection:</p>
 <p><strong>Config</strong>: Stored in <code>data/meeting_auto_record.json</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;meetings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eng Sync&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]},</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all-hands&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Linda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">]</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;meetings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Eng Sync&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]},</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all-hands&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;expected_speakers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Linda&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hank&quot;</span><span class="p">]}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div></p>
 <p><strong>How it works:</strong>
 1. Periodic job (runs every 5 min) checks Google Calendar for next 30 minutes of events
@@ -1966,12 +1942,12 @@ button:hover { background: #ce9ffc; }
 - <strong>Embedding distances</strong> (if fingerprints exist: "Speaker A is 0.88 similar to Hank, 0.71 to Arda")
 - <strong>Behavioral signals</strong> (Speaker B has 12% filler rate → matches Arda profile)</p>
 <p>Claude synthesizes all signals and returns structured mapping:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;?Unknown&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.82</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Zack&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arda&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;?Unknown&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;confidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;Speaker A&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker B&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.82</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;Speaker C&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
 </code></pre></div></p>
 <p>Unknown speakers are flagged for manual calibration.</p>
 <h2 id="post-processing-pipeline">Post-Processing Pipeline<a class="headerlink" href="#post-processing-pipeline" title="Permanent link">&para;</a></h2>

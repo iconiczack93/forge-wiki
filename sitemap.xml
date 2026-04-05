@@ -9,6 +9,10 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/private/candidates/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/private/meetings/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>
