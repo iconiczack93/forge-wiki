@@ -5,6 +5,10 @@
          <lastmod>2026-04-05</lastmod>
     </url>
     <url>
+         <loc>http://localhost:8000/changelog/</loc>
+         <lastmod>2026-04-05</lastmod>
+    </url>
+    <url>
          <loc>http://localhost:8000/private/</loc>
          <lastmod>2026-04-05</lastmod>
     </url>

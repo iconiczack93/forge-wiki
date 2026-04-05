@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded',function(){
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -1373,6 +1373,33 @@ document.addEventListener('DOMContentLoaded',function(){
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1766,6 +1793,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 <h1 id="meeting-recording-and-voice-fingerprinting-system">Meeting Recording and Voice Fingerprinting System</h1>
+<p><em>8 min read · Last updated April 04, 2026 · 1,686 words</em></p>
 <h2 id="summary">Summary</h2>
 <p>FORGE's meeting recording system captures audio (system output and microphone) from Windows WASAPI, transcribes conversations with AssemblyAI's speaker diarization, and automatically maps speakers (Speaker A/B/C) to real names using voice embeddings and Claude-powered contextual analysis. The system runs as a decoupled standalone process that survives FORGE crashes, learns speaker identities over time via voice fingerprinting, and produces structured meeting analysis with action items grouped by owner.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
@@ -2052,14 +2080,14 @@ document.addEventListener('DOMContentLoaded',function(){
       </main>
       
         <footer class="md-footer">
-  
   <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-</div>
-      
+    <div class="md-footer-meta__inner md-grid" style="text-align:center;padding:24px 0;color:#6B7280;font-family:'Inter',sans-serif;font-size:0.8rem">
+      <p style="margin:0">
+        Compiled from 279 source files · 14 topics · Powered by <strong style="color:#DC2626">FORGE</strong>
+      </p>
+      <p style="margin:4px 0 0 0;color:#333">
+        <a href="/forge-wiki/changelog/" style="color:#6B7280;text-decoration:none">Changelog</a>
+      </p>
     </div>
   </div>
 </footer>
