@@ -1562,18 +1562,18 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="remote-access-bridge">Remote Access &amp; Bridge<a class="headerlink" href="#remote-access-bridge" title="Permanent link">&para;</a></h1>
+<h1 id="remote-access-bridge">Remote Access &amp; Bridge</h1>
 <p>FORGE's mobile access and remote Claude Code integration.</p>
-<h2 id="remote-control-mobile-session-access">Remote Control: Mobile Session Access<a class="headerlink" href="#remote-control-mobile-session-access" title="Permanent link">&para;</a></h2>
+<h2 id="remote-control-mobile-session-access">Remote Control: Mobile Session Access</h2>
 <p>Spawns <code>claude remote-control</code> CLI for secure remote access from phone/tablet.</p>
-<h3 id="what-it-does">What It Does<a class="headerlink" href="#what-it-does" title="Permanent link">&para;</a></h3>
+<h3 id="what-it-does">What It Does</h3>
 <ul>
 <li>Runs Claude Code as a plain (non-TUI) process</li>
 <li>Prints session URL to stdout</li>
 <li>Stays alive until killed</li>
 <li>Generates handoff file on stop with git context</li>
 </ul>
-<h3 id="starting-remote-control">Starting Remote Control<a class="headerlink" href="#starting-remote-control" title="Permanent link">&para;</a></h3>
+<h3 id="starting-remote-control">Starting Remote Control</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&quot;start rc&quot;  →  Launches Claude Code remote-control session
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>             →  Returns session URL for mobile/tablet access
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1583,12 +1583,12 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>&quot;stop rc&quot;  →  Kills RC, generates handoff MD with git state
 </code></pre></div>
-<h3 id="environment-handling">Environment Handling<a class="headerlink" href="#environment-handling" title="Permanent link">&para;</a></h3>
+<h3 id="environment-handling">Environment Handling</h3>
 <p>Strips all <code>CLAUDE_*</code>, <code>ANTHROPIC_*</code>, and <code>CLAUDECODE</code> vars before launch. This forces Claude Code to use Max subscription OAuth (not API billing).</p>
 <p><strong>Critical vars cleared</strong>:
 - <code>CLAUDE_CODE_OAUTH_TOKEN</code> (overrides stored credentials)
 - <code>CLAUDE_CODE_ENTRYPOINT</code> (breaks RC detection)</p>
-<h3 id="handoff-generation">Handoff Generation<a class="headerlink" href="#handoff-generation" title="Permanent link">&para;</a></h3>
+<h3 id="handoff-generation">Handoff Generation</h3>
 <p>On RC stop, writes to <code>.claude/handoffs/</code>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rc_handoff_{timestamp}.md
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  ├── git status
@@ -1598,7 +1598,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  └── next-session context
 </code></pre></div></p>
 <p>Next local Claude Code session reads this handoff for full context.</p>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<h3 id="configuration">Configuration</h3>
 <table>
 <thead>
 <tr>
@@ -1626,9 +1626,9 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="mobile-bridge-claude-code-on-your-phone">Mobile Bridge: Claude Code on Your Phone<a class="headerlink" href="#mobile-bridge-claude-code-on-your-phone" title="Permanent link">&para;</a></h2>
+<h2 id="mobile-bridge-claude-code-on-your-phone">Mobile Bridge: Claude Code on Your Phone</h2>
 <p>Self-hosted web bridge (Starlette) spawns Claude Code CLI in <code>--print stream-json</code> mode, streams responses to mobile chat UI over WebSocket.</p>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<h3 id="architecture">Architecture</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Phone (WebSocket client)
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    ↓
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Bridge (Starlette server, port 8080)
@@ -1637,7 +1637,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    ↓
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>max_token_limit response stream
 </code></pre></div>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<h3 id="usage">Usage</h3>
 <p><strong>Start from Discord</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&quot;start bridge&quot;  →  Launches on port 8080
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                →  Returns: http://your-ip:8080/session-token
@@ -1649,7 +1649,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Standalone (no Discord)</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>modules/bridge.py<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
 </code></pre></div></p>
-<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<h3 id="features">Features</h3>
 <ul>
 <li><strong>Session Manager</strong>: tracks concurrent Claude Code sessions (max 10 default)</li>
 <li><strong>WebSocket streaming</strong>: real-time message exchange</li>
@@ -1657,13 +1657,13 @@ button:hover { background: #ce9ffc; }
 <li><strong>Idle cleanup</strong>: removes sessions after inactivity</li>
 <li><strong>Preview text</strong>: shows first 100 chars of each session in UI</li>
 </ul>
-<h3 id="mobile-ui">Mobile UI<a class="headerlink" href="#mobile-ui" title="Permanent link">&para;</a></h3>
+<h3 id="mobile-ui">Mobile UI</h3>
 <p>Lightweight HTML5 dashboard:
 - List active sessions
 - Create new session
 - Real-time chat with streaming responses
 - Message history per session</p>
-<h3 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<h3 id="configuration_1">Configuration</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">PORT</span> <span class="o">=</span> <span class="mi">8080</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">MAX_SESSIONS</span> <span class="o">=</span> <span class="mi">10</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">SESSION_IDLE_TTL</span> <span class="o">=</span> <span class="mi">3600</span>  <span class="c1"># 1 hour inactivity</span>
@@ -1672,7 +1672,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">_server_url</span> <span class="o">=</span> <span class="kc">None</span>      <span class="c1"># broadcast to Discord</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">_auth_token</span> <span class="o">=</span> <span class="kc">None</span>      <span class="c1"># random per session</span>
 </code></pre></div>
-<h3 id="data-classes">Data Classes<a class="headerlink" href="#data-classes" title="Permanent link">&para;</a></h3>
+<h3 id="data-classes">Data Classes</h3>
 <p><strong>SessionInfo</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">internal_id</span><span class="p">:</span> <span class="nb">str</span>       <span class="c1"># UUID (first 8 chars)</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">claude_session_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
@@ -1681,7 +1681,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">preview</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># message preview</span>
 </code></pre></div></p>
 <hr />
-<h2 id="rc-status-health">RC Status &amp; Health<a class="headerlink" href="#rc-status-health" title="Permanent link">&para;</a></h2>
+<h2 id="rc-status-health">RC Status &amp; Health</h2>
 <p>Monitor RC/Bridge uptime and activity from Discord.</p>
 <table>
 <thead>
@@ -1710,13 +1710,13 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="security-auth">Security &amp; Auth<a class="headerlink" href="#security-auth" title="Permanent link">&para;</a></h2>
+<h2 id="security-auth">Security &amp; Auth</h2>
 <ul>
 <li><strong>RC</strong>: Uses Max OAuth (no API key exposure)</li>
 <li><strong>Bridge</strong>: Random token per session, WebSocket over HTTPS (if deployed)</li>
 <li><strong>Handoff</strong>: Sensitive git state only written to local <code>.claude/handoffs/</code></li>
 </ul>
-<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
+<h3 id="best-practices">Best Practices</h3>
 <ol>
 <li>Never share RC/Bridge URLs publicly</li>
 <li>RC token is embedded in handoff file—keep <code>.claude/handoffs/</code> private</li>
@@ -1724,7 +1724,7 @@ button:hover { background: #ce9ffc; }
 <li>Kill RC when done (handoff context is one-way, not continuous)</li>
 </ol>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>
@@ -1760,7 +1760,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="example-workflow">Example Workflow<a class="headerlink" href="#example-workflow" title="Permanent link">&para;</a></h2>
+<h2 id="example-workflow">Example Workflow</h2>
 <p><strong>Mobile coding session at night:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Zack (on phone): &quot;start bridge&quot;
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>FORGE: &quot;Bridge running on http://192.168.1.X:8080/session-token&quot;

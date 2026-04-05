@@ -2172,9 +2172,9 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="prizepicks-sports-model">PrizePicks Sports Model<a class="headerlink" href="#prizepicks-sports-model" title="Permanent link">&para;</a></h1>
+<h1 id="prizepicks-sports-model">PrizePicks Sports Model</h1>
 <p>The <strong>PrizePicks Sports Model</strong> is FORGE's multi-sport player prop analysis and grading system. It combines live projections from the PrizePicks partner API, real-time player statistics from official sports data sources (NBA Stats, NHL API, VLR), and a 4-agent swarm evaluation system powered by Claude Haiku. The model currently supports <strong>NBA, NHL, MLB, WNBA, NFL, and Valorant esports</strong>.</p>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h2 id="summary">Summary</h2>
 <p>FORGE continuously monitors player prop lines from the PrizePicks partner API and identifies potential edges by comparing:
 - <strong>PrizePicks line</strong> vs. <strong>player's recent performance</strong> (L10 average, median, weighted projection)
 - <strong>High-confidence stat categories</strong> (e.g., Points, Rebounds, Assists for NBA; Kills for Valorant)
@@ -2187,8 +2187,8 @@ button:hover { background: #ce9ffc; }
 - 57+ predictions graded in the <code>sports_predictions</code> table
 - Cost: <strong>FREE</strong> (uses only free APIs)</p>
 <hr />
-<h2 id="sports-props-module">Sports Props Module<a class="headerlink" href="#sports-props-module" title="Permanent link">&para;</a></h2>
-<h3 id="data-sources">Data Sources<a class="headerlink" href="#data-sources" title="Permanent link">&para;</a></h3>
+<h2 id="sports-props-module">Sports Props Module</h2>
+<h3 id="data-sources">Data Sources</h3>
 <ul>
 <li><strong>PrizePicks Partner API</strong> (<code>https://partner-api.prizepicks.com</code>)</li>
 <li>Fetches current projections and lines for all supported sports</li>
@@ -2203,7 +2203,7 @@ button:hover { background: #ce9ffc; }
 <li>NHL: <code>api-web.nhle.com</code> official REST API</li>
 <li>Valorant: <code>vlrdevapi</code> package (scrapes VLR.gg)</li>
 </ul>
-<h3 id="line-selection-strategy">Line Selection Strategy<a class="headerlink" href="#line-selection-strategy" title="Permanent link">&para;</a></h3>
+<h3 id="line-selection-strategy">Line Selection Strategy</h3>
 <p><strong>Standard Line Selection:</strong>
 PrizePicks posts the original line first, then adds variant lines (demon/goblin alternates) with slightly different odds at later timestamps.</p>
 <p>The model uses <strong><code>standard_only=True</code></strong> to isolate the canonical line:
@@ -2216,25 +2216,25 @@ Only models stats with predictable patterns:
 - <strong>NBA:</strong> Points, Rebounds, Assists, Pts+Rebs+Asts, 3-Pt Made, Blks+Stls, Turnovers, Fantasy Score
 - <strong>NHL:</strong> Points, Shots On Goal, Goals, Assists, Blocked Shots, Saves, Goalies - Saves, Fantasy Score
 - <strong>MLB:</strong> Total Bases, Hits+Runs+RBIs, Pitcher Strikeouts, Hits Allowed, Walks Allowed, Fantasy Score</p>
-<h3 id="median-vs-mean">Median vs. Mean<a class="headerlink" href="#median-vs-mean" title="Permanent link">&para;</a></h3>
+<h3 id="median-vs-mean">Median vs. Mean</h3>
 <p>The model calculates both <strong>L10 average</strong> and <strong>L10 median</strong> because:
 - Averages can be skewed by outlier games (player with 45 points in a blowout)
 - Medians better reflect consistent baseline performance
 - High standard deviation signals low predictability</p>
-<h3 id="weighted-projection">Weighted Projection<a class="headerlink" href="#weighted-projection" title="Permanent link">&para;</a></h3>
+<h3 id="weighted-projection">Weighted Projection</h3>
 <p>Recent games weighted heavier than older games:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Weighted Avg = (G1×w1 + G2×w2 + ... + G10×w10) / sum(weights)
 </code></pre></div>
 Weights decay: most recent game = 1.0, oldest = ~0.3</p>
-<h3 id="hit-rate-calculation">Hit Rate Calculation<a class="headerlink" href="#hit-rate-calculation" title="Permanent link">&para;</a></h3>
+<h3 id="hit-rate-calculation">Hit Rate Calculation</h3>
 <p>For each stat, tracks:
 - <strong>Hit Rate Over:</strong> % of games player exceeded the line
 - <strong>Hit Rate Under:</strong> % of games player fell short
 - <strong>Edge %:</strong> <code>(player_avg - line) / line × 100</code></p>
 <p>Example: Player averages 25.3 pts, line is 24.5, edge = +3.3% OVER</p>
 <hr />
-<h2 id="swarm-evaluator">Swarm Evaluator<a class="headerlink" href="#swarm-evaluator" title="Permanent link">&para;</a></h2>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<h2 id="swarm-evaluator">Swarm Evaluator</h2>
+<h3 id="architecture">Architecture</h3>
 <p>The swarm is a <strong>5-model consensus system</strong> that evaluates each pick in parallel:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>       PICK (player, stat, line, direction)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>            |
@@ -2250,7 +2250,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>       FINAL VERDICT
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    (OVER/UNDER/SKIP, confidence 0-100)
 </code></pre></div>
-<h3 id="agent-roles">Agent Roles<a class="headerlink" href="#agent-roles" title="Permanent link">&para;</a></h3>
+<h3 id="agent-roles">Agent Roles</h3>
 <p><strong>1. Stats Analyst</strong> — Pure quantitative analysis
 - Compares L10 average vs. line gap
 - Assesses hit rate consistency
@@ -2276,7 +2276,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 - Blowout risk: player benched if team is up/down 30+
 - Questions if public consensus is wrong
 - <strong>Verdict:</strong> AGREE (with the consensus pick), FADE (oppose it), or SKIP</p>
-<h3 id="judge">Judge<a class="headerlink" href="#judge" title="Permanent link">&para;</a></h3>
+<h3 id="judge">Judge</h3>
 <p>Synthesizes all four opinions using weighted consensus:
 - <strong>Stats analyst:</strong> Highest weight (40%)
 - <strong>Matchup analyst:</strong> Medium-high weight (30%)
@@ -2284,16 +2284,16 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 - <strong>Contrarian analyst:</strong> Medium weight (20%)</p>
 <p>If 3+ agents agree on direction → lean toward that consensus. If contrarian raises a strong concern → reduce confidence.</p>
 <p><strong>Final Output:</strong> <code>{verdict: OVER|UNDER|SKIP, confidence: 0-100, reason: "..."}</code></p>
-<h3 id="cost">Cost<a class="headerlink" href="#cost" title="Permanent link">&para;</a></h3>
+<h3 id="cost">Cost</h3>
 <p>Each pick evaluation costs ~$0.02 (4 Haiku calls + 1 judge call at $0.80/1M input tokens, ~25 tokens per call).</p>
 <hr />
-<h2 id="nba-pipeline">NBA Pipeline<a class="headerlink" href="#nba-pipeline" title="Permanent link">&para;</a></h2>
-<h3 id="data-retrieval">Data Retrieval<a class="headerlink" href="#data-retrieval" title="Permanent link">&para;</a></h3>
+<h2 id="nba-pipeline">NBA Pipeline</h2>
+<h3 id="data-retrieval">Data Retrieval</h3>
 <p>Uses the <strong><code>nba_api</code> Python package</strong> with official NBA Stats API:
 - Endpoint: <code>https://stats.nba.com/stats</code>
 - Requires: Player ID (from nba_api's static player registry)
 - Game logs: 2025-26 season (current)</p>
-<h3 id="player-matching">Player Matching<a class="headerlink" href="#player-matching" title="Permanent link">&para;</a></h3>
+<h3 id="player-matching">Player Matching</h3>
 <p>Normalizes player names to handle accents and formatting:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">normalized</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFD&quot;</span><span class="p">,</span> <span class="s2">&quot;Luka Dončić&quot;</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">normalized</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">normalized</span> <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;Mn&quot;</span><span class="p">)</span>
@@ -2304,43 +2304,43 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 2. <strong>Fallback:</strong> First name
 3. <strong>Filters:</strong> Active players only (ignores retired/inactive)
 4. <strong>Scoring:</strong> Best name match from candidates</p>
-<h3 id="statistics-tracked">Statistics Tracked<a class="headerlink" href="#statistics-tracked" title="Permanent link">&para;</a></h3>
+<h3 id="statistics-tracked">Statistics Tracked</h3>
 <p>Per-game: <code>PTS, REB, AST, STL, BLK, TOV, FG3M, FGA, FGM, FTA, FTM, MIN</code></p>
 <p>Combo stats auto-calculated:
 - <code>PTS+REB+AST</code> (fantasy standard)
 - <code>PTS+AST</code>, <code>PTS+REB</code>, <code>REB+AST</code> (popular flex plays)
 - <code>STL+BLK</code> (defensive production)</p>
-<h3 id="recency-weighting">Recency Weighting<a class="headerlink" href="#recency-weighting" title="Permanent link">&para;</a></h3>
+<h3 id="recency-weighting">Recency Weighting</h3>
 <p>Recent games weighted more heavily:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>weights = [1.0, 0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.50]
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a># Game 1 (oldest) → Game 10 (most recent)
 </code></pre></div></p>
-<h3 id="timeout-handling">Timeout Handling<a class="headerlink" href="#timeout-handling" title="Permanent link">&para;</a></h3>
+<h3 id="timeout-handling">Timeout Handling</h3>
 <p>nba_api occasionally times out (official API is rate-limited). The module:
 1. Retries up to 3 times with exponential backoff
 2. Uses 45-second timeout per request
 3. Runs in executor (non-blocking async)</p>
 <hr />
-<h2 id="nhl-pipeline">NHL Pipeline<a class="headerlink" href="#nhl-pipeline" title="Permanent link">&para;</a></h2>
-<h3 id="data-source">Data Source<a class="headerlink" href="#data-source" title="Permanent link">&para;</a></h3>
+<h2 id="nhl-pipeline">NHL Pipeline</h2>
+<h3 id="data-source">Data Source</h3>
 <p><strong><code>api-web.nhle.com</code></strong> — Official NHL Stats API
 - Free, no authentication, no rate limits
 - Supports both skaters and goalies
 - Per-game splits and aggregates</p>
-<h3 id="goalie-specific-stats">Goalie-Specific Stats<a class="headerlink" href="#goalie-specific-stats" title="Permanent link">&para;</a></h3>
+<h3 id="goalie-specific-stats">Goalie-Specific Stats</h3>
 <p>NHL props frequently feature goalie stats (especially <strong>Saves</strong> and <strong>Saves Against</strong>). The module tracks:
 - <code>Saves</code> (official stat)
 - <code>Goalies - Saves</code> (PrizePicks naming convention)
 - <code>Goals Against</code>, <code>Win/Loss</code></p>
-<h3 id="standardization">Standardization<a class="headerlink" href="#standardization" title="Permanent link">&para;</a></h3>
+<h3 id="standardization">Standardization</h3>
 <p>NHL stats names vary between PrizePicks and the official API. The module normalizes:
 - <code>Points</code> (Skater) → sum of Goals + Assists
 - <code>Shots On Goal</code> (Skater)
 - <code>Blocked Shots</code> (Skater)
 - <code>Saves</code> (Goalie)</p>
 <hr />
-<h2 id="vlr-valorant-esports">VLR / Valorant Esports<a class="headerlink" href="#vlr-valorant-esports" title="Permanent link">&para;</a></h2>
-<h3 id="data-sources_1">Data Sources<a class="headerlink" href="#data-sources_1" title="Permanent link">&para;</a></h3>
+<h2 id="vlr-valorant-esports">VLR / Valorant Esports</h2>
+<h3 id="data-sources_1">Data Sources</h3>
 <ul>
 <li><strong>VLR.gg Match Data</strong> — via <code>vlrdevapi</code> Python package</li>
 <li>Player search and profile lookups</li>
@@ -2353,7 +2353,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <p><strong>PrizePicks Valorant Lines</strong> — Partner API with league_id=159</p>
 </li>
 </ul>
-<h3 id="player-lookup">Player Lookup<a class="headerlink" href="#player-lookup" title="Permanent link">&para;</a></h3>
+<h3 id="player-lookup">Player Lookup</h3>
 <p><code>search_player(name: str)</code> returns player profile:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="s2">&quot;player_id&quot;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
@@ -2363,7 +2363,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
 </code></pre></div></p>
 <p>Caches lookups to avoid repeated searches.</p>
-<h3 id="player-averages">Player Averages<a class="headerlink" href="#player-averages" title="Permanent link">&para;</a></h3>
+<h3 id="player-averages">Player Averages</h3>
 <p><code>get_player_averages(player_id, timespan="90d")</code> calculates:
 - <code>kills_per_round</code> (KPR)
 - <code>kills_per_map</code>
@@ -2373,7 +2373,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 - <code>avg_kd</code> (Kill-to-Death ratio)
 - <strong>Agent breakdown:</strong> Usage count and stats per agent (Jett, Sage, Omen, etc.)</p>
 <p><strong>30-minute cache</strong> to avoid re-scraping VLR within short intervals.</p>
-<h3 id="per-map-kill-history">Per-Map Kill History<a class="headerlink" href="#per-map-kill-history" title="Permanent link">&para;</a></h3>
+<h3 id="per-map-kill-history">Per-Map Kill History</h3>
 <p><code>get_player_match_kills(player_id, limit=10)</code> scrapes VLR match pages for:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="s2">&quot;match_id&quot;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
@@ -2388,7 +2388,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">}</span>
 </code></pre></div></p>
 <p>Parses HTML tables from VLR match detail pages (<code>.vm-stats-game</code> selector).</p>
-<h3 id="cpu-optimization">CPU Optimization<a class="headerlink" href="#cpu-optimization" title="Permanent link">&para;</a></h3>
+<h3 id="cpu-optimization">CPU Optimization</h3>
 <p><strong>VLR scraping can burn 95% CPU if not filtered.</strong> The module:
 - <strong>Filters to Valorant-only picks</strong> before scraping
 - Caches results aggressively (30-min TTL on both player averages and match kills)
@@ -2396,21 +2396,21 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 - Runs BeautifulSoup parsing in a controlled manner</p>
 <p>See [[feedback_vlr_cpu_burn]] for performance fix applied Mar 2026.</p>
 <hr />
-<h2 id="auto-grading">Auto-Grading<a class="headerlink" href="#auto-grading" title="Permanent link">&para;</a></h2>
-<h3 id="prediction-storage">Prediction Storage<a class="headerlink" href="#prediction-storage" title="Permanent link">&para;</a></h3>
+<h2 id="auto-grading">Auto-Grading</h2>
+<h3 id="prediction-storage">Prediction Storage</h3>
 <p>All picks are stored in <code>sports_predictions</code> table:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>id | player | team | sport | stat_type | direction | line | 
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>projected | graded_result | verdict | swarm_confidence | 
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>created_at | game_date | game_id | resolved_at
 </code></pre></div></p>
-<h3 id="grading-process">Grading Process<a class="headerlink" href="#grading-process" title="Permanent link">&para;</a></h3>
+<h3 id="grading-process">Grading Process</h3>
 <p><strong>After game resolution:</strong>
 1. Query final player stats for the day
 2. Match each pick to its game result
 3. Determine if player exceeded line (OVER) or fell short (UNDER)
 4. Update <code>graded_result</code> and <code>resolved_at</code></p>
 <p><strong>Automatic grading runs via:</strong> Cron job in <code>cogs/prizepicks_cog.py</code> (daily at 2 AM PST)</p>
-<h3 id="accuracy-calculation">Accuracy Calculation<a class="headerlink" href="#accuracy-calculation" title="Permanent link">&para;</a></h3>
+<h3 id="accuracy-calculation">Accuracy Calculation</h3>
 <p><code>get_stats()</code> returns win rate by category:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="s2">&quot;overall&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2429,7 +2429,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  <span class="p">}</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">}</span>
 </code></pre></div></p>
-<h3 id="edge-case-handling">Edge Case Handling<a class="headerlink" href="#edge-case-handling" title="Permanent link">&para;</a></h3>
+<h3 id="edge-case-handling">Edge Case Handling</h3>
 <ul>
 <li><strong>Cancelled games:</strong> Picks marked as "no_action"</li>
 <li><strong>Injured players:</strong> Flagged pre-game if scrape detects IL status</li>
@@ -2437,7 +2437,7 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <li><strong>Prop mismatches:</strong> Pick for "Maps 1-2" graded only on those maps (Valorant)</li>
 </ul>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>
@@ -2481,8 +2481,8 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 </tbody>
 </table>
 <hr />
-<h2 id="integration-points">Integration Points<a class="headerlink" href="#integration-points" title="Permanent link">&para;</a></h2>
-<h3 id="discord-commands">Discord Commands<a class="headerlink" href="#discord-commands" title="Permanent link">&para;</a></h3>
+<h2 id="integration-points">Integration Points</h2>
+<h3 id="discord-commands">Discord Commands</h3>
 <ul>
 <li><code>/picks report</code> → Daily picks report (top edges, confidence, results)</li>
 <li><code>/picks slip</code> → Manual slip entry or parse screenshot</li>
@@ -2491,28 +2491,28 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <li><code>/scores &lt;league&gt;</code> → Live scores, standings</li>
 <li><code>/predictions trending</code> → Trending prediction markets</li>
 </ul>
-<h3 id="cron-jobs">Cron Jobs<a class="headerlink" href="#cron-jobs" title="Permanent link">&para;</a></h3>
+<h3 id="cron-jobs">Cron Jobs</h3>
 <ul>
 <li><strong>2 AM PST:</strong> Auto-grade daily predictions against finalized game results</li>
 <li><strong>3 PM PST:</strong> Fetch tomorrow's PrizePicks lines for scheduled games</li>
 <li><strong>Every 4 hours:</strong> Update Valorant match schedule (live picks)</li>
 </ul>
-<h3 id="database-tables">Database Tables<a class="headerlink" href="#database-tables" title="Permanent link">&para;</a></h3>
+<h3 id="database-tables">Database Tables</h3>
 <ul>
 <li><code>sports_predictions</code> — Graded picks (57+ rows)</li>
 <li><code>vlr_match_results</code> — Cached VLR match data</li>
 <li><code>prizepicks_slips</code> — User bet tracking (in bets_cog)</li>
 </ul>
 <hr />
-<h2 id="model-tuning-future-work">Model Tuning &amp; Future Work<a class="headerlink" href="#model-tuning-future-work" title="Permanent link">&para;</a></h2>
-<h3 id="current-limitations">Current Limitations<a class="headerlink" href="#current-limitations" title="Permanent link">&para;</a></h3>
+<h2 id="model-tuning-future-work">Model Tuning &amp; Future Work</h2>
+<h3 id="current-limitations">Current Limitations</h3>
 <ul>
 <li><strong>No injury detection</strong> (relies on manual flagging)</li>
 <li><strong>Matchup analyst</strong> lacks real-time opponent defensive rankings (uses team reputation)</li>
 <li><strong>Trends analyst</strong> uses only last 10 games (could expand to season-long patterns)</li>
 <li><strong>Contrarian analyst</strong> is rule-based (could use historical trap line detection)</li>
 </ul>
-<h3 id="improvements-roadmap">Improvements (Roadmap)<a class="headerlink" href="#improvements-roadmap" title="Permanent link">&para;</a></h3>
+<h3 id="improvements-roadmap">Improvements (Roadmap)</h3>
 <ul>
 <li>Integrate official injury reports (ESPN or official league APIs)</li>
 <li>Opponent defensive ranking (by sport: NBA efficiency ratings, NHL Corsi, etc.)</li>
@@ -2520,14 +2520,14 @@ Weights decay: most recent game = 1.0, oldest = ~0.3</p>
 <li>Machine learning: train model on historical graded picks to weight agents dynamically</li>
 <li><strong>Under advantage:</strong> Model already shows 85.2% accuracy on unders — could weight unders higher</li>
 </ul>
-<h3 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h3>
+<h3 id="see-also">See Also</h3>
 <ul>
 <li>[[session-mar27-prizepicks-and-tools]] — Mar 27 2026 multi-sport pipeline completion</li>
 <li>[[session-mar29-megasession]] — ElevenLabs TTS, voice output for picks</li>
 <li>[[project_prizepicks_model]] — Detailed project notes</li>
 </ul>
 <hr />
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h2 id="references">References</h2>
 <ul>
 <li><strong>PrizePicks Partner API:</strong> <code>https://partner-api.prizepicks.com/projections</code></li>
 <li><strong>VLR.gg:</strong> <code>https://www.vlr.gg</code> (via vlrdevapi package)</li>

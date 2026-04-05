@@ -1828,14 +1828,14 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="text-to-speech-voice-system">Text-to-Speech &amp; Voice System<a class="headerlink" href="#text-to-speech-voice-system" title="Permanent link">&para;</a></h1>
+<h1 id="text-to-speech-voice-system">Text-to-Speech &amp; Voice System</h1>
 <p>FORGE integrates <strong>ElevenLabs AI voice synthesis</strong> for reading text, messages, URLs, and morning briefs aloud. The system features intelligent voice rotation that ensures you never hear the same voice twice in a row, with audio files stored locally for caching and replay.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>The TTS system consists of three layers:
 1. <strong>API layer</strong> (<code>modules/tts.py</code>) — ElevenLabs integration, voice rotation logic, MP3 generation
 2. <strong>Action handlers</strong> (<code>cogs/tts_actions.py</code>) — Discord command dispatch for read text/last/URL/brief
 3. <strong>Trigger intercept</strong> (<code>bot.py</code> <code>on_message</code>) — Fast-path recognition of "read this" phrases before classifier</p>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<h2 id="architecture">Architecture</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Message → on_message TTS intercept
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>         ↓
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    &quot;read this ...&quot; → tts_read_text
@@ -1847,13 +1847,13 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    brain / cog dispatch
 </code></pre></div>
 <p>The TTS intercept is <strong>positioned at the top of <code>on_message</code></strong> (before classifier) to provide sub-100ms response for common voice commands.</p>
-<h2 id="elevenlabs-integration">ElevenLabs Integration<a class="headerlink" href="#elevenlabs-integration" title="Permanent link">&para;</a></h2>
+<h2 id="elevenlabs-integration">ElevenLabs Integration</h2>
 <p><strong>Provider</strong>: ElevenLabs API v1<br />
 <strong>Base URL</strong>: <code>https://api.elevenlabs.io/v1</code><br />
 <strong>Auth</strong>: <code>ELEVENLABS_API_KEY</code> in <code>.env</code><br />
 <strong>Model</strong>: <code>eleven_turbo_v2_5</code> (fast + cost-efficient, default)<br />
 <strong>Quality model</strong>: <code>eleven_multilingual_v2</code> (highest quality, 29 languages)</p>
-<h3 id="api-flow">API Flow<a class="headerlink" href="#api-flow" title="Permanent link">&para;</a></h3>
+<h3 id="api-flow">API Flow</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">POST</span> <span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">text</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">speech</span><span class="o">/</span><span class="p">{</span><span class="n">voice_id</span><span class="p">}</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Headers</span><span class="p">:</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="o">-</span> <span class="n">xi</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">key</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ELEVENLABS_API_KEY</span><span class="o">&gt;</span>
@@ -1872,8 +1872,8 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>  <span class="mi">200</span> <span class="n">OK</span> <span class="err">→</span> <span class="n">audio</span><span class="o">/</span><span class="n">mpeg</span> <span class="n">binary</span> <span class="n">stream</span> <span class="p">(</span><span class="n">MP3</span><span class="p">)</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>  <span class="o">!=</span> <span class="mi">200</span> <span class="err">→</span> <span class="n">JSON</span> <span class="n">error</span> <span class="n">message</span>
 </code></pre></div>
-<h2 id="voice-rotation-system">Voice Rotation System<a class="headerlink" href="#voice-rotation-system" title="Permanent link">&para;</a></h2>
-<h3 id="never-repeat-last-voice">Never Repeat Last Voice<a class="headerlink" href="#never-repeat-last-voice" title="Permanent link">&para;</a></h3>
+<h2 id="voice-rotation-system">Voice Rotation System</h2>
+<h3 id="never-repeat-last-voice">Never Repeat Last Voice</h3>
 <p>The voice selection logic <strong>guarantees you never hear the same voice twice in a row</strong>. This is critical for morning briefs, daily reads, and repeated use cases.</p>
 <p><strong>Algorithm</strong> (in <code>pick_daily_voice()</code>):</p>
 <ol>
@@ -1884,7 +1884,7 @@ button:hover { background: #ce9ffc; }
 <li>Append voice_id to <code>used</code> list and save history</li>
 <li>Log: "Today's voice: {name} ({accent}, {gender})"</li>
 </ol>
-<h3 id="voice-history-schema">Voice History Schema<a class="headerlink" href="#voice-history-schema" title="Permanent link">&para;</a></h3>
+<h3 id="voice-history-schema">Voice History Schema</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;used&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;voice_id_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;voice_id_2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">],</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;last_voice&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;voice_id_3&quot;</span><span class="p">,</span>
@@ -1892,15 +1892,15 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
 </code></pre></div>
 <p><strong>Storage</strong>: <code>data/tts/voice_history.json</code></p>
-<h3 id="voice-metadata">Voice Metadata<a class="headerlink" href="#voice-metadata" title="Permanent link">&para;</a></h3>
+<h3 id="voice-metadata">Voice Metadata</h3>
 <p>Each voice from <code>GET /v1/voices</code> includes:
 - <code>voice_id</code>: Unique identifier (used in TTS requests)
 - <code>name</code>: Display name (e.g., "Adam", "Alice", "Luna")
 - <code>preview_url</code>: Sample audio clip
 - <code>labels</code>: Object with <code>accent</code> (e.g., "American"), <code>gender</code> (e.g., "male")</p>
-<h2 id="text-to-speech-api">Text-to-Speech API<a class="headerlink" href="#text-to-speech-api" title="Permanent link">&para;</a></h2>
+<h2 id="text-to-speech-api">Text-to-Speech API</h2>
 <p><strong>Module</strong>: <code>modules/tts.py</code></p>
-<h3 id="main-function-text_to_speech">Main Function: <code>text_to_speech()</code><a class="headerlink" href="#main-function-text_to_speech" title="Permanent link">&para;</a></h3>
+<h3 id="main-function-text_to_speech">Main Function: <code>text_to_speech()</code></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">text_to_speech</span><span class="p">(</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1941,7 +1941,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">stability</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>     <span class="c1"># More expressive</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">)</span>
 </code></pre></div>
-<h3 id="helper-functions">Helper Functions<a class="headerlink" href="#helper-functions" title="Permanent link">&para;</a></h3>
+<h3 id="helper-functions">Helper Functions</h3>
 <table>
 <thead>
 <tr>
@@ -1980,11 +1980,11 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h2 id="action-handlers">Action Handlers<a class="headerlink" href="#action-handlers" title="Permanent link">&para;</a></h2>
+<h2 id="action-handlers">Action Handlers</h2>
 <p><strong>Module</strong>: <code>cogs/tts_actions.py</code><br />
 <strong>Cog</strong>: <code>TTSCog</code></p>
 <p>Dispatched by classifier when TTS actions detected. Each handler runs async, posts status/result to Discord.</p>
-<h3 id="tts_read_text-read-arbitrary-text"><code>tts_read_text</code> — Read Arbitrary Text<a class="headerlink" href="#tts_read_text-read-arbitrary-text" title="Permanent link">&para;</a></h3>
+<h3 id="tts_read_text-read-arbitrary-text"><code>tts_read_text</code> — Read Arbitrary Text</h3>
 <p><strong>Trigger</strong>: "read this text", "say this message", "read aloud: ..."<br />
 <strong>Handler</strong>: <code>_read_text(intent, message)</code></p>
 <ol>
@@ -2000,7 +2000,7 @@ button:hover { background: #ce9ffc; }
 - "say this:" / "say this"
 - "read aloud:" / "read aloud"
 - "speak:" / "speak"</p>
-<h3 id="tts_read_last-read-previous-message"><code>tts_read_last</code> — Read Previous Message<a class="headerlink" href="#tts_read_last-read-previous-message" title="Permanent link">&para;</a></h3>
+<h3 id="tts_read_last-read-previous-message"><code>tts_read_last</code> — Read Previous Message</h3>
 <p><strong>Trigger</strong>: "read that", "read the last message", "read that out loud"<br />
 <strong>Handler</strong>: <code>_read_last(message)</code></p>
 <ol>
@@ -2010,7 +2010,7 @@ button:hover { background: #ce9ffc; }
 <li>Post MP3 to channel</li>
 </ol>
 <p><strong>Error Handling</strong>: Returns "No previous message to read." if history is empty.</p>
-<h3 id="tts_read_url-scrape-summarize-read-url"><code>tts_read_url</code> — Scrape, Summarize, Read URL<a class="headerlink" href="#tts_read_url-scrape-summarize-read-url" title="Permanent link">&para;</a></h3>
+<h3 id="tts_read_url-scrape-summarize-read-url"><code>tts_read_url</code> — Scrape, Summarize, Read URL</h3>
 <p><strong>Trigger</strong>: "read this URL", "read this link"<br />
 <strong>Handler</strong>: <code>_read_url(intent, message)</code></p>
 <ol>
@@ -2025,7 +2025,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Error Handling</strong>:
 - URL fetch timeout or non-200 status → "Couldn't fetch URL (status X)"
 - TTS API error → propagated to user</p>
-<h3 id="tts_read_brief-morning-brief-audio"><code>tts_read_brief</code> — Morning Brief Audio<a class="headerlink" href="#tts_read_brief-morning-brief-audio" title="Permanent link">&para;</a></h3>
+<h3 id="tts_read_brief-morning-brief-audio"><code>tts_read_brief</code> — Morning Brief Audio</h3>
 <p><strong>Trigger</strong>: "read brief", "read the brief", "listen to brief"<br />
 <strong>Handler</strong>: <code>_read_brief(message)</code></p>
 <ol>
@@ -2035,7 +2035,7 @@ button:hover { background: #ce9ffc; }
 <li>Post MP3 with caption "<strong>Morning Brief</strong> — audio:"</li>
 </ol>
 <p><strong>Related</strong>: See [[morning-brief]] for brief generation pipeline.</p>
-<h2 id="tts-intercept-fast-path">TTS Intercept (Fast-Path)<a class="headerlink" href="#tts-intercept-fast-path" title="Permanent link">&para;</a></h2>
+<h2 id="tts-intercept-fast-path">TTS Intercept (Fast-Path)</h2>
 <p><strong>Location</strong>: <code>bot.py</code> <code>on_message()</code> — positioned <strong>before classifier</strong></p>
 <p><strong>Trigger Recognition</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Normalize punctuation after trigger phrase</span>
@@ -2063,7 +2063,7 @@ button:hover { background: #ce9ffc; }
 - Eliminates 50-100ms of classifier latency for common voice use cases
 - Ensures "read this" feels instant (Discord UX)
 - Reduces API token spend (no brain call for trivial reads)</p>
-<h2 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
+<h2 id="file-structure">File Structure</h2>
 <table>
 <thead>
 <tr>
@@ -2105,7 +2105,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h2 id="configuration">Configuration</h2>
 <p><strong>Environment Variables</strong>:
 - <code>ELEVENLABS_API_KEY</code> — Required. Loaded from <code>.env</code> via <code>_get_api_key()</code></p>
 <p><strong>Model Defaults</strong>:
@@ -2119,17 +2119,17 @@ button:hover { background: #ce9ffc; }
 - Voice history: <code>data/tts/voice_history.json</code>
 - MP3 output: <code>data/tts/brief_&lt;timestamp&gt;.mp3</code>
 - Directory auto-created if missing</p>
-<h2 id="integration-with-other-systems">Integration with Other Systems<a class="headerlink" href="#integration-with-other-systems" title="Permanent link">&para;</a></h2>
-<h3 id="morning-brief">Morning Brief<a class="headerlink" href="#morning-brief" title="Permanent link">&para;</a></h3>
+<h2 id="integration-with-other-systems">Integration with Other Systems</h2>
+<h3 id="morning-brief">Morning Brief</h3>
 <p>[[morning-brief]] calls <code>morning_brief_audio()</code> to render the daily briefing as audio. Results in scheduled podcast posted to Discord.</p>
 <p><strong>Flow</strong>:
 1. Autonomy loop generates brief text → <code>data/tts/latest_brief.md</code>
 2. <code>morning_brief_audio(brief_text)</code> converts to MP3
 3. Brief is posted to Discord with audio attachment
 4. Users can say "read brief" to replay</p>
-<h3 id="meeting-summaries">Meeting Summaries<a class="headerlink" href="#meeting-summaries" title="Permanent link">&para;</a></h3>
+<h3 id="meeting-summaries">Meeting Summaries</h3>
 <p>TTS can render meeting summaries to audio for async listening. Not yet integrated into scheduled flows — see [[future-work]] for roadmap.</p>
-<h3 id="alert-sounds">Alert Sounds<a class="headerlink" href="#alert-sounds" title="Permanent link">&para;</a></h3>
+<h3 id="alert-sounds">Alert Sounds</h3>
 <p><code>speak_alert(text, channel)</code> generates and posts audio alerts for:
 - High-priority candidate drops
 - Crash notifications
@@ -2137,7 +2137,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Example</strong>:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">await</span> <span class="n">speak_alert</span><span class="p">(</span><span class="s2">&quot;New candidate matched: Alice Chen&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>
 </code></pre></div></p>
-<h2 id="voice-gallery">Voice Gallery<a class="headerlink" href="#voice-gallery" title="Permanent link">&para;</a></h2>
+<h2 id="voice-gallery">Voice Gallery</h2>
 <p>ElevenLabs offers 30+ voices across accents (American, British, Indian, etc.) and genders. Full list fetched dynamically via <code>get_available_voices()</code>.</p>
 <p><strong>Common Voices</strong>:
 - Adam (American male)
@@ -2147,7 +2147,7 @@ button:hover { background: #ce9ffc; }
 - Jackson (American male, deep)
 - Rachel (American female, professional)</p>
 <p>Run <code>/current-voice</code> or check logs to see today's selected voice.</p>
-<h2 id="performance-limits">Performance &amp; Limits<a class="headerlink" href="#performance-limits" title="Permanent link">&para;</a></h2>
+<h2 id="performance-limits">Performance &amp; Limits</h2>
 <table>
 <thead>
 <tr>
@@ -2184,7 +2184,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h2 id="error-handling">Error Handling</h2>
 <table>
 <thead>
 <tr>
@@ -2226,7 +2226,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h2 id="obsidian-wikilinks">Obsidian Wikilinks<a class="headerlink" href="#obsidian-wikilinks" title="Permanent link">&para;</a></h2>
+<h2 id="obsidian-wikilinks">Obsidian Wikilinks</h2>
 <ul>
 <li>[[morning-brief]] — Daily briefing audio generation</li>
 <li>[[discord-cogs]] — Cog system overview</li>
@@ -2235,7 +2235,7 @@ button:hover { background: #ce9ffc; }
 <li>[[voice-rotation]] — Detailed voice selection algorithm</li>
 <li>[[modules-overview]] — All FORGE modules</li>
 </ul>
-<h2 id="related-commands">Related Commands<a class="headerlink" href="#related-commands" title="Permanent link">&para;</a></h2>
+<h2 id="related-commands">Related Commands</h2>
 <ul>
 <li><code>/tts</code> — CLI wrapper for text-to-speech (if implemented)</li>
 <li><code>/current-voice</code> — Show today's voice + metadata (if implemented)</li>
@@ -2243,7 +2243,7 @@ button:hover { background: #ce9ffc; }
 <li><code>/read that</code> — Read previous message (fast-path)</li>
 <li><code>/read brief</code> — Listen to morning brief (fast-path)</li>
 </ul>
-<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
+<h2 id="roadmap">Roadmap</h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Voice caching — reduce API calls by caching voice list for 24h</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Meeting summary audio — auto-render meeting notes to MP3</li>

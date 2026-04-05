@@ -1396,11 +1396,11 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="copilot-agent-lab">Copilot &amp; Agent Lab<a class="headerlink" href="#copilot-agent-lab" title="Permanent link">&para;</a></h1>
+<h1 id="copilot-agent-lab">Copilot &amp; Agent Lab</h1>
 <p>FORGE's autonomous coding and sourcing research systems.</p>
-<h2 id="copilot-persistent-claude-code-pipe">Copilot: Persistent Claude Code Pipe<a class="headerlink" href="#copilot-persistent-claude-code-pipe" title="Permanent link">&para;</a></h2>
+<h2 id="copilot-persistent-claude-code-pipe">Copilot: Persistent Claude Code Pipe</h2>
 <p><strong>FORGE Copilot</strong> is a fully autonomous Claude Code agent running as a dedicated persistent process with bidirectional stdin/stdout streaming. Unlike traditional API calls, Copilot stays alive between Discord messages—near-instant after first boot.</p>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<h3 id="architecture">Architecture</h3>
 <ul>
 <li><strong>One persistent Claude Code CLI process</strong> managed by FORGE</li>
 <li><strong>Bidirectional JSON streaming</strong>: user messages written to stdin, responses streamed from stdout</li>
@@ -1409,7 +1409,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Auto-recovery</strong>: health monitor (30s interval) restarts dead processes transparently</li>
 <li><strong>Message queue</strong>: concurrent messages queued automatically, no blocking</li>
 </ul>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<h3 id="configuration">Configuration</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SessionFile: data/copilot_session.json (OAuth state)
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>PIDFile: data/copilot_pid.json (process tracking)
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>MCPFile: data/copilot_mcp.json (registered MCPs)
@@ -1421,7 +1421,7 @@ button:hover { background: #ce9ffc; }
 - <code>PIPE_IDLE_TIMEOUT</code>: 600s (stop idle process)
 - <code>HEALTH_CHECK_INTERVAL</code>: 30s
 - <code>QUEUE_MAX_SIZE</code>: 20 messages</p>
-<h3 id="system-prompt-rules">System Prompt Rules<a class="headerlink" href="#system-prompt-rules" title="Permanent link">&para;</a></h3>
+<h3 id="system-prompt-rules">System Prompt Rules</h3>
 <p>Copilot knows:
 - Full FORGE access (Read, Write, Edit, Bash, Grep, Glob)
 - Root: <code>C:\Users\User\FORGE\</code> (absolute paths mandatory)
@@ -1429,7 +1429,7 @@ button:hover { background: #ce9ffc; }
 - <strong>Critical</strong>: concise output (2000 char Discord limit), never echo context
 - Jump straight to ACTION—first line should be what it's doing, not what it knows
 - Match Zack's casual, straight-to-point style</p>
-<h3 id="copilot-awareness">Copilot Awareness<a class="headerlink" href="#copilot-awareness" title="Permanent link">&para;</a></h3>
+<h3 id="copilot-awareness">Copilot Awareness</h3>
 <p>The [[copilot_awareness.py]] module detects when a message needs code changes:</p>
 <ul>
 <li>Feature requests: "add new command"</li>
@@ -1439,9 +1439,9 @@ button:hover { background: #ce9ffc; }
 <li>Code-specific: "refactor", "rewrite", ".py"</li>
 </ul>
 <p>If a request needs code work, FORGE suggests routing to Copilot automatically.</p>
-<h2 id="agent-lab-sourcing-debate-system">Agent Lab: Sourcing Debate System<a class="headerlink" href="#agent-lab-sourcing-debate-system" title="Permanent link">&para;</a></h2>
+<h2 id="agent-lab-sourcing-debate-system">Agent Lab: Sourcing Debate System</h2>
 <p><strong>Agent Lab</strong> is two autonomous AI agents (Scout 🔍 and Analyst 📊) debating sourcing strategies and candidate pipeline approaches. Runs hourly 8am-11pm in the 💡-lab channel.</p>
-<h3 id="scout-vs-analyst">Scout vs Analyst<a class="headerlink" href="#scout-vs-analyst" title="Permanent link">&para;</a></h3>
+<h3 id="scout-vs-analyst">Scout vs Analyst</h3>
 <table>
 <thead>
 <tr>
@@ -1463,7 +1463,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="session-types">Session Types<a class="headerlink" href="#session-types" title="Permanent link">&para;</a></h3>
+<h3 id="session-types">Session Types</h3>
 <ol>
 <li><strong>JD Breakdown</strong> (📋): Sourcing angles, keywords, Boolean strings, talent communities</li>
 <li><strong>Channel Strategy</strong> (📡): Compare Slack, GitHub, LinkedIn X-ray, Discord, Reddit, StackOverflow</li>
@@ -1473,7 +1473,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Wild Card</strong> (🤯): Unconventional approaches (commit patterns, blog analysis, patent filings)</li>
 <li><strong>VPS Autonomy</strong> (🖥️): FORGE 24/7 independence—monitoring, scheduling, self-healing</li>
 </ol>
-<h3 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<h3 id="configuration_1">Configuration</h3>
 <ul>
 <li><strong>Separate API key</strong>: isolates costs from main FORGE usage</li>
 <li><strong>Default rounds</strong>: 6, max 12</li>
@@ -1481,7 +1481,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Cooldown</strong>: 30 minutes between sessions</li>
 <li><strong>Model</strong>: Haiku (fast, cost-effective)</li>
 </ul>
-<h3 id="interactive-mode">Interactive Mode<a class="headerlink" href="#interactive-mode" title="Permanent link">&para;</a></h3>
+<h3 id="interactive-mode">Interactive Mode</h3>
 <p>Zack can join a session and steer the agents in real-time. Reply to the agents' messages to influence their analysis.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&quot;brainstorm 5 outreach playbooks&quot;
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>→ Scout &amp; Analyst debate 5 different outreach strategies
@@ -1490,7 +1490,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>&quot;done&quot; → wraps up the session
 </code></pre></div>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>

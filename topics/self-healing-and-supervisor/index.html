@@ -2028,10 +2028,10 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="self-healing-and-supervisor-systems">Self-Healing and Supervisor Systems<a class="headerlink" href="#self-healing-and-supervisor-systems" title="Permanent link">&para;</a></h1>
+<h1 id="self-healing-and-supervisor-systems">Self-Healing and Supervisor Systems</h1>
 <p><strong>Last Updated:</strong> 2026-04-04<br />
 <strong>Category:</strong> Architecture, Resilience, Operations</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>FORGE implements a three-layer autonomous defense system to achieve "Unkillable FORGE" — a Discord bot that can detect and recover from failures without human intervention. This system bridges the gap between traditional error handling and true autonomy: <strong>FORGE detects problems and fixes them independently</strong>, rather than waiting for Claude Code to intervene.</p>
 <p>The defense comprises:</p>
 <ol>
@@ -2039,7 +2039,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Supervisor Process Management</strong> (during runtime): External watchdog manages bot.py lifecycle</li>
 <li><strong>Self-Healing Engine</strong> (after detection): Autonomous cog recovery, circuit breaker adaptation, and escalation</li>
 </ol>
-<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
 <pre class="mermaid"><code>graph TD
     A["forge_supervisor.py&lt;br/&gt;External Process&lt;br/&gt;Launches bot.py&lt;br/&gt;Monitors exit codes&lt;br/&gt;Preflight checks&lt;br/&gt;Crash loop protection&lt;br/&gt;Heartbeat monitoring"] --&gt;|launches/monitors| B["bot.py FORGE Discord"]
     B --&gt; C["Event Bus&lt;br/&gt;independence_loop"]
@@ -2050,13 +2050,13 @@ button:hover { background: #ce9ffc; }
     E --&gt; H["📡-monitor&lt;br/&gt;Discord Channel"]
     F --&gt; H
     G --&gt; H</code></pre>
-<h2 id="layer-1-preflight-defense">Layer 1: Preflight Defense<a class="headerlink" href="#layer-1-preflight-defense" title="Permanent link">&para;</a></h2>
+<h2 id="layer-1-preflight-defense">Layer 1: Preflight Defense</h2>
 <p><strong>File:</strong> <code>forge_supervisor.py</code> (lines 1-100+)<br />
 <strong>Trigger:</strong> On FORGE crash (non-zero exit code)<br />
 <strong>Cost:</strong> ~2 seconds  </p>
-<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<h3 id="purpose">Purpose</h3>
 <p>Before restarting bot.py, the supervisor runs import checks on recently modified files. If any file fails to import, it's automatically reverted to the last known-good version.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<h3 id="implementation">Implementation</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Pseudo-logic from forge_supervisor.py</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="mf">1.</span> <span class="n">bot</span><span class="o">.</span><span class="n">py</span> <span class="n">exits</span> <span class="p">(</span><span class="n">crash</span> <span class="n">detected</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="mf">2.</span> <span class="n">Supervisor</span> <span class="n">scans</span> <span class="n">MODIFIED_FILE_WINDOW</span> <span class="p">(</span><span class="mi">600</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span> <span class="nb">min</span><span class="p">)</span>
@@ -2066,7 +2066,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   <span class="o">-</span> <span class="n">Log</span> <span class="n">reversion</span> <span class="n">to</span> <span class="n">supervisor</span><span class="o">.</span><span class="n">log</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="mf">4.</span> <span class="n">Restart</span> <span class="n">bot</span><span class="o">.</span><span class="n">py</span>
 </code></pre></div>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<h3 id="configuration">Configuration</h3>
 <table>
 <thead>
 <tr>
@@ -2098,13 +2098,13 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h3>
+<h3 id="key-files">Key Files</h3>
 <ul>
 <li><strong>State file:</strong> <code>data/supervisor_state.json</code> — JSON record of last crash, reverted files, state transitions</li>
 <li><strong>PID file:</strong> <code>data/supervisor_pid.json</code> — Supervisor process ID (for external monitoring)</li>
 <li><strong>Log:</strong> <code>logs/supervisor.log</code> — All supervisor actions, formatted with timestamps</li>
 </ul>
-<h3 id="example-scenario">Example Scenario<a class="headerlink" href="#example-scenario" title="Permanent link">&para;</a></h3>
+<h3 id="example-scenario">Example Scenario</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>10:15:03 [FORGE.supervisor] Starting bot.py (PID 8492)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>10:15:35 [FORGE.supervisor] bot.py crashed with code 1
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>10:15:35 [FORGE.supervisor] Scanning modified files (last 600s)
@@ -2113,17 +2113,17 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>10:15:36 [FORGE.supervisor] Reverting cogs/my_cog.py to last git commit
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>10:15:37 [FORGE.supervisor] Starting bot.py (attempt 1/3)
 </code></pre></div>
-<h3 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h3>
+<h3 id="limitations">Limitations</h3>
 <ul>
 <li>Only catches <strong>import-time errors</strong> (syntax, missing dependencies, circular imports)</li>
 <li>Does NOT catch runtime errors (those are handled by Layer 3)</li>
 <li>Cannot revert files if git is unavailable or repo is corrupted</li>
 </ul>
 <hr />
-<h2 id="layer-2-supervisor-process-management">Layer 2: Supervisor Process Management<a class="headerlink" href="#layer-2-supervisor-process-management" title="Permanent link">&para;</a></h2>
+<h2 id="layer-2-supervisor-process-management">Layer 2: Supervisor Process Management</h2>
 <p><strong>File:</strong> <code>forge_supervisor.py</code> (lines 40-300+)<br />
 <strong>Lifecycle:</strong> Continuous during FORGE runtime</p>
-<h3 id="core-responsibilities">Core Responsibilities<a class="headerlink" href="#core-responsibilities" title="Permanent link">&para;</a></h3>
+<h3 id="core-responsibilities">Core Responsibilities</h3>
 <ol>
 <li><strong>Subprocess Management</strong> — Launches bot.py with proper I/O handling</li>
 <li><strong>Heartbeat Monitoring</strong> — Checks <code>data/heartbeat.json</code> written by watchdog every 10 minutes</li>
@@ -2131,7 +2131,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Recorder Co-Management</strong> — Also launches/monitors <code>forge_recorder.py</code> (standalone voice recorder)</li>
 <li><strong>State Tracking</strong> — Writes to <code>supervisor_state.json</code> for visibility</li>
 </ol>
-<h3 id="heartbeat-system">Heartbeat System<a class="headerlink" href="#heartbeat-system" title="Permanent link">&para;</a></h3>
+<h3 id="heartbeat-system">Heartbeat System</h3>
 <p>The supervisor reads a heartbeat file written by the watchdog module (every 10 minutes during active hours).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-04T15:30:00Z&quot;</span><span class="p">,</span>
@@ -2142,7 +2142,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </code></pre></div>
 <p>If the heartbeat is <strong>stale for &gt; 20 minutes</strong> (<code>HEARTBEAT_STALE_THRESHOLD</code>), the supervisor considers FORGE hung and may restart it.</p>
-<h3 id="state-transitions">State Transitions<a class="headerlink" href="#state-transitions" title="Permanent link">&para;</a></h3>
+<h3 id="state-transitions">State Transitions</h3>
 <pre class="mermaid"><code>graph TD
     A["HEALTHY"] --&gt;|crash detected| B["CRASHED&lt;br/&gt;Preflight check&lt;br/&gt;Revert files"]
     B --&gt;|fast restart succeeds| A
@@ -2150,7 +2150,7 @@ button:hover { background: #ce9ffc; }
     C --&gt;|MAX_CRASHES reached| D["HALTED"]
     D --&gt;|Wait CRASH_COOLDOWN 300s| E["Reset counters"]
     E --&gt; A</code></pre>
-<h3 id="recorder-co-management">Recorder Co-Management<a class="headerlink" href="#recorder-co-management" title="Permanent link">&para;</a></h3>
+<h3 id="recorder-co-management">Recorder Co-Management</h3>
 <p>The supervisor also manages <code>forge_recorder.py</code>, a standalone process that:
 - Captures FORGE's output in a ring buffer
 - Survives bot crashes (separate process)
@@ -2158,7 +2158,7 @@ button:hover { background: #ce9ffc; }
 - Readable for diagnostic purposes</p>
 <p>Launched alongside bot.py, managed with same lifecycle.</p>
 <hr />
-<h2 id="layer-3-self-healing-engine">Layer 3: Self-Healing Engine<a class="headerlink" href="#layer-3-self-healing-engine" title="Permanent link">&para;</a></h2>
+<h2 id="layer-3-self-healing-engine">Layer 3: Self-Healing Engine</h2>
 <p><strong>Files:</strong>
 - <code>core/self_healing.py</code> — Main SelfHealer class
 - <code>core/resilience.py</code> — Circuit breaker pattern
@@ -2169,8 +2169,8 @@ button:hover { background: #ce9ffc; }
 - <code>core/forge_loop.py</code> — Event bus wiring</p>
 <p><strong>Trigger:</strong> Autonomous, scheduled + event-driven<br />
 <strong>Scope:</strong> Self-correcting without human input</p>
-<h3 id="three-sub-components">Three Sub-Components<a class="headerlink" href="#three-sub-components" title="Permanent link">&para;</a></h3>
-<h4 id="3a-cog-auto-recovery">3A. Cog Auto-Recovery<a class="headerlink" href="#3a-cog-auto-recovery" title="Permanent link">&para;</a></h4>
+<h3 id="three-sub-components">Three Sub-Components</h3>
+<h4 id="3a-cog-auto-recovery">3A. Cog Auto-Recovery</h4>
 <p>When a cog (module) crashes or becomes unresponsive:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># From self_healing.py :: CogAutoRecovery</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="mf">1.</span> <span class="n">Watchdog</span> <span class="n">detects</span> <span class="n">cog</span> <span class="ow">not</span> <span class="n">responding</span> <span class="n">to</span> <span class="n">events</span>
@@ -2181,7 +2181,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="mf">6.</span> <span class="n">Posts</span> <span class="n">recovery</span> <span class="n">message</span> <span class="n">to</span> <span class="c1">#📡-monitor</span>
 </code></pre></div>
 <p><strong>Status tracking:</strong> Cog-level recovery tracked in database, history in <code>watchdog_cog_recovery</code> table.</p>
-<h4 id="3b-failure-adaptation-circuit-breaker">3B. Failure Adaptation (Circuit Breaker)<a class="headerlink" href="#3b-failure-adaptation-circuit-breaker" title="Permanent link">&para;</a></h4>
+<h4 id="3b-failure-adaptation-circuit-breaker">3B. Failure Adaptation (Circuit Breaker)</h4>
 <p><strong>File:</strong> <code>core/resilience.py</code><br />
 <strong>Pattern:</strong> Three-state finite state machine</p>
 <p>The circuit breaker wraps external API calls (Anthropic, GitHub, Apify, Tavily, Exa) with failure tracking:</p>
@@ -2232,7 +2232,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">)</span>
 </code></pre></div>
 <p><strong>Automatic Adaptation:</strong> The self-healer periodically reviews failure patterns and adjusts thresholds. High-failure services get stricter thresholds; recovering services get relaxed thresholds.</p>
-<h4 id="3c-friction-escalation">3C. Friction Escalation<a class="headerlink" href="#3c-friction-escalation" title="Permanent link">&para;</a></h4>
+<h4 id="3c-friction-escalation">3C. Friction Escalation</h4>
 <p><strong>File:</strong> <code>core/self_healing.py</code> :: <code>FrictionEscalator</code></p>
 <p>Detects recurring error patterns and promotes them to <strong>enforced preferences</strong>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Escalation workflow</span>
@@ -2248,7 +2248,7 @@ button:hover { background: #ce9ffc; }
 - <strong>Learns</strong> from repeated failures
 - <strong>Prevents</strong> cascading failures by making recovery automatic
 - <strong>Reduces</strong> human intervention (no need to re-architect after pattern emerges)</p>
-<h4 id="3d-health-pulse">3D. Health Pulse<a class="headerlink" href="#3d-health-pulse" title="Permanent link">&para;</a></h4>
+<h4 id="3d-health-pulse">3D. Health Pulse</h4>
 <p><strong>Schedule:</strong> Every 15 minutes<br />
 <strong>Scope:</strong> Periodic self-check</p>
 <p>Runs comprehensive health checks:
@@ -2263,8 +2263,8 @@ button:hover { background: #ce9ffc; }
 - 🟡 Warnings (e.g., lag &gt; 0.005s but &lt; 0.02s)
 - 🔴 Critical (e.g., event loop lag &gt; 0.05s)</p>
 <hr />
-<h2 id="integrated-monitoring">Integrated Monitoring<a class="headerlink" href="#integrated-monitoring" title="Permanent link">&para;</a></h2>
-<h3 id="watchdog-module">Watchdog Module<a class="headerlink" href="#watchdog-module" title="Permanent link">&para;</a></h3>
+<h2 id="integrated-monitoring">Integrated Monitoring</h2>
+<h3 id="watchdog-module">Watchdog Module</h3>
 <p><strong>File:</strong> <code>modules/forge_watchdog.py</code></p>
 <p>Goes beyond crash monitoring — detects <strong>silent failures</strong>:</p>
 <ul>
@@ -2304,7 +2304,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <p>Alert state machine prevents spam: once alerted, won't re-alert same issue for 30 minutes (cooldown).</p>
-<h3 id="monitor-module">Monitor Module<a class="headerlink" href="#monitor-module" title="Permanent link">&para;</a></h3>
+<h3 id="monitor-module">Monitor Module</h3>
 <p><strong>File:</strong> <code>modules/forge_monitor.py</code></p>
 <p>Hooks into Python's logging system to catch all ERROR+ level events:</p>
 <ol>
@@ -2321,7 +2321,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Message: &quot;API timeout after 30s&quot;
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>Time: 2026-04-04 15:42:19 UTC
 </code></pre></div>
-<h3 id="process-monitor">Process Monitor<a class="headerlink" href="#process-monitor" title="Permanent link">&para;</a></h3>
+<h3 id="process-monitor">Process Monitor</h3>
 <p><strong>File:</strong> <code>modules/process_monitor.py</code></p>
 <p>Wires into the process registry singleton and posts lifecycle events to #📡-monitor:</p>
 <ul>
@@ -2337,30 +2337,30 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Expected: 15 mins
 </code></pre></div></p>
 <hr />
-<h2 id="independence-loop-event-bus-wiring">Independence Loop (Event Bus Wiring)<a class="headerlink" href="#independence-loop-event-bus-wiring" title="Permanent link">&para;</a></h2>
+<h2 id="independence-loop-event-bus-wiring">Independence Loop (Event Bus Wiring)</h2>
 <p><strong>File:</strong> <code>core/forge_loop.py</code></p>
 <p>Connects all feedback loops via event bus subscriptions (fire-and-forget):</p>
-<h3 id="learn-loop">Learn Loop<a class="headerlink" href="#learn-loop" title="Permanent link">&para;</a></h3>
+<h3 id="learn-loop">Learn Loop</h3>
 <pre class="mermaid"><code>graph TD
     A["Classifier corrected"] --&gt; B["Update WAL"]
     B --&gt; C["Pattern detection"]
     C --&gt; D["Dynamic few-shot"]
     D --&gt; E["Better classifier"]</code></pre>
 <p>When Zack corrects the classifier, the correction is logged to the <strong>Write-Ahead Log (WAL)</strong>, then used to improve the classifier's few-shot examples.</p>
-<h3 id="heal-loop">Heal Loop<a class="headerlink" href="#heal-loop" title="Permanent link">&para;</a></h3>
+<h3 id="heal-loop">Heal Loop</h3>
 <pre class="mermaid"><code>graph TD
     A["API failure detected"] --&gt; B["Circuit breaker trips"]
     B --&gt; C["Self-healer notified"]
     C --&gt; D["Threshold adaptation"]
     D --&gt; E["Monitor alert posted"]</code></pre>
-<h3 id="awareness-loop">Awareness Loop<a class="headerlink" href="#awareness-loop" title="Permanent link">&para;</a></h3>
+<h3 id="awareness-loop">Awareness Loop</h3>
 <pre class="mermaid"><code>graph TD
     A["Unknown request"] --&gt; B["Gap recorded"]
     B --&gt; C["Brain analyzes"]
     C --&gt; D["Suggests exact command"]</code></pre>
 <p>When the classifier returns <code>None</code> (no match), the user's message is recorded as a <strong>capability gap</strong>, and the brain (Sonnet) later suggests which command to add or which classifier rule to fix.</p>
 <hr />
-<h2 id="error-recovery-with-user-choice">Error Recovery with User Choice<a class="headerlink" href="#error-recovery-with-user-choice" title="Permanent link">&para;</a></h2>
+<h2 id="error-recovery-with-user-choice">Error Recovery with User Choice</h2>
 <p><strong>File:</strong> <code>core/error_recovery.py</code></p>
 <p>When an error occurs during a user-facing operation (enrichment, scraping, etc.), the bot:</p>
 <ol>
@@ -2383,7 +2383,7 @@ button:hover { background: #ce9ffc; }
 <li>Circuit breaker open → Wait + Retry / Skip</li>
 </ul>
 <hr />
-<h2 id="key-files-reference-table">Key Files Reference Table<a class="headerlink" href="#key-files-reference-table" title="Permanent link">&para;</a></h2>
+<h2 id="key-files-reference-table">Key Files Reference Table</h2>
 <table>
 <thead>
 <tr>
@@ -2451,22 +2451,22 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="operational-guidelines">Operational Guidelines<a class="headerlink" href="#operational-guidelines" title="Permanent link">&para;</a></h2>
-<h3 id="when-to-trust-auto-recovery">When to Trust Auto-Recovery<a class="headerlink" href="#when-to-trust-auto-recovery" title="Permanent link">&para;</a></h3>
+<h2 id="operational-guidelines">Operational Guidelines</h2>
+<h3 id="when-to-trust-auto-recovery">When to Trust Auto-Recovery</h3>
 <ul>
 <li>Simple cog reloads (network glitch, timeout)</li>
 <li>API circuit breaker trips (service degraded)</li>
 <li>Friction escalation (pattern-based optimization)</li>
 <li>Watchdog alerts (informational, no action taken)</li>
 </ul>
-<h3 id="when-to-intervene-manually">When to Intervene Manually<a class="headerlink" href="#when-to-intervene-manually" title="Permanent link">&para;</a></h3>
+<h3 id="when-to-intervene-manually">When to Intervene Manually</h3>
 <ul>
 <li>Multiple consecutive crashes (supervisor halts after 3)</li>
 <li>Heartbeat stale for 20+ minutes (possible infinite loop)</li>
 <li>High error rate spike (&gt; 10 errors/hour in single module)</li>
 <li>Database corruption or git repo issues</li>
 </ul>
-<h3 id="debugging-commands">Debugging Commands<a class="headerlink" href="#debugging-commands" title="Permanent link">&para;</a></h3>
+<h3 id="debugging-commands">Debugging Commands</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check supervisor state</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cat<span class="w"> </span>data/supervisor_state.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
@@ -2488,7 +2488,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1"># View monitor channel logs</span>
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>discord:<span class="w"> </span><span class="c1">#📡-monitor (scroll up to see all alerts)</span>
 </code></pre></div>
-<h3 id="configuration-for-custom-behavior">Configuration for Custom Behavior<a class="headerlink" href="#configuration-for-custom-behavior" title="Permanent link">&para;</a></h3>
+<h3 id="configuration-for-custom-behavior">Configuration for Custom Behavior</h3>
 <p>Edit these constants in source files:</p>
 <p><strong>Supervisor</strong> (<code>forge_supervisor.py</code>):
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">MAX_CONSECUTIVE_CRASHES</span> <span class="o">=</span> <span class="mi">3</span>          <span class="c1"># Halt after N crashes</span>
@@ -2507,7 +2507,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">_RECOVERY_THRESHOLD</span> <span class="o">=</span> <span class="mi">2</span>              <span class="c1"># 2 consecutive passes to clear</span>
 </code></pre></div></p>
 <hr />
-<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<h2 id="related-topics">Related Topics</h2>
 <ul>
 <li><a href="../../../core/bootstrap">Bootstrap &amp; Boot Process</a> — Where self-healing is initialized</li>
 <li><a href="../../../core/database">Database Schema</a> — <code>circuit_breakers</code>, <code>watchdog_alerts</code> tables</li>
@@ -2516,7 +2516,7 @@ button:hover { background: #ce9ffc; }
 <li><a href="../../../cogs">Cogs</a> — Recoverable Discord bot modules</li>
 </ul>
 <hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h2 id="see-also">See Also</h2>
 <ul>
 <li><strong>Memory:</strong> <code>~/.claude/projects/C--Users-User-FORGE/memory/MEMORY.md</code> — "Unkillable FORGE: 3-layer defense"</li>
 <li><strong>Architecture:</strong> <code>[[forge-systems]]</code> — Multi-process orchestration</li>

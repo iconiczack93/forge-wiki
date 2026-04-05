@@ -2560,9 +2560,9 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="discord-bot-infrastructure">Discord Bot Infrastructure<a class="headerlink" href="#discord-bot-infrastructure" title="Permanent link">&para;</a></h1>
+<h1 id="discord-bot-infrastructure">Discord Bot Infrastructure</h1>
 <p>FORGE is a sophisticated Discord bot built on discord.py that orchestrates AI-powered workflows, sourcing pipelines, and real-time progress tracking. This article covers the core architectural components that make FORGE function across 6,698 lines of bot logic, 34 cogs, and 38+ modules.</p>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#overview">#Overview</a></li>
 <li><a href="#bot-initialization-message-routing">#Bot Initialization &amp; Message Routing</a></li>
@@ -2577,7 +2577,7 @@ button:hover { background: #ce9ffc; }
 <li><a href="#key-files-reference">#Key Files Reference</a></li>
 </ol>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>FORGE operates on a <strong>dispatcher + event-driven</strong> architecture:</p>
 <ul>
 <li><strong>Classifier</strong>: Routes natural language → ~300 action types</li>
@@ -2589,9 +2589,9 @@ button:hover { background: #ce9ffc; }
 </ul>
 <p>This design separates concerns while maintaining a single message handler in bot.py that stays clean and testable.</p>
 <hr />
-<h2 id="bot-initialization-message-routing">Bot Initialization &amp; Message Routing<a class="headerlink" href="#bot-initialization-message-routing" title="Permanent link">&para;</a></h2>
+<h2 id="bot-initialization-message-routing">Bot Initialization &amp; Message Routing</h2>
 <p><strong>File</strong>: [[bot.py]]</p>
-<h3 id="duplicate-instance-guard">Duplicate Instance Guard<a class="headerlink" href="#duplicate-instance-guard" title="Permanent link">&para;</a></h3>
+<h3 id="duplicate-instance-guard">Duplicate Instance Guard</h3>
 <p>FORGE prevents two bot.py processes from running simultaneously using PID tracking:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>bot_pid.json → stores PID + startup timestamp
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>_check_bot_duplicate() → verifies process is still alive before allowing startup
@@ -2599,7 +2599,7 @@ button:hover { background: #ce9ffc; }
 <p>The guard uses <code>psutil</code> to validate:
 1. Process exists and is Python
 2. Process is running bot.py (not a recycled PID)</p>
-<h3 id="core-message-handler">Core Message Handler<a class="headerlink" href="#core-message-handler" title="Permanent link">&para;</a></h3>
+<h3 id="core-message-handler">Core Message Handler</h3>
 <p>The main <code>on_message</code> event processes every Discord message through:</p>
 <ol>
 <li><strong>Ignore checks</strong>: Skip bot messages, private DMs, empty content</li>
@@ -2609,7 +2609,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Brain call</strong> (optional): Invoke Claude for multi-action workflows</li>
 <li><strong>Cog execution</strong>: Async task execution with error handling</li>
 </ol>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<h3 id="configuration">Configuration</h3>
 <p><strong>File</strong>: <a href="../core/config.py">core/config.py</a></p>
 <p>Environment-based settings include:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">DISCORD_BOT_TOKEN</span>           <span class="c1"># Bot authentication</span>
@@ -2624,7 +2624,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div>
 <p>All config is lazy-loaded to support hot-reload of values.</p>
 <hr />
-<h2 id="cog-system-handled_actions">Cog System (HANDLED_ACTIONS)<a class="headerlink" href="#cog-system-handled_actions" title="Permanent link">&para;</a></h2>
+<h2 id="cog-system-handled_actions">Cog System (HANDLED_ACTIONS)</h2>
 <p><strong>File</strong>: <a href="../cogs/__init__.py">cogs/<strong>init</strong>.py</a> (typically minimal)</p>
 <p>Each cog is a <code>commands.Cog</code> subclass that:</p>
 <ol>
@@ -2632,7 +2632,7 @@ button:hover { background: #ce9ffc; }
 <li>Implements <strong><code>handle_action(action, **kwargs)</code></strong> async method</li>
 <li>Lives in <code>cogs/</code> directory and is auto-loaded at startup</li>
 </ol>
-<h3 id="handled_actions-pattern">HANDLED_ACTIONS Pattern<a class="headerlink" href="#handled_actions-pattern" title="Permanent link">&para;</a></h3>
+<h3 id="handled_actions-pattern">HANDLED_ACTIONS Pattern</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># In a cog:</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">HANDLED_ACTIONS</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">&quot;retrieve_jd&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -2651,7 +2651,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;evaluate_candidate&quot;</span><span class="p">:</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prism_evaluate</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;profile_text&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;score_threshold&quot;</span><span class="p">])</span>
 </code></pre></div>
-<h3 id="built-in-cogs">Built-in Cogs<a class="headerlink" href="#built-in-cogs" title="Permanent link">&para;</a></h3>
+<h3 id="built-in-cogs">Built-in Cogs</h3>
 <table>
 <thead>
 <tr>
@@ -2693,17 +2693,17 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="hot-reload">Hot-Reload<a class="headerlink" href="#hot-reload" title="Permanent link">&para;</a></h3>
+<h3 id="hot-reload">Hot-Reload</h3>
 <p>Admin commands allow live cog reloading without restarting the bot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/reload sourcing_cmds  # Reloads just sourcing_cmds cog
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>/reload_all            # Reloads all cogs
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>/sync_commands         # Re-syncs slash commands to Discord
 </code></pre></div>
 <hr />
-<h2 id="event-bus">Event Bus<a class="headerlink" href="#event-bus" title="Permanent link">&para;</a></h2>
+<h2 id="event-bus">Event Bus</h2>
 <p><strong>File</strong>: <a href="../core/event_bus.py">core/event_bus.py</a> — <em>Holy Grail #9</em></p>
 <p>A lightweight async pub/sub system for cross-module causation tracking.</p>
-<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<h3 id="key-features">Key Features</h3>
 <ul>
 <li><strong>Typed Events</strong>: Dataclass-based events with correlation IDs</li>
 <li><strong>Causation Chains</strong>: Parent event IDs track call hierarchy</li>
@@ -2711,7 +2711,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Bounded Queue</strong>: Prevents backlog (MAX_QUEUE = 500)</li>
 <li><strong>Subscriber Isolation</strong>: One bad handler doesn't crash others</li>
 </ul>
-<h3 id="event-dataclass">Event Dataclass<a class="headerlink" href="#event-dataclass" title="Permanent link">&para;</a></h3>
+<h3 id="event-dataclass">Event Dataclass</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nd">@dataclass</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">Event</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">event_type</span><span class="p">:</span> <span class="nb">str</span>              <span class="c1"># &quot;candidate_found&quot;, &quot;brain_call_completed&quot;, etc.</span>
@@ -2722,7 +2722,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">correlation_id</span><span class="p">:</span> <span class="nb">str</span>          <span class="c1"># Groups related events</span>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">timestamp</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># ISO 8601</span>
 </code></pre></div>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<h3 id="usage">Usage</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.event_bus</span><span class="w"> </span><span class="kn">import</span> <span class="n">event_bus</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Emit an event</span>
@@ -2747,17 +2747,17 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Get descendants (recursive)</span>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">descendants</span> <span class="o">=</span> <span class="k">await</span> <span class="n">event_bus</span><span class="o">.</span><span class="n">get_descendants</span><span class="p">(</span><span class="n">event_id</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="middleware-integration">Middleware Integration<a class="headerlink" href="#middleware-integration" title="Permanent link">&para;</a></h3>
+<h3 id="middleware-integration">Middleware Integration</h3>
 <p>The event bus is automatically wired into <a href="#middleware-chain">#Middleware Chain</a>:</p>
 <ul>
 <li><strong>EventBusMiddleware</strong>: Emits <code>brain_call_started</code> / <code>brain_call_completed</code> events</li>
 <li><strong>CostTrackingMiddleware</strong>: Emits <code>brain_cost_tracked</code> with token counts and pricing</li>
 </ul>
 <hr />
-<h2 id="middleware-chain">Middleware Chain<a class="headerlink" href="#middleware-chain" title="Permanent link">&para;</a></h2>
+<h2 id="middleware-chain">Middleware Chain</h2>
 <p><strong>File</strong>: <a href="../core/middleware_chain.py">core/middleware_chain.py</a></p>
 <p>Inspired by Deer-Flow, adapted for FORGE's immutable-first design.</p>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<h3 id="architecture">Architecture</h3>
 <p>Middlewares are applied in <strong>onion model</strong>:</p>
 <pre class="mermaid"><code>graph LR
     A["Input"] --&gt; B["mw[0]"]
@@ -2768,7 +2768,7 @@ button:hover { background: #ce9ffc; }
     F --&gt; G["mw[1]"]
     G --&gt; H["mw[0]"]
     H --&gt; I["Output"]</code></pre>
-<h3 id="core-data-types">Core Data Types<a class="headerlink" href="#core-data-types" title="Permanent link">&para;</a></h3>
+<h3 id="core-data-types">Core Data Types</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BrainContext</span><span class="p">:</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Immutable snapshot before Claude API call.&quot;&quot;&quot;</span>
@@ -2790,27 +2790,27 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="n">cost</span><span class="p">:</span> <span class="nb">float</span>
 <a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="n">stop_reason</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div>
-<h3 id="built-in-middlewares">Built-in Middlewares<a class="headerlink" href="#built-in-middlewares" title="Permanent link">&para;</a></h3>
-<h4 id="eventbusmiddleware">EventBusMiddleware<a class="headerlink" href="#eventbusmiddleware" title="Permanent link">&para;</a></h4>
+<h3 id="built-in-middlewares">Built-in Middlewares</h3>
+<h4 id="eventbusmiddleware">EventBusMiddleware</h4>
 <p>Emits lifecycle events around Claude calls:</p>
 <ul>
 <li><code>brain_call_started</code>: Before API call (includes message count, tool count)</li>
 <li><code>brain_call_completed</code>: After API call (includes duration, stop_reason, tool_call_count)</li>
 </ul>
 <p>Tracks start times per correlation_id to calculate duration.</p>
-<h4 id="costtrackingmiddleware">CostTrackingMiddleware<a class="headerlink" href="#costtrackingmiddleware" title="Permanent link">&para;</a></h4>
+<h4 id="costtrackingmiddleware">CostTrackingMiddleware</h4>
 <p>Logs cost and usage tokens:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Brain call cost: $0.002345 (in=512, out=128, model=claude-sonnet-4-5)
 </code></pre></div>
 <p>Emits <code>brain_cost_tracked</code> event for centralized cost aggregation.</p>
-<h4 id="subagentlimitmiddleware">SubagentLimitMiddleware<a class="headerlink" href="#subagentlimitmiddleware" title="Permanent link">&para;</a></h4>
+<h4 id="subagentlimitmiddleware">SubagentLimitMiddleware</h4>
 <p>Prevents runaway <code>forge_copilot_task</code> tool spawning:</p>
 <ul>
 <li>Default: max 3 copilot calls per brain response</li>
 <li>Excess calls are truncated with a warning</li>
 <li>Helps prevent token explosion from nested subagent spawning</li>
 </ul>
-<h3 id="usage-in-forge">Usage in FORGE<a class="headerlink" href="#usage-in-forge" title="Permanent link">&para;</a></h3>
+<h3 id="usage-in-forge">Usage in FORGE</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.middleware_chain</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_chain</span><span class="p">,</span> <span class="n">BrainContext</span><span class="p">,</span> <span class="n">BrainResponse</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">chain</span> <span class="o">=</span> <span class="n">default_chain</span><span class="p">()</span>
@@ -2844,10 +2844,10 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">chain</span><span class="o">.</span><span class="n">run_tool</span><span class="p">(</span><span class="s2">&quot;forge_read_channel&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">base_handler</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="progress-tracking">Progress Tracking<a class="headerlink" href="#progress-tracking" title="Permanent link">&para;</a></h2>
+<h2 id="progress-tracking">Progress Tracking</h2>
 <p><strong>File</strong>: <a href="../core/progress.py">core/progress.py</a></p>
 <p>Universal progress display for long-running operations. Shows real-time status in Discord via throttled message edits.</p>
-<h3 id="progresstracker">ProgressTracker<a class="headerlink" href="#progresstracker" title="Permanent link">&para;</a></h3>
+<h3 id="progresstracker">ProgressTracker</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">tracker</span> <span class="o">=</span> <span class="n">ProgressTracker</span><span class="p">(</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;PRISM Evaluation&quot;</span><span class="p">,</span>
@@ -2867,7 +2867,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
 <a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>    <span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="s2">&quot;Score: 4.2/5&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="display-format">Display Format<a class="headerlink" href="#display-format" title="Permanent link">&para;</a></h3>
+<h3 id="display-format">Display Format</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>🔄 **PRISM Evaluation**
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>✅ Loading JD...
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>✅ Fetching GitHub history...
@@ -2883,7 +2883,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Score: 4.2/5
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>⏱️ 12.4s
 </code></pre></div>
-<h3 id="streaming-support">Streaming Support<a class="headerlink" href="#streaming-support" title="Permanent link">&para;</a></h3>
+<h3 id="streaming-support">Streaming Support</h3>
 <p>For Claude responses, use <code>on_token</code> callback:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">tracker</span> <span class="o">=</span> <span class="n">ProgressTracker</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Thinking&quot;</span><span class="p">)</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">async</span> <span class="k">with</span> <span class="n">tracker</span><span class="p">:</span>
@@ -2893,11 +2893,11 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="p">)</span>
 </code></pre></div>
 <p>Shows last ~200 chars of streaming text as preview.</p>
-<h3 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">&para;</a></h3>
+<h3 id="progress-bar">Progress Bar</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">await</span> <span class="n">tracker</span><span class="o">.</span><span class="n">progress_bar</span><span class="p">(</span><span class="n">current</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Enriching...&quot;</span><span class="p">)</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># [████████░░] 80% (40/50) Enriching...</span>
 </code></pre></div>
-<h3 id="nooptracker">NoOpTracker<a class="headerlink" href="#nooptracker" title="Permanent link">&para;</a></h3>
+<h3 id="nooptracker">NoOpTracker</h3>
 <p>For optional progress tracking, use <code>NoOpTracker</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">core.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_tracker</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
@@ -2907,10 +2907,10 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    <span class="c1"># ... now safe to call tracker even if None</span>
 </code></pre></div>
 <hr />
-<h2 id="discord-channel-management">Discord Channel Management<a class="headerlink" href="#discord-channel-management" title="Permanent link">&para;</a></h2>
+<h2 id="discord-channel-management">Discord Channel Management</h2>
 <p><strong>File</strong>: <a href="../modules/discord_channels.py">modules/discord_channels.py</a></p>
 <p>Unified interface for reading/writing Discord messages across any channel FORGE can access.</p>
-<h3 id="channel-resolution">Channel Resolution<a class="headerlink" href="#channel-resolution" title="Permanent link">&para;</a></h3>
+<h3 id="channel-resolution">Channel Resolution</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.discord_channels</span><span class="w"> </span><span class="kn">import</span> <span class="n">resolve_channel</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># Resolve by ID</span>
@@ -2925,7 +2925,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">ch</span> <span class="o">=</span> <span class="k">await</span> <span class="n">resolve_channel</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="s2">&quot;monitor&quot;</span><span class="p">)</span>      <span class="c1"># → MONITOR_CHANNEL_ID</span>
 </code></pre></div>
 <p>Priority: numeric ID → config alias → fuzzy guild scan.</p>
-<h3 id="reading-messages">Reading Messages<a class="headerlink" href="#reading-messages" title="Permanent link">&para;</a></h3>
+<h3 id="reading-messages">Reading Messages</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">messages</span> <span class="o">=</span> <span class="k">await</span> <span class="n">read_channel_messages</span><span class="p">(</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">channel</span><span class="p">,</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">limit</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
@@ -2948,7 +2948,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="c1">#   },</span>
 <a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="c1"># ]</span>
 </code></pre></div>
-<h3 id="writing-messages">Writing Messages<a class="headerlink" href="#writing-messages" title="Permanent link">&para;</a></h3>
+<h3 id="writing-messages">Writing Messages</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.discord_channels</span><span class="w"> </span><span class="kn">import</span> <span class="n">write_channel_message</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Simple message</span>
@@ -2967,7 +2967,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="p">)</span>
 </code></pre></div>
 <p>Automatically splits long content (&gt;2000 chars) into multiple messages.</p>
-<h3 id="message-operations">Message Operations<a class="headerlink" href="#message-operations" title="Permanent link">&para;</a></h3>
+<h3 id="message-operations">Message Operations</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Edit</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">await</span> <span class="n">edit_channel_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">message_id</span><span class="p">,</span> <span class="s2">&quot;Updated content&quot;</span><span class="p">)</span>
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
@@ -2986,7 +2986,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="c1"># Find recent bot message</span>
 <a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">find_recent_bot_message</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">bot</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">content_query</span><span class="o">=</span><span class="s2">&quot;evaluation&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h3>
+<h3 id="advanced-features">Advanced Features</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Threads</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">create_thread</span><span class="p">(</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="n">channel</span><span class="p">,</span>
@@ -3030,7 +3030,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-19-41" name="__codelineno-19-41" href="#__codelineno-19-41"></a>    <span class="n">channel_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;⚡-forge&quot;</span><span class="p">,</span> <span class="s2">&quot;📡-monitor&quot;</span><span class="p">],</span>
 <a id="__codelineno-19-42" name="__codelineno-19-42" href="#__codelineno-19-42"></a><span class="p">)</span>
 </code></pre></div>
-<h3 id="channel-info">Channel Info<a class="headerlink" href="#channel-info" title="Permanent link">&para;</a></h3>
+<h3 id="channel-info">Channel Info</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Voice state</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">voice_channels</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_voice_state</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># [</span>
@@ -3054,10 +3054,10 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="k">await</span> <span class="n">set_bot_presence</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s2">&quot;online&quot;</span><span class="p">,</span> <span class="n">activity_type</span><span class="o">=</span><span class="s2">&quot;watching&quot;</span><span class="p">,</span> <span class="n">activity_text</span><span class="o">=</span><span class="s2">&quot;the forge&quot;</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="claudediscord-relay">Claude↔Discord Relay<a class="headerlink" href="#claudediscord-relay" title="Permanent link">&para;</a></h2>
+<h2 id="claudediscord-relay">Claude↔Discord Relay</h2>
 <p><strong>File</strong>: <a href="../modules/relay.py">modules/relay.py</a></p>
 <p>Enables Claude (from the Claude desktop app) to post to #copilot and receive Zack's replies via Discord MCP without spawning the copilot CLI.</p>
-<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<h3 id="how-it-works">How It Works</h3>
 <ol>
 <li>Claude posts to #copilot via Discord MCP</li>
 <li>FORGE detects Claude² bot message</li>
@@ -3066,7 +3066,7 @@ button:hover { background: #ce9ffc; }
 <li>Claude reads reply via Discord MCP (no CLI spawn)</li>
 <li>Session auto-times out after 15m idle</li>
 </ol>
-<h3 id="attention-prefixes-trigger-dm">Attention Prefixes (trigger DM)<a class="headerlink" href="#attention-prefixes-trigger-dm" title="Permanent link">&para;</a></h3>
+<h3 id="attention-prefixes-trigger-dm">Attention Prefixes (trigger DM)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>🔔 Need input: [question]
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>❓ Should we do X?
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>⚠️ Found a problem: [details]
@@ -3074,13 +3074,13 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>✅ Task complete
 <a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>🏁 Session done
 </code></pre></div>
-<h3 id="status-prefixes-no-dm">Status Prefixes (no DM)<a class="headerlink" href="#status-prefixes-no-dm" title="Permanent link">&para;</a></h3>
+<h3 id="status-prefixes-no-dm">Status Prefixes (no DM)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>📋 Working on X...
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>🔧 Editing file Y
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>📝 Found 3 issues
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>⏳ In progress
 </code></pre></div>
-<h3 id="usage_1">Usage<a class="headerlink" href="#usage_1" title="Permanent link">&para;</a></h3>
+<h3 id="usage_1">Usage</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">modules.relay</span><span class="w"> </span><span class="kn">import</span> <span class="n">handle_relay_message</span><span class="p">,</span> <span class="n">get_relay_status</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># In on_message handler</span>
@@ -3092,17 +3092,17 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="c1"># &quot;🟢 **Relay active** (5m) — 12 messages&quot;</span>
 <a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="c1"># &quot;⚫ **Relay idle** — post to #copilot to start&quot;</span>
 </code></pre></div>
-<h3 id="session-control">Session Control<a class="headerlink" href="#session-control" title="Permanent link">&para;</a></h3>
+<h3 id="session-control">Session Control</h3>
 <p>In #copilot, Zack can:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>end relay        # End relay, restore copilot CLI
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>stop relay       # (alias)
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>copilot mode     # (alias)
 </code></pre></div>
 <hr />
-<h2 id="admin-commands">Admin Commands<a class="headerlink" href="#admin-commands" title="Permanent link">&para;</a></h2>
+<h2 id="admin-commands">Admin Commands</h2>
 <p><strong>File</strong>: <a href="../cogs/admin.py">cogs/admin.py</a></p>
 <p>Owner-only commands (ZACK_ID) for managing FORGE.</p>
-<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<h3 id="commands">Commands</h3>
 <table>
 <thead>
 <tr>
@@ -3129,7 +3129,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<h3 id="implementation">Implementation</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nd">@app_commands</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;reload&quot;</span><span class="p">)</span>
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">cmd_reload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interaction</span><span class="p">:</span> <span class="n">discord</span><span class="o">.</span><span class="n">Interaction</span><span class="p">,</span> <span class="n">cog</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_owner</span><span class="p">(</span><span class="n">interaction</span><span class="p">):</span>
@@ -3145,10 +3145,10 @@ button:hover { background: #ce9ffc; }
 </code></pre></div>
 <p>All admin commands are owner-guarded via <code>_is_owner()</code> check.</p>
 <hr />
-<h2 id="interactive-views">Interactive Views<a class="headerlink" href="#interactive-views" title="Permanent link">&para;</a></h2>
+<h2 id="interactive-views">Interactive Views</h2>
 <p><strong>File</strong>: <a href="../cogs/views.py">cogs/views.py</a></p>
 <p>Persistent button-based UI panels using discord.py views.</p>
-<h3 id="confirmview">ConfirmView<a class="headerlink" href="#confirmview" title="Permanent link">&para;</a></h3>
+<h3 id="confirmview">ConfirmView</h3>
 <p>Simple yes/no confirmation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">view</span> <span class="o">=</span> <span class="n">ConfirmView</span><span class="p">(</span><span class="n">author_id</span><span class="o">=</span><span class="n">ZACK_ID</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Proceed with enrichment?&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
@@ -3159,7 +3159,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>        <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;❌ Cancelled&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="destructiveconfirmview">DestructiveConfirmView<a class="headerlink" href="#destructiveconfirmview" title="Permanent link">&para;</a></h3>
+<h3 id="destructiveconfirmview">DestructiveConfirmView</h3>
 <p>Confirmation with countdown timer for destructive actions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">view</span> <span class="o">=</span> <span class="n">DestructiveConfirmView</span><span class="p">(</span><span class="s2">&quot;Restart FORGE&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">msg</span> <span class="o">=</span> <span class="k">await</span> <span class="n">channel</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;⚠️ **Restart FORGE?** This will interrupt tasks.&quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
@@ -3172,14 +3172,14 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>        <span class="c1"># Timed out or cancelled</span>
 </code></pre></div>
 <p>Countdown runs 10 → 8 → 6 → 4 → 2 seconds on the button label.</p>
-<h3 id="scoutcontrolview">ScoutControlView<a class="headerlink" href="#scoutcontrolview" title="Permanent link">&para;</a></h3>
+<h3 id="scoutcontrolview">ScoutControlView</h3>
 <p>Sourcing scout operations (run, stats, autopilot):</p>
 <ul>
 <li>Button-based control for pipeline operations</li>
 <li>Persistent across restarts (custom_id + timeout=None)</li>
 <li>Integrates with <a href="#progress-tracking">#Progress Tracking</a> for status updates</li>
 </ul>
-<h3 id="implementation-pattern">Implementation Pattern<a class="headerlink" href="#implementation-pattern" title="Permanent link">&para;</a></h3>
+<h3 id="implementation-pattern">Implementation Pattern</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyView</span><span class="p">(</span><span class="n">discord</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">View</span><span class="p">):</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># Persistent</span>
@@ -3197,24 +3197,24 @@ button:hover { background: #ce9ffc; }
 </code></pre></div>
 <p>All views use <code>custom_id</code> for persistent message handling across bot restarts.</p>
 <hr />
-<h2 id="shared-utilities">Shared Utilities<a class="headerlink" href="#shared-utilities" title="Permanent link">&para;</a></h2>
+<h2 id="shared-utilities">Shared Utilities</h2>
 <p><strong>File</strong>: <a href="../cogs/_utils.py">cogs/_utils.py</a></p>
-<h3 id="bot_main">bot_main()<a class="headerlink" href="#bot_main" title="Permanent link">&para;</a></h3>
+<h3 id="bot_main">bot_main()</h3>
 <p>Access the main bot module:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">_m</span> <span class="o">=</span> <span class="n">bot_main</span><span class="p">()</span>
 <a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_m</span><span class="o">.</span><span class="n">search_candidate_db</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span>
 </code></pre></div>
 <p>Useful in cogs that need to call bot.py-defined functions.</p>
-<h3 id="send_long">send_long()<a class="headerlink" href="#send_long" title="Permanent link">&para;</a></h3>
+<h3 id="send_long">send_long()</h3>
 <p>Split long messages at newlines to stay under Discord 2000-char limit:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">await</span> <span class="n">send_long</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">very_long_text</span><span class="p">)</span>
 </code></pre></div>
 <p>Preserves first message for reaction tracking.</p>
-<h3 id="send_long_message">send_long_message()<a class="headerlink" href="#send_long_message" title="Permanent link">&para;</a></h3>
+<h3 id="send_long_message">send_long_message()</h3>
 <p>Interaction-aware version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">await</span> <span class="n">send_long_message</span><span class="p">(</span><span class="n">interaction</span><span class="p">,</span> <span class="n">very_long_text</span><span class="p">,</span> <span class="n">suppress_embeds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="is_confirm_yes">is_confirm_yes()<a class="headerlink" href="#is_confirm_yes" title="Permanent link">&para;</a></h3>
+<h3 id="is_confirm_yes">is_confirm_yes()</h3>
 <p>Parse user confirmation response:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">user_reply</span> <span class="o">=</span> <span class="s2">&quot;yeah go&quot;</span>
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="k">if</span> <span class="n">is_confirm_yes</span><span class="p">(</span><span class="n">user_reply</span><span class="p">):</span>
@@ -3222,7 +3222,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div>
 <p>Recognizes: yes, y, run, ok, sure, go, yep, yeah, and variations.</p>
 <hr />
-<h2 id="key-files-reference">Key Files Reference<a class="headerlink" href="#key-files-reference" title="Permanent link">&para;</a></h2>
+<h2 id="key-files-reference">Key Files Reference</h2>
 <table>
 <thead>
 <tr>
@@ -3290,7 +3290,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
 <pre class="mermaid"><code>graph TD
     A["Discord Message"] --&gt; B["bot.py: on_message"]
     B --&gt; C["Ignore checks"]
@@ -3310,7 +3310,7 @@ button:hover { background: #ce9ffc; }
     K -.-&gt;|candidate_found| L
     M["Admin Commands&lt;br/&gt;/reload /sync_commands"] --&gt; N["Hot-reload cogs&lt;br/&gt;no restart"]</code></pre>
 <hr />
-<h2 id="design-principles">Design Principles<a class="headerlink" href="#design-principles" title="Permanent link">&para;</a></h2>
+<h2 id="design-principles">Design Principles</h2>
 <ol>
 <li><strong>Immutability</strong>: All context/response objects are frozen dataclasses</li>
 <li><strong>Causation tracking</strong>: Event bus links parent→child relationships</li>
@@ -3321,7 +3321,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Error recovery</strong>: Graceful degradation for Discord API failures</li>
 </ol>
 <hr />
-<h2 id="related-articles">Related Articles<a class="headerlink" href="#related-articles" title="Permanent link">&para;</a></h2>
+<h2 id="related-articles">Related Articles</h2>
 <ul>
 <li>[[core-bootstrap]] — Bot startup sequence and initialization</li>
 <li>[[pipeline-graph]] — StateGraph-based workflow orchestration</li>

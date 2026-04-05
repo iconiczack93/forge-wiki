@@ -1806,10 +1806,10 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="overnight-engine-scheduling">Overnight Engine &amp; Scheduling<a class="headerlink" href="#overnight-engine-scheduling" title="Permanent link">&para;</a></h1>
+<h1 id="overnight-engine-scheduling">Overnight Engine &amp; Scheduling</h1>
 <p><strong>Overnight productivity engine for FORGE — makes idle VPS hours productive without burning Zack's interactive time.</strong></p>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>The Overnight Engine is a family of systems that execute deep work (research, profiling, maintenance) when FORGE is idle — typically 9 PM to 7 AM Pacific. Instead of wasting 10 idle hours per night, these systems:</p>
 <ul>
 <li><strong>Continue pipeline work</strong> — score unscoreds, enrich profiles with GitHub data</li>
@@ -1823,8 +1823,8 @@ button:hover { background: #ce9ffc; }
 <strong>Architecture</strong>: APScheduler (cron) + 3-model pipeline (Haiku → Opus → Sonnet)<br />
 <strong>Runs on</strong>: VPS only (7 PM–7 AM PDT)</p>
 <hr />
-<h2 id="core-systems">Core Systems<a class="headerlink" href="#core-systems" title="Permanent link">&para;</a></h2>
-<h3 id="1-overnight-engine-coreovernight_enginepy">1. Overnight Engine (<code>core/overnight_engine.py</code>)<a class="headerlink" href="#1-overnight-engine-coreovernight_enginepy" title="Permanent link">&para;</a></h3>
+<h2 id="core-systems">Core Systems</h2>
+<h3 id="1-overnight-engine-coreovernight_enginepy">1. Overnight Engine (<code>core/overnight_engine.py</code>)</h3>
 <p><strong>Orchestrator for all overnight work cycles.</strong></p>
 <table>
 <thead>
@@ -1896,7 +1896,7 @@ button:hover { background: #ce9ffc; }
 - <code>data/overnight_state.json</code> — Tracks nightly cost, completed tasks, timestamps
 - <code>data/overnight.log</code> — Logs all cycles, task selection, cost tracking</p>
 <hr />
-<h3 id="2-autonomy-loop-coreautonomy_looppy">2. Autonomy Loop (<code>core/autonomy_loop.py</code>)<a class="headerlink" href="#2-autonomy-loop-coreautonomy_looppy" title="Permanent link">&para;</a></h3>
+<h3 id="2-autonomy-loop-coreautonomy_looppy">2. Autonomy Loop (<code>core/autonomy_loop.py</code>)</h3>
 <p><strong>Self-improvement engine — FORGE detects bugs/gaps and fixes itself via a 3-model pipeline.</strong></p>
 <table>
 <thead>
@@ -1974,7 +1974,7 @@ button:hover { background: #ce9ffc; }
 - <code>DesignPlan</code> — files_to_modify, changes_summary, risks, rollback_plan, confidence, cost_usd
 - <code>ImprovementResult</code> — candidate_title, status (success/failed/skipped/deferred), copilot_response, timestamp, cost_usd</p>
 <hr />
-<h3 id="3-dream-mode-coredream_modepy">3. Dream Mode (<code>core/dream_mode.py</code>)<a class="headerlink" href="#3-dream-mode-coredream_modepy" title="Permanent link">&para;</a></h3>
+<h3 id="3-dream-mode-coredream_modepy">3. Dream Mode (<code>core/dream_mode.py</code>)</h3>
 <p><strong>Subconscious synthesis engine — connects unrelated knowledge, surfaces unexpected insights.</strong></p>
 <table>
 <thead>
@@ -2040,7 +2040,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div></p>
 <p><strong>Log:</strong> <code>data/dream_log.jsonl</code></p>
 <hr />
-<h3 id="4-dream-candidates-coredream_candidatespy">4. Dream Candidates (<code>core/dream_candidates.py</code>)<a class="headerlink" href="#4-dream-candidates-coredream_candidatespy" title="Permanent link">&para;</a></h3>
+<h3 id="4-dream-candidates-coredream_candidatespy">4. Dream Candidates (<code>core/dream_candidates.py</code>)</h3>
 <p><strong>24/7 autonomous channel discovery — finds new talent communities beyond explicitly configured channels.</strong></p>
 <table>
 <thead>
@@ -2092,8 +2092,8 @@ button:hover { background: #ce9ffc; }
 3. Surface top N to Zack (via Discord or briefing)
 4. Auto-wire approved channels into sourcing pipeline</p>
 <hr />
-<h2 id="scheduling-infrastructure">Scheduling Infrastructure<a class="headerlink" href="#scheduling-infrastructure" title="Permanent link">&para;</a></h2>
-<h3 id="apscheduler-core-modulesschedulerpy">APScheduler Core (<code>modules/scheduler.py</code>)<a class="headerlink" href="#apscheduler-core-modulesschedulerpy" title="Permanent link">&para;</a></h3>
+<h2 id="scheduling-infrastructure">Scheduling Infrastructure</h2>
+<h3 id="apscheduler-core-modulesschedulerpy">APScheduler Core (<code>modules/scheduler.py</code>)</h3>
 <p><strong>Central task scheduler using APScheduler (asyncio).</strong></p>
 <table>
 <thead>
@@ -2139,7 +2139,7 @@ button:hover { background: #ce9ffc; }
 - Checks <code>is_my_scheduler_window()</code> — only this FORGE instance runs tasks (prevents duplicates)
 - Logs result to DB (last_run timestamp)</p>
 <hr />
-<h3 id="predictive-scheduling-corepredictive_schedulingpy">Predictive Scheduling (<code>core/predictive_scheduling.py</code>)<a class="headerlink" href="#predictive-scheduling-corepredictive_schedulingpy" title="Permanent link">&para;</a></h3>
+<h3 id="predictive-scheduling-corepredictive_schedulingpy">Predictive Scheduling (<code>core/predictive_scheduling.py</code>)</h3>
 <p><strong>Learn user behavior patterns, schedule tasks intelligently.</strong></p>
 <table>
 <thead>
@@ -2179,7 +2179,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div></p>
 <p>Checks current hour against detected patterns — returns True if timing is good.</p>
 <hr />
-<h3 id="sleep-worker-modulessleep_workerpy">Sleep Worker (<code>modules/sleep_worker.py</code>)<a class="headerlink" href="#sleep-worker-modulessleep_workerpy" title="Permanent link">&para;</a></h3>
+<h3 id="sleep-worker-modulessleep_workerpy">Sleep Worker (<code>modules/sleep_worker.py</code>)</h3>
 <p><strong>Runs maintenance tasks when Discord channel is idle (&gt; 120 seconds).</strong></p>
 <table>
 <thead>
@@ -2222,8 +2222,8 @@ button:hover { background: #ce9ffc; }
 3. Cache eviction — clear old cached API responses
 4. (More can be added)</p>
 <hr />
-<h2 id="company-sourcing-systems">Company Sourcing Systems<a class="headerlink" href="#company-sourcing-systems" title="Permanent link">&para;</a></h2>
-<h3 id="company-raider-modulescompany_raiderpy">Company Raider (<code>modules/company_raider.py</code>)<a class="headerlink" href="#company-raider-modulescompany_raiderpy" title="Permanent link">&para;</a></h3>
+<h2 id="company-sourcing-systems">Company Sourcing Systems</h2>
+<h3 id="company-raider-modulescompany_raiderpy">Company Raider (<code>modules/company_raider.py</code>)</h3>
 <p><strong>End-to-end company roster scraping — blast through target companies, discover candidates.</strong></p>
 <table>
 <thead>
@@ -2272,7 +2272,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">print_raid_results</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
 </code></pre></div></p>
 <hr />
-<h3 id="company-replenisher-modulescompany_replenisherpy">Company Replenisher (<code>modules/company_replenisher.py</code>)<a class="headerlink" href="#company-replenisher-modulescompany_replenisherpy" title="Permanent link">&para;</a></h3>
+<h3 id="company-replenisher-modulescompany_replenisherpy">Company Replenisher (<code>modules/company_replenisher.py</code>)</h3>
 <p><strong>Auto-discover new companies to raid — mine previous employers, search web for new AI startups.</strong></p>
 <table>
 <thead>
@@ -2309,7 +2309,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">added</span> <span class="o">=</span> <span class="k">await</span> <span class="n">replenish_from_web</span><span class="p">()</span>  <span class="c1"># Web search</span>
 </code></pre></div></p>
 <hr />
-<h2 id="news-aggregation-modulesnewspy">News Aggregation (<code>modules/news.py</code>)<a class="headerlink" href="#news-aggregation-modulesnewspy" title="Permanent link">&para;</a></h2>
+<h2 id="news-aggregation-modulesnewspy">News Aggregation (<code>modules/news.py</code>)</h2>
 <p><strong>RSS-based news feed — polls 20+ sources every 30 minutes, posts to 📰-news channel.</strong></p>
 <table>
 <thead>
@@ -2331,7 +2331,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Rich embeds:</strong> Category emoji, source color coding, article summary (Claude Haiku)</p>
 <p><strong>Max posts per poll:</strong> 5 (avoid flooding)</p>
 <hr />
-<h2 id="key-files-paths">Key Files &amp; Paths<a class="headerlink" href="#key-files-paths" title="Permanent link">&para;</a></h2>
+<h2 id="key-files-paths">Key Files &amp; Paths</h2>
 <table>
 <thead>
 <tr>
@@ -2399,8 +2399,8 @@ button:hover { background: #ce9ffc; }
 - <code>data/dream_log.jsonl</code> — Dream cycle history
 - <code>data/autonomy_log.jsonl</code> — Improvement attempts log</p>
 <hr />
-<h2 id="cost-model">Cost Model<a class="headerlink" href="#cost-model" title="Permanent link">&para;</a></h2>
-<h3 id="overnight-engine-10night-cap">Overnight Engine ($10/night cap)<a class="headerlink" href="#overnight-engine-10night-cap" title="Permanent link">&para;</a></h3>
+<h2 id="cost-model">Cost Model</h2>
+<h3 id="overnight-engine-10night-cap">Overnight Engine ($10/night cap)</h3>
 <table>
 <thead>
 <tr>
@@ -2447,7 +2447,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="autonomy-loop-5day-cap">Autonomy Loop ($5/day cap)<a class="headerlink" href="#autonomy-loop-5day-cap" title="Permanent link">&para;</a></h3>
+<h3 id="autonomy-loop-5day-cap">Autonomy Loop ($5/day cap)</h3>
 <table>
 <thead>
 <tr>
@@ -2484,7 +2484,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="dream-mode-050night-cap">Dream Mode ($0.50/night cap)<a class="headerlink" href="#dream-mode-050night-cap" title="Permanent link">&para;</a></h3>
+<h3 id="dream-mode-050night-cap">Dream Mode ($0.50/night cap)</h3>
 <table>
 <thead>
 <tr>
@@ -2508,7 +2508,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="execution-flow">Execution Flow<a class="headerlink" href="#execution-flow" title="Permanent link">&para;</a></h2>
+<h2 id="execution-flow">Execution Flow</h2>
 <pre class="mermaid"><code>graph TD
     A["Bot startup on_ready"] --&gt; A1["1. init_scheduler&lt;br/&gt;Load scheduled_tasks"]
     A1 --&gt; A2["2. Register overnight_engine"]
@@ -2545,7 +2545,7 @@ button:hover { background: #ce9ffc; }
     E1 --&gt; E3["KB cleanup"]
     E1 --&gt; E4["Cache eviction"]</code></pre>
 <hr />
-<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<h2 id="related-systems">Related Systems</h2>
 <ul>
 <li>[[autonomy_loop|Autonomy Loop]] — Self-improvement via Haiku→Opus→Sonnet</li>
 <li>[[company_sourcing|Company Sourcing]] — Raider + Replenisher + Enrichment</li>
@@ -2554,7 +2554,7 @@ button:hover { background: #ce9ffc; }
 <li>[[apscheduler|APScheduler]] — Cron-based task scheduling</li>
 </ul>
 <hr />
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h2 id="configuration">Configuration</h2>
 <table>
 <thead>
 <tr>
@@ -2602,26 +2602,26 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="monitoring-debugging">Monitoring &amp; Debugging<a class="headerlink" href="#monitoring-debugging" title="Permanent link">&para;</a></h2>
-<h3 id="view-overnight-progress">View overnight progress<a class="headerlink" href="#view-overnight-progress" title="Permanent link">&para;</a></h3>
+<h2 id="monitoring-debugging">Monitoring &amp; Debugging</h2>
+<h3 id="view-overnight-progress">View overnight progress</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Check last night&#39;s summary</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT * FROM overnight_log ORDER BY created_at DESC LIMIT 5;&quot;</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Tail overnight engine logs</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>tail<span class="w"> </span>-f<span class="w"> </span>data/overnight.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Overnight&quot;</span>
 </code></pre></div>
-<h3 id="view-autonomy-improvements">View autonomy improvements<a class="headerlink" href="#view-autonomy-improvements" title="Permanent link">&para;</a></h3>
+<h3 id="view-autonomy-improvements">View autonomy improvements</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Check improvement history</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cat<span class="w"> </span>data/autonomy_log.jsonl<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[] | {title, status, cost_usd}&#39;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Check current state</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>cat<span class="w"> </span>data/autonomy_state.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
-<h3 id="view-dream-insights">View dream insights<a class="headerlink" href="#view-dream-insights" title="Permanent link">&para;</a></h3>
+<h3 id="view-dream-insights">View dream insights</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Check dream log</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sqlite3<span class="w"> </span>data/forge.db<span class="w"> </span><span class="s2">&quot;SELECT title, confidence, dreamed_at FROM dream_insights ORDER BY dreamed_at DESC LIMIT 5;&quot;</span>
 </code></pre></div>
-<h3 id="disableenable-systems">Disable/enable systems<a class="headerlink" href="#disableenable-systems" title="Permanent link">&para;</a></h3>
+<h3 id="disableenable-systems">Disable/enable systems</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Disable overnight engine (set instance to &quot;local&quot;)</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FORGE_INSTANCE</span><span class="o">=</span><span class="nb">local</span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
@@ -2632,7 +2632,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DREAM_COST_CAP</span><span class="o">=</span><span class="m">0</span>
 </code></pre></div>
 <hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h2 id="see-also">See Also</h2>
 <ul>
 <li>[[scheduler|Scheduler]]</li>
 <li>[[autonomy_loop|Autonomy Loop]]  </li>

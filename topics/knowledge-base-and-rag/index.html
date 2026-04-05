@@ -2406,10 +2406,10 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="knowledge-base-rag-system">Knowledge Base &amp; RAG System<a class="headerlink" href="#knowledge-base-rag-system" title="Permanent link">&para;</a></h1>
+<h1 id="knowledge-base-rag-system">Knowledge Base &amp; RAG System</h1>
 <p>FORGE's knowledge base implements Retrieval Augmented Generation (RAG) to ground Claude's responses in real documents. The system combines three retrieval mechanisms: <strong>ChromaDB vector search</strong> for semantic matching, <strong>Knowledge Graph</strong> for entity relationships, and <strong>Knowledge Router</strong> for query-aware retrieval strategy selection.</p>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>The knowledge base system consists of:</p>
 <ol>
 <li><strong>Vector Store</strong> (ChromaDB) — semantic document search</li>
@@ -2420,7 +2420,7 @@ button:hover { background: #ce9ffc; }
 </ol>
 <p>Queries against the knowledge base are automatically routed to the optimal retrieval mechanism based on query intent, then results are injected into Claude's system prompt.</p>
 <hr />
-<h2 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h2>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>User Query
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    ↓
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>[Knowledge Router] — Detect query type (entity / conceptual / hybrid)
@@ -2434,29 +2434,29 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Claude Response
 </code></pre></div>
 <hr />
-<h2 id="vector-store-chromadb">Vector Store: ChromaDB<a class="headerlink" href="#vector-store-chromadb" title="Permanent link">&para;</a></h2>
+<h2 id="vector-store-chromadb">Vector Store: ChromaDB</h2>
 <p><strong>Location</strong>: <code>data/chroma_db/</code><br />
 <strong>Module</strong>: <a href="../modules/knowledge_base.py">modules/knowledge_base.py</a></p>
-<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<h3 id="features">Features</h3>
 <ul>
 <li><strong>Local, GPU-free</strong>: Uses ONNX embeddings (no GPU required)</li>
 <li><strong>Lazy-load</strong>: Defers initialization to first use, avoiding 30s boot spike</li>
 <li><strong>Auto-ingest</strong>: Watches <code>knowledge/</code>, <code>jds/</code>, and <code>vault/</code> directories</li>
 <li><strong>File tracking</strong>: SQLite table <code>kb_documents</code> tracks ingestion state</li>
 </ul>
-<h3 id="supported-file-types">Supported File Types<a class="headerlink" href="#supported-file-types" title="Permanent link">&para;</a></h3>
+<h3 id="supported-file-types">Supported File Types</h3>
 <ul>
 <li>PDF, DOCX, TXT, MD, CSV, JSON</li>
 <li>Job descriptions (from <code>jds/</code> directory)</li>
 <li>Vault notes (from <code>vault/daily</code>, <code>vault/notes</code>, <code>vault/meetings</code>, etc.)</li>
 </ul>
-<h3 id="document-chunking">Document Chunking<a class="headerlink" href="#document-chunking" title="Permanent link">&para;</a></h3>
+<h3 id="document-chunking">Document Chunking</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">500</span>          <span class="c1"># tokens (~2000 chars)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">CHUNK_OVERLAP</span> <span class="o">=</span> <span class="mi">50</span>        <span class="c1"># tokens (~200 chars)</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">CHARS_PER_TOKEN</span> <span class="o">=</span> <span class="mi">4</span>       <span class="c1"># rough estimate</span>
 </code></pre></div>
 <p>Text is split into overlapping chunks to preserve context boundaries. Overlap prevents losing information at chunk edges.</p>
-<h3 id="semantic-search">Semantic Search<a class="headerlink" href="#semantic-search" title="Permanent link">&para;</a></h3>
+<h3 id="semantic-search">Semantic Search</h3>
 <p><strong>Score Threshold</strong>: <strong>0.3</strong> (cosine similarity)</p>
 <p>Results with scores above 0.3 are returned. The threshold balances precision (fewer false positives) with recall (finding relevant content).</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
@@ -2469,30 +2469,30 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">filtered</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">]</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">return</span> <span class="n">filtered</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]</span>
 </code></pre></div>
-<h3 id="lazy-loading">Lazy Loading<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
+<h3 id="lazy-loading">Lazy Loading</h3>
 <p>ChromaDB is not loaded on bot startup. Instead, it's initialized on first use (<code>_ensure_chromadb()</code>), avoiding:
 - 30-second CPU spike during boot
 - Unnecessary loading if KB is unused
 - Complex async state management at startup</p>
 <p>When initialized, the system ingests all tracked files (JDs, knowledge/, vault/) in parallel.</p>
 <hr />
-<h2 id="knowledge-graph">Knowledge Graph<a class="headerlink" href="#knowledge-graph" title="Permanent link">&para;</a></h2>
+<h2 id="knowledge-graph">Knowledge Graph</h2>
 <p><strong>Location</strong>: <a href="../modules/knowledge_graph.py">modules/knowledge_graph.py</a></p>
-<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<h3 id="purpose">Purpose</h3>
 <p>Extracts and stores <strong>entities</strong> (people, organizations, projects, technologies) and <strong>relationships</strong> between them. Enables structured fact retrieval and entity-focused queries.</p>
-<h3 id="entity-types">Entity Types<a class="headerlink" href="#entity-types" title="Permanent link">&para;</a></h3>
+<h3 id="entity-types">Entity Types</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">VALID_ENTITY_TYPES</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;place&quot;</span><span class="p">,</span> <span class="s2">&quot;project&quot;</span><span class="p">,</span> <span class="s2">&quot;organization&quot;</span><span class="p">,</span> 
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">&quot;technology&quot;</span><span class="p">,</span> <span class="s2">&quot;event&quot;</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="relationships">Relationships<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h3>
+<h3 id="relationships">Relationships</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">VALID_PREDICATES</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">&quot;married_to&quot;</span><span class="p">,</span> <span class="s2">&quot;parent_of&quot;</span><span class="p">,</span> <span class="s2">&quot;works_at&quot;</span><span class="p">,</span> <span class="s2">&quot;uses&quot;</span><span class="p">,</span> <span class="s2">&quot;owns&quot;</span><span class="p">,</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">&quot;built_with&quot;</span><span class="p">,</span> <span class="s2">&quot;related_to&quot;</span><span class="p">,</span> <span class="s2">&quot;member_of&quot;</span><span class="p">,</span> <span class="o">...</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="database-tables">Database Tables<a class="headerlink" href="#database-tables" title="Permanent link">&para;</a></h3>
+<h3 id="database-tables">Database Tables</h3>
 <table>
 <thead>
 <tr>
@@ -2515,38 +2515,38 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="entity-canonicalization">Entity Canonicalization<a class="headerlink" href="#entity-canonicalization" title="Permanent link">&para;</a></h3>
+<h3 id="entity-canonicalization">Entity Canonicalization</h3>
 <p>Entity names are normalized to prevent duplicates:
 - Lowercase
 - Strip whitespace
 - Replace <code>-</code> with <code>_</code>
 - Remove <code>'</code></p>
 <p>Example: <code>"John Smith"</code> → <code>"john smith"</code>, <code>"John-Smith"</code> → <code>"john smith"</code> (same entity)</p>
-<h3 id="caching">Caching<a class="headerlink" href="#caching" title="Permanent link">&para;</a></h3>
+<h3 id="caching">Caching</h3>
 <p>Entity profiles are cached with a 10-minute TTL:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">_entity_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">_CACHE_TTL</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># seconds</span>
 </code></pre></div></p>
 <p>Prevents repeated database queries for frequently accessed entities.</p>
 <hr />
-<h2 id="knowledge-router">Knowledge Router<a class="headerlink" href="#knowledge-router" title="Permanent link">&para;</a></h2>
+<h2 id="knowledge-router">Knowledge Router</h2>
 <p><strong>Location</strong>: <a href="../modules/knowledge_router.py">modules/knowledge_router.py</a></p>
-<h3 id="query-classification">Query Classification<a class="headerlink" href="#query-classification" title="Permanent link">&para;</a></h3>
+<h3 id="query-classification">Query Classification</h3>
 <p>Routes queries to the optimal retrieval strategy:</p>
-<h4 id="entity-queries-knowledge-graph-light-vector">Entity Queries → Knowledge Graph + Light Vector<a class="headerlink" href="#entity-queries-knowledge-graph-light-vector" title="Permanent link">&para;</a></h4>
+<h4 id="entity-queries-knowledge-graph-light-vector">Entity Queries → Knowledge Graph + Light Vector</h4>
 <p>Triggers on entity-focused prefixes:
 - "Who is...", "Where is...", "What is..."
 - "Tell me about...", "Search for...", "Info on..."</p>
 <p><strong>Behavior</strong>: Fetch from knowledge graph first, supplement with 2 vector results.</p>
-<h4 id="conceptual-queries-vector-search-only">Conceptual Queries → Vector Search Only<a class="headerlink" href="#conceptual-queries-vector-search-only" title="Permanent link">&para;</a></h4>
+<h4 id="conceptual-queries-vector-search-only">Conceptual Queries → Vector Search Only</h4>
 <p>Triggers on explanatory prefixes and keywords:
 - "How to...", "Why does...", "Explain..."
 - "Compare...", "What are the differences...", "Best practice"</p>
 <p><strong>Behavior</strong>: Use ChromaDB only (no graph lookup).</p>
-<h4 id="mixeddefault-hybrid-parallel">Mixed/Default → Hybrid (Parallel)<a class="headerlink" href="#mixeddefault-hybrid-parallel" title="Permanent link">&para;</a></h4>
+<h4 id="mixeddefault-hybrid-parallel">Mixed/Default → Hybrid (Parallel)</h4>
 <p>Triggers when no specific signals match.</p>
 <p><strong>Behavior</strong>: Query both graph and vector in parallel, merge results.</p>
-<h3 id="routing-logic">Routing Logic<a class="headerlink" href="#routing-logic" title="Permanent link">&para;</a></h3>
+<h3 id="routing-logic">Routing Logic</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">route_query</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns: &quot;entity&quot;, &quot;conceptual&quot;, or &quot;hybrid&quot; &quot;&quot;&quot;</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
@@ -2568,9 +2568,9 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="k">return</span> <span class="s2">&quot;hybrid&quot;</span>
 </code></pre></div>
 <hr />
-<h2 id="memory-systems">Memory Systems<a class="headerlink" href="#memory-systems" title="Permanent link">&para;</a></h2>
+<h2 id="memory-systems">Memory Systems</h2>
 <p>FORGE implements <strong>four complementary memory layers</strong>, each with distinct semantics and uses.</p>
-<h3 id="1-conversation-memory-short-term">1. Conversation Memory (Short-Term)<a class="headerlink" href="#1-conversation-memory-short-term" title="Permanent link">&para;</a></h3>
+<h3 id="1-conversation-memory-short-term">1. Conversation Memory (Short-Term)</h3>
 <p><strong>Table</strong>: <code>conversation_messages</code><br />
 <strong>Module</strong>: <a href="../modules/memory.py">modules/memory.py</a></p>
 <p>Stores every message in a channel. When retrieving context, the system fetches:
@@ -2579,7 +2579,7 @@ button:hover { background: #ce9ffc; }
 3. Current message</p>
 <p><strong>Use</strong>: Building multi-turn conversation context for Claude.</p>
 <hr />
-<h3 id="2-forge-memory-semantic-category-driven">2. Forge Memory (Semantic, Category-Driven)<a class="headerlink" href="#2-forge-memory-semantic-category-driven" title="Permanent link">&para;</a></h3>
+<h3 id="2-forge-memory-semantic-category-driven">2. Forge Memory (Semantic, Category-Driven)</h3>
 <p><strong>Table</strong>: None (file-based)<br />
 <strong>File</strong>: <code>~/.claude/projects/C--Users-User-FORGE/memory/MEMORY.md</code><br />
 <strong>Module</strong>: <a href="../modules/forge_memory.py">modules/forge_memory.py</a></p>
@@ -2638,7 +2638,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Use</strong>: Long-term semantic knowledge about Zack, projects, decisions, and learnings. Injected into system prompt in priority order.</p>
 <p><strong>Immutable Core</strong> (<code>WORM_PERSONA</code>): A write-once block describing FORGE's identity and capabilities, never updated.</p>
 <hr />
-<h3 id="3-fact-memory-per-user-extracted">3. Fact Memory (Per-User, Extracted)<a class="headerlink" href="#3-fact-memory-per-user-extracted" title="Permanent link">&para;</a></h3>
+<h3 id="3-fact-memory-per-user-extracted">3. Fact Memory (Per-User, Extracted)</h3>
 <p><strong>Table</strong>: <code>user_facts</code><br />
 <strong>Module</strong>: <a href="../modules/fact_memory.py">modules/fact_memory.py</a></p>
 <p>Automatically extracts structured facts about users via Claude Haiku after each conversation.</p>
@@ -2660,7 +2660,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Deduplication</strong>: <code>UNIQUE(user_id, content)</code> prevents duplicate facts.</p>
 <p><strong>Use</strong>: Personalized responses tailored to individual user preferences, knowledge, and goals.</p>
 <hr />
-<h3 id="4-reflection-store-therapy-like-introspection">4. Reflection Store (Therapy-Like Introspection)<a class="headerlink" href="#4-reflection-store-therapy-like-introspection" title="Permanent link">&para;</a></h3>
+<h3 id="4-reflection-store-therapy-like-introspection">4. Reflection Store (Therapy-Like Introspection)</h3>
 <p><strong>Tables</strong>: <code>reflection_entries</code>, <code>reflection_sessions</code>, <code>therapist_memory</code><br />
 <strong>Module</strong>: <a href="../modules/reflection_store.py">modules/reflection_store.py</a></p>
 <p>Structured reflection data for introspection and pattern analysis.</p>
@@ -2697,10 +2697,10 @@ button:hover { background: #ce9ffc; }
 - Extract patterns from therapist notes</p>
 <p><strong>Use</strong>: Self-reflection, pattern recognition, and personal growth tracking.</p>
 <hr />
-<h2 id="database-layer">Database Layer<a class="headerlink" href="#database-layer" title="Permanent link">&para;</a></h2>
+<h2 id="database-layer">Database Layer</h2>
 <p><strong>Location</strong>: <a href="../core/database.py">core/database.py</a><br />
 <strong>Path</strong>: <code>data/forge.db</code></p>
-<h3 id="connection-management">Connection Management<a class="headerlink" href="#connection-management" title="Permanent link">&para;</a></h3>
+<h3 id="connection-management">Connection Management</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">aiosqlite</span><span class="o">.</span><span class="n">Connection</span><span class="p">:</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Get or create shared database with health check.&quot;&quot;&quot;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="c1"># Reuses single connection, health-checks on access</span>
@@ -2711,12 +2711,12 @@ button:hover { background: #ce9ffc; }
 - Health check on every access (reconnect if stale)
 - WAL mode for concurrent access
 - 5-second busy timeout</p>
-<h3 id="key-configuration">Key Configuration<a class="headerlink" href="#key-configuration" title="Permanent link">&para;</a></h3>
+<h3 id="key-configuration">Key Configuration</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">_db</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">aiosqlite</span><span class="o">.</span><span class="n">Row</span>    <span class="c1"># Dict-like row access</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">await</span> <span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA journal_mode=WAL&quot;</span><span class="p">)</span>      <span class="c1"># Better concurrency</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">await</span> <span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;PRAGMA busy_timeout=5000&quot;</span><span class="p">)</span>     <span class="c1"># 5s busy timeout</span>
 </code></pre></div>
-<h3 id="table-summary">Table Summary<a class="headerlink" href="#table-summary" title="Permanent link">&para;</a></h3>
+<h3 id="table-summary">Table Summary</h3>
 <table>
 <thead>
 <tr>
@@ -2774,9 +2774,9 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="api-endpoints-cogs">API Endpoints (Cogs)<a class="headerlink" href="#api-endpoints-cogs" title="Permanent link">&para;</a></h2>
+<h2 id="api-endpoints-cogs">API Endpoints (Cogs)</h2>
 <p><strong>Location</strong>: <a href="../cogs/kb_actions.py">cogs/kb_actions.py</a></p>
-<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<h3 id="commands">Commands</h3>
 <table>
 <thead>
 <tr>
@@ -2818,7 +2818,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="search-result-format">Search Result Format<a class="headerlink" href="#search-result-format" title="Permanent link">&para;</a></h3>
+<h3 id="search-result-format">Search Result Format</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>📚 **Knowledge Base Search** — &quot;&lt;query&gt;&quot;
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>1. filename.md (87% match)
@@ -2830,8 +2830,8 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>💡 Say **send me that** or **send me #1** to get the source file.
 </code></pre></div>
 <hr />
-<h2 id="chunking-ingestion-pipeline">Chunking &amp; Ingestion Pipeline<a class="headerlink" href="#chunking-ingestion-pipeline" title="Permanent link">&para;</a></h2>
-<h3 id="file-ingestion-flow">File Ingestion Flow<a class="headerlink" href="#file-ingestion-flow" title="Permanent link">&para;</a></h3>
+<h2 id="chunking-ingestion-pipeline">Chunking &amp; Ingestion Pipeline</h2>
+<h3 id="file-ingestion-flow">File Ingestion Flow</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_ingest_if_new</span><span class="p">(</span><span class="n">fpath</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;knowledge&quot;</span><span class="p">):</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="sd">    1. Compute file hash</span>
@@ -2842,7 +2842,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="sd">    6. Track in kb_documents table</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<h3 id="text-extraction">Text Extraction<a class="headerlink" href="#text-extraction" title="Permanent link">&para;</a></h3>
+<h3 id="text-extraction">Text Extraction</h3>
 <ul>
 <li><strong>PDF</strong>: PyPDF2</li>
 <li><strong>DOCX</strong>: python-docx</li>
@@ -2850,22 +2850,22 @@ button:hover { background: #ce9ffc; }
 <li><strong>CSV</strong>: Concatenate rows</li>
 <li><strong>JSON</strong>: Serialize values</li>
 </ul>
-<h3 id="multi-source-ingestion">Multi-Source Ingestion<a class="headerlink" href="#multi-source-ingestion" title="Permanent link">&para;</a></h3>
+<h3 id="multi-source-ingestion">Multi-Source Ingestion</h3>
 <p>Startup ingest scans:
 - <code>jds/</code> — All .txt job descriptions
 - <code>knowledge/</code> — All supported file types
 - <code>vault/daily/</code>, <code>vault/notes/</code>, <code>vault/meetings/</code>, etc. — All .md markdown</p>
 <p>Ingestion happens in parallel (4-semaphore) to avoid blocking.</p>
 <hr />
-<h2 id="context-injection">Context Injection<a class="headerlink" href="#context-injection" title="Permanent link">&para;</a></h2>
-<h3 id="system-prompt-integration">System Prompt Integration<a class="headerlink" href="#system-prompt-integration" title="Permanent link">&para;</a></h3>
+<h2 id="context-injection">Context Injection</h2>
+<h3 id="system-prompt-integration">System Prompt Integration</h3>
 <p>When Claude is invoked:
 1. <strong>Route query</strong> (if applicable) → entity/conceptual/hybrid
 2. <strong>Retrieve context</strong> from selected source(s)
 3. <strong>Filter by score threshold</strong> (≥0.3)
 4. <strong>Inject into system prompt</strong> as contextual knowledge
 5. <strong>Claude responds</strong> with grounded, sourced information</p>
-<h3 id="example-system-prompt-injection">Example System Prompt Injection<a class="headerlink" href="#example-system-prompt-injection" title="Permanent link">&para;</a></h3>
+<h3 id="example-system-prompt-injection">Example System Prompt Injection</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;knowledge_context&gt;
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>## Relevant Documents
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
@@ -2880,24 +2880,24 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>&lt;/knowledge_context&gt;
 </code></pre></div>
 <hr />
-<h2 id="cache-layers">Cache Layers<a class="headerlink" href="#cache-layers" title="Permanent link">&para;</a></h2>
-<h3 id="knowledge-base-cache">Knowledge Base Cache<a class="headerlink" href="#knowledge-base-cache" title="Permanent link">&para;</a></h3>
+<h2 id="cache-layers">Cache Layers</h2>
+<h3 id="knowledge-base-cache">Knowledge Base Cache</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">_kb_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">_KB_CACHE_TTL</span> <span class="o">=</span> <span class="mi">300</span>          <span class="c1"># 5 minutes</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">_KB_CACHE_MAX</span> <span class="o">=</span> <span class="mi">50</span>           <span class="c1"># Max entries</span>
 </code></pre></div>
 <p>Caches full search results by query hash. Prevents repeated ChromaDB queries for same query within 5 minutes.</p>
-<h3 id="entity-profile-cache">Entity Profile Cache<a class="headerlink" href="#entity-profile-cache" title="Permanent link">&para;</a></h3>
+<h3 id="entity-profile-cache">Entity Profile Cache</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">_entity_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">_CACHE_TTL</span> <span class="o">=</span> <span class="mi">600</span>  <span class="c1"># 10 minutes</span>
 </code></pre></div>
 <p>Caches entity profiles (with relationships) by entity ID.</p>
-<h3 id="auto-prune">Auto-Prune<a class="headerlink" href="#auto-prune" title="Permanent link">&para;</a></h3>
+<h3 id="auto-prune">Auto-Prune</h3>
 <p>Both caches auto-prune when:
 - Cache exceeds size limit (50 for KB, 200 for entities)
 - Entry TTL expires</p>
 <hr />
-<h2 id="key-files-reference">Key Files Reference<a class="headerlink" href="#key-files-reference" title="Permanent link">&para;</a></h2>
+<h2 id="key-files-reference">Key Files Reference</h2>
 <table>
 <thead>
 <tr>
@@ -2955,8 +2955,8 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="design-decisions">Design Decisions<a class="headerlink" href="#design-decisions" title="Permanent link">&para;</a></h2>
-<h3 id="why-multiple-memory-systems">Why Multiple Memory Systems?<a class="headerlink" href="#why-multiple-memory-systems" title="Permanent link">&para;</a></h3>
+<h2 id="design-decisions">Design Decisions</h2>
+<h3 id="why-multiple-memory-systems">Why Multiple Memory Systems?</h3>
 <ul>
 <li><strong>Conversation Memory</strong>: Short-term, turn-by-turn context (can be summarized)</li>
 <li><strong>Forge Memory</strong>: Semantic, long-term, user-level knowledge (Zack-specific facts)</li>
@@ -2964,18 +2964,18 @@ button:hover { background: #ce9ffc; }
 <li><strong>Reflection Store</strong>: Introspection &amp; pattern analysis</li>
 </ul>
 <p>Each addresses a distinct use case and retrieval pattern.</p>
-<h3 id="why-lazy-load-chromadb">Why Lazy-Load ChromaDB?<a class="headerlink" href="#why-lazy-load-chromadb" title="Permanent link">&para;</a></h3>
+<h3 id="why-lazy-load-chromadb">Why Lazy-Load ChromaDB?</h3>
 <p>Initializing ChromaDB takes ~30 seconds and loads pydantic compatibility patches. Deferring to first use:
 - Keeps bot startup fast
 - Only initializes if KB actually used
 - Still async-safe (concurrent calls wait on first init)</p>
-<h3 id="why-knowledge-router">Why Knowledge Router?<a class="headerlink" href="#why-knowledge-router" title="Permanent link">&para;</a></h3>
+<h3 id="why-knowledge-router">Why Knowledge Router?</h3>
 <p>Different query types benefit from different retrieval:
 - Entity queries (who, where) → graph-first (structured, exact)
 - Conceptual queries (how, why) → vector-only (semantic, flexible)
 - Mixed/unknown → hybrid (cover both)</p>
 <p>Router prevents wasting context on irrelevant retrievals.</p>
-<h3 id="why-chromadb-over-alternatives">Why ChromaDB Over Alternatives?<a class="headerlink" href="#why-chromadb-over-alternatives" title="Permanent link">&para;</a></h3>
+<h3 id="why-chromadb-over-alternatives">Why ChromaDB Over Alternatives?</h3>
 <ul>
 <li><strong>Local</strong>: No API calls, no rate limits</li>
 <li><strong>GPU-free</strong>: ONNX embeddings work on CPU</li>
@@ -2983,7 +2983,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Query-flexible</strong>: Supports various filtering/metadata options</li>
 </ul>
 <hr />
-<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<h2 id="related-systems">Related Systems</h2>
 <ul>
 <li>[[Conversation Brain|cogs/brain_actions.py]] — Uses knowledge context for multi-turn responses</li>
 <li>[[Sourcing Pipeline|modules/sourcing_pipeline.py]] — Enriches candidate profiles with KB context</li>
@@ -2991,7 +2991,7 @@ button:hover { background: #ce9ffc; }
 <li>[[Autonomy Loop|core/autonomy_loop.py]] — May query KB for autonomous task context</li>
 </ul>
 <hr />
-<h2 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h2>
+<h2 id="glossary">Glossary</h2>
 <ul>
 <li><strong>RAG</strong>: Retrieval Augmented Generation — grounding LLM responses in retrieved documents</li>
 <li><strong>Semantic Search</strong>: Finding documents by meaning/relevance, not keyword matching</li>

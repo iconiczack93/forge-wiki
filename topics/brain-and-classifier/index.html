@@ -2150,8 +2150,8 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="forge-brain-and-classifier-architecture">FORGE Brain and Classifier Architecture<a class="headerlink" href="#forge-brain-and-classifier-architecture" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="forge-brain-and-classifier-architecture">FORGE Brain and Classifier Architecture</h1>
+<h2 id="summary">Summary</h2>
 <p>The FORGE brain-and-classifier system routes Discord messages from natural language into executable actions, orchestrating a dual-layer pipeline:</p>
 <ol>
 <li><strong>Classifier</strong>: [[Haiku model|models]] rapidly categorizes messages into ~300 action types with confidence scoring</li>
@@ -2160,14 +2160,14 @@ button:hover { background: #ce9ffc; }
 </ol>
 <p>The architecture prioritizes autonomy: the brain can read Discord channels, post messages, queue tasks for the Copilot agent, and manage its own context state through the [[BrainConversation|brain-state]] immutable dataclass.</p>
 <hr />
-<h2 id="classifier-system">Classifier System<a class="headerlink" href="#classifier-system" title="Permanent link">&para;</a></h2>
-<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<h2 id="classifier-system">Classifier System</h2>
+<h3 id="overview">Overview</h3>
 <p>The classifier operates as a lightweight <strong>intent gatekeeper</strong> before expensive Claude operations. It answers a single question: "What does the user want to do?" The response is structured JSON with an <code>action</code> field (one of ~300 defined action types) and a <code>confidence</code> score (0.0–1.0).</p>
 <p><strong>Model</strong>: [[Claude Haiku|models]] (fastest tier)
 <strong>Speed</strong>: ~200ms per classification
 <strong>Cost</strong>: ~150 tokens per call
 <strong>Caching</strong>: Automatic prompt caching for system messages &gt; 1024 chars</p>
-<h3 id="action-types">Action Types<a class="headerlink" href="#action-types" title="Permanent link">&para;</a></h3>
+<h3 id="action-types">Action Types</h3>
 <p>Actions are defined in <code>core/classifier_prompt.py</code> and cover six categories:</p>
 <table>
 <thead>
@@ -2215,7 +2215,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="classification-process">Classification Process<a class="headerlink" href="#classification-process" title="Permanent link">&para;</a></h3>
+<h3 id="classification-process">Classification Process</h3>
 <p>When a message arrives:</p>
 <ol>
 <li><strong>Message received</strong> → Discord fires <code>on_message</code> event in <code>bot.py</code></li>
@@ -2230,7 +2230,7 @@ button:hover { background: #ce9ffc; }
 <li><strong>Confidence check</strong> → If confidence &lt; 0.5, escalate to [[brain]] instead</li>
 <li><strong>Dispatch</strong> → Route to appropriate [[cog|cogs]] or brain</li>
 </ol>
-<h3 id="confidence-system">Confidence System<a class="headerlink" href="#confidence-system" title="Permanent link">&para;</a></h3>
+<h3 id="confidence-system">Confidence System</h3>
 <p>The classifier returns a confidence float (0.0–1.0). This value gates:</p>
 <ul>
 <li><strong>High confidence (&gt;0.8)</strong>: Execute the action immediately via the cog system</li>
@@ -2238,15 +2238,15 @@ button:hover { background: #ce9ffc; }
 <li><strong>Low confidence (&lt;0.5)</strong>: Escalate to the brain (more expensive, but handles ambiguity)</li>
 </ul>
 <p>Example: <code>"should I email this person?"</code> has low confidence because it's a yes/no question requiring reasoning, not action. The brain takes over.</p>
-<h3 id="feedback-system">Feedback System<a class="headerlink" href="#feedback-system" title="Permanent link">&para;</a></h3>
+<h3 id="feedback-system">Feedback System</h3>
 <p>Failed classifications are logged and fed back into future classifications via the feedback system. This creates a self-correcting loop:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># From core/classifier_feedback.py</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">dynamic_examples</span> <span class="o">=</span> <span class="k">await</span> <span class="n">classifier_feedback</span><span class="o">.</span><span class="n">get_dynamic_examples</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Returns: &quot;User said &#39;check my email&#39;, classifier predicted email_inbox ✓&quot;</span>
 </code></pre></div>
 <hr />
-<h2 id="brain-system">Brain System<a class="headerlink" href="#brain-system" title="Permanent link">&para;</a></h2>
-<h3 id="overview_1">Overview<a class="headerlink" href="#overview_1" title="Permanent link">&para;</a></h3>
+<h2 id="brain-system">Brain System</h2>
+<h3 id="overview_1">Overview</h3>
 <p>The FORGE brain is a <strong>persistent Claude Sonnet agent</strong> that handles:</p>
 <ul>
 <li>Complex reasoning and multi-step tasks</li>
@@ -2259,7 +2259,7 @@ button:hover { background: #ce9ffc; }
 <strong>Max iterations</strong>: 10 (tool use loop)
 <strong>Token budget</strong>: Configurable per conversation
 <strong>Cost</strong>: ~$0.003 per call (vs. ~$0.0001 for classifier)</p>
-<h3 id="tool-use-loop-10-iterations">Tool Use Loop (10 Iterations)<a class="headerlink" href="#tool-use-loop-10-iterations" title="Permanent link">&para;</a></h3>
+<h3 id="tool-use-loop-10-iterations">Tool Use Loop (10 Iterations)</h3>
 <p>The brain's power comes from <strong>tool use</strong>: Claude can call functions, inspect results, and loop. The <code>ask()</code> method in <code>core/brain.py</code> implements a tool-use loop:</p>
 <pre class="mermaid"><code>graph LR
     A[Brain analyzes] --&gt; B{Needs tool?}
@@ -2281,9 +2281,9 @@ button:hover { background: #ce9ffc; }
 <li>Loop back (up to 10 times)</li>
 <li>If <code>stop_reason == "end_turn"</code>, return text response</li>
 </ol>
-<h3 id="available-tools">Available Tools<a class="headerlink" href="#available-tools" title="Permanent link">&para;</a></h3>
+<h3 id="available-tools">Available Tools</h3>
 <p>The brain has access to three tool sets:</p>
-<h4 id="1-forge-internal-tools-coreforge_toolspy">1. FORGE Internal Tools (<code>core/forge_tools.py</code>)<a class="headerlink" href="#1-forge-internal-tools-coreforge_toolspy" title="Permanent link">&para;</a></h4>
+<h4 id="1-forge-internal-tools-coreforge_toolspy">1. FORGE Internal Tools (<code>core/forge_tools.py</code>)</h4>
 <p>Always available. Core Discord and task control:</p>
 <table>
 <thead>
@@ -2323,7 +2323,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h4 id="2-brain-tools-corebrain_toolspy">2. Brain Tools (<code>core/brain_tools.py</code>)<a class="headerlink" href="#2-brain-tools-corebrain_toolspy" title="Permanent link">&para;</a></h4>
+<h4 id="2-brain-tools-corebrain_toolspy">2. Brain Tools (<code>core/brain_tools.py</code>)</h4>
 <p>Research and knowledge access:</p>
 <table>
 <thead>
@@ -2355,7 +2355,7 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h4 id="3-mcp-tools-via-mcp_manager">3. MCP Tools (via <code>mcp_manager</code>)<a class="headerlink" href="#3-mcp-tools-via-mcp_manager" title="Permanent link">&para;</a></h4>
+<h4 id="3-mcp-tools-via-mcp_manager">3. MCP Tools (via <code>mcp_manager</code>)</h4>
 <p>Optional, dynamically loaded based on available MCP servers. Examples:</p>
 <ul>
 <li>GitHub API tools</li>
@@ -2363,7 +2363,7 @@ button:hover { background: #ce9ffc; }
 <li>Email/calendar tools</li>
 <li>Other integrations</li>
 </ul>
-<h3 id="brain-state-corebrain_statepy">Brain State (<code>core/brain_state.py</code>)<a class="headerlink" href="#brain-state-corebrain_statepy" title="Permanent link">&para;</a></h3>
+<h3 id="brain-state-corebrain_statepy">Brain State (<code>core/brain_state.py</code>)</h3>
 <p>Each brain conversation is immutable:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">BrainConversation</span><span class="p">:</span>
@@ -2383,7 +2383,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">conv</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">with_cost</span><span class="p">(</span><span class="mf">0.005</span><span class="p">)</span>  <span class="c1"># Add $0.005 to cost</span>
 </code></pre></div>
 <p>Persisted to SQLite (<code>data/forge.db</code>, table <code>brain_conversations</code>).</p>
-<h3 id="token-budget-caching">Token Budget &amp; Caching<a class="headerlink" href="#token-budget-caching" title="Permanent link">&para;</a></h3>
+<h3 id="token-budget-caching">Token Budget &amp; Caching</h3>
 <p>The brain tracks token usage and implements:</p>
 <ol>
 <li><strong>Prompt caching</strong>: System messages &gt; 1024 chars use Anthropic's ephemeral cache, saving 90% of tokens on repeated calls</li>
@@ -2392,28 +2392,28 @@ button:hover { background: #ce9ffc; }
 <li><strong>Circuit breaker</strong>: If API fails repeatedly, return cached responses instead of hammering the API</li>
 </ol>
 <hr />
-<h2 id="classifier-router-legacy">Classifier Router (Legacy)<a class="headerlink" href="#classifier-router-legacy" title="Permanent link">&para;</a></h2>
-<h3 id="overview_2">Overview<a class="headerlink" href="#overview_2" title="Permanent link">&para;</a></h3>
+<h2 id="classifier-router-legacy">Classifier Router (Legacy)</h2>
+<h3 id="overview_2">Overview</h3>
 <p>When <code>BRAIN_FIRST=0</code> (disabled by default), FORGE uses the legacy classifier-router pattern defined in <code>core/classifier_router.py</code>.</p>
 <p><strong>Status</strong>: Deprecated in favor of brain-first architecture.</p>
-<h3 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<h3 id="how-it-works">How It Works</h3>
 <ol>
 <li><strong>Classify</strong> via <code>_classify_action()</code> → returns <code>{action, confidence}</code></li>
 <li><strong>Route</strong> via <code>_try_action_intent()</code> → dispatch to cog or brain</li>
 <li><strong>Execute</strong> → cog handles the action synchronously or queues async work</li>
 </ol>
-<h3 id="when-its-still-used">When It's Still Used<a class="headerlink" href="#when-its-still-used" title="Permanent link">&para;</a></h3>
+<h3 id="when-its-still-used">When It's Still Used</h3>
 <ul>
 <li>Fallback if <code>BRAIN_FIRST=0</code> in <code>core/config.py</code></li>
 <li>Pre-classifier keyword intercepts (hardcoded rules for commonly-misrouted actions)</li>
 <li>High-confidence classifications route directly to cogs (faster)</li>
 </ul>
 <hr />
-<h2 id="multi-action-system">Multi-Action System<a class="headerlink" href="#multi-action-system" title="Permanent link">&para;</a></h2>
-<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<h2 id="multi-action-system">Multi-Action System</h2>
+<h3 id="purpose">Purpose</h3>
 <p>The <code>forge_multi_action</code> action handles <strong>compound requests</strong>: when the user asks for multiple things at once.</p>
 <p>Example: "Check the talent channel, draft an outreach message, and post it to Slack."</p>
-<h3 id="flow">Flow<a class="headerlink" href="#flow" title="Permanent link">&para;</a></h3>
+<h3 id="flow">Flow</h3>
 <ol>
 <li>User message arrives</li>
 <li>Classifier tags it as <code>forge_multi_action</code></li>
@@ -2421,7 +2421,7 @@ button:hover { background: #ce9ffc; }
 <li>Brain reads channels, composes messages, posts results</li>
 <li>All three tasks happen in a single brain call</li>
 </ol>
-<h3 id="multi-action-tools">Multi-Action Tools<a class="headerlink" href="#multi-action-tools" title="Permanent link">&para;</a></h3>
+<h3 id="multi-action-tools">Multi-Action Tools</h3>
 <p>Subset of FORGE tools, optimized for Discord orchestration:</p>
 <ul>
 <li><code>forge_read_channel</code> — read channel history</li>
@@ -2433,35 +2433,35 @@ button:hover { background: #ce9ffc; }
 <li><code>forge_create_thread</code> — start threads</li>
 </ul>
 <hr />
-<h2 id="bootstrap-sequence">Bootstrap Sequence<a class="headerlink" href="#bootstrap-sequence" title="Permanent link">&para;</a></h2>
-<h3 id="overview_3">Overview<a class="headerlink" href="#overview_3" title="Permanent link">&para;</a></h3>
+<h2 id="bootstrap-sequence">Bootstrap Sequence</h2>
+<h3 id="overview_3">Overview</h3>
 <p>When FORGE starts (<code>bot.py</code>), the <code>core/bootstrap.py</code> initializes all modules in <strong>dependency order</strong>. Critical failures abort the boot; non-critical failures are logged and skipped.</p>
-<h3 id="phases">Phases<a class="headerlink" href="#phases" title="Permanent link">&para;</a></h3>
-<h4 id="phase-1-core-infrastructure">Phase 1: Core Infrastructure<a class="headerlink" href="#phase-1-core-infrastructure" title="Permanent link">&para;</a></h4>
+<h3 id="phases">Phases</h3>
+<h4 id="phase-1-core-infrastructure">Phase 1: Core Infrastructure</h4>
 <pre class="mermaid"><code>graph TD
     A["1. FORGE Monitor&lt;br/&gt;Catches and logs errors"] --&gt; B["2. Process Monitor&lt;br/&gt;Tracks memory, CPU, health"]
     B --&gt; C["3. Database CRITICAL&lt;br/&gt;Create tables, init schema"]
     C --&gt; D{Success?}
     D --&gt;|No| E["Abort"]
     D --&gt;|Yes| F["Continue"]</code></pre>
-<h4 id="phase-2-jdsourcing-filters">Phase 2: JD/Sourcing Filters<a class="headerlink" href="#phase-2-jdsourcing-filters" title="Permanent link">&para;</a></h4>
+<h4 id="phase-2-jdsourcing-filters">Phase 2: JD/Sourcing Filters</h4>
 <pre class="mermaid"><code>graph TD
     A["4. JD Manager&lt;br/&gt;Load job descriptions"] --&gt; B["5. Sourcing Filters&lt;br/&gt;Set active filters in memory"]</code></pre>
-<h4 id="phase-3-classifiers-models">Phase 3: Classifiers &amp; Models<a class="headerlink" href="#phase-3-classifiers-models" title="Permanent link">&para;</a></h4>
+<h4 id="phase-3-classifiers-models">Phase 3: Classifiers &amp; Models</h4>
 <pre class="mermaid"><code>graph TD
     A["6. Intent Registry&lt;br/&gt;Load ~300 actions"] --&gt; B["7. Classifier Feedback&lt;br/&gt;Init feedback system"]</code></pre>
-<h4 id="phase-4-persistence-state">Phase 4: Persistence &amp; State<a class="headerlink" href="#phase-4-persistence-state" title="Permanent link">&para;</a></h4>
+<h4 id="phase-4-persistence-state">Phase 4: Persistence &amp; State</h4>
 <pre class="mermaid"><code>graph TD
     A["8. Brain State&lt;br/&gt;Load conversations"] --&gt; B["9. Skill Manager&lt;br/&gt;Load user skills"]</code></pre>
-<h4 id="phase-5-skills-integrations">Phase 5: Skills &amp; Integrations<a class="headerlink" href="#phase-5-skills-integrations" title="Permanent link">&para;</a></h4>
+<h4 id="phase-5-skills-integrations">Phase 5: Skills &amp; Integrations</h4>
 <pre class="mermaid"><code>graph TD
     A["10. MCP Manager&lt;br/&gt;Connect to MCPs"] --&gt; B["11. Skills Loader&lt;br/&gt;Load from core/skills/"]
     B --&gt; C["12. Cog Loader&lt;br/&gt;Load all cogs"]</code></pre>
-<h4 id="phase-6-scheduled-tasks">Phase 6: Scheduled Tasks<a class="headerlink" href="#phase-6-scheduled-tasks" title="Permanent link">&para;</a></h4>
+<h4 id="phase-6-scheduled-tasks">Phase 6: Scheduled Tasks</h4>
 <pre class="mermaid"><code>graph TD
     A["13. Autonomy Loop&lt;br/&gt;Every 6 hours"] --&gt; B["14. Overnight Engine&lt;br/&gt;8 PM daily"]
     B --&gt; C["15. Sports Pipeline&lt;br/&gt;10 AM daily"]</code></pre>
-<h3 id="critical-vs-non-critical">Critical vs. Non-Critical<a class="headerlink" href="#critical-vs-non-critical" title="Permanent link">&para;</a></h3>
+<h3 id="critical-vs-non-critical">Critical vs. Non-Critical</h3>
 <p><strong>Critical</strong> (fail = abort boot):
 - Database initialization
 - Config loading</p>
@@ -2470,7 +2470,7 @@ button:hover { background: #ce9ffc; }
 - Cog loading
 - MCP connections
 - Scheduled tasks</p>
-<h3 id="example-failed-skill-load">Example: Failed Skill Load<a class="headerlink" href="#example-failed-skill-load" title="Permanent link">&para;</a></h3>
+<h3 id="example-failed-skill-load">Example: Failed Skill Load</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Module initialize phase... [OK]
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Loading skills from core/skills/...
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  - skill_search_candidates.py ... [OK]
@@ -2481,8 +2481,8 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  Boot continues.
 </code></pre></div>
 <hr />
-<h2 id="message-flow-on_message">Message Flow (on_message)<a class="headerlink" href="#message-flow-on_message" title="Permanent link">&para;</a></h2>
-<h3 id="complete-path-from-discord-to-response">Complete Path from Discord to Response<a class="headerlink" href="#complete-path-from-discord-to-response" title="Permanent link">&para;</a></h3>
+<h2 id="message-flow-on_message">Message Flow (on_message)</h2>
+<h3 id="complete-path-from-discord-to-response">Complete Path from Discord to Response</h3>
 <pre class="mermaid"><code>graph TD
     A[User sends message] --&gt; B[discord.py on_message event]
     B --&gt; C[Parse message]
@@ -2495,7 +2495,7 @@ button:hover { background: #ce9ffc; }
     H --&gt; I
     I --&gt; J[Post response to Discord]
     J --&gt; K[Log action to database]</code></pre>
-<h3 id="brain-first-flow-default">Brain-First Flow (Default)<a class="headerlink" href="#brain-first-flow-default" title="Permanent link">&para;</a></h3>
+<h3 id="brain-first-flow-default">Brain-First Flow (Default)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># From bot.py:on_message()</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span> <span class="n">BRAIN_FIRST</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">brain</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span>
@@ -2511,7 +2511,7 @@ button:hover { background: #ce9ffc; }
 - Calls tools as needed
 - Loops up to 10 times
 - Returns final response</p>
-<h3 id="legacy-flow-disabled-by-default">Legacy Flow (Disabled by Default)<a class="headerlink" href="#legacy-flow-disabled-by-default" title="Permanent link">&para;</a></h3>
+<h3 id="legacy-flow-disabled-by-default">Legacy Flow (Disabled by Default)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># From classifier_router.py:try_action_intent()</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">intent</span> <span class="o">=</span> <span class="k">await</span> <span class="n">_classify_action</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Returns: {&quot;action&quot;: &quot;email_send&quot;, &quot;confidence&quot;: 0.87}</span>
@@ -2525,7 +2525,7 @@ button:hover { background: #ce9ffc; }
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="k">await</span> <span class="n">brain</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>
@@ -2583,7 +2583,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="related-systems">Related Systems<a class="headerlink" href="#related-systems" title="Permanent link">&para;</a></h2>
+<h2 id="related-systems">Related Systems</h2>
 <ul>
 <li>[[Models|core/config.py]] — Haiku/Sonnet/Opus configuration</li>
 <li>[[Cogs]] — Modular action handlers (email, calendar, browser, etc.)</li>
@@ -2593,7 +2593,7 @@ button:hover { background: #ce9ffc; }
 <li>[[Copilot Agent]] — Persistent coding assistant (queued by brain)</li>
 </ul>
 <hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h2 id="see-also">See Also</h2>
 <ul>
 <li>[[Classifier Feedback System]] — Self-correcting classifier via examples</li>
 <li>[[Routing Optimizer]] — Dynamic examples for faster routing</li>

@@ -1752,9 +1752,9 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="prism-candidate-scoring-system">PRISM Candidate Scoring System<a class="headerlink" href="#prism-candidate-scoring-system" title="Permanent link">&para;</a></h1>
+<h1 id="prism-candidate-scoring-system">PRISM Candidate Scoring System</h1>
 <p><strong>PRISM</strong> is FORGE's technical candidate evaluator, a port of the glassattempt Chrome extension logic into the Discord bot. It scores candidates against a job description (JD) on a <strong>1-5 scale</strong> (0.5 increments) using a three-part framework: technical fit (60%), environment fit (25%), and role-specific signals (15%).</p>
-<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
+<h2 id="contents">Contents</h2>
 <ol>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#scoring-framework">Scoring Framework</a></li>
@@ -1766,7 +1766,7 @@ button:hover { background: #ce9ffc; }
 <li><a href="#key-files">Key Files</a></li>
 </ol>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview</h2>
 <p>PRISM evaluates candidates by answering three core questions:
 1. <strong>Can they do the job on day 1-30?</strong> (Technical Fit — 60%)
 2. <strong>Will they thrive here?</strong> (Environment Fit — 25%)
@@ -1777,8 +1777,8 @@ button:hover { background: #ce9ffc; }
 - At what <strong>scale</strong> (production shipping vs course project)</p>
 <p>The system enforces a critical distinction between <strong>hard-to-learn skills</strong> (domain expertise, system design patterns) and <strong>easy-to-learn skills</strong> (specific languages, frameworks). A strong backend engineer missing a specific language is far more valuable than someone who knows the language but has never built the type of system the JD describes.</p>
 <hr />
-<h2 id="scoring-framework">Scoring Framework<a class="headerlink" href="#scoring-framework" title="Permanent link">&para;</a></h2>
-<h3 id="1-5-scale-with-05-increments">1-5 Scale with 0.5 Increments<a class="headerlink" href="#1-5-scale-with-05-increments" title="Permanent link">&para;</a></h3>
+<h2 id="scoring-framework">Scoring Framework</h2>
+<h3 id="1-5-scale-with-05-increments">1-5 Scale with 0.5 Increments</h3>
 <table>
 <thead>
 <tr>
@@ -1825,11 +1825,11 @@ button:hover { background: #ce9ffc; }
 </tr>
 </tbody>
 </table>
-<h3 id="weighting-breakdown">Weighting Breakdown<a class="headerlink" href="#weighting-breakdown" title="Permanent link">&para;</a></h3>
+<h3 id="weighting-breakdown">Weighting Breakdown</h3>
 <p><strong>Technical Fit (60%)</strong> — hands-on experience with JD technologies, production shipping history, real depth vs surface-level keywords</p>
 <p><strong>Environment Fit (25%)</strong> — startup/early-stage experience, pace signals (shipped fast, wore many hats, 0-to-1 building), trajectory indicators</p>
 <p><strong>Role Signals (15%)</strong> — location, seniority, domain expertise, any explicit JD requirements</p>
-<h3 id="key-scoring-rules">Key Scoring Rules<a class="headerlink" href="#key-scoring-rules" title="Permanent link">&para;</a></h3>
+<h3 id="key-scoring-rules">Key Scoring Rules</h3>
 <ol>
 <li><strong>Score based on what the JD asks for</strong>, not what seems impressive</li>
 <li><strong>Degree field does not matter</strong> — judge by what they have BUILT, not what they studied</li>
@@ -1841,9 +1841,9 @@ button:hover { background: #ce9ffc; }
 <li><strong>Years of experience: use the JD's seniority signal.</strong> Don't penalize senior people unless the JD explicitly targets junior candidates</li>
 </ol>
 <hr />
-<h2 id="prism-v2-system-prompt">PRISM V2 System Prompt<a class="headerlink" href="#prism-v2-system-prompt" title="Permanent link">&para;</a></h2>
+<h2 id="prism-v2-system-prompt">PRISM V2 System Prompt</h2>
 <p>The V2 prompt is a unified instruction set injected into Claude's system context when evaluating candidates. It defines the scoring framework, rules, and critical depth-vs-keywords distinction.</p>
-<h3 id="key-sections">Key Sections<a class="headerlink" href="#key-sections" title="Permanent link">&para;</a></h3>
+<h3 id="key-sections">Key Sections</h3>
 <p><strong>DEPTH vs KEYWORDS (CRITICAL)</strong></p>
 <p>This is the most important section. It explicitly warns against keyword-matching:</p>
 <blockquote>
@@ -1862,9 +1862,9 @@ button:hover { background: #ce9ffc; }
 <p>Non-profit, government, academic, and consulting roles are weaker signals than shipping production software at a tech company. Weight accordingly.</p>
 </blockquote>
 <hr />
-<h2 id="leadership-detection">Leadership Detection<a class="headerlink" href="#leadership-detection" title="Permanent link">&para;</a></h2>
+<h2 id="leadership-detection">Leadership Detection</h2>
 <p>PRISM includes a <strong>local, regex-based leadership detection engine</strong> that identifies leadership signals without API calls. This runs before the main evaluation for roles marked as "leadership" in the JD.</p>
-<h3 id="detected-signals">Detected Signals<a class="headerlink" href="#detected-signals" title="Permanent link">&para;</a></h3>
+<h3 id="detected-signals">Detected Signals</h3>
 <p>The leadership engine uses pattern matching to find:</p>
 <ul>
 <li><strong>Team Management</strong> (<code>led a team of X</code>, <code>managed X engineers</code>)</li>
@@ -1885,7 +1885,7 @@ button:hover { background: #ce9ffc; }
 - Early engineer: +20 points
 - Title progression 3+ levels: +20 points</p>
 <p>Maximum leadership score: 100 points.</p>
-<h3 id="leadership-report">Leadership Report<a class="headerlink" href="#leadership-report" title="Permanent link">&para;</a></h3>
+<h3 id="leadership-report">Leadership Report</h3>
 <p>For leadership roles, PRISM also generates:
 - <strong>Leadership Score</strong> (out of 100)
 - <strong>Startup Fit Score</strong> (out of 100)
@@ -1897,9 +1897,9 @@ button:hover { background: #ce9ffc; }
 - Leadership ≥30: <strong>Weak Fit</strong> (better for IC role)
 - Leadership &lt;30: <strong>Not Recommended</strong> for leadership role</p>
 <hr />
-<h2 id="tech-stack-matching">Tech Stack Matching<a class="headerlink" href="#tech-stack-matching" title="Permanent link">&para;</a></h2>
+<h2 id="tech-stack-matching">Tech Stack Matching</h2>
 <p>PRISM dynamically extracts technologies from the JD and matches them against the candidate's profile. This is <strong>not hardcoded</strong> — the tech list is built from the JD content using regex patterns with word boundaries.</p>
-<h3 id="supported-technologies">Supported Technologies<a class="headerlink" href="#supported-technologies" title="Permanent link">&para;</a></h3>
+<h3 id="supported-technologies">Supported Technologies</h3>
 <p><strong>Languages:</strong> Node.js, TypeScript, JavaScript, Python, Go, Rust, Java, C++, Ruby, Scala, Kotlin</p>
 <p><strong>Frontend:</strong> React, Vue.js, Angular, Next.js</p>
 <p><strong>Backend:</strong> FastAPI, Flask, Django, Express</p>
@@ -1907,7 +1907,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Cloud:</strong> AWS, GCP, Azure</p>
 <p><strong>Infrastructure:</strong> Docker, Kubernetes, Terraform</p>
 <p><strong>AI/ML:</strong> LangChain, LLM, OpenAI, Anthropic, Braintrust, Cerebras, PyTorch, TensorFlow, ChromaDB, Pinecone</p>
-<h3 id="matching-algorithm">Matching Algorithm<a class="headerlink" href="#matching-algorithm" title="Permanent link">&para;</a></h3>
+<h3 id="matching-algorithm">Matching Algorithm</h3>
 <ol>
 <li>Extract all tech keywords from JD using regex patterns (with word boundaries to avoid false matches)</li>
 <li>Search candidate profile for each technology</li>
@@ -1917,14 +1917,14 @@ button:hover { background: #ce9ffc; }
 <li><strong>Moderate</strong> 40-74% found</li>
 <li><strong>Weak</strong> &lt;40% found</li>
 </ol>
-<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<h3 id="example">Example</h3>
 <p>JD mentions: <code>Node.js, TypeScript, PostgreSQL, React, Docker</code></p>
 <p>Candidate has: <code>Node.js, TypeScript, Docker</code></p>
 <p>Result: <strong>Moderate Match</strong> (3/5 = 60%)</p>
 <hr />
-<h2 id="fasteval-vs-v2-batch">FastEval vs V2 Batch<a class="headerlink" href="#fasteval-vs-v2-batch" title="Permanent link">&para;</a></h2>
+<h2 id="fasteval-vs-v2-batch">FastEval vs V2 Batch</h2>
 <p>PRISM supports two evaluation modes, optimized for different workflows.</p>
-<h3 id="fasteval-single-candidate">FastEval (Single Candidate)<a class="headerlink" href="#fasteval-single-candidate" title="Permanent link">&para;</a></h3>
+<h3 id="fasteval-single-candidate">FastEval (Single Candidate)</h3>
 <p>Used for individual candidate evaluation. Generates a detailed report with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Score: [1-5 with 0.5 increments] / 5
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1946,7 +1946,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div>
 <p><strong>Temperature:</strong> 0 (deterministic)
 <strong>Max tokens:</strong> 2048</p>
-<h3 id="v2-batch-multiple-candidates">V2 Batch (Multiple Candidates)<a class="headerlink" href="#v2-batch-multiple-candidates" title="Permanent link">&para;</a></h3>
+<h3 id="v2-batch-multiple-candidates">V2 Batch (Multiple Candidates)</h3>
 <p>Used for bulk evaluation of 10+ candidates. Outputs <strong>JSON only</strong>, one object per candidate:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;i&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;r&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strong technical match&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;p&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personalization&quot;</span><span class="w"> </span><span class="p">},</span>
@@ -1968,9 +1968,9 @@ button:hover { background: #ce9ffc; }
 - Written as if from Arda (the CTO voice)</p>
 <p>Example: "Your ClickHouse work at Databricks + TypeScript depth is exactly what we need. That scale of data pipeline experience is rare."</p>
 <hr />
-<h2 id="outreach-integration">Outreach Integration<a class="headerlink" href="#outreach-integration" title="Permanent link">&para;</a></h2>
+<h2 id="outreach-integration">Outreach Integration</h2>
 <p>For candidates scoring <strong>3.5 or higher</strong>, FORGE automatically generates personalized outreach messages. The system uses a two-stage approach:</p>
-<h3 id="stage-1-category-classification">Stage 1: Category Classification<a class="headerlink" href="#stage-1-category-classification" title="Permanent link">&para;</a></h3>
+<h3 id="stage-1-category-classification">Stage 1: Category Classification</h3>
 <p>The [[outreach_personalizer|outreach_personalizer]] module classifies candidates into one of 8 personalization categories using rule-based decision trees:</p>
 <ol>
 <li><strong>Active GitHub Builder</strong> — 10+ public repos, starred repos</li>
@@ -1983,9 +1983,9 @@ button:hover { background: #ce9ffc; }
 <li><strong>Recently Changed Roles</strong> — role change within 6 months</li>
 <li><strong>Default</strong> — strong background, generic</li>
 </ol>
-<h3 id="stage-2-template-filling">Stage 2: Template Filling<a class="headerlink" href="#stage-2-template-filling" title="Permanent link">&para;</a></h3>
+<h3 id="stage-2-template-filling">Stage 2: Template Filling</h3>
 <p>Human-written templates for each category are filled with candidate-specific details using Claude Haiku. Output is a <strong>1-2 sentence personalization</strong> injected as an Ashby sequence variable.</p>
-<h3 id="outreach-quality-gate">Outreach Quality Gate<a class="headerlink" href="#outreach-quality-gate" title="Permanent link">&para;</a></h3>
+<h3 id="outreach-quality-gate">Outreach Quality Gate</h3>
 <p>Before sending ANY outreach message, the system performs 25-rule validation:</p>
 <p><strong>Hard Bans (fix before sending):</strong>
 - NO em dashes (—) anywhere — use commas, periods, or parentheses
@@ -2010,7 +2010,7 @@ button:hover { background: #ce9ffc; }
 <p>I came across your profile and was really impressed by your work at Stripe. We're building something similar and I think you'd be a great fit. Would love to grab a quick 15-min call to chat more about it.</p>
 </blockquote>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>
@@ -2054,7 +2054,7 @@ button:hover { background: #ce9ffc; }
 </tbody>
 </table>
 <hr />
-<h2 id="related-topics">Related Topics<a class="headerlink" href="#related-topics" title="Permanent link">&para;</a></h2>
+<h2 id="related-topics">Related Topics</h2>
 <ul>
 <li>[[sourcing-pipeline|Sourcing Pipeline]] — end-to-end candidate sourcing workflow</li>
 <li>[[linkedin-enrichment|LinkedIn Enrichment]] — profile data collection via RapidAPI</li>
@@ -2062,7 +2062,7 @@ button:hover { background: #ce9ffc; }
 <li>[[scoring-rules|Scoring Rules]] — detailed decision-making guidelines for evaluators</li>
 </ul>
 <hr />
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h2 id="references">References</h2>
 <ul>
 <li><strong>Codebase:</strong> <code>modules/prism.py</code> (main scoring logic), <code>cogs/sourcing_prism.py</code> (Discord integration)</li>
 <li><strong>Configuration:</strong> <code>core/config.py</code> (sourcing defaults), <code>jds/index.json</code> (per-JD overrides)</li>

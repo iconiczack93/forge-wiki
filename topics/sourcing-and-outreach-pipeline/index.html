@@ -1672,8 +1672,8 @@ button:hover { background: #ce9ffc; }
 
 
 
-<h1 id="forge-sourcing-and-outreach-pipeline">FORGE Sourcing and Outreach Pipeline<a class="headerlink" href="#forge-sourcing-and-outreach-pipeline" title="Permanent link">&para;</a></h1>
-<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<h1 id="forge-sourcing-and-outreach-pipeline">FORGE Sourcing and Outreach Pipeline</h1>
+<h2 id="summary">Summary</h2>
 <p>The FORGE sourcing and outreach pipeline is a multi-stage, AI-driven system that discovers engineering candidates from external sources (GitHub, Slack communities, company raids), enriches their LinkedIn profiles, scores them using PRISM evaluation, and generates personalized outreach messages. The pipeline is orchestrated via [[Sourcing Pipeline]] (4-agent orchestrator) and can run on-demand or automatically overnight via [[Overnight Engine]].</p>
 <p><strong>Core flow:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Strategist] → [Scout] → [Enricher] → [Evaluator] → [Outreach] → [Ashby/Tracking]
@@ -1681,7 +1681,7 @@ button:hover { background: #ce9ffc; }
 </code></pre></div></p>
 <p>Each stage is independently parallelizable, allowing the pipeline to scale across multiple concurrent discovery streams (GitHub, Slack communities, company raids) while maintaining cost control and quality gates.</p>
 <hr />
-<h2 id="company-raids">Company Raids<a class="headerlink" href="#company-raids" title="Permanent link">&para;</a></h2>
+<h2 id="company-raids">Company Raids</h2>
 <p>[[Company Raider]] executes a two-phase discovery targeting engineers at specific companies:</p>
 <p><strong>Stage 1: Apify Batch Search</strong>
 - Query LinkedIn by company name and experience bracket (typically 2-7yr and 6-10yr)
@@ -1705,16 +1705,16 @@ button:hover { background: #ce9ffc; }
 - Bay Area city list: hardcoded in raider
 - Blocklist: <code>COMPANY_BLOCKLIST</code> (Google, Meta, Amazon, etc.)</p>
 <hr />
-<h2 id="linkedin-enrichment">LinkedIn Enrichment<a class="headerlink" href="#linkedin-enrichment" title="Permanent link">&para;</a></h2>
+<h2 id="linkedin-enrichment">LinkedIn Enrichment</h2>
 <p>LinkedIn profile enrichment happens in two flavors:</p>
-<h3 id="rapidapi-primary-lower-cost">RapidAPI (Primary, Lower Cost)<a class="headerlink" href="#rapidapi-primary-lower-cost" title="Permanent link">&para;</a></h3>
+<h3 id="rapidapi-primary-lower-cost">RapidAPI (Primary, Lower Cost)</h3>
 <p>[[linkedin_ops.py|linkedin_ops.py]] integrates with <code>fresh-linkedin-profile-data.p.rapidapi.com</code>:
 - Pulls public profile data (education, experience, skills) in JSON
 - Cost: ~$0.006/profile (lower than Apify, but less detailed)
 - Used for quick screening when full Apify scrape not justified
 - Batch requests allowed — parallelize up to 10 concurrent</p>
 <p><strong>Never use Apify for LinkedIn.</strong> ([[Memory#Rules|see MEMORY rules]]) — prior usage wasted $200+ on per-call overhead.</p>
-<h3 id="apify-batch-scraping-fallback">Apify Batch Scraping (Fallback)<a class="headerlink" href="#apify-batch-scraping-fallback" title="Permanent link">&para;</a></h3>
+<h3 id="apify-batch-scraping-fallback">Apify Batch Scraping (Fallback)</h3>
 <p>[[pipeline_enricher.py|pipeline_enricher.py]] uses <code>supreme_coder~linkedin-profile-scraper</code> actor:
 - Full LinkedIn profile extraction: headline, experience, education, skills, endorsements, recommendations
 - 200 profiles per batch to amortize setup cost (~$5 overhead per run)
@@ -1731,7 +1731,7 @@ button:hover { background: #ce9ffc; }
 - Raw profiles stored in pipeline_profiles table
 - Cached indefinitely; dedup prevents re-scraping same URL within cooldown window</p>
 <hr />
-<h2 id="prism-scoring">PRISM Scoring<a class="headerlink" href="#prism-scoring" title="Permanent link">&para;</a></h2>
+<h2 id="prism-scoring">PRISM Scoring</h2>
 <p>[[pipeline_evaluator.py|pipeline_evaluator.py]] runs PRISM scoring on enriched profiles using Claude Sonnet.</p>
 <p><strong>Score Scale (1-5):</strong>
 - <strong>5</strong>: Strong match — multiple must-haves met, relevant tech stack, seniority aligned, geographic fit
@@ -1749,7 +1749,7 @@ button:hover { background: #ce9ffc; }
 <p><strong>Recent layoff flagging:</strong> Candidates from Meta, Amazon, Google, Microsoft, Salesforce, etc. flagged as potentially motivated (recent layoff → active job search)</p>
 <p><strong>Database:</strong> Stored in candidate_evals table with full PRISM report</p>
 <hr />
-<h2 id="outreach-generation">Outreach Generation<a class="headerlink" href="#outreach-generation" title="Permanent link">&para;</a></h2>
+<h2 id="outreach-generation">Outreach Generation</h2>
 <p>[[linkedin_ops.py|linkedin_ops.py]] and [[Ashby Integration|Ashby ATS]] feed outreach generation.</p>
 <p><strong>Quality Gate: 25-Rule Evaluator</strong>
 All outreach runs through rules check before showing to Zack:</p>
@@ -1784,9 +1784,9 @@ All outreach runs through rules check before showing to Zack:</p>
 <p>Hey John, I came across your profile and was impressed by your background. I think we have an interesting opportunity that might be worth a conversation. Let me know if you're open to a quick 15-min call!</p>
 </blockquote>
 <hr />
-<h2 id="sourcing-pipeline-orchestration">Sourcing Pipeline Orchestration<a class="headerlink" href="#sourcing-pipeline-orchestration" title="Permanent link">&para;</a></h2>
+<h2 id="sourcing-pipeline-orchestration">Sourcing Pipeline Orchestration</h2>
 <p>[[sourcing_pipeline.py|sourcing_pipeline.py]] coordinates the 4-agent pipeline:</p>
-<h3 id="agent-1-strategist">Agent 1: Strategist<a class="headerlink" href="#agent-1-strategist" title="Permanent link">&para;</a></h3>
+<h3 id="agent-1-strategist">Agent 1: Strategist</h3>
 <p>Runs once per pipeline execution. Takes JD + config, produces SourcingPlan:</p>
 <ul>
 <li><strong>JD Analysis</strong> (Haiku): Extract must-haves, nice-to-haves, deal-breakers, seniority, location preferences</li>
@@ -1800,7 +1800,7 @@ All outreach runs through rules check before showing to Zack:</p>
 <li><strong>Cost Estimation</strong>: Extrapolate to max_profiles, give Zack approval dialog if &gt;$100</li>
 </ul>
 <p><strong>Output:</strong> SourcingPlan dict consumed by Scout, Enricher, Evaluator</p>
-<h3 id="agent-2-scout">Agent 2: Scout<a class="headerlink" href="#agent-2-scout" title="Permanent link">&para;</a></h3>
+<h3 id="agent-2-scout">Agent 2: Scout</h3>
 <p>Runs 3 parallel streams (GitHub, Slack, Company), pushes LinkedIn URLs to url_queue.</p>
 <p><strong>GitHub Stream:</strong>
 - For each repo in plan: query GitHub API for contributors
@@ -1823,7 +1823,7 @@ All outreach runs through rules check before showing to Zack:</p>
 <p><strong>Sentinel Signal:</strong>
 - When all 3 streams complete, Scout pushes _SENTINEL to url_queue
 - Signals Enricher that discovery phase is done</p>
-<h3 id="agent-3-enricher">Agent 3: Enricher<a class="headerlink" href="#agent-3-enricher" title="Permanent link">&para;</a></h3>
+<h3 id="agent-3-enricher">Agent 3: Enricher</h3>
 <p>Drains url_queue, filters, enriches, post-filters, pushes to profile_queue.</p>
 <p><strong>Pre-filter (Haiku):</strong>
 - For each URL batch: call Haiku with JD summary + LinkedIn URL
@@ -1842,7 +1842,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - Passing profiles pushed to profile_queue
 - Stats updated: enriched count, Apify cost, pass/fail counts
 - Sentinel forwarded when url_queue exhausted</p>
-<h3 id="agent-4-evaluator">Agent 4: Evaluator<a class="headerlink" href="#agent-4-evaluator" title="Permanent link">&para;</a></h3>
+<h3 id="agent-4-evaluator">Agent 4: Evaluator</h3>
 <p>Drains profile_queue, PRISM-scores with Sonnet, generates outreach, saves to DB, posts to Discord.</p>
 <p><strong>Batch Scoring (10 at a time):</strong>
 - Accumulate profiles from queue into batch
@@ -1866,9 +1866,9 @@ All outreach runs through rules check before showing to Zack:</p>
 - Post to channel (if configured)
 - DM Zack with final summary + cost breakdown</p>
 <hr />
-<h2 id="ashby-integration">Ashby Integration<a class="headerlink" href="#ashby-integration" title="Permanent link">&para;</a></h2>
+<h2 id="ashby-integration">Ashby Integration</h2>
 <p>FORGE integrates with Ashby ATS via two methods:</p>
-<h3 id="api-integration">API Integration<a class="headerlink" href="#api-integration" title="Permanent link">&para;</a></h3>
+<h3 id="api-integration">API Integration</h3>
 <p>[[ashby.py|ashby.py]] uses Ashby REST API (no SDK) for:
 - List jobs (open, archived, all)
 - List candidates (applications)
@@ -1878,7 +1878,7 @@ All outreach runs through rules check before showing to Zack:</p>
 <p><strong>Auth:</strong> Basic auth (API key as username, blank password)
 <strong>All endpoints:</strong> POST to https://api.ashbyhq.com/{endpoint}</p>
 <p><strong>CRITICAL:</strong> Ashby has NO public SDK and NO JavaScript export. The Ashby API is <strong>read-only for candidate listing</strong> — no bulk import capability. This drives the <a href="#ashby-dashboard">browser automation</a> approach for pipeline scraping.</p>
-<h3 id="browser-based-dashboard-scraping">Browser-Based Dashboard Scraping<a class="headerlink" href="#browser-based-dashboard-scraping" title="Permanent link">&para;</a></h3>
+<h3 id="browser-based-dashboard-scraping">Browser-Based Dashboard Scraping</h3>
 <p>[[ashby_dashboard.py|ashby_dashboard.py]] uses [[forge-browser|forge-browser MCP]] to scrape Ashby UI:</p>
 <p><strong>Sequence Templates Dashboard:</strong>
 - Navigate to https://app.ashbyhq.com/sourcing/sequence-templates
@@ -1890,7 +1890,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - Used for "which candidates are in which stage" queries</p>
 <p><strong>Why browser automation?</strong> Ashby's API doesn't expose sequences or email campaign data. Scraping the UI is the only way to pull live pipeline metrics.</p>
 <hr />
-<h2 id="overnight-engine">Overnight Engine<a class="headerlink" href="#overnight-engine" title="Permanent link">&para;</a></h2>
+<h2 id="overnight-engine">Overnight Engine</h2>
 <p>[[overnight_engine.py|overnight_engine.py]] runs autonomous deep work during VPS off-peak hours.</p>
 <p><strong>Schedule:</strong> 4 cycles per night
 - 9:30 PM Pacific (5:30 UTC)
@@ -1915,7 +1915,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - 3:30 AM: Replenish company list (mine previous candidates' employers, web discovery)
 - 6:30 AM: Post morning briefing with new candidates, overnight spend summary</p>
 <hr />
-<h2 id="auto-sourcing-engine">Auto-Sourcing Engine<a class="headerlink" href="#auto-sourcing-engine" title="Permanent link">&para;</a></h2>
+<h2 id="auto-sourcing-engine">Auto-Sourcing Engine</h2>
 <p>[[auto_sourcing.py|auto_sourcing.py]] runs autonomous sourcing 2x/day on VPS.</p>
 <p><strong>Per-cycle pipeline:</strong>
 1. Haiku generates sourcing niche (e.g., "Kafka engineers at Series B data startups")
@@ -1936,7 +1936,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - DM to Zack with summary (how many scored, cost spent, highlights)
 - Database: sourced_profiles table (LinkedIn URL → score → timestamp)</p>
 <hr />
-<h2 id="eng-sync-agenda-generation">ENG Sync Agenda Generation<a class="headerlink" href="#eng-sync-agenda-generation" title="Permanent link">&para;</a></h2>
+<h2 id="eng-sync-agenda-generation">ENG Sync Agenda Generation</h2>
 <p>[[meeting_agenda.py|meeting_agenda.py]] auto-generates Friday 1:1 agenda for Zack + Hank meeting.</p>
 <p><strong>Inputs:</strong>
 - Agenda template (templates/friday_meeting_agenda.md)
@@ -1952,7 +1952,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - Candidate pipeline summary (stage breakdown, conversion funnel)</p>
 <p><strong>Usage:</strong> "generate friday agenda" / "prep friday meeting" via Discord → generates agenda file, uploads to ⚡-forge channel</p>
 <hr />
-<h2 id="company-replenisher">Company Replenisher<a class="headerlink" href="#company-replenisher" title="Permanent link">&para;</a></h2>
+<h2 id="company-replenisher">Company Replenisher</h2>
 <p>[[company_replenisher.py|company_replenisher.py]] auto-discovers new companies to raid.</p>
 <p><strong>Strategy 1: Mine Existing Candidates</strong>
 - Query candidate_evals where score &gt;= 3.0
@@ -1969,7 +1969,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - Feeds into Overnight Engine [[Company Raids]] task
 - Next cycle raids new companies discovered</p>
 <hr />
-<h2 id="sourcing-tracker">Sourcing Tracker<a class="headerlink" href="#sourcing-tracker" title="Permanent link">&para;</a></h2>
+<h2 id="sourcing-tracker">Sourcing Tracker</h2>
 <p>[[sourcing_tracker.py|sourcing_tracker.py]] tracks sourced candidates and target companies via Discord.</p>
 <p><strong>Candidate Tracking:</strong>
 - "s+ John Doe dba" → quick add (shorthand: s+ = source add)
@@ -1985,7 +1985,7 @@ All outreach runs through rules check before showing to Zack:</p>
 - Display number → DB ID mapping (click "2" in list, get right record)
 - Export to text (HireIQ format for sync)</p>
 <hr />
-<h2 id="key-files">Key Files<a class="headerlink" href="#key-files" title="Permanent link">&para;</a></h2>
+<h2 id="key-files">Key Files</h2>
 <table>
 <thead>
 <tr>
@@ -2069,7 +2069,7 @@ All outreach runs through rules check before showing to Zack:</p>
 </tbody>
 </table>
 <hr />
-<h2 id="related-pages">Related Pages<a class="headerlink" href="#related-pages" title="Permanent link">&para;</a></h2>
+<h2 id="related-pages">Related Pages</h2>
 <ul>
 <li>[[PRISM Scoring]] — Detailed PRISM evaluation framework</li>
 <li>[[Outreach Quality]] — Message quality checklist, Arda's voice guide</li>
@@ -2080,7 +2080,7 @@ All outreach runs through rules check before showing to Zack:</p>
 <li>[[Discord Integration]] — Channel IDs, embed formatting, mention handling</li>
 </ul>
 <hr />
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<h2 id="see-also">See Also</h2>
 <ul>
 <li>Memory: [[MEMORY.md#Sourcing|Sourcing Rules in MEMORY]]</li>
 <li>Processes: [[process_candidate_enrichment_scoring|Candidate Enrichment &amp; Scoring]]</li>
