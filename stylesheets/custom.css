@@ -397,6 +397,27 @@ a, .md-nav__link, .md-header__button, td {
   .md-typeset h1 { font-size: 1.8rem !important; }
 }
 
+/* ── Topic page category accent bars ── */
+
+/* Core Systems — red */
+[href*="brain-and-classifier"] + .md-content .md-typeset h1,
+[data-md-url*="brain-and-classifier"] .md-typeset h1,
+[data-md-url*="discord-bot-infrastructure"] .md-typeset h1,
+[data-md-url*="self-healing"] .md-typeset h1 {
+  border-left: 4px solid var(--accent-red) !important;
+  padding-left: 16px !important;
+}
+
+/* ── Mermaid diagram dark theme override ── */
+
+.mermaid {
+  background: transparent !important;
+}
+
+.mermaid text {
+  fill: var(--text-secondary) !important;
+}
+
 /* ── Reduce motion for accessibility ── */
 
 @media (prefers-reduced-motion: reduce) {
